@@ -19,6 +19,38 @@
 				"command": "gatsbyhub.helloWorld",
 				"title": "Hello World"
 			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "gatsbyHub",
+					"title": "GatsbyHub",
+					"icon": "src/logo/GatsbyHub-black.svg"
+				}
+			]
+		},
+		"views": {
+			"gatsbyHub": [
+				{
+					"id": "get-started",
+					"name": "Get Started",
+					"visibility": "collapsed"
+				},
+				{
+					"id": "plugins",
+					"name": "Plugins"
+				},
+				{
+					"id": "starters",
+					"name": "Starters"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "get-started",
+				"contents": "[Open Folder](command:vscode.openFolder)\n"
+			}
 		]
 	},
 	"scripts": {
