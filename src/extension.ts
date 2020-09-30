@@ -22,8 +22,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 	vscode.commands.registerCommand('gatsbyhub.installGatsby', () => {
 		// check if terminal is already running 
-		const { activeTerminal } = vscode.window;
-		if (!activeTerminal || activeTerminal.name !== "gatsbyhub") {
+		const { activeTerminal, terminals } = vscode.window;
+		// need to call on the terminals array and 
+		// itterate through the array 
+		const filtered = terminals.filter(obj => obj.name === "gatsbyhub");
+		// reduce array down to the only terminal object where .name is "gatsbyhub"[0] and set equal to activeTerminal 
+		
+		// check if reduced array is empty then execute if statement below 
+		if (filtered.length === 0) {
 			// if it is not running create new terminal 
 			// helper function to check conditional of if terminal is already running 
 			const terminal = vscode.window.createTerminal("gatsbyhub");
@@ -32,8 +38,9 @@ export function activate(context: vscode.ExtensionContext) {
 			console.log("inside if");
 		}
 		else {
-			activeTerminal.sendText("sudo npm install -g gatsby-cli");
-			activeTerminal.show();
+			const [ gatsbyTerminal ] = filtered;
+			gatsbyTerminal.sendText("sudo npm install -g gatsby-cli");
+			gatsbyTerminal.show();
 			console.log("ELSE");
 		}
 		// if terminal is already running, then move onto next command 
