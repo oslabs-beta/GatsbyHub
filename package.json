@@ -25,6 +25,10 @@
 			{
 				"command": "gatsbyhub.installGatsby",
 				"title": "Install Gatsby"
+			},
+			{
+				"command": "gatsbyhub.createSite",
+				"title": "Create New Site"
 			}
 		],
 		"viewsContainers": {
@@ -56,7 +60,7 @@
 		"viewsWelcome": [
 			{
 				"view": "commands",
-				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n"
+				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n"
 			}
 		]
 	},
