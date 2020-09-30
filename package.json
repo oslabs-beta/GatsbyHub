@@ -21,6 +21,10 @@
 			{
 				"command": "gatsbyhub.helloWorld",
 				"title": "Hello World"
+			}, 
+			{
+				"command": "gatsbyhub.installGatsby",
+				"title": "Install Gatsby"
 			}
 		],
 		"viewsContainers": {
@@ -52,7 +56,7 @@
 		"viewsWelcome": [
 			{
 				"view": "commands",
-				"contents": "[Open Folder](command:gatsbyhub.helloWorld)\n"
+				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n"
 			}
 		]
 	},

@@ -20,6 +20,22 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from GatsbyHub!');
 	});
 
+vscode.commands.registerCommand('gatsbyhub.installGatsby', () => {
+		// check if terminal is already running 
+
+		// if it is not running create new terminal 
+		// helper function to check conditional of if terminal is already running 
+		const terminal = vscode.window.createTerminal("gatsbyhub");
+		terminal.sendText("sudo npm install -g gatsby-cli");
+		terminal.show();
+		const activeTerminal = vscode.window.activeTerminal
+		console.log(activeTerminal._name);
+		// if terminal is already running, then move onto next command 
+		// then send "sudo npm install -g gatsby-cli"
+		// conditional check if password is required 
+		// inputbox pop up of password (if necessary)
+	});
+
 	context.subscriptions.push(disposable);
 }
 
