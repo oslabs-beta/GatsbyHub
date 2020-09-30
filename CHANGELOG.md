@@ -6,4 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+## [0.0.1] - 2020-09-28
+### Added
+- Added README
+- Initialized Yeoman with starter code for VSCode Extension
+- Added TreeViewsContainer and Views for GatsbyHub

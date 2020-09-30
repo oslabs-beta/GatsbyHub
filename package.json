@@ -10,7 +10,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:gatsbyhub.helloWorld"
+		"onCommand:gatsbyhub.helloWorld",
+		"onView:commands",
+		"onView:plugins",
+		"onView:starters"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -32,8 +35,8 @@
 		"views": {
 			"gatsbyHub": [
 				{
-					"id": "get-started",
-					"name": "Get Started",
+					"id": "commands",
+					"name": "commands",
 					"visibility": "collapsed"
 				},
 				{
@@ -48,7 +51,7 @@
 		},
 		"viewsWelcome": [
 			{
-				"view": "get-started",
+				"view": "commands",
 				"contents": "[Open Folder](command:vscode.openFolder)\n"
 			}
 		]
