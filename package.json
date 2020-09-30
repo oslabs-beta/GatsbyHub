@@ -10,7 +10,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:gatsbyhub.helloWorld"
+		"onCommand:gatsbyhub.helloWorld",
+		"onView:commands",
+		"onView:plugins",
+		"onView:starters"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +21,10 @@
 			{
 				"command": "gatsbyhub.helloWorld",
 				"title": "Hello World"
+			}, 
+			{
+				"command": "gatsbyhub.installGatsby",
+				"title": "Install Gatsby"
 			}
 		],
 		"viewsContainers": {
@@ -32,8 +39,8 @@
 		"views": {
 			"gatsbyHub": [
 				{
-					"id": "get-started",
-					"name": "Get Started",
+					"id": "commands",
+					"name": "Commands",
 					"visibility": "collapsed"
 				},
 				{
@@ -48,8 +55,8 @@
 		},
 		"viewsWelcome": [
 			{
-				"view": "get-started",
-				"contents": "[Open Folder](command:vscode.openFolder)\n"
+				"view": "commands",
+				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n"
 			}
 		]
 	},
