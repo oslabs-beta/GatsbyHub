@@ -21,6 +21,10 @@
 			{
 				"command": "gatsbyhub.helloWorld",
 				"title": "Hello World"
+			}, 
+			{
+				"command": "gatsbyhub.installGatsby",
+				"title": "Install Gatsby"
 			}
 		],
 		"viewsContainers": {
@@ -36,7 +40,7 @@
 			"gatsbyHub": [
 				{
 					"id": "commands",
-					"name": "commands",
+					"name": "Commands",
 					"visibility": "collapsed"
 				},
 				{
@@ -52,7 +56,7 @@
 		"viewsWelcome": [
 			{
 				"view": "commands",
-				"contents": "[Open Folder](command:vscode.openFolder)\n"
+				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n"
 			}
 		]
 	},

@@ -6,6 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+- Initial release
+
+## [0.0.2] - 2020-09-29 
+### Added 
+- Added commands directory 
+- Added "Install" button 
+- Added functionality to access CLI through our extension 
+
 ## [0.0.1] - 2020-09-28
 ### Added
 - Added README
