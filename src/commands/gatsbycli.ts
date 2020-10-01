@@ -12,6 +12,7 @@ export default class GatsbyCli {
     const activeTerminal = Utilities.getActiveTerminal();
 
     activeTerminal.sendText('sudo npm install -g gatsby-cli');
+    // Creates a password inputbox when install gatsby button is clicked
     // NOTE: comeback to this
     // if admin password is required:
       // Creates an inputbox for password when install gatsby button is clicked
