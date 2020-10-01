@@ -63,18 +63,16 @@ export default class GatsbyCli {
     console.log('Status Bar Command Worked!!');
     // vscode.commands.executeCommand('createStatusBarItem');
     /** write in active terminal gatsby develop
-    options to set host, set port, to open site, and to use https - research how to create little icons
-    gatsby develop only works in the site directory, allow user to open folder for their site directory
+    options to set host, set port, to open site, and to use https - research how to create little
+    icons gatsby develop only works in the site directory, allow user to open folder for
+    their site directory
     two seperate methods toggle between start and stop server
     need a global variable to store whether or not server is running */
-    if (this.status === false) {
-      activeTerminal.sendText('gatsby develop --open');
-      activeTerminal.show();
-      this.status = true;
-    } else {
-      activeTerminal.sendText('^C');
-      activeTerminal.show();
-      this.status = false;
-    }
+    activeTerminal.sendText('gatsby develop --open');
+    activeTerminal.show();
+  }
+
+  static async build() {
+    console.log('Build Site works!');
   }
 }
