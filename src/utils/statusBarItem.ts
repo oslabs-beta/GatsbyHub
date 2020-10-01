@@ -2,14 +2,16 @@ import * as vscode from 'vscode';
 
 export default class StatusBar {
   static createStatusBarItem() {
-    let myStatusBarItem: vscode.StatusBarItem;
-    myStatusBarItem = vscode.window.createStatusBarItem(
+    const myStatusBarItem: vscode.StatusBarItem = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Right,
       100,
     );
     myStatusBarItem.text = 'GatsbyHub';
     myStatusBarItem.show();
+    // status refers to whether server is running
+
     myStatusBarItem.command = 'gatsbyhub.developServer';
+
     // context.subscriptions.push(myStatusBarItem);
   }
 }

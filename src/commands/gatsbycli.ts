@@ -3,7 +3,16 @@
 import * as vscode from 'vscode';
 import Utilities from '../utils/Utilities';
 
+// interface GatsbyCliInterface {
+//   status: Boolean;
+// }
+
 export default class GatsbyCli {
+  static status: boolean = false;
+
+  // constructor() {
+  //   this.status = false;
+  // }
   // installs gatsby-cli for the user when install gatsby button is clicked
 
   //  static keyword: eliminates the need to instantiate to use this method in extenstion.ts
@@ -39,7 +48,7 @@ export default class GatsbyCli {
 
     // problem: does not work when creating a new folder
     const root = await vscode.commands.executeCommand('vscode.openFolder');
-    console.log(root);
+    // console.log(root);
 
     const siteName = await vscode.window.showInputBox({
       placeHolder: 'Input new site name',
@@ -53,5 +62,19 @@ export default class GatsbyCli {
     const activeTerminal = Utilities.getActiveTerminal();
     console.log('Status Bar Command Worked!!');
     // vscode.commands.executeCommand('createStatusBarItem');
+    /** write in active terminal gatsby develop
+    options to set host, set port, to open site, and to use https - research how to create little icons
+    gatsby develop only works in the site directory, allow user to open folder for their site directory
+    two seperate methods toggle between start and stop server
+    need a global variable to store whether or not server is running */
+    if (this.status === false) {
+      activeTerminal.sendText('gatsby develop --open');
+      activeTerminal.show();
+      this.status = true;
+    } else {
+      activeTerminal.sendText('^C');
+      activeTerminal.show();
+      this.status = false;
+    }
   }
 }
