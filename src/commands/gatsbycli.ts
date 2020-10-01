@@ -20,7 +20,7 @@ export default class GatsbyCli {
       password: true,
       placeHolder: 'Input administrator password',
     });
-    activeTerminal.sendText(inputPassword);
+    if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
 
     // if the password is wrong, show inputbox again
 
@@ -47,5 +47,11 @@ export default class GatsbyCli {
     activeTerminal.sendText(`gatsby new ${siteName}`);
 
     activeTerminal.show();
+  }
+
+  static async developServer() {
+    const activeTerminal = Utilities.getActiveTerminal();
+    console.log('Status Bar Command Worked!!');
+    // vscode.commands.executeCommand('createStatusBarItem');
   }
 }
