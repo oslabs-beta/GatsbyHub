@@ -7,9 +7,12 @@ import GatsbyCli from './commands/gatsbycli';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand(
+    // package.json command
     'gatsbyhub.installGatsby',
     GatsbyCli.installGatsby,
   );
+
+  vscode.commands.registerCommand('gatsbyhub.createSite', GatsbyCli.createSite);
 }
 
 // this method is called when your extension is deactivated
