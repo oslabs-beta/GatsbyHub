@@ -12,10 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
     GatsbyCli.installGatsby,
   );
 
-  vscode.commands.registerCommand(
-    'gatsbyhub.createSite',
-    GatsbyCli.createSite,
-  );
+  vscode.commands.registerCommand('gatsbyhub.createSite', GatsbyCli.createSite);
 }
 
 // this method is called when your extension is deactivated

@@ -15,12 +15,15 @@ export default class GatsbyCli {
     // Creates a password inputbox when install gatsby button is clicked
     // NOTE: comeback to this
     // if admin password is required:
-      // Creates an inputbox for password when install gatsby button is clicked
-      const inputPassword = await vscode.window.showInputBox({ password: true, placeHolder: 'Input administrator password' });
-      activeTerminal.sendText(inputPassword);
+    // Creates an inputbox for password when install gatsby button is clicked
+    const inputPassword = await vscode.window.showInputBox({
+      password: true,
+      placeHolder: 'Input administrator password',
+    });
+    activeTerminal.sendText(inputPassword);
 
-      // if the password is wrong, show inputbox again
-      
+    // if the password is wrong, show inputbox again
+
     // else, show terminal
 
     activeTerminal.show();
@@ -38,7 +41,9 @@ export default class GatsbyCli {
     const root = await vscode.commands.executeCommand('vscode.openFolder');
     console.log(root);
 
-    const siteName = await vscode.window.showInputBox({ placeHolder: 'Input new site name' });
+    const siteName = await vscode.window.showInputBox({
+      placeHolder: 'Input new site name',
+    });
     activeTerminal.sendText(`gatsby new ${siteName}`);
 
     activeTerminal.show();
