@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   StatusBar.createStatusBarItem();
   //   context.subscriptions.push(sb);
+  vscode.commands.registerCommand('gatsbyhub.build', GatsbyCli.build);
 }
 
 // this method is called when your extension is deactivated

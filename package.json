@@ -29,6 +29,10 @@
       {
         "command": "gatsbyhub.developServer",
         "title": "Develop Server"
+      },
+      {
+        "command": "gatsbyhub.build",
+        "title": "Build Site"
       }
     ],
     "viewsContainers": {
@@ -60,7 +64,7 @@
     "viewsWelcome": [
       {
         "view": "commands",
-        "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n"
+        "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n[Build Site](command:gatsbyhub.build)\n"
       }
     ]
   },
