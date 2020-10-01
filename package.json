@@ -19,16 +19,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "gatsbyhub.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "gatsbyhub.installGatsby",
         "title": "Install Gatsby"
       },
       {
         "command": "gatsbyhub.createSite",
         "title": "Create New Site"
+      },
+      {
+        "command": "gatsbyhub.developServer",
+        "title": "Develop Server"
       }
     ],
     "viewsContainers": {
@@ -60,7 +60,7 @@
     "viewsWelcome": [
       {
         "view": "commands",
-        "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n"
+        "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n"
       }
     ]
   },
