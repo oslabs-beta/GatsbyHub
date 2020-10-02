@@ -1,6 +1,8 @@
 // Extract commands and modularize them
 
-import * as vscode from 'vscode';
+// import * as vscode from 'vscode';
+import { window, commands } from 'vscode';
+import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 
 // interface GatsbyCliInterface {
@@ -8,13 +10,9 @@ import Utilities from '../utils/Utilities';
 // }
 
 export default class GatsbyCli {
-  static status: boolean = false;
+  private serverStatus: boolean = false;
 
-  // constructor() {
-  //   this.status = false;
-  // }
   // installs gatsby-cli for the user when install gatsby button is clicked
-
   //  static keyword: eliminates the need to instantiate to use this method in extenstion.ts
   static async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
@@ -25,7 +23,7 @@ export default class GatsbyCli {
     // NOTE: comeback to this
     // if admin password is required:
     // Creates an inputbox for password when install gatsby button is clicked
-    const inputPassword = await vscode.window.showInputBox({
+    const inputPassword = await window.showInputBox({
       password: true,
       placeHolder: 'Input administrator password',
     });
@@ -47,10 +45,10 @@ export default class GatsbyCli {
     const activeTerminal = Utilities.getActiveTerminal();
 
     // problem: does not work when creating a new folder
-    const root = await vscode.commands.executeCommand('vscode.openFolder');
+    const root = await commands.executeCommand('vscode.openFolder');
     // console.log(root);
 
-    const siteName = await vscode.window.showInputBox({
+    const siteName = await window.showInputBox({
       placeHolder: 'Input new site name',
     });
     activeTerminal.sendText(`gatsby new ${siteName}`);
@@ -73,6 +71,18 @@ export default class GatsbyCli {
   }
 
   static async build() {
+    const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.sendText('gatsby build');
+    activeTerminal.show();
     console.log('Build Site works!');
+  }
+
+  private ToggleStatusBarItem() {
+    // if (!this.serverStatus) {
+    //   StatusBar.offline();
+    // } else {
+    //   StatusBar.online();
+    // }
+    this.serverStatus = !this.serverStatus;
   }
 }
