@@ -62,7 +62,16 @@
         "view": "commands",
         "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n"
       }
-    ]
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "gatsbyhub.developServer",
+          "group": "inline",
+          "when": "view == plugins"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
