@@ -6,28 +6,25 @@ import * as vscode from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import StatusBar from './utils/statusBarItem';
 import PluginProvider from './models/PluginProvider';
+/* import WebViews from './utils/WebViews'; */
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate() {
-  vscode.commands.registerCommand(
+  const { createTreeView } = vscode.window;
+  const { registerCommand } = vscode.commands;
+  registerCommand(
     // package.json command
     'gatsbyhub.installGatsby',
     GatsbyCli.installGatsby
   );
-
-  vscode.commands.registerCommand('gatsbyhub.createSite', GatsbyCli.createSite);
-
-  vscode.commands.registerCommand(
-    'gatsbyhub.developServer',
-    GatsbyCli.developServer
-  );
-
-  StatusBar.createStatusBarItem();
-
-  vscode.window.createTreeView('plugins', {
+  registerCommand('gatsbyhub.createSite', GatsbyCli.createSite);
+  registerCommand('gatsbyhub.developServer', GatsbyCli.developServer);
+  registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin);
+  createTreeView('plugins', {
     treeDataProvider: new PluginProvider(),
   });
+  StatusBar.createStatusBarItem();
   //   context.subscriptions.push(sb);
 }
 
