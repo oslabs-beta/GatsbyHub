@@ -8,7 +8,7 @@ export default class Plugin extends vscode.TreeItem {
       label,
       children === undefined
         ? vscode.TreeItemCollapsibleState.None
-        : vscode.TreeItemCollapsibleState.Expanded
+        : vscode.TreeItemCollapsibleState.Collapsed
     );
     this.children = children;
   }
