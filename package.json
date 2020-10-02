@@ -31,6 +31,11 @@
         "title": "Develop Server"
       },
       {
+        "command": "gatsbyhub.openPluginDocs",
+        "title": "Open Plugin Docs",
+        "icon": "src/logo/download.svg"
+      },
+      {
         "command": "gatsbyhub.build",
         "title": "Build Site"
       }
@@ -40,7 +45,7 @@
         {
           "id": "gatsbyHub",
           "title": "GatsbyHub",
-          "icon": "src/logo/GatsbyHub-black.svg"
+          "icon": "src/logo/GatsbyHub-purple.svg"
         }
       ]
     },
@@ -66,7 +71,16 @@
         "view": "commands",
         "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n[Build Site](command:gatsbyhub.build)\n"
       }
-    ]
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "gatsbyhub.openPluginDocs",
+          "group": "inline",
+          "when": "view == plugins"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
