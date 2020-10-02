@@ -29,6 +29,11 @@
       {
         "command": "gatsbyhub.developServer",
         "title": "Develop Server"
+      },
+      {
+        "command": "gatsbyhub.openPluginDocs",
+        "title": "Open Plugin Docs",
+        "icon": "src/logo/download.svg"
       }
     ],
     "viewsContainers": {
@@ -36,7 +41,7 @@
         {
           "id": "gatsbyHub",
           "title": "GatsbyHub",
-          "icon": "src/logo/GatsbyHub-black.svg"
+          "icon": "src/logo/GatsbyHub-purple.svg"
         }
       ]
     },
@@ -66,7 +71,7 @@
     "menus": {
       "view/item/context": [
         {
-          "command": "gatsbyhub.developServer",
+          "command": "gatsbyhub.openPluginDocs",
           "group": "inline",
           "when": "view == plugins"
         }
