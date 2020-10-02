@@ -60,6 +60,7 @@ export default class GatsbyCli {
 
   static async developServer() {
     const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.show();
     console.log('Status Bar Command Worked!!');
     // vscode.commands.executeCommand('createStatusBarItem');
     /** write in active terminal gatsby develop
@@ -74,5 +75,11 @@ export default class GatsbyCli {
 
   static async build() {
     console.log('Build Site works!');
+  }
+
+  static installPlugin() {
+    const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.show();
+    console.log('Plugin Installed!');
   }
 }
