@@ -51,7 +51,14 @@ export default class GatsbyCli {
 
   static async developServer() {
     const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.show();
     console.log('Status Bar Command Worked!!');
     // vscode.commands.executeCommand('createStatusBarItem');
+  }
+
+  static installPlugin() {
+    const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.show();
+    console.log('Plugin Installed!');
   }
 }
