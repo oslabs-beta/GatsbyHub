@@ -10,6 +10,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.1.0] - 2020-10-02
 
+### Add
+
 - Added 'Create New Site' button
 - Added 'Develop Server' button
 - Added 'Develop' status bar item
