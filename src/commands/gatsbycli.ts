@@ -1,5 +1,7 @@
 // import * as vscode from 'vscode';
-import { window, commands } from 'vscode';
+// eslint-disable-next-line object-curly-newline
+import { window, commands, Uri } from 'vscode';
+import * as path from 'path';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 
@@ -64,16 +66,28 @@ export default class GatsbyCli {
     );
 
     // give user the option to create site in new folder instead
-    if (choice && choice === openFolderMsg) {
+    /*     if (choice && choice === openFolderMsg) {
       commands.executeCommand('vscode.openFolder');
-    }
+    } */
     // give user a place to write the name of their site
     const siteName = await window.showInputBox({
       placeHolder: 'Enter-new-site-filename',
     });
+
+    // give user the option to create site in new folder instead
+    /*     const workspacePath = Uri.file(
+      path.resolve(__dirname, `../../${siteName}`)
+    );
+    console.log('workspacePath: ', workspacePath); */
+    // you can specify where the new window will open to (our new gatsby site)
+    /*     commands.executeCommand('vscode.openFolder', workspacePath, true);
+     */
+    if (choice && choice === openFolderMsg) {
+      commands.executeCommand('vscode.openFolder');
+    }
     // send command to the terminal
     if (siteName) {
-      activeTerminal.sendText(`gatsby new ${siteName}`);
+      activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
       activeTerminal.show();
     } else {
       window.showWarningMessage(
