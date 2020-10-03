@@ -75,13 +75,14 @@ export default class GatsbyCli {
     activeTerminal.sendText('gatsby develop --open');
     activeTerminal.show();
     this.toggleStatusBar();
-    window.showInformationMessage('Server Running on Port:8000');
+    window.showInformationMessage('Gatsby Server Running on port:8000');
   }
 
   public disposeServer() {
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.dispose();
     this.toggleStatusBar();
+    window.showInformationMessage('Disposing Gatsby Server on port:8000');
   }
 
   static async build() {

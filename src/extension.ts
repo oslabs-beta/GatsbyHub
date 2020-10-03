@@ -36,9 +36,11 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin),
   );
-  createTreeView('plugins', {
-    treeDataProvider: new PluginProvider(),
-  });
+  subscriptions.push(
+    createTreeView('plugins', {
+      treeDataProvider: new PluginProvider(),
+    }),
+  );
   subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(gatsbyCli);
 }
