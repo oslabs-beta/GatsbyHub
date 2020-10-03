@@ -2,8 +2,10 @@ import * as vscode from 'vscode';
 import { window, StatusBarItem } from 'vscode';
 
 export default class StatusBar {
+  // defines the type to be a vscode.StatusBarItem
   private static statusBarItem: StatusBarItem;
 
+  // returns a StatusBarItem when called on by other StatusBar methods
   private static get Item() {
     if (!StatusBar.statusBarItem) {
       StatusBar.statusBarItem = window.createStatusBarItem(
@@ -12,16 +14,17 @@ export default class StatusBar {
       );
     }
     // $(pulse) $(broadcast)$(cloud-upload)$(rss)$(radio-tower) $(circle-slash)
-    // StatusBar.statusBarItem.text = '$(radio-tower) GatsbyHub';
     StatusBar.statusBarItem.show();
     return StatusBar.statusBarItem;
-    // status refers to whether server is running
   }
 
+  // initializes the statusBar by calling StatusBar.online method
+  // this is currently redundant, but it allows for loading sequence if we want
   static init() {
     StatusBar.online();
   }
 
+  // GatsbyCli toggles statusBar between online() and offline() methods
   public static online() {
     StatusBar.Item.text = '$(radio-tower) GatsbyHub';
     StatusBar.Item.tooltip = 'Click to develop Gatsby server';

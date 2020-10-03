@@ -1,5 +1,3 @@
-// Extract commands and modularize them
-
 // import * as vscode from 'vscode';
 import { window, commands, StatusBarItem } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
@@ -9,12 +7,15 @@ import Utilities from '../utils/Utilities';
 //   status: Boolean;
 // }
 
+// Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
   private serverStatus: boolean;
   initStatusBar: void;
 
   constructor() {
+    // Defines the condition on which way to toggle statusBarItem
     this.serverStatus = false;
+    // Initializes the StatusBarItem
     this.initStatusBar = StatusBar.init();
     this.toggleStatusBar = this.toggleStatusBar.bind(this);
     this.developServer = this.developServer.bind(this);
@@ -22,11 +23,10 @@ export default class GatsbyCli {
   }
 
   // installs gatsby-cli for the user when install gatsby button is clicked
-  //  static keyword: eliminates the need to instantiate to use this method in extenstion.ts
+  // static keyword: eliminates the need to instantiate to use this method in extenstion.ts
   static async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
-
     activeTerminal.sendText('sudo npm install -g gatsby-cli');
     // Creates a password inputbox when install gatsby button is clicked
     // NOTE: comeback to this
@@ -51,47 +51,62 @@ export default class GatsbyCli {
    * the user terminal should be at the directory user wishes to download the files.
    */
   static async createSite() {
+    // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
-
-    // problem: does not work when creating a new folder
-    const root = await commands.executeCommand('vscode.openFolder');
-    // console.log(root);
-
+    // define string for button in information message
+    const openFolderMsg: string = 'Open Folder';
+    // tell user that new site will be created in current directory
+    window
+      .showInformationMessage(
+        `New Gatsby site will be created in current directory 
+        unless you open a different folder for your project`,
+        openFolderMsg,
+      )
+      .then((choice) => {
+        // give user the option to create site in new folder instead
+        if (choice && choice === openFolderMsg) {
+          commands.executeCommand('vscode.openFolder');
+        }
+      });
+    // give user a place to write the name of their site
     const siteName = await window.showInputBox({
-      placeHolder: 'Enter new site name',
+      placeHolder: 'Enter-new-site-filename',
     });
+    // send command to the terminal
     activeTerminal.sendText(`gatsby new ${siteName}`);
-
     activeTerminal.show();
   }
 
+  // Starts development server and opens project in a new browser
   public developServer() {
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
-    /** write in active terminal gatsby develop
-     options to set host, set port, to open site, and to use https - research how to create little
-     icons gatsby develop only works in the site directory, allow user to open folder for
-     their site directory */
     activeTerminal.sendText('gatsby develop --open');
     activeTerminal.show();
+    // toggle statusBar so it will dispose server if clicked again
     this.toggleStatusBar();
     window.showInformationMessage('Gatsby Server Running on port:8000');
+    /** write options to set host, set port, to open site, and to use https
+     * gatsby develop only works in the site directory
+     * allow user to open folder for their site directory */
   }
 
+  // Disposes development server by disposing the terminal
   public disposeServer() {
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.dispose();
+    // toggle statusBar so it will developServer if clicked again
     this.toggleStatusBar();
     window.showInformationMessage('Disposing Gatsby Server on port:8000');
   }
 
+  // builds and packages Gatsby site
   static async build() {
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.sendText('gatsby build');
     activeTerminal.show();
-    console.log('Build Site works!');
   }
 
+  // toggles statusBar between developing server and disposing server
   private toggleStatusBar(): void {
     if (!this.serverStatus) {
       console.log('Dispose Gatsby Server!');

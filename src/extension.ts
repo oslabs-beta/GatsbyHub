@@ -33,6 +33,7 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
   );
+  subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(
     registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin),
   );
@@ -41,7 +42,6 @@ export function activate(context: ExtensionContext) {
       treeDataProvider: new PluginProvider(),
     }),
   );
-  subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(gatsbyCli);
 }
 
