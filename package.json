@@ -31,6 +31,10 @@
         "title": "Develop Server"
       },
       {
+        "command": "gatsbyhub.disposeServer",
+        "title": "Dispose Server"
+      },
+      {
         "command": "gatsbyhub.openPluginDocs",
         "title": "Open Plugin Docs",
         "icon": "src/logo/download.svg"

@@ -1,7 +1,7 @@
 // Extract commands and modularize them
 
 // import * as vscode from 'vscode';
-import { window, commands } from 'vscode';
+import { window, commands, StatusBarItem } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 
@@ -10,7 +10,16 @@ import Utilities from '../utils/Utilities';
 // }
 
 export default class GatsbyCli {
-  private serverStatus: boolean = false;
+  private serverStatus: boolean;
+  initStatusBar: void;
+
+  constructor() {
+    this.serverStatus = false;
+    this.initStatusBar = StatusBar.init();
+    this.toggleStatusBar = this.toggleStatusBar.bind(this);
+    this.developServer = this.developServer.bind(this);
+    this.disposeServer = this.disposeServer.bind(this);
+  }
 
   // installs gatsby-cli for the user when install gatsby button is clicked
   //  static keyword: eliminates the need to instantiate to use this method in extenstion.ts
@@ -49,26 +58,30 @@ export default class GatsbyCli {
     // console.log(root);
 
     const siteName = await window.showInputBox({
-      placeHolder: 'Input new site name',
+      placeHolder: 'Enter new site name',
     });
     activeTerminal.sendText(`gatsby new ${siteName}`);
 
     activeTerminal.show();
   }
 
-  static async developServer() {
+  public developServer() {
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show();
-    console.log('Status Bar Command Worked!!');
-    // vscode.commands.executeCommand('createStatusBarItem');
     /** write in active terminal gatsby develop
-    options to set host, set port, to open site, and to use https - research how to create little
-    icons gatsby develop only works in the site directory, allow user to open folder for
-    their site directory
-    two seperate methods toggle between start and stop server
-    need a global variable to store whether or not server is running */
+     options to set host, set port, to open site, and to use https - research how to create little
+     icons gatsby develop only works in the site directory, allow user to open folder for
+     their site directory */
     activeTerminal.sendText('gatsby develop --open');
     activeTerminal.show();
+    this.toggleStatusBar();
+    window.showInformationMessage('Server Running on Port:8000');
+  }
+
+  public disposeServer() {
+    const activeTerminal = Utilities.getActiveTerminal();
+    activeTerminal.dispose();
+    this.toggleStatusBar();
   }
 
   static async build() {
@@ -78,13 +91,19 @@ export default class GatsbyCli {
     console.log('Build Site works!');
   }
 
-  private toggleStatusBarItem() {
-    // if (!this.serverStatus) {
-    //   StatusBar.offline();
-    // } else {
-    //   StatusBar.online();
-    // }
+  private toggleStatusBar(): void {
+    if (!this.serverStatus) {
+      console.log('Dispose Gatsby Server!');
+      StatusBar.offline(8000);
+    } else {
+      console.log('Develop Gatsby Server!');
+      StatusBar.online();
+    }
     this.serverStatus = !this.serverStatus;
+  }
+
+  public dispose() {
+    StatusBar.dispose();
   }
 
   static installPlugin() {
