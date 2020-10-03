@@ -1,7 +1,9 @@
+import { utils } from 'mocha';
 // import * as vscode from 'vscode';
-import { window, commands, StatusBarItem } from 'vscode';
+import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
+import { workspaceResolver } from '../utils/workspaceResolver';
 
 // interface GatsbyCliInterface {
 //   status: Boolean;
@@ -20,6 +22,7 @@ export default class GatsbyCli {
     this.toggleStatusBar = this.toggleStatusBar.bind(this);
     this.developServer = this.developServer.bind(this);
     this.disposeServer = this.disposeServer.bind(this);
+    this.showPopUpMsg = this.showPopUpMsg.bind(this);
   }
 
   // installs gatsby-cli for the user when install gatsby button is clicked
@@ -78,10 +81,29 @@ export default class GatsbyCli {
   }
 
   // Starts development server and opens project in a new browser
-  public developServer() {
+  public async developServer() {
+    if (!workspace.workspaceFolders) {
+      return this.showPopUpMsg(
+        `Open a folder or workspace... (File -> Open Folder)`,
+        true,
+      );
+    }
+
+    if (!workspace.workspaceFolders.length) {
+      return this.showPopUpMsg(
+        "You don't have any Gatsby folders in this workspace",
+        true,
+      );
+    }
+
+    console.log('workspace', workspace.workspaceFile);
+    // const workspacePath = await workspaceResolver();
+
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.sendText('gatsby develop --open');
     activeTerminal.show();
+    // activeTerminal.sendText('cd');
+    // activeTerminal.sendText('cd ' + workspacePath);
+    activeTerminal.sendText('gatsby develop --open');
     // toggle statusBar so it will dispose server if clicked again
     this.toggleStatusBar();
     window.showInformationMessage('Gatsby Server Running on port:8000');
@@ -102,17 +124,14 @@ export default class GatsbyCli {
   // builds and packages Gatsby site
   static async build() {
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.sendText('gatsby build');
     activeTerminal.show();
   }
 
   // toggles statusBar between developing server and disposing server
   private toggleStatusBar(): void {
     if (!this.serverStatus) {
-      console.log('Dispose Gatsby Server!');
       StatusBar.offline(8000);
     } else {
-      console.log('Develop Gatsby Server!');
       StatusBar.online();
     }
     this.serverStatus = !this.serverStatus;
@@ -120,6 +139,16 @@ export default class GatsbyCli {
 
   public dispose() {
     StatusBar.dispose();
+  }
+
+  private showPopUpMsg(
+    msg: string,
+    isErrorMsg: boolean = false,
+    isWarning: boolean = false,
+  ) {
+    if (isErrorMsg) window.showErrorMessage(msg);
+    else if (isWarning) window.showWarningMessage(msg);
+    else window.showInformationMessage(msg);
   }
 
   static installPlugin() {
