@@ -2,11 +2,14 @@
 /* eslint-disable import/extensions */
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
-import { ExtensionContext, commands, window } from 'vscode';
-import GatsbyCli from './commands/gatsbycli';
-import StatusBar from './utils/statusBarItem';
-import PluginProvider from './models/PluginProvider';
+import * as vscode from "vscode";
+import { ExtensionContext, commands, window } from "vscode";
+import GatsbyCli from "./commands/gatsbycli";
+import StatusBar from "./utils/statusBarItem";
+import PluginProvider from "./models/PluginProvider";
+import Plugin from "./models/Plugin";
+import EachPlugin from "./models/EachPlugin";
+import PluginData from "./models.PluginData";
 /* import WebViews from './utils/WebViews'; */
 
 // this method is called when your extension is activated
@@ -16,31 +19,30 @@ export function activate(context: ExtensionContext) {
   const { registerCommand } = commands;
   const { subscriptions } = context;
   const gatsbyCli = new GatsbyCli();
-
   subscriptions.push(
     registerCommand(
       // package.json command
-      'gatsbyhub.installGatsby',
-      GatsbyCli.installGatsby,
-    ),
+      "gatsbyhub.installGatsby",
+      GatsbyCli.installGatsby
+    )
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite),
+    registerCommand("gatsbyhub.createSite", GatsbyCli.createSite)
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer),
+    registerCommand("gatsbyhub.developServer", gatsbyCli.developServer)
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
+    registerCommand("gatsbyhub.disposeServer", gatsbyCli.disposeServer)
   );
-  subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
+  subscriptions.push(registerCommand("gatsbyhub.build", GatsbyCli.build));
   subscriptions.push(
-    registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin),
+    registerCommand("gatsbyhub.openPluginDocs", GatsbyCli.installPlugin)
   );
   subscriptions.push(
-    createTreeView('plugins', {
+    createTreeView("plugins", {
       treeDataProvider: new PluginProvider(),
-    }),
+    })
   );
   subscriptions.push(gatsbyCli);
 }
