@@ -1,5 +1,5 @@
 // import * as vscode from 'vscode';
-import { window, commands, StatusBarItem } from 'vscode';
+import { window, commands } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 
@@ -10,6 +10,7 @@ import Utilities from '../utils/Utilities';
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
   private serverStatus: boolean;
+
   initStatusBar: void;
 
   constructor() {
@@ -56,25 +57,29 @@ export default class GatsbyCli {
     // define string for button in information message
     const openFolderMsg: string = 'Open Folder';
     // tell user that new site will be created in current directory
-    window
-      .showInformationMessage(
-        `New Gatsby site will be created in current directory 
+    const choice = await window.showInformationMessage(
+      `New Gatsby site will be created in current directory 
         unless you open a different folder for your project`,
-        openFolderMsg,
-      )
-      .then((choice) => {
-        // give user the option to create site in new folder instead
-        if (choice && choice === openFolderMsg) {
-          commands.executeCommand('vscode.openFolder');
-        }
-      });
+      openFolderMsg
+    );
+
+    // give user the option to create site in new folder instead
+    if (choice && choice === openFolderMsg) {
+      commands.executeCommand('vscode.openFolder');
+    }
     // give user a place to write the name of their site
     const siteName = await window.showInputBox({
       placeHolder: 'Enter-new-site-filename',
     });
     // send command to the terminal
-    activeTerminal.sendText(`gatsby new ${siteName}`);
-    activeTerminal.show();
+    if (siteName) {
+      activeTerminal.sendText(`gatsby new ${siteName}`);
+      activeTerminal.show();
+    } else {
+      window.showWarningMessage(
+        'Must enter a name for your new Gatsby directory'
+      );
+    }
   }
 
   // Starts development server and opens project in a new browser
