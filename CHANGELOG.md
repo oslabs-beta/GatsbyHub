@@ -4,9 +4,18 @@ All notable changes to the "gatsbyhub" extension will be documented in this file
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [Initial Release]
+
 ## [Unreleased]
 
-- Initial release
+## [0.1.0] - 2020-10-02
+
+- Added 'Create New Site' button
+- Added 'Develop Server' button
+- Added 'Develop' status bar item
+- Added 'Build Site' button
+- Updated 'Develop Server' functionality so that the button and status bar toggle between developing server and disposing server
+- Updated 'Create New Site' functionality so that message pops up with option to open new folder
 
 ## [0.0.2] - 2020-09-29
 
