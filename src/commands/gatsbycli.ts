@@ -111,7 +111,9 @@ export default class GatsbyCli {
 
     // finds path to file in text editor and drops the file name from the path
     const rootPath = window.activeTextEditor?.document.fileName
+      // replaces spaces with backslash
       .replace(/\s/g, '\\ ')
+      // drops fileName and common folders that aren't part of the root path
       .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '');
 
     const activeTerminal = Utilities.getActiveTerminal();
@@ -119,8 +121,10 @@ export default class GatsbyCli {
     activeTerminal.sendText('cd');
     activeTerminal.sendText(`cd ${rootPath}`);
     activeTerminal.sendText('gatsby develop --open');
-    // toggle statusBar so it will dispose server if clicked again
-    this.toggleStatusBar();
+    // change status bar to working message while server finishes developing
+    StatusBar.working('Starting server');
+    // toggle statusBar after 3 seconds so it will dispose server if clicked again
+    setTimeout(this.toggleStatusBar, 4000);
     window.showInformationMessage('Gatsby Server Running on port:8000');
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
@@ -131,8 +135,10 @@ export default class GatsbyCli {
   public disposeServer() {
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.dispose();
+    // change status bar to working message while server finishes disposing
+    StatusBar.working('Disposing server');
     // toggle statusBar so it will developServer if clicked again
-    this.toggleStatusBar();
+    setTimeout(this.toggleStatusBar, 3000);
     window.showInformationMessage('Disposing Gatsby Server on port:8000');
   }
 
