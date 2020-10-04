@@ -12,7 +12,7 @@ export async function setWorkspace() {
   return workspaceName;
 }
 
-export async function workspaceResolver() {
+export async function workspaceResolver(fileUri?: string) {
   const { workspaceFolders } = workspace;
   if (!workspaceFolders) return;
 
@@ -23,6 +23,15 @@ export async function workspaceResolver() {
   //     // turn path to fsPath if there are issues
   //     return workspaceFolders[0].uri.fsPath.replace(/\s/g, '\\ ');
   //   }
+
+  if (fileUri) {
+    const selectedWorkspace = workspaceFolders.find((ws) =>
+      fileUri.startsWith(ws.uri.fsPath),
+    );
+    if (selectedWorkspace) {
+      return selectedWorkspace.uri.fsPath;
+    }
+  }
 
   // if multiple workspace folders, show quick pick for user to pick specific workspace
   const workspaceName = await window.showQuickPick(workspaceNamesArr, {

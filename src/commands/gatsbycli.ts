@@ -1,6 +1,7 @@
-import { utils } from 'mocha';
 // import * as vscode from 'vscode';
-import { window, commands, workspace } from 'vscode';
+// eslint-disable-next-line object-curly-newline
+import { window, commands, Uri, workspace } from 'vscode';
+import * as path from 'path';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import { workspaceResolver } from '../utils/workspaceResolver';
@@ -12,6 +13,7 @@ import { workspaceResolver } from '../utils/workspaceResolver';
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
   private serverStatus: boolean;
+
   initStatusBar: void;
 
   constructor() {
@@ -31,20 +33,16 @@ export default class GatsbyCli {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.sendText('sudo npm install -g gatsby-cli');
+    // !! check if admin password is required before showing password box
+
     // Creates a password inputbox when install gatsby button is clicked
-    // NOTE: comeback to this
-    // if admin password is required:
-    // Creates an inputbox for password when install gatsby button is clicked
     const inputPassword = await window.showInputBox({
       password: true,
       placeHolder: 'Input administrator password',
     });
     if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
-
     // if the password is wrong, show inputbox again
-
     // else, show terminal
-
     activeTerminal.show();
   }
 
@@ -59,25 +57,38 @@ export default class GatsbyCli {
     // define string for button in information message
     const openFolderMsg: string = 'Open Folder';
     // tell user that new site will be created in current directory
-    window
-      .showInformationMessage(
-        `New Gatsby site will be created in current directory 
+    const choice = await window.showInformationMessage(
+      `New Gatsby site will be created in current directory 
         unless you open a different folder for your project`,
-        openFolderMsg,
-      )
-      .then((choice) => {
-        // give user the option to create site in new folder instead
-        if (choice && choice === openFolderMsg) {
-          commands.executeCommand('vscode.openFolder');
-        }
-      });
+      openFolderMsg,
+    );
+
+    if (choice && choice === openFolderMsg) {
+      commands.executeCommand('vscode.openFolder');
+    }
+
     // give user a place to write the name of their site
     const siteName = await window.showInputBox({
       placeHolder: 'Enter-new-site-filename',
     });
+
+    // give user the option to create site in new folder instead
+    /*     const workspacePath = Uri.file(
+      path.resolve(__dirname, `../../${siteName}`)
+    );
+    console.log('workspacePath: ', workspacePath); */
+    // you can specify where the new window will open to (our new gatsby site)
+    /*     commands.executeCommand('vscode.openFolder', workspacePath, true);
+     */
     // send command to the terminal
-    activeTerminal.sendText(`gatsby new ${siteName}`);
-    activeTerminal.show();
+    if (siteName) {
+      activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
+      activeTerminal.show();
+    } else {
+      window.showWarningMessage(
+        'Must enter a name for your new Gatsby directory',
+      );
+    }
   }
 
   // Starts development server and opens project in a new browser
@@ -96,7 +107,7 @@ export default class GatsbyCli {
       );
     }
 
-    console.log('workspace', workspace.workspaceFile);
+    // console.log('workspace', workspace.workspaceFile);
     // const workspacePath = await workspaceResolver();
 
     const activeTerminal = Utilities.getActiveTerminal();
