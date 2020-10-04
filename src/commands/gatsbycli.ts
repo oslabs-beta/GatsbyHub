@@ -6,10 +6,6 @@ import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import { workspaceResolver } from '../utils/workspaceResolver';
 
-// interface GatsbyCliInterface {
-//   status: Boolean;
-// }
-
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
   private serverStatus: boolean;
