@@ -95,7 +95,7 @@ export default class GatsbyCli {
   public async developServer() {
     if (!workspace.workspaceFolders) {
       return this.showPopUpMsg(
-        `Open a folder or workspace... (File -> Open Folder)`,
+        'Open a folder or workspace... (File -> Open Folder)',
         true,
       );
     }
@@ -107,13 +107,17 @@ export default class GatsbyCli {
       );
     }
 
-    // console.log('workspace', workspace.workspaceFile);
     // const workspacePath = await workspaceResolver();
+
+    // finds path to file in text editor and drops the file name from the path
+    const rootPath = window.activeTextEditor?.document.fileName
+      .replace(/\s/g, '\\ ')
+      .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '');
 
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show();
-    // activeTerminal.sendText('cd');
-    // activeTerminal.sendText('cd ' + workspacePath);
+    activeTerminal.sendText('cd');
+    activeTerminal.sendText(`cd ${rootPath}`);
     activeTerminal.sendText('gatsby develop --open');
     // toggle statusBar so it will dispose server if clicked again
     this.toggleStatusBar();
