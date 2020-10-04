@@ -140,8 +140,18 @@ export default class GatsbyCli {
 
   // builds and packages Gatsby site
   static async build() {
+    // finds path to file in text editor and drops the file name from the path
+    const rootPath = window.activeTextEditor?.document.fileName
+      // replaces spaces with backslash
+      .replace(/\s/g, '\\ ')
+      // drops fileName and common folders that aren't part of the root path
+      .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '');
+
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show();
+    activeTerminal.sendText('cd');
+    activeTerminal.sendText(`cd ${rootPath}`);
+    activeTerminal.sendText('gatsby build');
   }
 
   // toggles statusBar between developing server and disposing server
