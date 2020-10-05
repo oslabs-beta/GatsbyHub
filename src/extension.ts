@@ -9,7 +9,7 @@ import * as vscode from "vscode";
 import StatusBar from "./utils/statusBarItem";
 import Plugin from "./models/Plugin";
 import EachPlugin from "./models/EachPlugin";
-import PluginData from "./models.PluginData";
+import PluginData from './models/PluginData';
 /* import WebViews from './utils/WebViews'; */
 
 // this method is called when your extension is activated
@@ -19,6 +19,9 @@ export function activate(context: ExtensionContext) {
   const { registerCommand } = commands;
   const { subscriptions } = context;
   const gatsbyCli = new GatsbyCli();
+
+  PluginData.getPlugins();
+  PluginData.checker();
   /*   console.log(Uri.file(path.resolve(__dirname, '../'))); */
   const uri = Uri.file(path.resolve(__dirname));
   console.log('uri: ', uri);
@@ -32,26 +35,26 @@ export function activate(context: ExtensionContext) {
     registerCommand(
       // package.json command
       'gatsbyhub.installGatsby',
-      GatsbyCli.installGatsby
-    )
+      GatsbyCli.installGatsby,
+    ),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite)
+    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer)
+    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
+    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
   );
   subscriptions.push(registerCommand("gatsbyhub.build", GatsbyCli.build));
   subscriptions.push(
-    registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin)
+    registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin),
   );
   subscriptions.push(
     createTreeView("plugins", {
       treeDataProvider: new PluginProvider(),
-    })
+    }),
   );
   subscriptions.push(gatsbyCli);
 }

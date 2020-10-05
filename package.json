@@ -109,7 +109,6 @@
     "vscode-test": "^1.4.0"
   },
   "dependencies": {
-    "npm-api": "^1.0.0",
-    "puppeteer": "^5.3.1"
+    "got": "^11.7.0"
   }
 }
