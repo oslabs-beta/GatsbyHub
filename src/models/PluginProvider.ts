@@ -11,9 +11,7 @@ export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
   }
 
   async createPlugins() {
-    return Object.keys(await PluginData.getPlugins()).map(
-      (name) => new Plugin(name),
-    );
+    return (await PluginData.getPlugins()).map((obj) => new Plugin(obj.name));
   }
 
   getTreeItem(element: Plugin): Plugin | Promise<Plugin> {
