@@ -5,6 +5,11 @@ import { ExtensionContext, commands, window, workspace, Uri } from 'vscode';
 import * as path from 'path';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
+import * as vscode from "vscode";
+import StatusBar from "./utils/statusBarItem";
+import Plugin from "./models/Plugin";
+import EachPlugin from "./models/EachPlugin";
+import PluginData from "./models.PluginData";
 /* import WebViews from './utils/WebViews'; */
 
 // this method is called when your extension is activated
@@ -39,12 +44,12 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
   );
-  subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
+  subscriptions.push(registerCommand("gatsbyhub.build", GatsbyCli.build));
   subscriptions.push(
     registerCommand('gatsbyhub.openPluginDocs', GatsbyCli.installPlugin)
   );
   subscriptions.push(
-    createTreeView('plugins', {
+    createTreeView("plugins", {
       treeDataProvider: new PluginProvider(),
     })
   );
@@ -52,4 +57,4 @@ export function activate(context: ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

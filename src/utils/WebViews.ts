@@ -1,10 +1,11 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+// import react from "React";
 
 export default class PluginWebView {
   static openPluginWebView(): void {
     const panel = vscode.window.createWebviewPanel(
-      'plugin',
-      'Plugin',
+      "plugin",
+      "Plugin",
       vscode.ViewColumn.One
     );
     panel.webview.html = `<!DOCTYPE html>
