@@ -1,30 +1,17 @@
 import * as vscode from 'vscode';
 import Plugin from './Plugin';
+import PluginData from './PluginData';
 
 export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
-  data: Plugin[];
+  data: any;
 
   constructor() {
-    this.data = [
-      new Plugin('gatsby-source-filesystem'),
-      new Plugin('gatsby-plugin-react-helmet'),
-      new Plugin('gatsby-plugin-sharp'),
-      new Plugin('gatsby-plugin-manifest'),
-      new Plugin('gatsby-image'),
-      new Plugin('gatsby-plugin-page-creator'),
-      new Plugin('gatsby-plugin-typescript'),
-      new Plugin('gatsby-transformer-sharp'),
-      new Plugin('gatsby-plugin-offline'),
-      new Plugin('gatsby-plugin-styled-components'),
-      new Plugin('gatsby-remark-images'),
-      new Plugin('gatsby-plugin-mdx'),
-      new Plugin('gatsby-transformer-remark'),
-      new Plugin('gatsby-plugin-sitemap'),
-      new Plugin('gatsby-plugin-sass', [
-        new Plugin('Peer Dependencies', [new Plugin('node-sass')]),
-        new Plugin('Docs', [new Plugin('Link to Docs')]),
-      ]),
-    ];
+    this.data = this.createPlugins();
+    this.createPlugins = this.createPlugins.bind(this);
+  }
+
+  async createPlugins() {
+    return (await PluginData.getPlugins()).map((obj) => new Plugin(obj.name));
   }
 
   getTreeItem(element: Plugin): Plugin | Promise<Plugin> {
