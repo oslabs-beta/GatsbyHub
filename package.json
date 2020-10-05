@@ -1,8 +1,8 @@
 {
   "name": "gatsbyhub",
   "displayName": "GatsbyHub",
-  "description": "A one stop shop for everything Gatsby",
-  "version": "0.1.0",
+  "description": "The one stop shop for everything Gatsby has to offer",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.49.0"
   },
@@ -10,7 +10,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:gatsbyhub.helloWorld",
     "onView:commands",
     "onView:plugins",
     "onView:starters"
