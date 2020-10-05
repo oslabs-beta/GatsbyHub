@@ -113,8 +113,7 @@ export default class GatsbyCli {
 
     // only cd into rootpath if it exists, otherwise just run command on current workspace
     if (rootPath) {
-      activeTerminal.sendText('cd');
-      activeTerminal.sendText(`cd ${rootPath}`);
+      activeTerminal.sendText(`cd && cd ${rootPath}`);
     }
     activeTerminal.sendText('gatsby develop --open');
     // change status bar to working message while server finishes developing
@@ -148,8 +147,7 @@ export default class GatsbyCli {
 
     // only cd into rootpath if it exists, otherwise just run command on current workspace
     if (rootPath) {
-      activeTerminal.sendText('cd');
-      activeTerminal.sendText(`cd ${rootPath}`);
+      activeTerminal.sendText(`cd && cd ${rootPath}`);
     }
     activeTerminal.sendText('gatsby build');
   }
