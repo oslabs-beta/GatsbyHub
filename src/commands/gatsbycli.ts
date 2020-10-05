@@ -4,7 +4,7 @@ import { window, commands, Uri, workspace } from 'vscode';
 import * as path from 'path';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
-import { workspaceResolver } from '../utils/workspaceResolver';
+import { workspaceResolver, getRootPath } from '../utils/workspaceResolver';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -106,16 +106,16 @@ export default class GatsbyCli {
     // const workspacePath = await workspaceResolver();
 
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = window.activeTextEditor?.document.fileName
-      // replaces spaces with backslash
-      .replace(/\s/g, '\\ ')
-      // drops fileName and common folders that aren't part of the root path
-      .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '');
+    const rootPath = getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show();
-    activeTerminal.sendText('cd');
-    activeTerminal.sendText(`cd ${rootPath}`);
+
+    // only cd into rootpath if it exists, otherwise just run command on current workspace
+    if (rootPath) {
+      activeTerminal.sendText('cd');
+      activeTerminal.sendText(`cd ${rootPath}`);
+    }
     activeTerminal.sendText('gatsby develop --open');
     // change status bar to working message while server finishes developing
     StatusBar.working('Starting server');
@@ -141,16 +141,16 @@ export default class GatsbyCli {
   // builds and packages Gatsby site
   static async build() {
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = window.activeTextEditor?.document.fileName
-      // replaces spaces with backslash
-      .replace(/\s/g, '\\ ')
-      // drops fileName and common folders that aren't part of the root path
-      .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '');
+    const rootPath = getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show();
-    activeTerminal.sendText('cd');
-    activeTerminal.sendText(`cd ${rootPath}`);
+
+    // only cd into rootpath if it exists, otherwise just run command on current workspace
+    if (rootPath) {
+      activeTerminal.sendText('cd');
+      activeTerminal.sendText(`cd ${rootPath}`);
+    }
     activeTerminal.sendText('gatsby build');
   }
 

@@ -60,9 +60,9 @@ export function workspaceResolver(fileUri?: string) {
     //   }
 
     if (fileUri) {
-      const selectedWorkspace = workspaceFolders.find((ws) => {
-        return fileUri.startsWith(ws.uri.fsPath);
-      });
+      const selectedWorkspace = workspaceFolders.find((ws) =>
+        fileUri.startsWith(ws.uri.fsPath),
+      );
       if (selectedWorkspace) {
         return resolve(selectedWorkspace.uri.fsPath);
       }
@@ -76,11 +76,23 @@ export function workspaceResolver(fileUri?: string) {
       })
       // get path to workspace
       .then((workspaceName) => {
-        const workspacePath = workspaceFolders
-          .find((elem) => elem.name === workspaceName)
-          ?.uri.fsPath.replace(/\s/g, '\\ ');
+        const workspacePath = workspaceFolders.find(
+          (elem) => elem.name === workspaceName,
+        )?.uri.fsPath;
         // return path
         return resolve(workspacePath);
       });
   });
+}
+
+// attempts to get path to the root folder of the file in the active text editor
+export function getRootPath() {
+  return (
+    // gets path to file in active text editor
+    window.activeTextEditor?.document.fileName
+      // replaces spaces with backslash
+      .replace(/\s/g, '\\ ')
+      // drops fileName and common folders that aren't part of the root path
+      .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.jsx?/, '')
+  );
 }
