@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "env": {
     "browser": true,
     "es2021": true
@@ -24,30 +23,3 @@
     "import/extensions": "off"
   }
 }
-=======
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "@typescript-eslint/naming-convention": "warn",
-        "@typescript-eslint/semi": "warn",
-        "curly": "warn",
-        "eqeqeq": "warn",
-        "no-throw-literal": "warn",
-        "semi": "off",
-        "import/no-unresolved": "off"
-    }
-}
->>>>>>> main

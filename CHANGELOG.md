@@ -8,6 +8,20 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-10-03
+
+### Add
+
+- Added loading message to StatusBarItem while developing and disposing server
+- Added functionality to 'Develop Server' such that the server is developed using the root path of the active text editor
+- Added TreeView infrastructure for Plugins
+- Added Webview infrastructure for Plugins
+
+### Fix
+
+- Fixed bug where new site would be created if input was undefined
+- Fixed bug where message and input would appear simultaneously
+
 ## [0.1.0] - 2020-10-02
 
 ### Add
