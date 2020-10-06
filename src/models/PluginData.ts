@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import got from 'got';
 import * as marked from 'marked';
 
@@ -28,10 +29,14 @@ export default class PluginData {
       [],
     );
 
+    interface NpmPkg {
+      package: { name: string };
+    }
+
     // creates an object with unique package names and packages
     // eliminates duplicate packages
     // keys === plugin names, values === plugin packages
-    const uniquePkgs = merged.reduce((obj, elem) => {
+    const uniquePkgs = merged.reduce((obj: any, elem: NpmPkg) => {
       obj[elem.package.name] = obj[elem.package.name] || elem.package;
       return obj;
     }, {});
@@ -40,15 +45,24 @@ export default class PluginData {
 
     // filters out packages without repositories
     const packagesWithRepo = uniquePackageArr.filter(
-      (pkg) => !!pkg.links.repository,
+      (pkg: any): boolean => !!pkg.links.repository,
     );
 
     // check package name prefix against approved keywords
-    const startsWithAllowedPrefix = (name) =>
+    const startsWithAllowedPrefix = (name: string) =>
       keywords.some((keyword) => name.startsWith(keyword));
 
+    interface PluginPkg {
+      name: string;
+      links: {
+        repository: string;
+        homepage: string;
+      };
+      readme: string;
+    }
+
     // checks package names with weird prefixes
-    const hasGoodName = (pkg) => {
+    const hasGoodName = (pkg: PluginPkg) => {
       const { name } = pkg;
       const isScopedPackage = name.startsWith('@');
       if (!isScopedPackage) {
@@ -59,11 +73,11 @@ export default class PluginData {
       return startsWithAllowedPrefix(nameWithoutScope);
     };
 
-    const packagesWithGoodName = packagesWithRepo.filter((pkgs) =>
+    const packagesWithGoodName = packagesWithRepo.filter((pkgs: any) =>
       hasGoodName(pkgs),
     );
 
-    const hasReadMe = (pkg) => {
+    const hasReadMe = (pkg: PluginPkg) => {
       if (pkg.links.homepage || pkg.readme) return true;
       if (pkg.links.repository) {
         return got(`${pkg.links.repository}/blob/master/README.md`)
@@ -73,7 +87,7 @@ export default class PluginData {
       return false;
     };
 
-    const packagesWithReadMe = packagesWithGoodName.filter(async (pkg) => {
+    const packagesWithReadMe = packagesWithGoodName.filter(async (pkg: any) => {
       const check = await hasReadMe(pkg);
       return check;
     });
@@ -90,7 +104,6 @@ export default class PluginData {
     try {
       const url =
         'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-source-filesystem/README.md';
-      // +keywords:-gatsby-plugin+not:deprecated
       const response = await got(url);
       return response.body;
     } catch (error) {

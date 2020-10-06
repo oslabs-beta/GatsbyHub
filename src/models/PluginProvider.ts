@@ -11,7 +11,13 @@ export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
   }
 
   async createPlugins() {
-    return (await PluginData.getPlugins()).map((obj) => new Plugin(obj.name, { command: 'gatsbyhub.createWebView', title: 'Show Plugin WebView' }));
+    return (await PluginData.getPlugins()).map(
+      (obj: any) =>
+        new Plugin(obj.name, {
+          command: 'gatsbyhub.createWebView',
+          title: 'Show Plugin WebView',
+        }),
+    );
   }
 
   getTreeItem(element: Plugin): Plugin | Promise<Plugin> {
