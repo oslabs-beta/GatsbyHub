@@ -11,10 +11,6 @@ export default class Plugin extends vscode.TreeItem {
         : vscode.TreeItemCollapsibleState.Collapsed
     );
     this.children = children;
-  
+    this.command = command;
   }
-
-  // setCommand() {
-  //   Plugin.command = 'gatsbyhub.createWebView';
-  // }
 }
