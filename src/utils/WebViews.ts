@@ -3,7 +3,9 @@ import PluginData from '../models/PluginData';
 // import react from "React";
 
 export default class PluginWebView {
-  static async openPluginWebView() {
+  static async openPluginWebView({ name, links }) {
+    console.log(name);
+    console.log(links.homepage);
     // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
     const panel = vscode.window.createWebviewPanel(
       'plugin',
