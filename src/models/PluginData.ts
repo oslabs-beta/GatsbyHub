@@ -90,11 +90,16 @@ export default class PluginData {
 
   public static async getReadMe(): Promise<string> {
     try {
-      const url =
-        'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-source-filesystem/README.md';
-      // +keywords:-gatsby-plugin+not:deprecated
-      const response = await got(url);
-      return response.body;
+      const url = (await this.getPlugins())[0].links.homepage;
+      console.log(url);
+        // 'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-source-filesystem/README.md';
+      
+      // package.links.homepage -- change github to raw.githubusercontent and #readme to /README.md and remove "tree"
+      // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-react-helmet#readme
+      // https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-plugin-react-helmet/README.md
+
+      // const response = await got(url);
+      // return response.body;
     } catch (error) {
       throw new Error(`Error in getReadMe: ${error}`);
     }

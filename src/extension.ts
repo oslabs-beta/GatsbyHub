@@ -3,6 +3,7 @@
 
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
+import PluginData from './models/PluginData';
 import PluginProvider from './models/PluginProvider';
 import PluginWebView from './utils/WebViews';
 /* import WebViews from './utils/WebViews'; */
@@ -24,6 +25,7 @@ export function activate(context: ExtensionContext) {
     });
   });
  */
+  PluginData.getReadMe();
   subscriptions.push(
     registerCommand(
       // package.json command
