@@ -5,7 +5,7 @@ import * as path from 'path'; */
 export default class Plugin extends vscode.TreeItem {
   constructor(
     public label: string,
-    command?: vscode.Command,
+    public command?: vscode.Command,
     public children?: Plugin[]
   ) {
     super(
