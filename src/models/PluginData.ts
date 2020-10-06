@@ -1,15 +1,19 @@
 import got from 'got';
 
+// TODO: filter theme and starter
+
 export default class PluginData {
   // returns an object with plugin packages
   // retrieves plugin packages from npm api
   public static async getPlugins() {
-    const keywords = ['gatsby-plugin', 'gatsby-source', 'gatsby-transformer'];
+    // const keywords = ['gatsby-source-filesystem', 'gatsby-image', 'gatsby-remark', 'gatsby-node', 'gatsby-background', 'gatsby-wordpress', 'gatsby-cli', 'gatsby-plugin', 'gatsby-alias', 'gatsby-source', 'gatsby-transformer'];
 
+    const keywords = ['gatsby', 'gatsby-plugin', 'gatsby-source', 'gatsby-transformer'];
     // creates an array of npm objects based on keywords array
     // npm objects contains number of packages and array of package objects
     const npmPackages = keywords.map(async (keyword) => {
-      const url = `https://api.npms.io/v2/search?q=${keyword}+keywords:-gatsby-plugin+not:deprecated&size=250`;
+      const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
+      // +keywords:-gatsby-plugin+not:deprecated
       const response = await got(url);
       return JSON.parse(response.body);
     });
@@ -28,7 +32,9 @@ export default class PluginData {
       return obj;
     }, {});
 
-    const uniquePackageArr = Object.values(uniquePkgs);
+    const uniquePackageArr = Object.values(uniquePkgs)
+    // console.log('length', uniquePackageArr.length);
+    // return uniquePackageArr;
 
     // filters out packages without repositories
     const packagesWithRepo = uniquePackageArr.filter(
@@ -75,6 +81,6 @@ export default class PluginData {
 
   public static async checker() {
     const data = await PluginData.getPlugins();
-    console.log('checker', data);
+    console.log('checker', data.length);
   }
 }
