@@ -1,24 +1,15 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
+import PluginData from '../models/PluginData';
 // import react from "React";
 
 export default class PluginWebView {
-  static openPluginWebView(): void {
+  static async openPluginWebView() {
     // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
     const panel = vscode.window.createWebviewPanel(
-      "plugin",
-      "Plugin",
+      'plugin',
+      'Plugin',
       vscode.ViewColumn.One
     );
-    panel.webview.html = `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-    </head>
-    <body>
-      <h3>Install</h3>
-      <p><code class="language-text">npm install --save gatsby-source-filesystem</code></p> 
-    </body>
-    </html>`;
-
-    // we want to iteratively display the readme.markdown in panel.webview
+    panel.webview.html = await PluginData.mdToHtml();
   }
 }
