@@ -2,7 +2,7 @@
   "name": "gatsbyhub",
   "displayName": "GatsbyHub",
   "description": "The one stop shop for everything Gatsby has to offer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "engines": {
     "vscode": "^1.49.0"
   },
