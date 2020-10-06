@@ -1,4 +1,5 @@
 import got from 'got';
+import * as marked from 'marked';
 
 // TODO: filter theme and starter
 
@@ -6,9 +7,12 @@ export default class PluginData {
   // returns an object with plugin packages
   // retrieves plugin packages from npm api
   public static async getPlugins() {
-    // const keywords = ['gatsby-source-filesystem', 'gatsby-image', 'gatsby-remark', 'gatsby-node', 'gatsby-background', 'gatsby-wordpress', 'gatsby-cli', 'gatsby-plugin', 'gatsby-alias', 'gatsby-source', 'gatsby-transformer'];
-
-    const keywords = ['gatsby', 'gatsby-plugin', 'gatsby-source', 'gatsby-transformer'];
+    const keywords = [
+      'gatsby',
+      'gatsby-plugin',
+      'gatsby-source',
+      'gatsby-transformer',
+    ];
     // creates an array of npm objects based on keywords array
     // npm objects contains number of packages and array of package objects
     const npmPackages = keywords.map(async (keyword) => {
@@ -21,7 +25,7 @@ export default class PluginData {
     // merges the array of npm package objects together to a single array
     const merged = (await Promise.all(npmPackages)).reduce(
       (arr, obj) => arr.concat(obj.results),
-      [],
+      []
     );
 
     // creates an object with unique package names and packages
@@ -32,13 +36,13 @@ export default class PluginData {
       return obj;
     }, {});
 
-    const uniquePackageArr = Object.values(uniquePkgs)
+    const uniquePackageArr = Object.values(uniquePkgs);
     // console.log('length', uniquePackageArr.length);
     // return uniquePackageArr;
 
     // filters out packages without repositories
     const packagesWithRepo = uniquePackageArr.filter(
-      (pkg) => !!pkg.links.repository,
+      (pkg) => !!pkg.links.repository
     );
 
     // check package name prefix against approved keywords
@@ -58,7 +62,7 @@ export default class PluginData {
     };
 
     const packagesWithGoodName = packagesWithRepo.filter((pkgs) =>
-      hasGoodName(pkgs),
+      hasGoodName(pkgs)
     );
 
     const hasReadMe = (pkg) => {
@@ -82,5 +86,23 @@ export default class PluginData {
   public static async checker() {
     const data = await PluginData.getPlugins();
     console.log('checker', data.length);
+  }
+
+  public static async getReadMe(): Promise<string> {
+    try {
+      const url =
+        'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-source-filesystem/README.md';
+      // +keywords:-gatsby-plugin+not:deprecated
+      const response = await got(url);
+      return response.body;
+    } catch (error) {
+      throw new Error(`Error in getReadMe: ${error}`);
+    }
+  }
+
+  public static async mdToHtml() {
+    const readMe = await this.getReadMe();
+    /*     console.log('in mdtohtml: ', marked(readMe)); */
+    return marked(readMe);
   }
 }
