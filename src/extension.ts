@@ -6,6 +6,7 @@ import * as path from 'path';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
 import PluginData from './models/PluginData';
+import PluginWebView from './utils/WebViews';
 /* import WebViews from './utils/WebViews'; */
 
 // this method is called when your extension is activated
@@ -52,6 +53,7 @@ export function activate(context: ExtensionContext) {
       treeDataProvider: new PluginProvider(),
     }),
   );
+  subscriptions.push(registerCommand('gatsbyhub.createWebView', PluginWebView.openPluginWebView));
   subscriptions.push(gatsbyCli);
 }
 

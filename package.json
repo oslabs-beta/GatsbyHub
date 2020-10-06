@@ -41,6 +41,10 @@
       {
         "command": "gatsbyhub.build",
         "title": "Build Site"
+      }, 
+      {
+        "command": "gatsbyhub.createWebView",
+        "title": "Show Plugin WebView"
       }
     ],
     "viewsContainers": {
