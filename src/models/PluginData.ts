@@ -8,7 +8,12 @@ export default class PluginData {
   public static async getPlugins() {
     // const keywords = ['gatsby-source-filesystem', 'gatsby-image', 'gatsby-remark', 'gatsby-node', 'gatsby-background', 'gatsby-wordpress', 'gatsby-cli', 'gatsby-plugin', 'gatsby-alias', 'gatsby-source', 'gatsby-transformer'];
 
-    const keywords = ['gatsby', 'gatsby-plugin', 'gatsby-source', 'gatsby-transformer'];
+    const keywords = [
+      'gatsby',
+      'gatsby-plugin',
+      'gatsby-source',
+      'gatsby-transformer',
+    ];
     // creates an array of npm objects based on keywords array
     // npm objects contains number of packages and array of package objects
     const npmPackages = keywords.map(async (keyword) => {
@@ -32,9 +37,7 @@ export default class PluginData {
       return obj;
     }, {});
 
-    const uniquePackageArr = Object.values(uniquePkgs)
-    // console.log('length', uniquePackageArr.length);
-    // return uniquePackageArr;
+    const uniquePackageArr = Object.values(uniquePkgs);
 
     // filters out packages without repositories
     const packagesWithRepo = uniquePackageArr.filter(
