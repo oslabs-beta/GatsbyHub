@@ -85,6 +85,11 @@
           "command": "gatsbyhub.openPluginDocs",
           "group": "inline",
           "when": "view == plugins"
+        },
+        {
+          "command": "gatsbyhub.createWebView",
+          "group": "inline",
+          "when": "view == plugins"
         }
       ]
     }
