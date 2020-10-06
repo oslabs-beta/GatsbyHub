@@ -34,14 +34,14 @@
         "title": "Dispose Server"
       },
       {
-        "command": "gatsbyhub.openPluginDocs",
-        "title": "Open Plugin Docs",
+        "command": "gatsbyhub.installPlugin",
+        "title": "Install Plugin",
         "icon": "src/logo/download.svg"
       },
       {
         "command": "gatsbyhub.build",
         "title": "Build Site"
-      }, 
+      },
       {
         "command": "gatsbyhub.createWebView",
         "title": "Show Plugin WebView"
@@ -82,7 +82,7 @@
     "menus": {
       "view/item/context": [
         {
-          "command": "gatsbyhub.openPluginDocs",
+          "command": "gatsbyhub.installPlugin",
           "group": "inline",
           "when": "view == plugins"
         }
@@ -99,6 +99,7 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
+    "@types/marked": "^1.1.0",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.27",
     "@types/vscode": "^1.49.0",
@@ -113,8 +114,9 @@
     "vscode-test": "^1.4.0"
   },
   "dependencies": {
+    "got": "^11.7.0",
+    "marked": "^1.2.0",
     "npm-api": "^1.0.0",
-    "puppeteer": "^5.3.1",
-    "got": "^11.7.0"
+    "puppeteer": "^5.3.1"
   }
 }
