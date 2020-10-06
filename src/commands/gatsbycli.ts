@@ -1,10 +1,9 @@
 // import * as vscode from 'vscode';
 // eslint-disable-next-line object-curly-newline
-import { window, commands, Uri, workspace } from 'vscode';
-import * as path from 'path';
+import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
-import { workspaceResolver, getRootPath } from '../utils/workspaceResolver';
+import { getRootPath } from '../utils/workspaceResolver';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -56,7 +55,7 @@ export default class GatsbyCli {
     const choice = await window.showInformationMessage(
       `New Gatsby site will be created in current directory 
         unless you open a different folder for your project`,
-      openFolderMsg,
+      openFolderMsg
     );
 
     if (choice && choice === openFolderMsg) {
@@ -82,7 +81,7 @@ export default class GatsbyCli {
       activeTerminal.show();
     } else {
       window.showWarningMessage(
-        'Must enter a name for your new Gatsby directory',
+        'Must enter a name for your new Gatsby directory'
       );
     }
   }
@@ -92,14 +91,14 @@ export default class GatsbyCli {
     if (!workspace.workspaceFolders) {
       return this.showPopUpMsg(
         'Open a folder or workspace... (File -> Open Folder)',
-        true,
+        true
       );
     }
 
     if (!workspace.workspaceFolders.length) {
       return this.showPopUpMsg(
         "You don't have any Gatsby folders in this workspace",
-        true,
+        true
       );
     }
 
@@ -169,7 +168,7 @@ export default class GatsbyCli {
   private showPopUpMsg(
     msg: string,
     isErrorMsg: boolean = false,
-    isWarning: boolean = false,
+    isWarning: boolean = false
   ) {
     if (isErrorMsg) window.showErrorMessage(msg);
     else if (isWarning) window.showWarningMessage(msg);
