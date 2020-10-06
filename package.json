@@ -60,16 +60,17 @@
       "gatsbyHub": [
         {
           "id": "commands",
-          "name": "Commands",
-          "visibility": "collapsed"
+          "name": "Commands"
         },
         {
           "id": "plugins",
-          "name": "Plugins"
+          "name": "Plugins",
+          "visibility": "collapsed"
         },
         {
           "id": "starters",
-          "name": "Starters"
+          "name": "Starters",
+          "visibility": "collapsed"
         }
       ]
     },
@@ -85,6 +86,11 @@
           "command": "gatsbyhub.installPlugin",
           "group": "inline",
           "when": "view == plugins"
+        },
+        {
+          "command": "gatsbyhub.installPlugin",
+          "group": "inline",
+          "when": "view == starters"
         }
       ]
     }
@@ -114,13 +120,9 @@
     "vscode-test": "^1.4.0"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "got": "^11.7.0"
-=======
     "got": "^11.7.0",
     "marked": "^1.2.0",
     "npm-api": "^1.0.0",
     "puppeteer": "^5.3.1"
->>>>>>> main
   }
 }
