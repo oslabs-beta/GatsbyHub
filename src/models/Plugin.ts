@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import * as path from 'path'; */
 
 export default class Plugin extends vscode.TreeItem {
-  constructor(public label: string, public children?: Plugin[]) {
+  constructor(public label: string, command?: vscode.Command, public children?: Plugin[]) {
     super(
       label,
       children === undefined
@@ -11,5 +11,6 @@ export default class Plugin extends vscode.TreeItem {
         : vscode.TreeItemCollapsibleState.Collapsed
     );
     this.children = children;
+    this.command = command;
   }
 }
