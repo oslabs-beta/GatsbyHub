@@ -8,6 +8,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.3.0] - 2020-10-06
+
+### Add
+
+- Added PluginData class that fetches Gatsby Plugins from npm (modeled after Gatsby's plugin script)
+- Added WebView command so that clicking on a plugin opens a new webview window
+- Added WebView functionality so that it fetches markdown from github repository
+
 ## [0.2.0] - 2020-10-03
 
 ### Add
