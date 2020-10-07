@@ -23,7 +23,8 @@
       },
       {
         "command": "gatsbyhub.createSite",
-        "title": "Create New Site"
+        "title": "Create New Site",
+        "icon": "src/logo/download.svg"
       },
       {
         "command": "gatsbyhub.developServer",
@@ -60,16 +61,17 @@
       "gatsbyHub": [
         {
           "id": "commands",
-          "name": "Commands",
-          "visibility": "collapsed"
+          "name": "Commands"
         },
         {
           "id": "plugins",
-          "name": "Plugins"
+          "name": "Plugins",
+          "visibility": "collapsed"
         },
         {
           "id": "starters",
-          "name": "Starters"
+          "name": "Starters",
+          "visibility": "collapsed"
         }
       ]
     },
@@ -85,6 +87,11 @@
           "command": "gatsbyhub.installPlugin",
           "group": "inline",
           "when": "view == plugins"
+        },
+        {
+          "command": "gatsbyhub.createSite",
+          "group": "inline",
+          "when": "view == starters"
         }
       ]
     }

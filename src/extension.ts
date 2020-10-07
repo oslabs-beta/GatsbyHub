@@ -5,6 +5,7 @@ import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
 import PluginWebView from './utils/WebViews';
+import StarterProvider from './models/StarterProvider'
 /* import WebViews from './utils/WebViews'; */
 /* import PluginData from './models/PluginData'; */
 
@@ -47,7 +48,12 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     createTreeView('plugins', {
       treeDataProvider: new PluginProvider(),
-    })
+    }),
+  );
+  subscriptions.push(
+    createTreeView('starters', {
+      treeDataProvider: new StarterProvider(),
+    }),
   );
   subscriptions.push(
     registerCommand('gatsbyhub.createWebView', PluginWebView.openPluginWebView)
@@ -56,4 +62,4 @@ export function activate(context: ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
