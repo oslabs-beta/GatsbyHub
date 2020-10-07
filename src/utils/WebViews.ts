@@ -1,4 +1,3 @@
-import { link } from 'fs';
 import * as vscode from 'vscode';
 import Plugin from '../models/Plugin';
 import PluginData from '../models/PluginData';

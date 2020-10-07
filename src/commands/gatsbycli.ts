@@ -4,6 +4,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import { getRootPath } from '../utils/workspaceResolver';
+import PluginData from '../models/PluginData';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -184,9 +185,13 @@ export default class GatsbyCli {
     else window.showInformationMessage(msg);
   }
 
-  static installPlugin() {
+  static async installPlugin(plugin?: any) {
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
-    console.log('Plugin Installed!');
+    if (plugin) {
+      const { homepage, repository } = plugin.command.arguments[0].links;
+      const installCmnd = await PluginData.getNpmInstall(repository, homepage);
+      activeTerminal.sendText(installCmnd);
+      activeTerminal.show();
+    }
   }
 }
