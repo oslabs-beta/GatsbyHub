@@ -19,26 +19,11 @@ export default class PluginWebView {
       { enableScripts: true },
     );
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
-    const cmdString = await PluginData.getNpmInstall(
-      links.repository,
-      links.homepage,
-    );
-    const poop = 'pop';
 
     panel.webview.html = `
     <div>
-      <button type="button" id="install-btn" onclick="installPlugin()" >Install</button>
     </div>
-    ${readMe}
-    <script>
-      function installPlugin() {
-        document.getElementById('install-btn').innerHTML = 'Installing...';
-        setTimeout(() => {
-          document.getElementById('install-btn').innerHTML = 'Installed';
-        }, 3000);
-      }
-    </script>
-    `;
+    ${readMe}`;
   }
 
   static installPlugin() {
