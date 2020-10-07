@@ -2,7 +2,6 @@
 /* eslint-disable no-param-reassign */
 import got from 'got';
 import * as marked from 'marked';
-import { mainModule } from 'process';
 
 // TODO: filter theme and starter
 
@@ -135,7 +134,6 @@ export default class PluginData {
       const response = await got(goodUrl);
       const findNpm = response.body.slice(response.body.indexOf('npm install'));
       const install = findNpm.slice(0, findNpm.indexOf('`'));
-      console.log(install);
       return response.body;
     } catch (error) {
       throw new Error(`Error in getReadMe: ${error}`);
@@ -146,5 +144,31 @@ export default class PluginData {
     const readMe = await this.getReadMe(pluginRepo, pluginHomepage);
     /*   console.log(marked(readMe)); */
     return marked(readMe);
+  }
+
+  public static async getNpmInstall(
+    pluginRepo: string,
+    pluginHomepage: string
+  ) {
+    try {
+      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
+      let goodUrl: string;
+      if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
+        const noTree = pluginHomepage.replace('/tree', '');
+        const raw = noTree.replace('github', 'raw.githubusercontent');
+        goodUrl = raw.replace('#readme', '/README.md');
+      } else {
+        const raw = pluginRepo.replace('github', 'raw.githubusercontent');
+        goodUrl = `${raw}/master/README.md`;
+      }
+      // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
+
+      const response = await got(goodUrl);
+      const findNpm = response.body.slice(response.body.indexOf('npm install'));
+      const install = findNpm.slice(0, findNpm.indexOf('`'));
+      return install;
+    } catch (error) {
+      throw new Error(`Error in getNpmInstall: ${error}`);
+    }
   }
 }

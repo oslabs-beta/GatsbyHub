@@ -7,7 +7,10 @@ export default class PluginWebView {
   static async openPluginWebView({ links }) {
     /*     console.log(name);
     console.log(links.homepage); */
-
+    console.log(
+      'in plugin web view',
+      await PluginData.getNpmInstall(links.repository, links.homepage)
+    );
     // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
     const panel = vscode.window.createWebviewPanel(
       'plugin',
