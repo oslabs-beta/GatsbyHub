@@ -25,13 +25,13 @@ export default class StatusBar {
   }
 
   static working(msg: string = 'connecting...') {
-    StatusBar.Item.text = `$(rocket) ${msg}`;
+    StatusBar.Item.text = `$(radio-tower) ${msg}`;
     StatusBar.Item.command = 'null';
   }
 
   // GatsbyCli toggles statusBar between online() and offline() methods
   public static online() {
-    StatusBar.Item.text = '$(radio-tower) GatsbyHub';
+    StatusBar.Item.text = '$(rocket) GatsbyHub';
     StatusBar.Item.tooltip = 'Click to develop Gatsby server';
     StatusBar.Item.command = 'gatsbyhub.developServer';
   }
