@@ -2,7 +2,8 @@ import * as vscode from 'vscode';
 import Starter from './Starter';
 import StarterData from './StarterData';
 
-export default class StarterProvider implements vscode.TreeDataProvider<Starter> {
+export default class StarterProvider
+  implements vscode.TreeDataProvider<Starter> {
   data: any;
 
   constructor() {
@@ -16,7 +17,7 @@ export default class StarterProvider implements vscode.TreeDataProvider<Starter>
         new Starter(obj.name, {
           command: 'gatsbyhub.createWebView',
           title: 'Show Plugin WebView',
-          arguments: [obj.links.repository],
+          arguments: [obj],
         }),
     );
   }

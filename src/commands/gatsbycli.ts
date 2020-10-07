@@ -47,7 +47,7 @@ export default class GatsbyCli {
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  static async createSite(url?: string) {
+  static async createSite(starterObj?: any) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
     // define string for button in information message
@@ -56,7 +56,7 @@ export default class GatsbyCli {
     const choice = await window.showInformationMessage(
       `New Gatsby site will be created in current directory 
         unless you open a different folder for your project`,
-      openFolderMsg
+      openFolderMsg,
     );
 
     if (choice && choice === openFolderMsg) {
@@ -78,9 +78,11 @@ export default class GatsbyCli {
      */
     // send command to the terminal
     if (siteName) {
-      if (url && url.length > 0) {
+      if (starterObj) {
+        console.log('starterObj', starterObj);
+        const { repository } = starterObj.command.arguments[0].links;
         activeTerminal.sendText(
-          `gatsby new ${siteName} ${url} && cd ${siteName}`
+          `gatsby new ${siteName} ${repository} && cd ${siteName}`,
         );
         activeTerminal.show();
       } else {
@@ -89,7 +91,7 @@ export default class GatsbyCli {
       }
     } else {
       window.showWarningMessage(
-        'Must enter a name for your new Gatsby directory'
+        'Must enter a name for your new Gatsby directory',
       );
     }
   }
@@ -99,14 +101,14 @@ export default class GatsbyCli {
     if (!workspace.workspaceFolders) {
       return this.showPopUpMsg(
         'Open a folder or workspace... (File -> Open Folder)',
-        true
+        true,
       );
     }
 
     if (!workspace.workspaceFolders.length) {
       return this.showPopUpMsg(
         "You don't have any Gatsby folders in this workspace",
-        true
+        true,
       );
     }
 
@@ -176,7 +178,7 @@ export default class GatsbyCli {
   private showPopUpMsg(
     msg: string,
     isErrorMsg: boolean = false,
-    isWarning: boolean = false
+    isWarning: boolean = false,
   ) {
     if (isErrorMsg) window.showErrorMessage(msg);
     else if (isWarning) window.showWarningMessage(msg);
