@@ -23,7 +23,8 @@
       },
       {
         "command": "gatsbyhub.createSite",
-        "title": "Create New Site"
+        "title": "Create New Site",
+        "icon": "src/logo/download.svg"
       },
       {
         "command": "gatsbyhub.developServer",
@@ -88,7 +89,7 @@
           "when": "view == plugins"
         },
         {
-          "command": "gatsbyhub.installPlugin",
+          "command": "gatsbyhub.createSite",
           "group": "inline",
           "when": "view == starters"
         }
