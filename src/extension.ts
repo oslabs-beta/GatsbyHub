@@ -6,6 +6,7 @@ import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
 import PluginWebView from './utils/WebViews';
 import StarterProvider from './models/StarterProvider'
+import ThemeProvider from './models/ThemeProvider'
 /* import WebViews from './utils/WebViews'; */
 /* import PluginData from './models/PluginData'; */
 
@@ -53,6 +54,11 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     createTreeView('starters', {
       treeDataProvider: new StarterProvider(),
+    }),
+  );
+  subscriptions.push(
+    createTreeView('themes', {
+      treeDataProvider: new ThemeProvider(),
     }),
   );
   subscriptions.push(

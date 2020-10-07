@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import Starter from './Starter';
-import StarterData from './StarterData';
+import Theme from './Theme';
+import ThemeData from './ThemeData';
 
-export default class StarterProvider implements vscode.TreeDataProvider<Starter> {
+export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
   data: any;
 
   constructor() {
@@ -11,9 +11,9 @@ export default class StarterProvider implements vscode.TreeDataProvider<Starter>
   }
 
   async createPlugins() {
-    return (await StarterData.getStarters()).map(
+    return (await ThemeData.getThemes()).map(
       (obj: any) =>
-        new Starter(obj.name, {
+        new Theme(obj.name, {
           command: 'gatsbyhub.createWebView',
           title: 'Show Plugin WebView',
           arguments: [obj.links.repository],
@@ -21,11 +21,11 @@ export default class StarterProvider implements vscode.TreeDataProvider<Starter>
     );
   }
 
-  getTreeItem(element: Starter): Starter | Promise<Starter> {
+  getTreeItem(element: Theme): Theme | Promise<Theme> {
     return element;
   }
 
-  getChildren(element?: Starter | undefined) {
+  getChildren(element?: Theme | undefined) {
     if (!element) {
       return this.data;
     }

@@ -89,12 +89,12 @@ export default class ThemeData {
     );
 
     // check package is not a theme
-    const NoTheme = packagesWithGoodName.filter(
-      (pkgs: any) => !pkgs.name.startsWith('gatsby-theme'),
+    const NoStarter = packagesWithGoodName.filter(
+      (pkgs: any) => !pkgs.name.startsWith('gatsby-starter'),
     );
 
     // filters out Gatsby and Gatsby-cli
-    const noGatsbyCli = NoTheme.filter(
+    const noGatsbyCli = NoStarter.filter(
       (pkgs: any) => pkgs.name !== 'gatsby-cli' && pkgs.name !== 'gatsby',
     );
 
