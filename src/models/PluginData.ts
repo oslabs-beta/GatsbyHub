@@ -3,8 +3,6 @@
 import got from 'got';
 import * as marked from 'marked';
 
-// TODO: filter theme and starter
-
 export default class PluginData {
   // returns an object with plugin packages
   // retrieves plugin packages from npm api
