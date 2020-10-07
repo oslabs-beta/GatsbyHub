@@ -16,7 +16,8 @@ export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
         new Plugin(obj.name, {
           command: 'gatsbyhub.createWebView',
           title: 'Show Plugin WebView',
-        }),
+          arguments: [obj],
+        })
     );
   }
 
