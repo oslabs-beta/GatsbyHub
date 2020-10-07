@@ -15,8 +15,8 @@ export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
       (obj: any) =>
         new Theme(obj.name, {
           command: 'gatsbyhub.createWebView',
-          title: 'Show Plugin WebView',
-          arguments: [obj.links.repository],
+          title: 'Show Theme WebView',
+          arguments: [obj],
         }),
     );
   }

@@ -16,7 +16,7 @@ export default class StarterProvider
       (obj: any) =>
         new Starter(obj.name, {
           command: 'gatsbyhub.createWebView',
-          title: 'Show Plugin WebView',
+          title: 'Show Starter WebView',
           arguments: [obj],
         }),
     );
