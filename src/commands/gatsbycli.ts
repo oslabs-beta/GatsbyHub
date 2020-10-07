@@ -46,7 +46,7 @@ export default class GatsbyCli {
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  static async createSite() {
+  static async createSite(url?: string) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
     // define string for button in information message
@@ -77,12 +77,15 @@ export default class GatsbyCli {
      */
     // send command to the terminal
     if (siteName) {
-      activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
-      activeTerminal.show();
+      if (url && url.length > 0) {
+        activeTerminal.sendText(`gatsby new ${siteName} ${url} && cd ${siteName}`);
+        activeTerminal.show();
+      } else {
+        activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
+        activeTerminal.show();
+      }
     } else {
-      window.showWarningMessage(
-        'Must enter a name for your new Gatsby directory'
-      );
+      window.showWarningMessage('Must enter a name for your new Gatsby directory');
     }
   }
 
