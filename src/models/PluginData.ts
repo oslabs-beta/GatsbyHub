@@ -68,7 +68,7 @@ export default class PluginData {
     // merges the array of npm package objects together to a single array
     const merged = (await Promise.all(npmPackages)).reduce(
       (arr, obj) => arr.concat(obj.results),
-      [],
+      []
     );
 
     // creates an object with unique package names and packages
@@ -84,21 +84,21 @@ export default class PluginData {
 
     // filters out packages without repositories
     const packagesWithRepo = uniquePackageArr.filter(
-      (pkg: any): boolean => !!pkg.links.repository,
+      (pkg: any): boolean => !!pkg.links.repository
     );
 
     const packagesWithGoodName = packagesWithRepo.filter((pkgs: any) =>
-      hasGoodName(pkgs),
+      hasGoodName(pkgs)
     );
 
     // check package is not a starter or theme
     const noStarterNoTheme = packagesWithGoodName.filter(
-      (pkgs: any) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter'),
+      (pkgs: any) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
     );
 
     // filters out Gatsby and Gatsby-cli
     const noGatsbyCli = noStarterNoTheme.filter(
-      (pkgs: any) => pkgs.name !== 'gatsby-cli' && pkgs.name !== 'gatsby',
+      (pkgs: any) => pkgs.name !== 'gatsby-cli' && pkgs.name !== 'gatsby'
     );
 
     const packagesWithReadMe = noGatsbyCli.filter(async (pkg: any) => {
@@ -114,20 +114,61 @@ export default class PluginData {
     console.log('checker', data.length);
   }
 
-  public static async getReadMe(): Promise<string> {
+  private static async getReadMe(
+    pluginRepo: string,
+    pluginHomepage: string
+  ): Promise<string> {
     try {
-      const url =
-        'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-source-filesystem/README.md';
-      const response = await got(url);
+      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
+      let goodUrl: string;
+      if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
+        const noTree = pluginHomepage.replace('/tree', '');
+        const raw = noTree.replace('github', 'raw.githubusercontent');
+        goodUrl = raw.replace('#readme', '/README.md');
+      } else {
+        const raw = pluginRepo.replace('github', 'raw.githubusercontent');
+        goodUrl = `${raw}/master/README.md`;
+      }
+      // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
+
+      const response = await got(goodUrl);
+      const findNpm = response.body.slice(response.body.indexOf('npm install'));
+      const install = findNpm.slice(0, findNpm.indexOf('`'));
       return response.body;
     } catch (error) {
       throw new Error(`Error in getReadMe: ${error}`);
     }
   }
 
-  public static async mdToHtml() {
-    const readMe = await this.getReadMe();
-    /*     console.log('in mdtohtml: ', marked(readMe)); */
+  public static async mdToHtml(pluginRepo: string, pluginHomepage: string) {
+    const readMe = await this.getReadMe(pluginRepo, pluginHomepage);
+    /*   console.log(marked(readMe)); */
     return marked(readMe);
+  }
+
+  public static async getNpmInstall(
+    pluginRepo: string,
+    pluginHomepage: string
+  ) {
+    try {
+      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
+      let goodUrl: string;
+      if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
+        const noTree = pluginHomepage.replace('/tree', '');
+        const raw = noTree.replace('github', 'raw.githubusercontent');
+        goodUrl = raw.replace('#readme', '/README.md');
+      } else {
+        const raw = pluginRepo.replace('github', 'raw.githubusercontent');
+        goodUrl = `${raw}/master/README.md`;
+      }
+      // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
+
+      const response = await got(goodUrl);
+      const findNpm = response.body.slice(response.body.indexOf('npm install'));
+      const install = findNpm.slice(0, findNpm.indexOf('`'));
+      return install;
+    } catch (error) {
+      throw new Error(`Error in getNpmInstall: ${error}`);
+    }
   }
 }
