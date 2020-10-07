@@ -1,4 +1,3 @@
-import { link } from 'fs';
 import * as vscode from 'vscode';
 import PluginData from '../models/PluginData';
 // import react from "React";

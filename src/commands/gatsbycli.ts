@@ -4,6 +4,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import { getRootPath } from '../utils/workspaceResolver';
+import PluginData from '../models/PluginData';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -78,14 +79,18 @@ export default class GatsbyCli {
     // send command to the terminal
     if (siteName) {
       if (url && url.length > 0) {
-        activeTerminal.sendText(`gatsby new ${siteName} ${url} && cd ${siteName}`);
+        activeTerminal.sendText(
+          `gatsby new ${siteName} ${url} && cd ${siteName}`
+        );
         activeTerminal.show();
       } else {
         activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
         activeTerminal.show();
       }
     } else {
-      window.showWarningMessage('Must enter a name for your new Gatsby directory');
+      window.showWarningMessage(
+        'Must enter a name for your new Gatsby directory'
+      );
     }
   }
 
@@ -178,9 +183,13 @@ export default class GatsbyCli {
     else window.showInformationMessage(msg);
   }
 
-  static installPlugin() {
+  static async installPlugin(plugin?: any) {
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
-    console.log('Plugin Installed!');
+    if (plugin) {
+      const { homepage, repository } = plugin.command.arguments[0].links;
+      const installCmnd = await PluginData.getNpmInstall(repository, homepage);
+      activeTerminal.sendText(installCmnd);
+      activeTerminal.show();
+    }
   }
 }
