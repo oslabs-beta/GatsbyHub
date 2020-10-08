@@ -4,8 +4,8 @@ import PluginData from '../models/PluginData';
 // import react from "React";
 
 export default class PluginWebView {
-  static async openPluginWebView(npmPackage: any) {
-    const { links, name, version, description } = npmPackage;
+  static async openPluginWebView({ links, name, version, description }: any) {
+    // const { links, name, version, description } = npmPackage;
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
     // turn npm package name from snake-case to standard capitalized title
@@ -58,10 +58,14 @@ export default class PluginWebView {
       <p>${description}</p>
       <hr class="solid">
     </div>
-    <div class="readme">
-      ${readMe}
-    </div>
+    ${readMe}
     `;
+
+    panel.onDidChangeViewState((e) => {
+      if (!e.webviewPanel.active) {
+        panel.dispose();
+      }
+    });
   }
 
   static installPlugin() {
