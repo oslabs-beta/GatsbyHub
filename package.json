@@ -28,7 +28,8 @@
       },
       {
         "command": "gatsbyhub.developServer",
-        "title": "Develop Server"
+        "title": "Develop Server",
+        "icon": "$(rocket)"
       },
       {
         "command": "gatsbyhub.disposeServer",
@@ -96,6 +97,13 @@
       }
     ],
     "menus": {
+      "view/title": [
+        {
+          "command": "gatsbyhub.developServer",
+          "group": "navigation",
+          "when": "view == commands"
+        }
+      ],
       "view/item/context": [
         {
           "command": "gatsbyhub.installPlugin",
