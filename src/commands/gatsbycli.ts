@@ -4,7 +4,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import { getRootPath } from '../utils/workspaceResolver';
-import PluginData from '../models/PluginData';
+import PluginData from '../models/NpmData';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
