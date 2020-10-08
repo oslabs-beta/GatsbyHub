@@ -2,7 +2,7 @@
   "name": "gatsbyhub",
   "displayName": "GatsbyHub",
   "description": "The one stop shop for everything Gatsby has to offer",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "engines": {
     "vscode": "^1.49.0"
   },
@@ -28,7 +28,8 @@
       },
       {
         "command": "gatsbyhub.developServer",
-        "title": "Develop Server"
+        "title": "Develop Server",
+        "icon": "$(rocket)"
       },
       {
         "command": "gatsbyhub.disposeServer",
@@ -70,6 +71,10 @@
         {
           "id": "starters",
           "name": "Starters"
+        },
+        {
+          "id": "themes",
+          "name": "Themes"
         }
       ]
     },
@@ -85,9 +90,20 @@
       {
         "view": "starters",
         "contents": "Loading Starters..."
+      },
+      {
+        "view": "themes",
+        "contents": "Loading Themes..."
       }
     ],
     "menus": {
+      "view/title": [
+        {
+          "command": "gatsbyhub.developServer",
+          "group": "navigation",
+          "when": "view == commands"
+        }
+      ],
       "view/item/context": [
         {
           "command": "gatsbyhub.installPlugin",

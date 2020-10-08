@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import Plugin from './Plugin';
+import Theme from './Theme';
 import NpmData from './NpmData';
 
-export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
+export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
   data: any;
 
   constructor() {
@@ -12,21 +12,21 @@ export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
 
   async createPlugins() {
     const npmData = new NpmData();
-    return (await npmData.getNpmPackages('plugin')).map(
+    return (await npmData.getNpmPackages('theme')).map(
       (obj: any) =>
-        new Plugin(obj.name, {
+        new Theme(obj.name, {
           command: 'gatsbyhub.createWebView',
-          title: 'Show Plugin WebView',
+          title: 'Show Theme WebView',
           arguments: [obj],
-        })
+        }),
     );
   }
 
-  getTreeItem(element: Plugin): Plugin | Promise<Plugin> {
+  getTreeItem(element: Theme): Theme | Promise<Theme> {
     return element;
   }
 
-  getChildren(element?: Plugin | undefined) {
+  getChildren(element?: Theme | undefined) {
     if (!element) {
       return this.data;
     }

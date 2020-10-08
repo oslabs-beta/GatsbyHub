@@ -1,10 +1,8 @@
 import * as vscode from 'vscode';
-import Plugin from '../models/Plugin';
-import PluginData from '../models/PluginData';
-// import react from "React";
+import PluginData from '../models/NpmData';
 
-export default class PluginWebView {
-  static async openPluginWebView({ links, name, version, description }: any) {
+export default class WebViews {
+  static async openWebView({ links, name, version, description }: any) {
     // const { links, name, version, description } = npmPackage;
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
@@ -17,8 +15,7 @@ export default class PluginWebView {
     const panel = vscode.window.createWebviewPanel(
       'plugin',
       `Gatsby Plugin: ${title}`,
-      vscode.ViewColumn.One,
-      { enableScripts: true },
+      vscode.ViewColumn.One
     );
 
     // create a header for each npm package and display README underneath header
