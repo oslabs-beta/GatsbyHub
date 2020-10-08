@@ -4,12 +4,9 @@
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
-import PluginWebView from './utils/WebViews';
-import StarterProvider from './models/StarterProvider'
-import ThemeProvider from './models/ThemeProvider'
-import ThemeWebView from './utils/ThemeWebViews'
-/* import WebViews from './utils/WebViews'; */
-/* import PluginData from './models/PluginData'; */
+import WebViews from './utils/WebViews';
+import StarterProvider from './models/StarterProvider';
+import ThemeProvider from './models/ThemeProvider';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,21 +15,9 @@ export function activate(context: ExtensionContext) {
   const { registerCommand } = commands;
   const { subscriptions } = context;
   const gatsbyCli = new GatsbyCli();
-  /*   console.log(Uri.file(path.resolve(__dirname, '../'))); */
-  /*   const uri = Uri.file(path.resolve(__dirname));
-  console.log('uri: ', uri);
-  workspace.fs.readDirectory(uri).then((data) => {
-    data.forEach((file) => {
-      if (file[0] === 'package.json') console.log(file[0]);
-    });
-  });
- */
+
   subscriptions.push(
-    registerCommand(
-      // package.json command
-      'gatsbyhub.installGatsby',
-      GatsbyCli.installGatsby
-    )
+    registerCommand('gatsbyhub.installGatsby', GatsbyCli.installGatsby)
   );
   subscriptions.push(
     registerCommand('gatsbyhub.createSite', GatsbyCli.createSite)
@@ -50,23 +35,23 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     createTreeView('plugins', {
       treeDataProvider: new PluginProvider(),
-    }),
+    })
   );
   subscriptions.push(
     createTreeView('starters', {
       treeDataProvider: new StarterProvider(),
-    }),
+    })
   );
   subscriptions.push(
     createTreeView('themes', {
       treeDataProvider: new ThemeProvider(),
-    }),
+    })
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createWebView', PluginWebView.openPluginWebView)
+    registerCommand('gatsbyhub.createWebView', WebViews.openWebView)
   );
   subscriptions.push(gatsbyCli);
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {}
