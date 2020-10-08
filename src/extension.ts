@@ -4,10 +4,9 @@
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
-import PluginWebView from './utils/WebViews';
-import StarterProvider from './models/StarterProvider'
-import ThemeProvider from './models/ThemeProvider'
-import ThemeWebView from './utils/ThemeWebViews'
+import WebView from './utils/WebViews';
+import StarterProvider from './models/StarterProvider';
+import ThemeProvider from './models/ThemeProvider';
 /* import WebViews from './utils/WebViews'; */
 /* import PluginData from './models/PluginData'; */
 
@@ -28,24 +27,20 @@ export function activate(context: ExtensionContext) {
   });
  */
   subscriptions.push(
-    registerCommand(
-      // package.json command
-      'gatsbyhub.installGatsby',
-      GatsbyCli.installGatsby
-    )
+    registerCommand('gatsbyhub.installGatsby', GatsbyCli.installGatsby),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite)
+    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer)
+    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
+    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
   );
   subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(
-    registerCommand('gatsbyhub.installPlugin', GatsbyCli.installPlugin)
+    registerCommand('gatsbyhub.installPlugin', GatsbyCli.installPlugin),
   );
   subscriptions.push(
     createTreeView('plugins', {
@@ -63,10 +58,10 @@ export function activate(context: ExtensionContext) {
     }),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createWebView', PluginWebView.openPluginWebView)
+    registerCommand('gatsbyhub.createWebView', WebView.openPluginWebView),
   );
   subscriptions.push(gatsbyCli);
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {}

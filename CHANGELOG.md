@@ -8,6 +8,19 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.4.0] - 2020-10-08
+
+### Update
+
+- Updated Plugin and Starter Menu buttons so that they successfully download and install plugins and starters
+- Updated webview panel so that only one new window is created when you click on plugin or starter
+- Updated README with imgur image instead of repo's image
+
+### Add
+
+- Added Themes treeview which follows similar logic to Plugins and Starters
+- Added webview header with install button
+
 ## [0.3.0] - 2020-10-06
 
 ### Add
