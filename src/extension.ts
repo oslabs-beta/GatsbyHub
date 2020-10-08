@@ -20,17 +20,17 @@ export function activate(context: ExtensionContext) {
     registerCommand('gatsbyhub.installGatsby', GatsbyCli.installGatsby)
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite)
+    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer)
+    registerCommand('gatsbyhub.developServer', gatsbyCli.developServer),
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
+    registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
   );
   subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(
-    registerCommand('gatsbyhub.installPlugin', GatsbyCli.installPlugin)
+    registerCommand('gatsbyhub.installPlugin', GatsbyCli.installPlugin),
   );
   subscriptions.push(
     createTreeView('plugins', {

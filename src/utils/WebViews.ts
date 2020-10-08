@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import PluginData from '../models/PluginData';
+import PluginData from '../models/NpmData';
 
 export default class WebViews {
   static async openWebView({ links, name, version, description }: any) {
