@@ -70,6 +70,10 @@
         {
           "id": "starters",
           "name": "Starters"
+        },
+        {
+          "id": "themes",
+          "name": "Themes"
         }
       ]
     },
@@ -85,6 +89,10 @@
       {
         "view": "starters",
         "contents": "Loading Starters..."
+      },
+      {
+        "view": "themes",
+        "contents": "Loading Themes..."
       }
     ],
     "menus": {
