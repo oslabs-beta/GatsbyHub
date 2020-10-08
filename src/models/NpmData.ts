@@ -157,18 +157,19 @@ export default class NpmData {
         const raw = pluginRepo.replace('github', 'raw.githubusercontent');
         goodUrl = `${raw}/master/README.md`;
       }
-      // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
 
       const response = await got(goodUrl);
-      const findNpm = response.body.slice(response.body.indexOf('npm install'));
-      const install = findNpm.slice(0, findNpm.indexOf('`'));
+
       return response.body;
     } catch (error) {
       throw new Error(`Error in getReadMe: ${error}`);
     }
   }
 
-  public static async mdToHtml(pluginRepo: string, pluginHomepage: string) {
+  public static async mdToHtml(
+    pluginRepo: string,
+    pluginHomepage: string
+  ): Promise<string> {
     const readMe = await this.getReadMe(pluginRepo, pluginHomepage);
     /*   console.log(marked(readMe)); */
     return marked(readMe);
