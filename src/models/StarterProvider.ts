@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import Starter from './Starter';
-import StarterData from './StarterData';
 import NpmData from './NpmData';
 
 export default class StarterProvider
@@ -14,7 +13,7 @@ export default class StarterProvider
 
   async createPlugins() {
     const npmData = new NpmData();
-    return (await npmData.getNpmPackages('plugin')).map(
+    return (await npmData.getNpmPackages('starter')).map(
       (obj: any) =>
         new Starter(obj.name, {
           command: 'gatsbyhub.createWebView',
