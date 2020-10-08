@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import Theme from './Theme';
 import ThemeData from './ThemeData';
+import NpmData from './NpmData';
 
 export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
   data: any;
@@ -11,7 +12,8 @@ export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
   }
 
   async createPlugins() {
-    return (await ThemeData.getThemes()).map(
+    const npmData = new NpmData();
+    return (await npmData.getNpmPackages('plugin')).map(
       (obj: any) =>
         new Theme(obj.name, {
           command: 'gatsbyhub.createWebView',

@@ -114,9 +114,13 @@ export default class NpmData {
     npmPackages = (await Promise.all(npmPackages)).filter((pkgs: PluginPkg) => hasGoodName(pkgs));
 
     // check package is not a starter or theme
-    npmPackages = (await Promise.all(npmPackages)).filter(
-      (pkgs: PluginPkg) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
-    );
+    if (npmType === 'plugin') {
+      npmPackages = (await Promise.all(npmPackages)).filter(
+        // let theme: string = 'gatsby-theme';
+        // let starter: string = 'gatsby-starter';
+        (pkgs: PluginPkg) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
+      );
+    }
 
     // filters out Gatsby and Gatsby-cli
     npmPackages = (await Promise.all(npmPackages)).filter(
@@ -133,7 +137,8 @@ export default class NpmData {
   }
 
   public static async checker() {
-    const data = await npmdatas.getPlugins();
+    const npmData = new NpmData();
+    const data = await npmData.getNpmPackages();
     console.log('checker', data.length);
   }
 
