@@ -1,5 +1,5 @@
 // Helper functions for gatsbycli.ts
-import { window, Terminal } from 'vscode';
+import { window, workspace, Terminal, WorkspaceFolder, Uri } from 'vscode';
 
 export default class Utilities {
   static getActiveTerminal() {
@@ -19,5 +19,18 @@ export default class Utilities {
     }
 
     return terminal;
+  }
+
+  static async checkIfWorkspaceEmpty() {
+    const currWorkspace: readonly WorkspaceFolder[] | undefined =
+      workspace.workspaceFolders;
+
+    if (currWorkspace === undefined) return [];
+
+    const uri = Uri.file(currWorkspace[0].uri.path);
+
+    const data = await workspace.fs.readDirectory(uri);
+
+    return data;
   }
 }
