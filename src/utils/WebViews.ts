@@ -24,6 +24,9 @@ export default class PluginWebView {
     <div>
     </div>
     ${readMe}`;
+    panel.onDidChangeViewState(() => {
+      panel.dispose();
+    })
   }
 
   static installPlugin() {
