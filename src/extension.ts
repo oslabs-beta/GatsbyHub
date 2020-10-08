@@ -1,6 +1,5 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
