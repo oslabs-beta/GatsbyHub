@@ -1,11 +1,10 @@
 import * as vscode from 'vscode';
 import Plugin from '../models/Plugin';
-import PluginData from '../models/PluginData';
+import PluginData from '../models/NpmData';
 // import react from "React";
 
 export default class PluginWebView {
   static async openPluginWebView({ links, name, version, description }: any) {
-    // const { links, name, version, description } = npmPackage;
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
     // turn npm package name from snake-case to standard capitalized title

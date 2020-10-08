@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img align="center" src="./src/logo/GatsbyHub-purple-big.png" alt="GatsbyHub purple logo" width="200rem">
+  <a href="https://imgur.com/FBLZ4Ma"><img align="center" src="https://i.imgur.com/FBLZ4Ma.png" alt="GatsbyHub purple logo" width="200rem"></a>
   <p align="center" style="font-family:futura">GatsbyHub</p>
 </h1>
 
