@@ -4,10 +4,10 @@
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './commands/gatsbycli';
 import PluginProvider from './models/PluginProvider';
-import PluginWebView from './utils/WebViews';
+import PluginWebView from './utils/PluginWebViews';
 import StarterProvider from './models/StarterProvider'
 import ThemeProvider from './models/ThemeProvider'
-
+import ThemeWebView from './utils/ThemeWebViews'
 /* import WebViews from './utils/WebViews'; */
 /* import PluginData from './models/PluginData'; */
 
@@ -65,7 +65,9 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     registerCommand('gatsbyhub.createWebView', PluginWebView.openPluginWebView)
   );
-
+  subscriptions.push(
+    registerCommand('gatsbyhub.createWebView', ThemeWebView.openThemeWebView)
+  );
   subscriptions.push(gatsbyCli);
 }
 
