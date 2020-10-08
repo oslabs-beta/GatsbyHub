@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import Plugin from '../models/Plugin';
-import PluginData from '../models/PluginData';
+import PluginData from '../models/NpmData';
 // import react from "React";
 
 export default class PluginWebView {

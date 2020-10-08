@@ -81,7 +81,7 @@ export default class NpmData {
 
     // creates an array of npm objects based on keywords array
     // npm objects contains number of packages and array of package objects
-    const npmPackages = keywords.map(async (keyword) => {
+    let npmPackages = keywords.map(async (keyword) => {
       const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
       // +keywords:-gatsby-plugin+not:deprecated
       const response = await got(url);
@@ -89,7 +89,7 @@ export default class NpmData {
     });
 
     // merges the array of npm package objects together to a single array
-    const merged = (await Promise.all(npmPackages)).reduce(
+    npmPackages = (await Promise.all(npmPackages)).reduce(
       (arr, obj) => arr.concat(obj.results),
       []
     );
@@ -97,39 +97,39 @@ export default class NpmData {
     // creates an object with unique package names and packages
     // eliminates duplicate packages
     // keys === plugin names, values === plugin packages
-    const uniquePkgs = merged.reduce((obj: any, elem: NpmPkg) => {
+    const uniquePackagesObj = (await Promise.all(npmPackages)).reduce((obj: any, elem: NpmPkg) => {
       obj[elem.package.name] = obj[elem.package.name] || elem.package;
       return obj;
     }, {});
 
     // turns uniquePkgs object into an array of plugin packages
-    const uniquePackageArr = Object.values(uniquePkgs);
+    npmPackages = Object.values(uniquePackagesObj);
 
     // filters out packages without repositories
-    const packagesWithRepo = uniquePackageArr.filter(
-      (pkg: any): boolean => !!pkg.links.repository
+    npmPackages = (await Promise.all(npmPackages)).filter(
+      (pkg: PluginPkg): boolean => !!pkg.links.repository
     );
 
-    const packagesWithGoodName = packagesWithRepo.filter((pkgs: any) =>
-      hasGoodName(pkgs)
-    );
+    // runs every package through hasGoodName = checks package names with weird prefixes
+    npmPackages = (await Promise.all(npmPackages)).filter((pkgs: PluginPkg) => hasGoodName(pkgs));
 
     // check package is not a starter or theme
-    const noStarterNoTheme = packagesWithGoodName.filter(
-      (pkgs: any) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
+    npmPackages = (await Promise.all(npmPackages)).filter(
+      (pkgs: PluginPkg) => !pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
     );
 
     // filters out Gatsby and Gatsby-cli
-    const noGatsbyCli = noStarterNoTheme.filter(
-      (pkgs: any) => pkgs.name !== 'gatsby-cli' && pkgs.name !== 'gatsby'
+    npmPackages = (await Promise.all(npmPackages)).filter(
+      (pkgs: PluginPkg) => pkgs.name !== 'gatsby-cli' && pkgs.name !== 'gatsby'
     );
 
-    const packagesWithReadMe = noGatsbyCli.filter(async (pkg: any) => {
+    // filters out packages without readme's
+    npmPackages = (await Promise.all(npmPackages)).filter(async (pkg: PluginPkg) => {
       const check = await hasReadMe(pkg);
       return check;
     });
 
-    return packagesWithReadMe;
+    return npmPackages;
   }
 
   public static async checker() {
