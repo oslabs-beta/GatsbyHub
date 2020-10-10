@@ -20,6 +20,9 @@
     "import/no-unresolved": "off",
     "comma-dangle": "off",
     "class-methods-use-this": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

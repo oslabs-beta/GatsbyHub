@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 
 import { ExtensionContext, commands, window } from 'vscode';
-import GatsbyCli from './commands/gatsbycli';
+import GatsbyCli from './models/GatsbyCli';
 import PluginProvider from './models/PluginProvider';
 import WebViews from './utils/WebViews';
 import StarterProvider from './models/StarterProvider';
@@ -17,10 +17,10 @@ export function activate(context: ExtensionContext) {
   const gatsbyCli = new GatsbyCli();
 
   subscriptions.push(
-    registerCommand('gatsbyhub.installGatsby', GatsbyCli.installGatsby)
+    registerCommand('gatsbyhub.installGatsby', gatsbyCli.installGatsby)
   );
   subscriptions.push(
-    registerCommand('gatsbyhub.createSite', GatsbyCli.createSite),
+    registerCommand('gatsbyhub.createSite', gatsbyCli.createSite),
   );
   subscriptions.push(
     registerCommand('gatsbyhub.developServer', gatsbyCli.developServer),
@@ -28,9 +28,11 @@ export function activate(context: ExtensionContext) {
   subscriptions.push(
     registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer),
   );
-  subscriptions.push(registerCommand('gatsbyhub.build', GatsbyCli.build));
   subscriptions.push(
-    registerCommand('gatsbyhub.installPlugin', GatsbyCli.installPlugin),
+    registerCommand('gatsbyhub.build', gatsbyCli.build)
+  );
+  subscriptions.push(
+    registerCommand('gatsbyhub.installPlugin', gatsbyCli.installPlugin),
   );
   subscriptions.push(
     createTreeView('plugins', {
