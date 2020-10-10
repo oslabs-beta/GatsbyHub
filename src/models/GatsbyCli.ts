@@ -121,29 +121,25 @@ export default class GatsbyCli {
     const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
 
     if (!workspace.workspaceFolders) {
-      return this.showPopUpMsg(
-        'Open a folder or workspace... (File -> Open Folder)',
-        true
-      );
-    }
-
-    if (!workspace.workspaceFolders.length) {
-      return this.showPopUpMsg(
-        "You don't have any Gatsby folders in this workspace",
-        true
-      );
-    }
-
-    if (!gatsbyIsInitiated) {
-      this.showPopUpMsg(
-        "You don't have any Gatsby folders in this workspace",
-        false,
-        false
+      window.showInformationMessage(
+        'Open a folder or workspace... (File -> Open Folder)'
       );
       return null;
     }
 
-    // const workspacePath = await workspaceResolver();
+    if (!workspace.workspaceFolders.length) {
+      window.showErrorMessage(
+        "You don't have any Gatsby folders in this workspace"
+      );
+      return null;
+    }
+
+    if (!gatsbyIsInitiated) {
+      window.showInformationMessage(
+        "You don't have any Gatsby folders in this workspace"
+      );
+      return null;
+    }
 
     // finds path to file in text editor and drops the file name from the path
     const rootPath = Utilities.getRootPath();
@@ -164,6 +160,7 @@ export default class GatsbyCli {
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
      * allow user to open folder for their site directory */
+    return null;
   }
 
   // Disposes development server by disposing the terminal
@@ -229,7 +226,7 @@ export default class GatsbyCli {
       if (rootPath) activeTerminal.sendText(`cd && cd ${rootPath}`);
       activeTerminal.sendText(installCmnd);
       activeTerminal.show(true);
-      window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK')
+      window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
     }
   }
 }

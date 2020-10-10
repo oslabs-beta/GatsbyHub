@@ -136,12 +136,6 @@ export default class NpmData {
     return npmPackages;
   }
 
-  public static async checker() {
-    const npmData = new NpmData();
-    const data = await npmData.getNpmPackages();
-    console.log('checker', data.length);
-  }
-
   private static async getReadMe(
     pluginRepo: string,
     pluginHomepage: string
