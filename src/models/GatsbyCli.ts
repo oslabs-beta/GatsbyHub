@@ -3,8 +3,7 @@
 import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
-import { getRootPath } from '../utils/workspaceResolver';
-import PluginData from '../models/NpmData';
+import PluginData from './NpmData';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -25,7 +24,7 @@ export default class GatsbyCli {
 
   // installs gatsby-cli for the user when install gatsby button is clicked
   // static keyword: eliminates the need to instantiate to use this method in extenstion.ts
-  static async installGatsby() {
+  async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.sendText('sudo npm install -g gatsby-cli');
@@ -47,7 +46,7 @@ export default class GatsbyCli {
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  static async createSite(starterObj?: any) {
+  async createSite(starterObj?: any) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
     // define string for button in information message
@@ -147,7 +146,7 @@ export default class GatsbyCli {
     // const workspacePath = await workspaceResolver();
 
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = getRootPath();
+    const rootPath = Utilities.getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
 
@@ -179,9 +178,9 @@ export default class GatsbyCli {
   }
 
   // builds and packages Gatsby site
-  static async build() {
+  async build() {
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = getRootPath();
+    const rootPath = Utilities.getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show(true);
@@ -221,9 +220,9 @@ export default class GatsbyCli {
     }
   }
 
-  static async installPlugin(plugin?: any) {
+  async installPlugin(plugin?: any) {
     const activeTerminal = Utilities.getActiveTerminal();
-    const rootPath = getRootPath();
+    const rootPath = Utilities.getRootPath();
     if (plugin) {
       const { homepage, repository } = plugin.command.arguments[0].links;
       const installCmnd = await PluginData.getNpmInstall(repository, homepage);
