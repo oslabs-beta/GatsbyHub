@@ -19,7 +19,6 @@ export default class GatsbyCli {
     this.toggleStatusBar = this.toggleStatusBar.bind(this);
     this.developServer = this.developServer.bind(this);
     this.disposeServer = this.disposeServer.bind(this);
-    this.showPopUpMsg = this.showPopUpMsg.bind(this);
   }
 
   // installs gatsby-cli for the user when install gatsby button is clicked
@@ -144,7 +143,7 @@ export default class GatsbyCli {
     // finds path to file in text editor and drops the file name from the path
     const rootPath = Utilities.getRootPath();
 
-    const activeTerminal = Utilities.getActiveTerminal();
+    const activeTerminal = Utilities.getActiveServerTerminal();
 
     // only cd into rootpath if it exists, otherwise just run command on current workspace
     if (rootPath) {
@@ -165,7 +164,7 @@ export default class GatsbyCli {
 
   // Disposes development server by disposing the terminal
   public disposeServer() {
-    const activeTerminal = Utilities.getActiveTerminal();
+    const activeTerminal = Utilities.getActiveServerTerminal();
     activeTerminal.dispose();
     // change status bar to working message while server finishes disposing
     StatusBar.working('Disposing server');
@@ -203,29 +202,20 @@ export default class GatsbyCli {
     StatusBar.dispose();
   }
 
-  private showPopUpMsg(
-    msg: string,
-    isErrorMsg: boolean = false,
-    isWarning: boolean = false
-  ) {
-    if (isErrorMsg) {
-      window.showErrorMessage(msg);
-    } else if (isWarning) {
-      window.showWarningMessage(msg);
-    } else {
-      window.showInformationMessage(msg);
-    }
-  }
-
   async installPlugin(plugin?: any) {
     const activeTerminal = Utilities.getActiveTerminal();
     const rootPath = Utilities.getRootPath();
     if (plugin) {
       const { homepage, repository } = plugin.command.arguments[0].links;
       const installCmnd = await PluginData.getNpmInstall(repository, homepage);
-      if (rootPath) activeTerminal.sendText(`cd && cd ${rootPath}`);
-      activeTerminal.sendText(installCmnd);
-      activeTerminal.show(true);
+      if (rootPath) {
+        activeTerminal.sendText(`cd && cd ${rootPath}`);
+        activeTerminal.sendText(installCmnd);
+        activeTerminal.show(true);
+      } else {
+        activeTerminal.sendText(installCmnd);
+        activeTerminal.show(true);
+      }
       window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
     }
   }
