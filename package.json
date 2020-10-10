@@ -114,6 +114,11 @@
           "command": "gatsbyhub.createSite",
           "group": "inline",
           "when": "view == starters"
+        },
+        {
+          "command": "gatsbyhub.installPlugin",
+          "group": "inline",
+          "when": "view == themes"
         }
       ]
     }
