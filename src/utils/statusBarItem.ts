@@ -6,7 +6,7 @@ export default class StatusBar {
   private static statusBarItem: StatusBarItem;
 
   // returns a StatusBarItem when called on by other StatusBar methods
-  private static get Item() {
+  private static get item() {
     if (!StatusBar.statusBarItem) {
       StatusBar.statusBarItem = window.createStatusBarItem(
         vscode.StatusBarAlignment.Right,
@@ -25,24 +25,24 @@ export default class StatusBar {
   }
 
   static working(msg: string = 'connecting...') {
-    StatusBar.Item.text = `$(radio-tower) ${msg}`;
-    StatusBar.Item.command = 'null';
+    StatusBar.item.text = `$(radio-tower) ${msg}`;
+    StatusBar.item.command = 'null';
   }
 
   // GatsbyCli toggles statusBar between online() and offline() methods
   public static online() {
-    StatusBar.Item.text = '$(rocket) GatsbyHub';
-    StatusBar.Item.tooltip = 'Click to develop Gatsby server';
-    StatusBar.Item.command = 'gatsbyhub.developServer';
+    StatusBar.item.text = '$(rocket) GatsbyHub';
+    StatusBar.item.tooltip = 'Click to develop Gatsby server';
+    StatusBar.item.command = 'gatsbyhub.developServer';
   }
 
   public static offline(port: Number = 8000) {
-    StatusBar.Item.text = `$(circle-slash) Port: ${port}`;
-    StatusBar.Item.tooltip = 'Click to close Gatsby server';
+    StatusBar.item.text = `$(circle-slash) Port: ${port}`;
+    StatusBar.item.tooltip = 'Click to close Gatsby server';
     StatusBar.statusBarItem.command = 'gatsbyhub.disposeServer';
   }
 
   public static dispose() {
-    StatusBar.Item.dispose();
+    StatusBar.item.dispose();
   }
 }
