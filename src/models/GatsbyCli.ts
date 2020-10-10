@@ -226,7 +226,10 @@ export default class GatsbyCli {
       if (rootPath) activeTerminal.sendText(`cd && cd ${rootPath}`);
       activeTerminal.sendText(installCmnd);
       activeTerminal.show(true);
-      window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
+      // check for if "plugin" is a theme or actual plugin
+      if (plugin.command.arguments[0].name.startsWith('gatsby-theme')) {
+        window.showInformationMessage('Refer to this theme\'s documentation regarding implementation. Simply click on the theme in the "Themes" section.', 'OK');
+      } else window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
     }
   }
 }

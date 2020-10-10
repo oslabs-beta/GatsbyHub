@@ -24,7 +24,7 @@
       {
         "command": "gatsbyhub.createSite",
         "title": "Create New Site",
-        "icon": "src/logo/download.svg"
+        "icon": "$(play)"
       },
       {
         "command": "gatsbyhub.developServer",
@@ -38,7 +38,7 @@
       {
         "command": "gatsbyhub.installPlugin",
         "title": "Install Plugin",
-        "icon": "src/logo/download.svg"
+        "icon": "$(diff-added)"
       },
       {
         "command": "gatsbyhub.build",
@@ -114,6 +114,11 @@
           "command": "gatsbyhub.createSite",
           "group": "inline",
           "when": "view == starters"
+        },
+        {
+          "command": "gatsbyhub.installPlugin",
+          "group": "inline",
+          "when": "view == themes"
         }
       ]
     }
