@@ -64,16 +64,16 @@ export default class WebViews {
       }
     });
   }
-
-  static installPlugin() {
-    document.getElementById('install-btn').innerHTML = 'Installing...';
-    setTimeout(() => {
-      document.getElementById('install-btn').innerHTML = 'Installed';
-    }, 3000);
-    // const cmdString = await PluginData.getNpmInstall(
-    //   links.repository,
-    //   links.homepage,
-    // );
-    // document.getElementById('install-btn').innerHTML = cmdString;
-  }
+  // potentially add in install functionality in webview
+  // static installPlugin() {
+  //   document.getElementById('install-btn').innerHTML = 'Installing...';
+  //   setTimeout(() => {
+  //     document.getElementById('install-btn').innerHTML = 'Installed';
+  //   }, 3000);
+  //   // const cmdString = await PluginData.getNpmInstall(
+  //   //   links.repository,
+  //   //   links.homepage,
+  //   // );
+  //   // document.getElementById('install-btn').innerHTML = cmdString;
+  // }
 }

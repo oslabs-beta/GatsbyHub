@@ -76,4 +76,18 @@ export default class Utilities {
 
     return initiated;
   }
+
+  static getRootPath() {
+    return (
+      // gets path to file in active text editor
+      window.activeTextEditor?.document.fileName
+        // replaces spaces with backslash
+        .replace(/\s/g, '\\ ')
+        // drops fileName and common folders that aren't part of the root path
+        .replace(
+          /\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.(ts)?(js)?x?/,
+          '',
+        )
+    );
+  }
 }
