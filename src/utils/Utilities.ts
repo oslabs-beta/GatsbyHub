@@ -4,18 +4,33 @@ import { window, workspace, Terminal, WorkspaceFolder, Uri } from 'vscode';
 export default class Utilities {
   static getActiveTerminal() {
     const { terminals, createTerminal } = window;
-    const filtered = terminals.filter(
-      (obj: Terminal) => obj.name === 'gatsbyhub'
+    const filteredTerminals = terminals.filter(
+      (obj: Terminal) => obj.name === 'GatsbyHub'
     );
 
     let terminal: Terminal;
 
     // if there is no gatsby terminal running, create one
-    if (filtered.length === 0) {
-      terminal = createTerminal('gatsbyhub');
+    if (filteredTerminals.length === 0) {
+      terminal = createTerminal('GatsbyHub');
     } else {
       // if gatsby terminal already exists, return it
-      [terminal] = filtered;
+      [terminal] = filteredTerminals;
+    }
+
+    return terminal;
+  }
+
+  static getActiveServerTerminal() {
+    const { terminals, createTerminal } = window;
+    const filteredTerminals = terminals.filter((obj: Terminal) => obj.name === 'Gatsby Server');
+
+    let terminal: Terminal;
+
+    if (filteredTerminals.length === 0) {
+      terminal = createTerminal('Gatsby Server');
+    } else {
+      [terminal] = filteredTerminals;
     }
 
     return terminal;
