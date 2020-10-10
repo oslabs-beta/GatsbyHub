@@ -3,7 +3,7 @@ import Starter from './Starter';
 import NpmData from './NpmData';
 
 export default class StarterProvider
-  implements vscode.TreeDataProvider<Starter> {
+implements vscode.TreeDataProvider<Starter> {
   data: any;
 
   constructor() {
