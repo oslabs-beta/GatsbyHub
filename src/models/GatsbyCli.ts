@@ -169,6 +169,7 @@ export default class GatsbyCli {
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
      * allow user to open folder for their site directory */
+    commands.executeCommand('setContext', 'serverIsRunning', true);
     return null;
   }
 
@@ -181,6 +182,7 @@ export default class GatsbyCli {
     // toggle statusBar so it will developServer if clicked again
     setTimeout(this.toggleStatusBar, 3000);
     window.showInformationMessage('Disposing Gatsby Server on port:8000');
+    commands.executeCommand('setContext', 'serverIsRunning', false);
   }
 
   // builds and packages Gatsby site
