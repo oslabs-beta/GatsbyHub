@@ -33,19 +33,20 @@ export default class GatsbyCli {
     } else {
       // then it is linux or unnix based environment
       activeTerminal.sendText('sudo npm install -g gatsby-cli');
+      // Mac and Linux requrie password to install
+      const inputPassword = await window.showInputBox({
+        password: true,
+        placeHolder: 'Input administrator password',
+      });
+      if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
+      // if the password is wrong, show inputbox again
+      // else, show terminal
     }
-    // !! check if admin password is required before showing password box
-
-    // Creates a password inputbox when install gatsby button is clicked
-    const inputPassword = await window.showInputBox({
-      password: true,
-      placeHolder: 'Input administrator password',
-    });
-    if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
-    // if the password is wrong, show inputbox again
-    // else, show terminal
     activeTerminal.show(true);
   }
+  // !! check if admin password is required before showing password box
+
+  // Creates a password inputbox when install gatsby button is clicked
 
   /**  creates a new site when 'Create New Site' button is clicked
    * currently uses default gatsby starter, but uses gatsby new url. see https://www.gatsbyjs.com/docs/gatsby-cli/
