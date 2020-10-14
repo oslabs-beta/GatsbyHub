@@ -27,7 +27,13 @@ export default class GatsbyCli {
   async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.sendText('sudo npm install -g gatsby-cli');
+    // if windows user
+    if (!process.env.USER) {
+      activeTerminal.sendText('npm install -g gatsby-cli');
+    } else {
+      // then it is linux or unnix based environment
+      activeTerminal.sendText('sudo npm install -g gatsby-cli');
+    }
     // !! check if admin password is required before showing password box
 
     // Creates a password inputbox when install gatsby button is clicked
