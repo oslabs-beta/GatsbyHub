@@ -1,5 +1,12 @@
 // Helper functions for gatsbycli.ts
-import { window, workspace, Terminal, WorkspaceFolder, Uri } from 'vscode';
+import {
+  window,
+  workspace,
+  commands,
+  Terminal,
+  WorkspaceFolder,
+  Uri,
+} from 'vscode';
 
 export default class Utilities {
   static getActiveTerminal() {
@@ -92,5 +99,12 @@ export default class Utilities {
 
     const uri = Uri.file(currWorkspace[0].uri.path);
     return uri.path;
+  }
+
+  static async openGraphiQL() {
+    commands.executeCommand(
+      'vscode.open',
+      Uri.parse('http://localhost:8000/___graphql')
+    );
   }
 }
