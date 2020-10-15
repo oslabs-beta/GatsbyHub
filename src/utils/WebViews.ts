@@ -1,9 +1,20 @@
 import { window, ViewColumn } from 'vscode';
 import PluginData from '../models/NpmData';
 
+interface NpmPkg {
+  name: string;
+  links: {
+    repository: string;
+    homepage: string;
+  };
+  readme: string;
+  version: string;
+  description: string;
+}
+
 export default class WebViews {
-  static async openWebView({ links, name, version, description }: any) {
-    // const { links, name, version, description } = npmPackage;
+  static async openWebView(npmPackage: NpmPkg) {
+    const { links, name, version, description } = npmPackage;
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
     // turn npm package name from snake-case to standard capitalized title

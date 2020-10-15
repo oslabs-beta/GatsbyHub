@@ -4,6 +4,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
+import { NpmTreeItem } from '../utils/Interfaces';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -52,7 +53,7 @@ export default class GatsbyCli {
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  async createSite(starterObj?: any) {
+  async createSite(starterObj?: NpmTreeItem) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
     // define string for button in information message
@@ -214,11 +215,11 @@ export default class GatsbyCli {
     StatusBar.dispose();
   }
 
-  async installPlugin(plugin?: any): Promise<void> {
+  async installPlugin(plugin?: NpmTreeItem): Promise<void> {
     const activeTerminal = Utilities.getActiveTerminal();
     const rootPath = Utilities.getRootPath();
-    const { name, links } = plugin.command.arguments[0];
     if (plugin) {
+      const { name, links } = plugin.command.arguments[0];
       const installCmnd =
         (await PluginData.getNpmInstall(links.repository, links.homepage)) ||
         `npm install ${name}`;
