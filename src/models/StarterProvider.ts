@@ -1,9 +1,9 @@
-import * as vscode from 'vscode';
+import { TreeDataProvider } from 'vscode';
 import Starter from './Starter';
 import NpmData from './NpmData';
 
 export default class StarterProvider
-implements vscode.TreeDataProvider<Starter> {
+implements TreeDataProvider<Starter> {
   data: any;
 
   constructor() {

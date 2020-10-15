@@ -1,8 +1,8 @@
-import * as vscode from 'vscode';
+import { TreeDataProvider } from 'vscode';
 import Plugin from './Plugin';
 import NpmData from './NpmData';
 
-export default class PluginProvider implements vscode.TreeDataProvider<Plugin> {
+export default class PluginProvider implements TreeDataProvider<Plugin> {
   data: any;
 
   constructor() {

@@ -1,14 +1,14 @@
-import * as vscode from 'vscode';
+import { TreeItem, Command, TreeItemCollapsibleState } from 'vscode';
 /* import * as fs from 'fs';
 import * as path from 'path'; */
 
-export default class Theme extends vscode.TreeItem {
-  constructor(public label: string, command?: vscode.Command, public children?: Theme[]) {
+export default class Theme extends TreeItem {
+  constructor(public label: string, command?: Command, public children?: Theme[]) {
     super(
       label,
       children === undefined
-        ? vscode.TreeItemCollapsibleState.None
-        : vscode.TreeItemCollapsibleState.Collapsed
+        ? TreeItemCollapsibleState.None
+        : TreeItemCollapsibleState.Collapsed
     );
     this.children = children;
     this.command = command;
