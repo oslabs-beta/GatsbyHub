@@ -128,9 +128,9 @@ export default class GatsbyCli {
   public async developServer(): Promise<null> {
     // finds path to file in text editor and drops the file name from the path
     const rootPath = Utilities.getRootPath();
-    const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated(
-      rootPath
-    );
+    // const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated(
+    //   rootPath
+    // );
 
     if (!workspace.workspaceFolders) {
       window.showInformationMessage(
@@ -146,12 +146,12 @@ export default class GatsbyCli {
       return null;
     }
 
-    if (!gatsbyIsInitiated) {
-      window.showErrorMessage(
-        "You don't have any Gatsby folders in this workspace"
-      );
-      return null;
-    }
+    // if (!gatsbyIsInitiated) {
+    //   window.showErrorMessage(
+    //     "You don't have any Gatsby folders in this workspace"
+    //   );
+    //   return null;
+    // }
 
     const activeTerminal = Utilities.getActiveServerTerminal();
 
