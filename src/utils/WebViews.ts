@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import { window, ViewColumn } from 'vscode';
 import PluginData from '../models/NpmData';
 
 export default class WebViews {
@@ -12,10 +12,10 @@ export default class WebViews {
       .replace(/^\w?|\s\w?/g, (match: string) => match.toUpperCase());
 
     // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
-    const panel = vscode.window.createWebviewPanel(
+    const panel = window.createWebviewPanel(
       'plugin',
       `Gatsby Plugin: ${title}`,
-      vscode.ViewColumn.One
+      ViewColumn.One
     );
 
     // create a header for each npm package and display README underneath header
@@ -58,6 +58,7 @@ export default class WebViews {
     ${readMe}
     `;
 
+    // close the webview when not looking at it
     panel.onDidChangeViewState((e) => {
       if (!e.webviewPanel.active) {
         panel.dispose();
