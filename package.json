@@ -2,7 +2,7 @@
   "name": "gatsbyhub",
   "displayName": "GatsbyHub",
   "description": "The one stop shop for everything Gatsby has to offer",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "engines": {
     "vscode": "^1.49.0"
   },
@@ -23,11 +23,13 @@
       },
       {
         "command": "gatsbyhub.createSite",
-        "title": "Create New Site"
+        "title": "Create New Site",
+        "icon": "$(play)"
       },
       {
         "command": "gatsbyhub.developServer",
-        "title": "Develop Server"
+        "title": "Develop Server",
+        "icon": "$(rocket)"
       },
       {
         "command": "gatsbyhub.disposeServer",
@@ -36,7 +38,7 @@
       {
         "command": "gatsbyhub.installPlugin",
         "title": "Install Plugin",
-        "icon": "src/logo/download.svg"
+        "icon": "$(diff-added)"
       },
       {
         "command": "gatsbyhub.build",
@@ -60,8 +62,7 @@
       "gatsbyHub": [
         {
           "id": "commands",
-          "name": "Commands",
-          "visibility": "collapsed"
+          "name": "Commands"
         },
         {
           "id": "plugins",
@@ -70,6 +71,10 @@
         {
           "id": "starters",
           "name": "Starters"
+        },
+        {
+          "id": "themes",
+          "name": "Themes"
         }
       ]
     },
@@ -77,14 +82,43 @@
       {
         "view": "commands",
         "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n[Build Site](command:gatsbyhub.build)\n"
+      },
+      {
+        "view": "plugins",
+        "contents": "Loading Plugins..."
+      },
+      {
+        "view": "starters",
+        "contents": "Loading Starters..."
+      },
+      {
+        "view": "themes",
+        "contents": "Loading Themes..."
       }
     ],
     "menus": {
+      "view/title": [
+        {
+          "command": "gatsbyhub.developServer",
+          "group": "navigation",
+          "when": "view == commands"
+        }
+      ],
       "view/item/context": [
         {
           "command": "gatsbyhub.installPlugin",
           "group": "inline",
           "when": "view == plugins"
+        },
+        {
+          "command": "gatsbyhub.createSite",
+          "group": "inline",
+          "when": "view == starters"
+        },
+        {
+          "command": "gatsbyhub.installPlugin",
+          "group": "inline",
+          "when": "view == themes"
         }
       ]
     }
@@ -97,7 +131,13 @@
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "got": "^11.7.0",
+    "marked": "^1.2.0",
+    "npm-api": "^1.0.0",
+    "puppeteer": "^5.3.1",
+    "vscode-test": "^1.4.0",
     "@types/glob": "^7.1.3",
     "@types/marked": "^1.1.0",
     "@types/mocha": "^8.0.0",
@@ -110,13 +150,6 @@
     "eslint-plugin-import": "^2.22.1",
     "glob": "^7.1.6",
     "mocha": "^8.1.3",
-    "typescript": "^4.0.2",
-    "vscode-test": "^1.4.0"
-  },
-  "dependencies": {
-    "got": "^11.7.0",
-    "marked": "^1.2.0",
-    "npm-api": "^1.0.0",
-    "puppeteer": "^5.3.1"
+    "typescript": "^4.0.2"
   }
 }

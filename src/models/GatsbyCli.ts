@@ -3,7 +3,7 @@
 import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
-import { getRootPath } from '../utils/workspaceResolver';
+import PluginData from './NpmData';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -24,36 +24,63 @@ export default class GatsbyCli {
 
   // installs gatsby-cli for the user when install gatsby button is clicked
   // static keyword: eliminates the need to instantiate to use this method in extenstion.ts
-  static async installGatsby() {
+  async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.sendText('sudo npm install -g gatsby-cli');
-    // !! check if admin password is required before showing password box
-
-    // Creates a password inputbox when install gatsby button is clicked
-    const inputPassword = await window.showInputBox({
-      password: true,
-      placeHolder: 'Input administrator password',
-    });
-    if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
-    // if the password is wrong, show inputbox again
-    // else, show terminal
-    activeTerminal.show();
+    // if windows user
+    if (!process.env.USER) {
+      activeTerminal.sendText('npm install -g gatsby-cli');
+    } else {
+      // then it is linux or unnix based environment
+      activeTerminal.sendText('sudo npm install -g gatsby-cli');
+      // Mac and Linux requrie password to install
+      const inputPassword = await window.showInputBox({
+        password: true,
+        placeHolder: 'Input administrator password',
+      });
+      if (inputPassword !== undefined) activeTerminal.sendText(inputPassword);
+      // if the password is wrong, show inputbox again
+      // else, show terminal
+    }
+    activeTerminal.show(true);
   }
+  // !! check if admin password is required before showing password box
+
+  // Creates a password inputbox when install gatsby button is clicked
 
   /**  creates a new site when 'Create New Site' button is clicked
    * currently uses default gatsby starter, but uses gatsby new url. see https://www.gatsbyjs.com/docs/gatsby-cli/
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  static async createSite() {
+  async createSite(starterObj?: any) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
     // define string for button in information message
     const openFolderMsg: string = 'Open Folder';
+
+    // Only run this command when the workspace is empty
+    // returns true if current workspace is empty
+    // const isEmpty = await Utilities.checkIfWorkspaceEmpty();
+
+    // if (!isEmpty) {
+    //   window.showWarningMessage('Must create site in an empty workspace.');
+    //   return;
+    // }
+
+    if (!starterObj) {
+      const input = await window.showInformationMessage(
+        'This creates the default starter. If you would like a different starter, refer to the "Starters" menu.',
+        'Use default',
+        'Choose a different starter'
+      );
+
+      if (input === 'Choose a different starter') return;
+    }
+
     // tell user that new site will be created in current directory
     const choice = await window.showInformationMessage(
-      `New Gatsby site will be created in current directory 
+      `New Gatsby site will be created in current directory
         unless you open a different folder for your project`,
       openFolderMsg
     );
@@ -62,23 +89,33 @@ export default class GatsbyCli {
       commands.executeCommand('vscode.openFolder');
     }
 
-    // give user a place to write the name of their site
-    const siteName = await window.showInputBox({
-      placeHolder: 'Enter-new-site-filename',
-    });
+    // const workspacePath = Uri.file(
+    //   path.resolve(__dirname, `../../${siteName}`)
+    // );
+    // console.log('workspacePath: ', workspacePath);
+    // you can specify where the new window will open to (our new gatsby site)
+    // commands.executeCommand('vscode.openFolder', workspacePath, true);
 
     // give user the option to create site in new folder instead
-    /*     const workspacePath = Uri.file(
-      path.resolve(__dirname, `../../${siteName}`)
-    );
-    console.log('workspacePath: ', workspacePath); */
-    // you can specify where the new window will open to (our new gatsby site)
-    /*     commands.executeCommand('vscode.openFolder', workspacePath, true);
-     */
+    // give user a place to write the name of their site
+    const siteName = await window.showInputBox({
+      placeHolder: 'Enter Name of New Site',
+    });
+
     // send command to the terminal
     if (siteName) {
-      activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
-      activeTerminal.show();
+      if (starterObj) {
+        const { repository } = starterObj.command.arguments[0].links;
+        activeTerminal.sendText(
+          `gatsby new ${siteName} ${repository} && cd ${siteName}`
+        );
+        activeTerminal.sendText('code .');
+        activeTerminal.show(true);
+      } else {
+        activeTerminal.sendText(`gatsby new ${siteName} && cd ${siteName}`);
+        activeTerminal.sendText('code .');
+        activeTerminal.show(true);
+      }
     } else {
       window.showWarningMessage(
         'Must enter a name for your new Gatsby directory'
@@ -88,27 +125,33 @@ export default class GatsbyCli {
 
   // Starts development server and opens project in a new browser
   public async developServer() {
+    const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
+
     if (!workspace.workspaceFolders) {
-      return this.showPopUpMsg(
-        'Open a folder or workspace... (File -> Open Folder)',
-        true
+      window.showInformationMessage(
+        'Open a folder or workspace... (File -> Open Folder)'
       );
+      return null;
     }
 
     if (!workspace.workspaceFolders.length) {
-      return this.showPopUpMsg(
-        "You don't have any Gatsby folders in this workspace",
-        true
+      window.showErrorMessage(
+        "You don't have any Gatsby folders in this workspace"
       );
+      return null;
     }
 
-    // const workspacePath = await workspaceResolver();
+    if (!gatsbyIsInitiated) {
+      window.showInformationMessage(
+        "You don't have any Gatsby folders in this workspace"
+      );
+      return null;
+    }
 
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = getRootPath();
+    const rootPath = Utilities.getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
 
     // only cd into rootpath if it exists, otherwise just run command on current workspace
     if (rootPath) {
@@ -120,9 +163,11 @@ export default class GatsbyCli {
     // toggle statusBar after 3 seconds so it will dispose server if clicked again
     setTimeout(this.toggleStatusBar, 4000);
     window.showInformationMessage('Gatsby Server Running on port:8000');
+    activeTerminal.show(true);
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
      * allow user to open folder for their site directory */
+    return null;
   }
 
   // Disposes development server by disposing the terminal
@@ -137,12 +182,12 @@ export default class GatsbyCli {
   }
 
   // builds and packages Gatsby site
-  static async build() {
+  async build() {
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = getRootPath();
+    const rootPath = Utilities.getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
+    activeTerminal.show(true);
 
     // only cd into rootpath if it exists, otherwise just run command on current workspace
     if (rootPath) {
@@ -170,14 +215,28 @@ export default class GatsbyCli {
     isErrorMsg: boolean = false,
     isWarning: boolean = false
   ) {
-    if (isErrorMsg) window.showErrorMessage(msg);
-    else if (isWarning) window.showWarningMessage(msg);
-    else window.showInformationMessage(msg);
+    if (isErrorMsg) {
+      window.showErrorMessage(msg);
+    } else if (isWarning) {
+      window.showWarningMessage(msg);
+    } else {
+      window.showInformationMessage(msg);
+    }
   }
 
-  static installPlugin() {
+  async installPlugin(plugin?: any) {
     const activeTerminal = Utilities.getActiveTerminal();
-    activeTerminal.show();
-    console.log('Plugin Installed!');
+    const rootPath = Utilities.getRootPath();
+    if (plugin) {
+      const { homepage, repository } = plugin.command.arguments[0].links;
+      const installCmnd = await PluginData.getNpmInstall(repository, homepage);
+      if (rootPath) activeTerminal.sendText(`cd && cd ${rootPath}`);
+      activeTerminal.sendText(installCmnd);
+      activeTerminal.show(true);
+      // check for if "plugin" is a theme or actual plugin
+      if (plugin.command.arguments[0].name.startsWith('gatsby-theme')) {
+        window.showInformationMessage('Refer to this theme\'s documentation regarding implementation. Simply click on the theme in the "Themes" section.', 'OK');
+      } else window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
+    }
   }
 }

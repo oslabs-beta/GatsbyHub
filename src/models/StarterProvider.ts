@@ -1,8 +1,9 @@
 import { TreeDataProvider } from 'vscode';
-import Plugin from './Plugin';
+import Starter from './Starter';
 import NpmData from './NpmData';
 
-export default class PluginProvider implements TreeDataProvider<Plugin> {
+export default class StarterProvider
+implements TreeDataProvider<Starter> {
   data: any;
 
   constructor() {
@@ -12,21 +13,21 @@ export default class PluginProvider implements TreeDataProvider<Plugin> {
 
   async createPlugins() {
     const npmData = new NpmData();
-    return (await npmData.getNpmPackages('plugin')).map(
+    return (await npmData.getNpmPackages('starter')).map(
       (obj: any) =>
-        new Plugin(obj.name, {
+        new Starter(obj.name, {
           command: 'gatsbyhub.createWebView',
-          title: 'Show Plugin WebView',
+          title: 'Show Starter WebView',
           arguments: [obj],
-        })
+        }),
     );
   }
 
-  getTreeItem(element: Plugin): Plugin | Promise<Plugin> {
+  getTreeItem(element: Starter): Starter | Promise<Starter> {
     return element;
   }
 
-  getChildren(element?: Plugin | undefined) {
+  getChildren(element?: Starter | undefined) {
     if (!element) {
       return this.data;
     }

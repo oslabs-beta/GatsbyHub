@@ -1,15 +1,14 @@
-import * as vscode from 'vscode';
-import { window, StatusBarItem } from 'vscode';
+import { window, StatusBarItem, StatusBarAlignment } from 'vscode';
 
 export default class StatusBar {
-  // defines the type to be a vscode.StatusBarItem
+  // defines the type to be a StatusBarItem
   private static statusBarItem: StatusBarItem;
 
   // returns a StatusBarItem when called on by other StatusBar methods
-  private static get Item() {
+  private static get item() {
     if (!StatusBar.statusBarItem) {
       StatusBar.statusBarItem = window.createStatusBarItem(
-        vscode.StatusBarAlignment.Right,
+        StatusBarAlignment.Right,
         100,
       );
     }
@@ -25,24 +24,24 @@ export default class StatusBar {
   }
 
   static working(msg: string = 'connecting...') {
-    StatusBar.Item.text = `$(rocket) ${msg}`;
-    StatusBar.Item.command = 'null';
+    StatusBar.item.text = `$(radio-tower) ${msg}`;
+    StatusBar.item.command = 'null';
   }
 
   // GatsbyCli toggles statusBar between online() and offline() methods
   public static online() {
-    StatusBar.Item.text = '$(radio-tower) GatsbyHub';
-    StatusBar.Item.tooltip = 'Click to develop Gatsby server';
-    StatusBar.Item.command = 'gatsbyhub.developServer';
+    StatusBar.item.text = '$(rocket) GatsbyHub';
+    StatusBar.item.tooltip = 'Click to develop Gatsby server';
+    StatusBar.item.command = 'gatsbyhub.developServer';
   }
 
   public static offline(port: Number = 8000) {
-    StatusBar.Item.text = `$(circle-slash) Port: ${port}`;
-    StatusBar.Item.tooltip = 'Click to close Gatsby server';
+    StatusBar.item.text = `$(circle-slash) Port: ${port}`;
+    StatusBar.item.tooltip = 'Click to close Gatsby server';
     StatusBar.statusBarItem.command = 'gatsbyhub.disposeServer';
   }
 
   public static dispose() {
-    StatusBar.Item.dispose();
+    StatusBar.item.dispose();
   }
 }
