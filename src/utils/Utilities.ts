@@ -101,6 +101,10 @@ export default class Utilities {
   }
 
   static async getRootPath(): Promise<string | undefined> {
+    // replaces spaces with backslash
+    // .replace(/\s/g, '\\ ')
+    // drops fileName and common folders that aren't part of the root path
+    // .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.(ts)?(js)?x?/, '')
     const uri = await this.getWorkspaceUri();
 
     return uri?.path;
