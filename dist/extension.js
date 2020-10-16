@@ -10729,62 +10729,55 @@ module.exports = Response;
 /*!**************************!*\
   !*** ./src/extension.ts ***!
   \**************************/
-/*! namespace exports */
+/*! flagged exports */
+/*! export __esModule [provided] [maybe used in main (runtime-defined)] [usage prevents renaming] */
 /*! export activate [provided] [maybe used in main (runtime-defined)] [usage prevents renaming] */
 /*! export deactivate [provided] [maybe used in main (runtime-defined)] [usage prevents renaming] */
 /*! other exports [not provided] [maybe used in main (runtime-defined)] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "activate": () => /* binding */ activate,
-/* harmony export */   "deactivate": () => /* binding */ deactivate
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _models_GatsbyCli__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/GatsbyCli */ "./src/models/GatsbyCli.ts");
-/* harmony import */ var _models_PluginProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/PluginProvider */ "./src/models/PluginProvider.ts");
-/* harmony import */ var _utils_WebViews__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/WebViews */ "./src/utils/WebViews.ts");
-/* harmony import */ var _models_StarterProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/StarterProvider */ "./src/models/StarterProvider.ts");
-/* harmony import */ var _models_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/ThemeProvider */ "./src/models/ThemeProvider.ts");
-/* harmony import */ var _utils_Utilities__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/Utilities */ "./src/utils/Utilities.ts");
 
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.deactivate = exports.activate = void 0;
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
+const GatsbyCli_1 = __webpack_require__(/*! ./models/GatsbyCli */ "./src/models/GatsbyCli.ts");
+const PluginProvider_1 = __webpack_require__(/*! ./models/PluginProvider */ "./src/models/PluginProvider.ts");
+const WebViews_1 = __webpack_require__(/*! ./utils/WebViews */ "./src/utils/WebViews.ts");
+const StarterProvider_1 = __webpack_require__(/*! ./models/StarterProvider */ "./src/models/StarterProvider.ts");
+const ThemeProvider_1 = __webpack_require__(/*! ./models/ThemeProvider */ "./src/models/ThemeProvider.ts");
+const Utilities_1 = __webpack_require__(/*! ./utils/Utilities */ "./src/utils/Utilities.ts");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-    const { createTreeView } = vscode__WEBPACK_IMPORTED_MODULE_0__.window;
-    const { registerCommand } = vscode__WEBPACK_IMPORTED_MODULE_0__.commands;
+    const { createTreeView } = vscode_1.window;
+    const { registerCommand } = vscode_1.commands;
     const { subscriptions } = context;
-    const gatsbyCli = new _models_GatsbyCli__WEBPACK_IMPORTED_MODULE_1__.default();
+    const gatsbyCli = new GatsbyCli_1.default();
     subscriptions.push(registerCommand('gatsbyhub.installGatsby', gatsbyCli.installGatsby));
     subscriptions.push(registerCommand('gatsbyhub.createSite', gatsbyCli.createSite));
     subscriptions.push(registerCommand('gatsbyhub.developServer', gatsbyCli.developServer));
     subscriptions.push(registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer));
     subscriptions.push(registerCommand('gatsbyhub.build', gatsbyCli.build));
     subscriptions.push(registerCommand('gatsbyhub.installPlugin', gatsbyCli.installPlugin));
-    subscriptions.push(registerCommand('gatsbyhub.createWebView', _utils_WebViews__WEBPACK_IMPORTED_MODULE_3__.default.openWebView));
-    subscriptions.push(registerCommand('gatsbyhub.openGraphiQL', _utils_Utilities__WEBPACK_IMPORTED_MODULE_6__.default.openGraphiQL));
+    subscriptions.push(registerCommand('gatsbyhub.createWebView', WebViews_1.default.openWebView));
+    subscriptions.push(registerCommand('gatsbyhub.openGraphiQL', Utilities_1.default.openGraphiQL));
     subscriptions.push(createTreeView('plugins', {
-        treeDataProvider: new _models_PluginProvider__WEBPACK_IMPORTED_MODULE_2__.default(),
+        treeDataProvider: new PluginProvider_1.default(),
     }));
     subscriptions.push(createTreeView('starters', {
-        treeDataProvider: new _models_StarterProvider__WEBPACK_IMPORTED_MODULE_4__.default(),
+        treeDataProvider: new StarterProvider_1.default(),
     }));
     subscriptions.push(createTreeView('themes', {
-        treeDataProvider: new _models_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.default(),
+        treeDataProvider: new ThemeProvider_1.default(),
     }));
     subscriptions.push(gatsbyCli);
 }
+exports.activate = activate;
 // this method is called when your extension is deactivated
 function deactivate() { }
+exports.deactivate = deactivate;
 
 
 /***/ }),
@@ -10793,23 +10786,14 @@ function deactivate() { }
 /*!*********************************!*\
   !*** ./src/models/GatsbyCli.ts ***!
   \*********************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ GatsbyCli
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/statusBarItem */ "./src/utils/statusBarItem.ts");
-/* harmony import */ var _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/Utilities */ "./src/utils/Utilities.ts");
-/* harmony import */ var _NpmData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -10818,17 +10802,18 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
+const statusBarItem_1 = __webpack_require__(/*! ../utils/statusBarItem */ "./src/utils/statusBarItem.ts");
+const Utilities_1 = __webpack_require__(/*! ../utils/Utilities */ "./src/utils/Utilities.ts");
+const NpmData_1 = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
 // Defines the functionality of the Gatsby CLI Commands
 class GatsbyCli {
     constructor() {
         // Defines the condition on which way to toggle statusBarItem
         this.serverStatus = false;
         // Initializes the StatusBarItem
-        this.initStatusBar = _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.init();
+        this.initStatusBar = statusBarItem_1.default.init();
         this.toggleStatusBar = this.toggleStatusBar.bind(this);
         this.developServer = this.developServer.bind(this);
         this.disposeServer = this.disposeServer.bind(this);
@@ -10838,7 +10823,7 @@ class GatsbyCli {
     installGatsby() {
         return __awaiter(this, void 0, void 0, function* () {
             // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
-            const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveTerminal();
+            const activeTerminal = Utilities_1.default.getActiveTerminal();
             // if windows user
             if (!process.env.USER) {
                 activeTerminal.sendText('npm install -g gatsby-cli');
@@ -10847,7 +10832,7 @@ class GatsbyCli {
                 // then it is linux or unnix based environment
                 activeTerminal.sendText('sudo npm install -g gatsby-cli');
                 // Mac and Linux requrie password to install
-                const inputPassword = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInputBox({
+                const inputPassword = yield vscode_1.window.showInputBox({
                     password: true,
                     placeHolder: 'Input administrator password',
                 });
@@ -10868,7 +10853,7 @@ class GatsbyCli {
     createSite(starterObj) {
         return __awaiter(this, void 0, void 0, function* () {
             // get GatsbyHub terminal or create a new terminal if it doesn't exist
-            const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveTerminal();
+            const activeTerminal = Utilities_1.default.getActiveTerminal();
             // define string for button in information message
             const openFolderMsg = 'Open Different Folder';
             const continueMsg = 'Continue';
@@ -10878,28 +10863,28 @@ class GatsbyCli {
              * If it is, don't let the user create another site in here
              *
              */
-            const gatsbyIsInitiated = yield _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.checkIfGatsbySiteInitiated();
+            const gatsbyIsInitiated = yield Utilities_1.default.checkIfGatsbySiteInitiated();
             if (gatsbyIsInitiated) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage("Can't create a site in a Gatsby Workspace. If you would like to start a new project, navigate to the parent directory and create a site there.", openFolderMsg, cancelMsg);
+                const input = yield vscode_1.window.showErrorMessage("Can't create a site in a Gatsby Workspace. If you would like to start a new project, navigate to the parent directory and create a site there.", openFolderMsg, cancelMsg);
                 if (input && input === openFolderMsg) {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                    vscode_1.commands.executeCommand('vscode.openFolder');
                 }
                 return;
             }
             if (!starterObj) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage('This creates the default starter. If you would like a different starter, refer to the "Starters" menu.', 'Use default', 'Choose a different starter');
+                const input = yield vscode_1.window.showInformationMessage('This creates the default starter. If you would like a different starter, refer to the "Starters" menu.', 'Use default', 'Choose a different starter');
                 if (input === 'Choose a different starter')
                     return;
             }
             // tell user that new site will be created in current directory
-            const choice = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showWarningMessage(`New Gatsby site will be created in current directory
+            const choice = yield vscode_1.window.showWarningMessage(`New Gatsby site will be created in current directory
         unless you open a different folder for your project`, openFolderMsg, continueMsg);
             if (choice && choice === openFolderMsg) {
-                vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                vscode_1.commands.executeCommand('vscode.openFolder');
             }
             // give user the option to create site in new folder instead
             // give user a place to write the name of their site
-            const siteName = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInputBox({
+            const siteName = yield vscode_1.window.showInputBox({
                 placeHolder: 'Enter Name of New Site',
             });
             // send command to the terminal
@@ -10917,71 +10902,71 @@ class GatsbyCli {
                 }
             }
             else {
-                vscode__WEBPACK_IMPORTED_MODULE_0__.window.showWarningMessage('Must enter a name for your new Gatsby project');
+                vscode_1.window.showWarningMessage('Must enter a name for your new Gatsby project');
             }
         });
     }
     /* ------ Starts development server and opens project in a new browser ------ */
     developServer() {
         return __awaiter(this, void 0, void 0, function* () {
-            const gatsbyIsInitiated = yield _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.checkIfGatsbySiteInitiated();
-            if (!vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.workspaceFolders) {
-                vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage('Open a folder or workspace... (File -> Open Folder)');
+            const gatsbyIsInitiated = yield Utilities_1.default.checkIfGatsbySiteInitiated();
+            if (!vscode_1.workspace.workspaceFolders) {
+                vscode_1.window.showInformationMessage('Open a folder or workspace... (File -> Open Folder)');
                 return null;
             }
-            if (!vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.workspaceFolders.length) {
-                vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage("You don't have any Gatsby folders in this workspace");
+            if (!vscode_1.workspace.workspaceFolders.length) {
+                vscode_1.window.showErrorMessage("You don't have any Gatsby folders in this workspace");
                 return null;
             }
             if (!gatsbyIsInitiated) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
+                const input = yield vscode_1.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
                 if (input && input === 'Change Workspace') {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                    vscode_1.commands.executeCommand('vscode.openFolder');
                 }
                 return null;
             }
-            const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveServerTerminal();
-            const port = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getPortConfig();
+            const activeTerminal = Utilities_1.default.getActiveServerTerminal();
+            const port = Utilities_1.default.getPortConfig();
             activeTerminal.sendText(`gatsby develop --port ${port}`);
             // change status bar to working message while server finishes developing
-            _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.working('Blast Off...');
+            statusBarItem_1.default.working('Blast Off...');
             // toggle statusBar after 3 seconds so it will dispose server if clicked again
             setTimeout(this.toggleStatusBar, 6000);
-            vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage(`Starting up port:${port}`);
+            vscode_1.window.showInformationMessage(`Starting up port:${port}`);
             activeTerminal.show(true);
             /** write options to set host, set port, to open site, and to use https
              * gatsby develop only works in the site directory
              * allow user to open folder for their site directory */
-            vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('setContext', 'serverIsRunning', true);
+            vscode_1.commands.executeCommand('setContext', 'serverIsRunning', true);
             return null;
         });
     }
     /* ---------- Disposes development server by disposing the terminal --------- */
     disposeServer() {
-        const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveServerTerminal();
-        const port = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getPortConfig();
+        const activeTerminal = Utilities_1.default.getActiveServerTerminal();
+        const port = Utilities_1.default.getPortConfig();
         activeTerminal.dispose();
         // change status bar to working message while server finishes disposing
-        _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.working('Shutting Down...');
+        statusBarItem_1.default.working('Shutting Down...');
         // toggle statusBar so it will developServer if clicked again
         setTimeout(this.toggleStatusBar, 3000);
-        vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage(`Shutting down port:${port}`);
-        vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('setContext', 'serverIsRunning', false);
+        vscode_1.window.showInformationMessage(`Shutting down port:${port}`);
+        vscode_1.commands.executeCommand('setContext', 'serverIsRunning', false);
     }
     /* --------------------- builds and packages Gatsby site -------------------- */
     build() {
         return __awaiter(this, void 0, void 0, function* () {
-            const gatsbyIsInitiated = yield _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.checkIfGatsbySiteInitiated();
+            const gatsbyIsInitiated = yield Utilities_1.default.checkIfGatsbySiteInitiated();
             if (!gatsbyIsInitiated) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
+                const input = yield vscode_1.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
                 if (input && input === 'Change Workspace') {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                    vscode_1.commands.executeCommand('vscode.openFolder');
                 }
                 return;
             }
             // finds path to file in text editor and drops the file name from the path
             // const rootPath = Utilities.getRootPath();
-            const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveTerminal();
+            const activeTerminal = Utilities_1.default.getActiveTerminal();
             activeTerminal.show(true);
             // // only cd into rootpath if it exists, otherwise just run command on current workspace
             // if (rootPath) {
@@ -10992,28 +10977,28 @@ class GatsbyCli {
     }
     /* ---- toggles statusBar between developing server and disposing server ---- */
     toggleStatusBar() {
-        const port = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getPortConfig();
+        const port = Utilities_1.default.getPortConfig();
         if (!this.serverStatus) {
-            _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.offline(port);
+            statusBarItem_1.default.offline(port);
         }
         else {
-            _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.online();
+            statusBarItem_1.default.online();
         }
         this.serverStatus = !this.serverStatus;
     }
     /* ----------------------- Dispose the status bar item ---------------------- */
     dispose() {
-        _utils_statusBarItem__WEBPACK_IMPORTED_MODULE_1__.default.dispose();
+        statusBarItem_1.default.dispose();
     }
     /* ---------- Logic handling the installation of Plugins and Themes --------- */
     installPlugin(plugin) {
         return __awaiter(this, void 0, void 0, function* () {
-            const activeTerminal = _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.getActiveTerminal();
-            const gatsbyIsInitiated = yield _utils_Utilities__WEBPACK_IMPORTED_MODULE_2__.default.checkIfGatsbySiteInitiated();
+            const activeTerminal = Utilities_1.default.getActiveTerminal();
+            const gatsbyIsInitiated = yield Utilities_1.default.checkIfGatsbySiteInitiated();
             if (!gatsbyIsInitiated) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
+                const input = yield vscode_1.window.showErrorMessage('Open up a new workspace containing only the site you are working on.', 'Change Workspace', 'Cancel');
                 if (input && input === 'Change Workspace') {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                    vscode_1.commands.executeCommand('vscode.openFolder');
                 }
                 return;
             }
@@ -11021,7 +11006,7 @@ class GatsbyCli {
             // const { name, links } = plugin.command.arguments[0];
             if (plugin) {
                 const { name, links } = plugin.command.arguments[0];
-                const installCmnd = (yield _NpmData__WEBPACK_IMPORTED_MODULE_3__.default.getNpmInstall(links.repository, links.homepage)) ||
+                const installCmnd = (yield NpmData_1.default.getNpmInstall(links.repository, links.homepage)) ||
                     `npm install ${name}`;
                 // if (rootPath) {
                 //   activeTerminal.sendText(`cd && cd ${rootPath}`);
@@ -11033,15 +11018,16 @@ class GatsbyCli {
                 activeTerminal.show(true);
                 // check for if "plugin" is a theme or actual plugin
                 if (name.startsWith('gatsby-theme')) {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage('Refer to this theme\'s documentation regarding implementation. Simply click on the theme in the "Themes" section.', 'OK');
+                    vscode_1.window.showInformationMessage('Refer to this theme\'s documentation regarding implementation. Simply click on the theme in the "Themes" section.', 'OK');
                 }
                 else {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
+                    vscode_1.window.showInformationMessage('Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.', 'OK');
                 }
             }
         });
     }
 }
+exports.default = GatsbyCli;
 
 
 /***/ }),
@@ -11050,22 +11036,14 @@ class GatsbyCli {
 /*!*******************************!*\
   !*** ./src/models/NpmData.ts ***!
   \*******************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ NpmData
-/* harmony export */ });
-/* harmony import */ var got__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! got */ "./node_modules/got/dist/source/index.js");
-/* harmony import */ var got__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(got__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_0__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11074,10 +11052,11 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
-
-
+const got_1 = __webpack_require__(/*! got */ "./node_modules/got/dist/source/index.js");
+const marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 class NpmData {
     constructor() {
         this.pluginKeywords = [
@@ -11125,7 +11104,7 @@ class NpmData {
                 if (pkg.links.homepage || pkg.readme)
                     return true;
                 if (pkg.links.repository) {
-                    return got__WEBPACK_IMPORTED_MODULE_1___default()(`${pkg.links.repository}/blob/master/README.md`)
+                    return got_1.default(`${pkg.links.repository}/blob/master/README.md`)
                         .then((response) => response.statusCode === 200)
                         .catch((err) => false);
                 }
@@ -11136,7 +11115,7 @@ class NpmData {
             let npmPackages = keywords.map((keyword) => __awaiter(this, void 0, void 0, function* () {
                 const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
                 // +keywords:-gatsby-plugin+not:deprecated
-                const response = yield got__WEBPACK_IMPORTED_MODULE_1___default()(url);
+                const response = yield got_1.default(url);
                 return JSON.parse(response.body);
             }));
             // merges the array of npm package objects together to a single array
@@ -11185,7 +11164,7 @@ class NpmData {
                     const raw = pluginRepo.replace('github', 'raw.githubusercontent');
                     goodUrl = `${raw}/master/README.md`;
                 }
-                const response = yield got__WEBPACK_IMPORTED_MODULE_1___default()(goodUrl);
+                const response = yield got_1.default(goodUrl);
                 return response.body;
             }
             catch (error) {
@@ -11197,7 +11176,7 @@ class NpmData {
         return __awaiter(this, void 0, void 0, function* () {
             const readMe = yield this.getReadMe(pluginRepo, pluginHomepage);
             /*   console.log(marked(readMe)); */
-            return marked__WEBPACK_IMPORTED_MODULE_0__(readMe);
+            return marked(readMe);
         });
     }
     static getNpmInstall(pluginRepo, pluginHomepage) {
@@ -11215,7 +11194,7 @@ class NpmData {
                     goodUrl = `${raw}/master/README.md`;
                 }
                 // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
-                const response = yield got__WEBPACK_IMPORTED_MODULE_1___default()(goodUrl);
+                const response = yield got_1.default(goodUrl);
                 const findNpm = response.body.slice(response.body.indexOf('npm install'));
                 const install = findNpm.slice(0, findNpm.indexOf('`'));
                 return install;
@@ -11226,6 +11205,7 @@ class NpmData {
         });
     }
 }
+exports.default = NpmData;
 
 
 /***/ }),
@@ -11234,27 +11214,24 @@ class NpmData {
 /*!******************************!*\
   !*** ./src/models/Plugin.ts ***!
   \******************************/
-/*! namespace exports */
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Plugin
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
 /* import * as fs from 'fs';
 import * as path from 'path'; */
-class Plugin extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
+class Plugin extends vscode_1.TreeItem {
     constructor(label, command, children) {
         super(label, children === undefined
-            ? vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.None
-            : vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.Collapsed);
+            ? vscode_1.TreeItemCollapsibleState.None
+            : vscode_1.TreeItemCollapsibleState.Collapsed);
         this.label = label;
         this.command = command;
         this.children = children;
@@ -11263,6 +11240,7 @@ class Plugin extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
         this.command = command;
     }
 }
+exports.default = Plugin;
 
 
 /***/ }),
@@ -11271,20 +11249,14 @@ class Plugin extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
 /*!**************************************!*\
   !*** ./src/models/PluginProvider.ts ***!
   \**************************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ PluginProvider
-/* harmony export */ });
-/* harmony import */ var _Plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plugin */ "./src/models/Plugin.ts");
-/* harmony import */ var _NpmData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11293,8 +11265,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Plugin_1 = __webpack_require__(/*! ./Plugin */ "./src/models/Plugin.ts");
+const NpmData_1 = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
 class PluginProvider {
     constructor() {
         this.data = this.createPlugins();
@@ -11302,8 +11275,8 @@ class PluginProvider {
     }
     createPlugins() {
         return __awaiter(this, void 0, void 0, function* () {
-            const npmData = new _NpmData__WEBPACK_IMPORTED_MODULE_1__.default();
-            return (yield Promise.all(yield npmData.getNpmPackages('plugin'))).map((obj) => new _Plugin__WEBPACK_IMPORTED_MODULE_0__.default(obj.name, {
+            const npmData = new NpmData_1.default();
+            return (yield Promise.all(yield npmData.getNpmPackages('plugin'))).map((obj) => new Plugin_1.default(obj.name, {
                 command: 'gatsbyhub.createWebView',
                 title: 'Show Plugin WebView',
                 arguments: [obj],
@@ -11320,6 +11293,7 @@ class PluginProvider {
         return element.children;
     }
 }
+exports.default = PluginProvider;
 
 
 /***/ }),
@@ -11328,33 +11302,31 @@ class PluginProvider {
 /*!*******************************!*\
   !*** ./src/models/Starter.ts ***!
   \*******************************/
-/*! namespace exports */
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Starter
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
 /* import * as fs from 'fs';
 import * as path from 'path'; */
-class Starter extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
+class Starter extends vscode_1.TreeItem {
     constructor(label, command, children) {
         super(label, children === undefined
-            ? vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.None
-            : vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.Collapsed);
+            ? vscode_1.TreeItemCollapsibleState.None
+            : vscode_1.TreeItemCollapsibleState.Collapsed);
         this.label = label;
         this.children = children;
         this.children = children;
         this.command = command;
     }
 }
+exports.default = Starter;
 
 
 /***/ }),
@@ -11363,20 +11335,14 @@ class Starter extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
 /*!***************************************!*\
   !*** ./src/models/StarterProvider.ts ***!
   \***************************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ StarterProvider
-/* harmony export */ });
-/* harmony import */ var _Starter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Starter */ "./src/models/Starter.ts");
-/* harmony import */ var _NpmData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11385,8 +11351,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Starter_1 = __webpack_require__(/*! ./Starter */ "./src/models/Starter.ts");
+const NpmData_1 = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
 class StarterProvider {
     constructor() {
         this.data = this.createPlugins();
@@ -11394,8 +11361,8 @@ class StarterProvider {
     }
     createPlugins() {
         return __awaiter(this, void 0, void 0, function* () {
-            const npmData = new _NpmData__WEBPACK_IMPORTED_MODULE_1__.default();
-            return (yield Promise.all(yield npmData.getNpmPackages('starter'))).map((obj) => new _Starter__WEBPACK_IMPORTED_MODULE_0__.default(obj.name, {
+            const npmData = new NpmData_1.default();
+            return (yield Promise.all(yield npmData.getNpmPackages('starter'))).map((obj) => new Starter_1.default(obj.name, {
                 command: 'gatsbyhub.createWebView',
                 title: 'Show Starter WebView',
                 arguments: [obj],
@@ -11412,6 +11379,7 @@ class StarterProvider {
         return element.children;
     }
 }
+exports.default = StarterProvider;
 
 
 /***/ }),
@@ -11420,33 +11388,31 @@ class StarterProvider {
 /*!*****************************!*\
   !*** ./src/models/Theme.ts ***!
   \*****************************/
-/*! namespace exports */
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Theme
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
 /* import * as fs from 'fs';
 import * as path from 'path'; */
-class Theme extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
+class Theme extends vscode_1.TreeItem {
     constructor(label, command, children) {
         super(label, children === undefined
-            ? vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.None
-            : vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItemCollapsibleState.Collapsed);
+            ? vscode_1.TreeItemCollapsibleState.None
+            : vscode_1.TreeItemCollapsibleState.Collapsed);
         this.label = label;
         this.children = children;
         this.children = children;
         this.command = command;
     }
 }
+exports.default = Theme;
 
 
 /***/ }),
@@ -11455,20 +11421,14 @@ class Theme extends vscode__WEBPACK_IMPORTED_MODULE_0__.TreeItem {
 /*!*************************************!*\
   !*** ./src/models/ThemeProvider.ts ***!
   \*************************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ ThemeProvider
-/* harmony export */ });
-/* harmony import */ var _Theme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Theme */ "./src/models/Theme.ts");
-/* harmony import */ var _NpmData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11477,8 +11437,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Theme_1 = __webpack_require__(/*! ./Theme */ "./src/models/Theme.ts");
+const NpmData_1 = __webpack_require__(/*! ./NpmData */ "./src/models/NpmData.ts");
 class ThemeProvider {
     constructor() {
         this.data = this.createPlugins();
@@ -11486,8 +11447,8 @@ class ThemeProvider {
     }
     createPlugins() {
         return __awaiter(this, void 0, void 0, function* () {
-            const npmData = new _NpmData__WEBPACK_IMPORTED_MODULE_1__.default();
-            return (yield Promise.all(yield npmData.getNpmPackages('theme'))).map((obj) => new _Theme__WEBPACK_IMPORTED_MODULE_0__.default(obj.name, {
+            const npmData = new NpmData_1.default();
+            return (yield Promise.all(yield npmData.getNpmPackages('theme'))).map((obj) => new Theme_1.default(obj.name, {
                 command: 'gatsbyhub.createWebView',
                 title: 'Show Theme WebView',
                 arguments: [obj],
@@ -11504,6 +11465,7 @@ class ThemeProvider {
         return element.children;
     }
 }
+exports.default = ThemeProvider;
 
 
 /***/ }),
@@ -11512,20 +11474,14 @@ class ThemeProvider {
 /*!********************************!*\
   !*** ./src/utils/Utilities.ts ***!
   \********************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Utilities
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11534,11 +11490,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 // Helper functions for gatsbycli.ts
-
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
 class Utilities {
     static getActiveTerminal() {
-        const { terminals, createTerminal } = vscode__WEBPACK_IMPORTED_MODULE_0__.window;
+        const { terminals, createTerminal } = vscode_1.window;
         const filteredTerminals = terminals.filter((obj) => obj.name === 'GatsbyHub');
         let terminal;
         // if there is no gatsby terminal running, create one
@@ -11552,7 +11509,7 @@ class Utilities {
         return terminal;
     }
     static getActiveServerTerminal() {
-        const { terminals, createTerminal } = vscode__WEBPACK_IMPORTED_MODULE_0__.window;
+        const { terminals, createTerminal } = vscode_1.window;
         const filteredTerminals = terminals.filter((obj) => obj.name === 'Gatsby Server');
         let terminal;
         if (filteredTerminals.length === 0) {
@@ -11565,15 +11522,15 @@ class Utilities {
     }
     static getWorkspaceUri() {
         return __awaiter(this, void 0, void 0, function* () {
-            const currWorkspace = vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.workspaceFolders;
+            const currWorkspace = vscode_1.workspace.workspaceFolders;
             if (currWorkspace === undefined) {
-                const input = yield vscode__WEBPACK_IMPORTED_MODULE_0__.window.showErrorMessage('A workspace must be open. Choose a folder to work in.', 'Open Folder', 'Cancel');
+                const input = yield vscode_1.window.showErrorMessage('A workspace must be open. Choose a folder to work in.', 'Open Folder', 'Cancel');
                 if (input === 'Open Folder') {
-                    vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.openFolder');
+                    vscode_1.commands.executeCommand('vscode.openFolder');
                 }
                 return currWorkspace;
             }
-            const uri = vscode__WEBPACK_IMPORTED_MODULE_0__.Uri.file(currWorkspace[0].uri.path);
+            const uri = vscode_1.Uri.file(currWorkspace[0].uri.path);
             return uri;
         });
     }
@@ -11581,7 +11538,7 @@ class Utilities {
         return __awaiter(this, void 0, void 0, function* () {
             const uri = yield this.getWorkspaceUri();
             if (uri) {
-                const data = yield vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.fs.readDirectory(uri);
+                const data = yield vscode_1.workspace.fs.readDirectory(uri);
                 return data.length < 1;
             }
             return true;
@@ -11591,7 +11548,7 @@ class Utilities {
         return __awaiter(this, void 0, void 0, function* () {
             const uri = yield this.getWorkspaceUri();
             if (uri) {
-                const data = yield vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.fs.readDirectory(uri);
+                const data = yield vscode_1.workspace.fs.readDirectory(uri);
                 // if workspace is empty, that means a gatsby site has not been initiated
                 if (data.length < 1)
                     return false;
@@ -11619,12 +11576,13 @@ class Utilities {
     }
     static openGraphiQL() {
         const port = Utilities.getPortConfig();
-        vscode__WEBPACK_IMPORTED_MODULE_0__.commands.executeCommand('vscode.open', vscode__WEBPACK_IMPORTED_MODULE_0__.Uri.parse(`http://localhost:${port}/___graphql`));
+        vscode_1.commands.executeCommand('vscode.open', vscode_1.Uri.parse(`http://localhost:${port}/___graphql`));
     }
     static getPortConfig() {
-        return vscode__WEBPACK_IMPORTED_MODULE_0__.workspace.getConfiguration('gatsbyhub').commands.develop.port;
+        return vscode_1.workspace.getConfiguration('gatsbyhub').commands.develop.port;
     }
 }
+exports.default = Utilities;
 
 
 /***/ }),
@@ -11633,21 +11591,14 @@ class Utilities {
 /*!*******************************!*\
   !*** ./src/utils/WebViews.ts ***!
   \*******************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ WebViews
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _models_NpmData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/NpmData */ "./src/models/NpmData.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11656,19 +11607,20 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
-
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
+const NpmData_1 = __webpack_require__(/*! ../models/NpmData */ "./src/models/NpmData.ts");
 class WebViews {
     static openWebView(npmPackage) {
         return __awaiter(this, void 0, void 0, function* () {
             const { links, name, version, description } = npmPackage;
-            const readMe = yield _models_NpmData__WEBPACK_IMPORTED_MODULE_1__.default.mdToHtml(links.repository, links.homepage);
+            const readMe = yield NpmData_1.default.mdToHtml(links.repository, links.homepage);
             // turn npm package name from snake-case to standard capitalized title
             const title = name
                 .replace(/-/g, ' ')
                 .replace(/^\w?|\s\w?/g, (match) => match.toUpperCase());
             // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
-            const panel = vscode__WEBPACK_IMPORTED_MODULE_0__.window.createWebviewPanel('plugin', `Gatsby Plugin: ${title}`, vscode__WEBPACK_IMPORTED_MODULE_0__.ViewColumn.One);
+            const panel = vscode_1.window.createWebviewPanel('plugin', `Gatsby Plugin: ${title}`, vscode_1.ViewColumn.One);
             // create a header for each npm package and display README underneath header
             // currently #install-btn does not work
             panel.webview.html = `
@@ -11717,6 +11669,7 @@ class WebViews {
         });
     }
 }
+exports.default = WebViews;
 
 
 /***/ }),
@@ -11725,25 +11678,22 @@ class WebViews {
 /*!************************************!*\
   !*** ./src/utils/statusBarItem.ts ***!
   \************************************/
-/*! namespace exports */
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ StatusBar
-/* harmony export */ });
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vscode */ "vscode");
-/* harmony import */ var vscode__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vscode__WEBPACK_IMPORTED_MODULE_0__);
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode_1 = __webpack_require__(/*! vscode */ "vscode");
 class StatusBar {
     // returns a StatusBarItem when called on by other StatusBar methods
     static get item() {
         if (!StatusBar.statusBarItem) {
-            StatusBar.statusBarItem = vscode__WEBPACK_IMPORTED_MODULE_0__.window.createStatusBarItem(vscode__WEBPACK_IMPORTED_MODULE_0__.StatusBarAlignment.Right, 100);
+            StatusBar.statusBarItem = vscode_1.window.createStatusBarItem(vscode_1.StatusBarAlignment.Right, 100);
         }
         // $(pulse) $(broadcast)$(cloud-upload)$(rss)$(radio-tower) $(circle-slash)
         StatusBar.statusBarItem.show();
@@ -11773,6 +11723,7 @@ class StatusBar {
         StatusBar.item.dispose();
     }
 }
+exports.default = StatusBar;
 
 
 /***/ }),
@@ -12010,8 +11961,7 @@ module.exports = require("util");;
   !*** external "vscode" ***!
   \*************************/
 /*! dynamic exports */
-/*! export __esModule [maybe provided (runtime-defined)] [no usage info] [provision prevents renaming (no use info)] */
-/*! other exports [maybe provided (runtime-defined)] [no usage info] */
+/*! exports [maybe provided (runtime-defined)] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
@@ -12060,44 +12010,9 @@ module.exports = require("zlib");;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/
