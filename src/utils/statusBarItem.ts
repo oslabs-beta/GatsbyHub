@@ -1,15 +1,14 @@
-import * as vscode from 'vscode';
-import { window, StatusBarItem } from 'vscode';
+import { window, StatusBarItem, StatusBarAlignment } from 'vscode';
 
 export default class StatusBar {
-  // defines the type to be a vscode.StatusBarItem
+  // defines the type to be a StatusBarItem
   private static statusBarItem: StatusBarItem;
 
   // returns a StatusBarItem when called on by other StatusBar methods
   private static get item() {
     if (!StatusBar.statusBarItem) {
       StatusBar.statusBarItem = window.createStatusBarItem(
-        vscode.StatusBarAlignment.Right,
+        StatusBarAlignment.Right,
         100,
       );
     }

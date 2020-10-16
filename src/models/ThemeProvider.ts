@@ -1,8 +1,8 @@
-import * as vscode from 'vscode';
+import { TreeDataProvider } from 'vscode';
 import Theme from './Theme';
 import NpmData from './NpmData';
 
-export default class ThemeProvider implements vscode.TreeDataProvider<Theme> {
+export default class ThemeProvider implements TreeDataProvider<Theme> {
   data: any;
 
   constructor() {
