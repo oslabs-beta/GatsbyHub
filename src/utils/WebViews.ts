@@ -1,19 +1,9 @@
 import { window, ViewColumn } from 'vscode';
 import PluginData from '../models/NpmData';
-
-interface NpmPkg {
-  name: string;
-  links: {
-    repository: string;
-    homepage: string;
-  };
-  readme: string;
-  version: string;
-  description: string;
-}
+import { PluginPkg } from '../utils/Interfaces';
 
 export default class WebViews {
-  static async openWebView(npmPackage: NpmPkg) {
+  static async openWebView(npmPackage: PluginPkg) {
     const { links, name, version, description } = npmPackage;
     const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
@@ -29,7 +19,6 @@ export default class WebViews {
       ViewColumn.One
     );
 
-    const newFunc = (e: any) => console.log(e);
     // create a header for each npm package and display README underneath header
     // currently #install-btn does not work
     panel.webview.html = `
@@ -61,7 +50,7 @@ export default class WebViews {
     <div class="plugin-header">
       <div id="title-btn">
         <h1 id="title">${title}</h1>
-        <a id="install-btn" href="command:gatsbyhub.installPlugin?%22default%22">Install</a>
+        <a id="install-btn">Install</a>
       </div>
       <p>Version: ${version}</p>
       <p>${description}</p>

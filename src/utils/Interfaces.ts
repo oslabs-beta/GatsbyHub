@@ -6,6 +6,8 @@ export interface PluginPkg {
       homepage: string;
     };
     readme: string;
+    version: string;
+    description: string;
   }
 
 // defines object shape of each element in merged array when first fetching npmPackages in NpmData
