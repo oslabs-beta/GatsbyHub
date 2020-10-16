@@ -13,6 +13,7 @@ export function activate(context: ExtensionContext) {
   const { registerCommand } = commands;
   const { subscriptions } = context;
   const gatsbyCli = new GatsbyCli();
+
   subscriptions.push(
     registerCommand('gatsbyhub.installGatsby', gatsbyCli.installGatsby)
   );
@@ -30,6 +31,13 @@ export function activate(context: ExtensionContext) {
     registerCommand('gatsbyhub.installPlugin', gatsbyCli.installPlugin)
   );
   subscriptions.push(
+    registerCommand('gatsbyhub.createWebView', WebViews.openWebView)
+  );
+  subscriptions.push(
+    registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
+  );
+
+  subscriptions.push(
     createTreeView('plugins', {
       treeDataProvider: new PluginProvider(),
     })
@@ -43,12 +51,6 @@ export function activate(context: ExtensionContext) {
     createTreeView('themes', {
       treeDataProvider: new ThemeProvider(),
     })
-  );
-  subscriptions.push(
-    registerCommand('gatsbyhub.createWebView', WebViews.openWebView)
-  );
-  subscriptions.push(
-    registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
   );
   subscriptions.push(gatsbyCli);
 }
