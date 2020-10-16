@@ -137,6 +137,21 @@
           "when": "view == themes"
         }
       ]
+    },
+    "configuration": {
+      "title": "GatsbyHub",
+      "properties": {
+        "gatsbyhub.port": {
+          "type": "number",
+          "default": 8000,
+          "description": "Choose what port to expose with the server."
+        },
+        "gatsbyhub.openBrowserWhenServerStarts": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable the browser to open automatically with running server."
+        }
+      }
     }
   },
   "scripts": {
