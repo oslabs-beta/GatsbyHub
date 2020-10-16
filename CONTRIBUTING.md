@@ -1,6 +1,6 @@
 # Contributing
 
-👍🎉 First off, thanks for taking the time to contribute! 🎉👍
+🚀 First off, thanks for taking the time to contribute! 🚀
 
 When contributing to this project, please first discuss the changes you wish to make via an [issue](https://github.com/oslabs-beta/GatsbyHub/issues) before making changes.
 
