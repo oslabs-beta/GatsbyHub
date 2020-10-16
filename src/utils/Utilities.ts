@@ -111,9 +111,15 @@ export default class Utilities {
   }
 
   static openGraphiQL() {
+    const port = Utilities.getPortConfig();
+
     commands.executeCommand(
       'vscode.open',
-      Uri.parse('http://localhost:8000/___graphql')
+      Uri.parse(`http://localhost:${port}/___graphql`)
     );
+  }
+
+  static getPortConfig(): number {
+    return workspace.getConfiguration('gatsbyhub').commands.develop.port;
   }
 }
