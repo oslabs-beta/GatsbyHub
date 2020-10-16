@@ -3,9 +3,10 @@
 ### 🚨 IMPORTANT 🚨
 
 - Please create an issue _before_ creating a Pull Request
-- Please ensure to use the `develop` branch as the base for all PRs
+- Please ensure to use the `staging` branch as the base for all PRs
 - Please use the following Git commit message style
   - Use the future tense ("Adds feature" not "Added feature")
+  - Prefix commit messages with either (add), (update), (delete), or (fix)
   - Use a "Fixes #xxx -" or "Closes #xxx -" prefix to auto-close the issue that your PR addresses
   - Limit the first line to 72 characters or less
   - Reference issues and pull requests liberally after the first line
