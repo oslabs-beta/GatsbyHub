@@ -14,7 +14,7 @@
     "onView:plugins",
     "onView:starters"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
@@ -218,7 +218,7 @@
     "test": "node ./out/test/runTest.js",
     "vscode:prepublish": "webpack --mode production",
 		"webpack": "webpack --mode development",
-		"webpack-dev": "webpack --mode development --watch",
+		"webpack-dev": "webpack --mode development --watch"
   },
   "devDependencies": {
     "ts-loader": "^8.0.5",
