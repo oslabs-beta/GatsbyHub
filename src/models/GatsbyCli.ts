@@ -164,13 +164,14 @@ export default class GatsbyCli {
     }
 
     const activeTerminal = Utilities.getActiveServerTerminal();
+    const port = Utilities.getPortConfig();
 
-    activeTerminal.sendText('gatsby develop --open');
+    activeTerminal.sendText(`gatsby develop --port ${port}`);
     // change status bar to working message while server finishes developing
-    StatusBar.working('Starting server');
+    StatusBar.working('Blast Off...');
     // toggle statusBar after 3 seconds so it will dispose server if clicked again
-    setTimeout(this.toggleStatusBar, 4000);
-    window.showInformationMessage('Gatsby Server Running on port:8000');
+    setTimeout(this.toggleStatusBar, 6000);
+    window.showInformationMessage(`Starting up port:${port}`);
     activeTerminal.show(true);
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
@@ -183,12 +184,13 @@ export default class GatsbyCli {
 
   public disposeServer(): void {
     const activeTerminal = Utilities.getActiveServerTerminal();
+    const port = Utilities.getPortConfig();
     activeTerminal.dispose();
     // change status bar to working message while server finishes disposing
-    StatusBar.working('Disposing server');
+    StatusBar.working('Shutting Down...');
     // toggle statusBar so it will developServer if clicked again
     setTimeout(this.toggleStatusBar, 3000);
-    window.showInformationMessage('Disposing Gatsby Server on port:8000');
+    window.showInformationMessage(`Shutting down port:${port}`);
     commands.executeCommand('setContext', 'serverIsRunning', false);
   }
 
@@ -226,8 +228,9 @@ export default class GatsbyCli {
   /* ---- toggles statusBar between developing server and disposing server ---- */
 
   private toggleStatusBar(): void {
+    const port = Utilities.getPortConfig();
     if (!this.serverStatus) {
-      StatusBar.offline(8000);
+      StatusBar.offline(port);
     } else {
       StatusBar.online();
     }
