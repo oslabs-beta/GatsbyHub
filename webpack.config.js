@@ -1,13 +1,13 @@
-//@ts-check
-
-'use strict';
+// @ts-check
 
 const path = require('path');
 
 // @type {import('webpack').Configuration}
 module.exports = {
 //   mode: process.env.NODE_ENV, // --mode is dictated in the scripts in the package.json
-  target: 'node', // vscode extensions run in a Node.js-context
+  target: 'node',
+  // vscode extensions run in a Node.js-context
+  // webpack will compile from extension.ts 
   entry: './src/extension.ts',
   output: {
     // the bundle is stored in the 'dist' folder (check package.json)
@@ -18,7 +18,8 @@ module.exports = {
   },
   devtool: 'source-map',
   externals: {
-    vscode: 'commonjs vscode' // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed
+    vscode: 'commonjs vscode'
+    // the vscode-module is created on-the-fly and must be excluded
   },
   resolve: {
     // support reading TypeScript and JavaScript files
@@ -33,6 +34,7 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader'
+            // loader compiles typescript
           }
         ]
       }
