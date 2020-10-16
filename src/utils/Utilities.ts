@@ -120,6 +120,6 @@ export default class Utilities {
   }
 
   static getPortConfig(): number {
-    return workspace.getConfiguration('gatsbyhub').port;
+    return workspace.getConfiguration('gatsbyhub').commands.develop.port;
   }
 }
