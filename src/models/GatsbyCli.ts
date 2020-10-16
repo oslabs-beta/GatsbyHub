@@ -1,5 +1,3 @@
-// import * as vscode from 'vscode';
-// eslint-disable-next-line object-curly-newline
 import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
@@ -21,11 +19,13 @@ export default class GatsbyCli {
     this.disposeServer = this.disposeServer.bind(this);
   }
 
-  // installs gatsby-cli for the user when install gatsby button is clicked
+  /* - installs gatsby-cli for the user when install gatsby button is clicked - */
+
   // static keyword: eliminates the need to instantiate to use this method in extenstion.ts
   async installGatsby() {
     // if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
     const activeTerminal = Utilities.getActiveTerminal();
+
     // if windows user
     if (!process.env.USER) {
       activeTerminal.sendText('npm install -g gatsby-cli');
@@ -43,9 +43,8 @@ export default class GatsbyCli {
     }
     activeTerminal.show(true);
   }
-  // !! check if admin password is required before showing password box
 
-  // Creates a password inputbox when install gatsby button is clicked
+  /* ------------------ Logic for creating a new Gatsby site ------------------ */
 
   /**  creates a new site when 'Create New Site' button is clicked
    * currently uses default gatsby starter, but uses gatsby new url. see https://www.gatsbyjs.com/docs/gatsby-cli/
@@ -55,23 +54,30 @@ export default class GatsbyCli {
   async createSite(starterObj?: any) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
+
     // define string for button in information message
-    const openFolderMsg: string = 'Open Different Folder';
-    const continueMsg: string = 'Continue';
+    const openFolderMsg = 'Open Different Folder';
+    const continueMsg = 'Continue';
+    const cancelMsg = 'Cancel';
 
-    // Only run this command when the workspace is empty
-    // returns true if current workspace is empty
-    // const isEmpty = await Utilities.checkIfWorkspaceEmpty();
+    /*
+     * Check if the current workspace is a Gatsby project
+     * If it is, don't let the user create another site in here
+     *
+     */
+    const gatsbyIsInitiated:
+      | boolean
+      | null = await Utilities.checkIfGatsbySiteInitiated();
 
-    // if (!isEmpty) {
-    //   window.showWarningMessage('Must create site in an empty workspace.');
-    //   return;
-    // }
-
-    if (window.activeTextEditor) {
-      window.showErrorMessage(
-        'Close all active editors before creating a site.'
+    if (gatsbyIsInitiated) {
+      const input = await window.showErrorMessage(
+        "Can't create a site in a Gatsby Workspace. If you would like to start a new project, navigate to the parent directory and create a site there.",
+        openFolderMsg,
+        cancelMsg
       );
+      if (input && input === openFolderMsg) {
+        commands.executeCommand('vscode.openFolder');
+      }
       return;
     }
 
@@ -86,14 +92,14 @@ export default class GatsbyCli {
     }
 
     // tell user that new site will be created in current directory
-    const choice = await window.showInformationMessage(
+    const choice = await window.showWarningMessage(
       `New Gatsby site will be created in current directory
         unless you open a different folder for your project`,
       openFolderMsg,
       continueMsg
     );
 
-    if (choice && choice !== continueMsg) {
+    if (choice && choice === openFolderMsg) {
       commands.executeCommand('vscode.openFolder');
     }
 
@@ -119,18 +125,19 @@ export default class GatsbyCli {
       }
     } else {
       window.showWarningMessage(
-        'Must enter a name for your new Gatsby directory'
+        'Must enter a name for your new Gatsby project'
       );
     }
   }
 
-  // Starts development server and opens project in a new browser
+  /* ------ Starts development server and opens project in a new browser ------ */
+
   public async developServer(): Promise<null> {
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = Utilities.getRootPath();
-    // const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated(
-    //   rootPath
-    // );
+    const rootPath = await Utilities.getRootPath();
+    const gatsbyIsInitiated:
+      | boolean
+      | null = await Utilities.checkIfGatsbySiteInitiated();
 
     if (!workspace.workspaceFolders) {
       window.showInformationMessage(
@@ -146,12 +153,17 @@ export default class GatsbyCli {
       return null;
     }
 
-    // if (!gatsbyIsInitiated) {
-    //   window.showErrorMessage(
-    //     "You don't have any Gatsby folders in this workspace"
-    //   );
-    //   return null;
-    // }
+    if (!gatsbyIsInitiated) {
+      const input = await window.showErrorMessage(
+        'Open up a new workspace containing only the site you are working on.',
+        'Change Workspace',
+        'Cancel'
+      );
+      if (input && input === 'Change Workspace') {
+        commands.executeCommand('vscode.openFolder');
+      }
+      return null;
+    }
 
     const activeTerminal = Utilities.getActiveServerTerminal();
 
@@ -173,7 +185,8 @@ export default class GatsbyCli {
     return null;
   }
 
-  // Disposes development server by disposing the terminal
+  /* ---------- Disposes development server by disposing the terminal --------- */
+
   public disposeServer(): void {
     const activeTerminal = Utilities.getActiveServerTerminal();
     activeTerminal.dispose();
@@ -185,8 +198,24 @@ export default class GatsbyCli {
     commands.executeCommand('setContext', 'serverIsRunning', false);
   }
 
-  // builds and packages Gatsby site
+  /* --------------------- builds and packages Gatsby site -------------------- */
+
   async build(): Promise<void> {
+    const gatsbyIsInitiated:
+      | boolean
+      | null = await Utilities.checkIfGatsbySiteInitiated();
+
+    if (!gatsbyIsInitiated) {
+      const input = await window.showErrorMessage(
+        'Open up a new workspace containing only the site you are working on.',
+        'Change Workspace',
+        'Cancel'
+      );
+      if (input && input === 'Change Workspace') {
+        commands.executeCommand('vscode.openFolder');
+      }
+      return;
+    }
     // finds path to file in text editor and drops the file name from the path
     const rootPath = Utilities.getRootPath();
 
@@ -200,7 +229,8 @@ export default class GatsbyCli {
     activeTerminal.sendText('gatsby build');
   }
 
-  // toggles statusBar between developing server and disposing server
+  /* ---- toggles statusBar between developing server and disposing server ---- */
+
   private toggleStatusBar(): void {
     if (!this.serverStatus) {
       StatusBar.offline(8000);
@@ -210,13 +240,32 @@ export default class GatsbyCli {
     this.serverStatus = !this.serverStatus;
   }
 
+  /* ----------------------- Dispose the status bar item ---------------------- */
+
   public dispose(): void {
     StatusBar.dispose();
   }
 
+  /* ---------- Logic handling the installation of Plugins and Themes --------- */
+
   async installPlugin(plugin?: any): Promise<void> {
     const activeTerminal = Utilities.getActiveTerminal();
-    const rootPath = Utilities.getRootPath();
+    const gatsbyIsInitiated:
+      | boolean
+      | null = await Utilities.checkIfGatsbySiteInitiated();
+
+    if (!gatsbyIsInitiated) {
+      const input = await window.showErrorMessage(
+        'Open up a new workspace containing only the site you are working on.',
+        'Change Workspace',
+        'Cancel'
+      );
+      if (input && input === 'Change Workspace') {
+        commands.executeCommand('vscode.openFolder');
+      }
+      return;
+    }
+    const rootPath = await Utilities.getRootPath();
     const { name, links } = plugin.command.arguments[0];
     if (plugin) {
       const installCmnd =
