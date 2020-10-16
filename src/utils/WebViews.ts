@@ -29,6 +29,7 @@ export default class WebViews {
       ViewColumn.One
     );
 
+    const newFunc = (e: any) => console.log(e);
     // create a header for each npm package and display README underneath header
     // currently #install-btn does not work
     panel.webview.html = `
@@ -60,7 +61,7 @@ export default class WebViews {
     <div class="plugin-header">
       <div id="title-btn">
         <h1 id="title">${title}</h1>
-        <button id="install-btn">Install</button>
+        <a id="install-btn" href="command:gatsbyhub.installPlugin?%22default%22">Install</a>
       </div>
       <p>Version: ${version}</p>
       <p>${description}</p>

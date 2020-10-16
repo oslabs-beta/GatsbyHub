@@ -76,7 +76,7 @@ export default class Utilities {
     return initiated;
   }
 
-  static getRootPath(): string {
+  static getRootPath(): string | undefined {
     if (window.activeTextEditor) {
       return (
         // gets path to file in active text editor
@@ -94,7 +94,7 @@ export default class Utilities {
     const currWorkspace: readonly WorkspaceFolder[] | undefined =
       workspace.workspaceFolders;
 
-    console.log('currSpace --> ', currWorkspace[0].name);
+    // console.log('currSpace --> ', currWorkspace[0].name);
     if (currWorkspace === undefined) return currWorkspace;
 
     const uri = Uri.file(currWorkspace[0].uri.path);
