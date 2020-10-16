@@ -20,7 +20,7 @@ Interact with Gatsby without ever having to use the command line interface. Gats
 
 <p align="center">
   <br />
-  <img src="src/images/gh-readme-demo.gif" alt="GatsbyHub Preview" width="900rem" />
+  <a href="https://imgur.com/lUBhIOb"><img src="https://i.imgur.com/lUBhIOb.gif" title="source: imgur.com" width="900rem" /></a>
   <br />
 </p>
 
