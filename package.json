@@ -129,9 +129,14 @@
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "test": "node ./out/test/runTest.js"
+    "test": "jest"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.5.3",
+    "jest-cli": "^26.5.3",
+    "ts-jest": "^26.4.1"
+  },
   "dependencies": {
     "got": "^11.7.0",
     "marked": "^1.2.0",
