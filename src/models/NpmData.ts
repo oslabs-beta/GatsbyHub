@@ -59,8 +59,8 @@ export default class NpmData {
       if (pkg.links.homepage || pkg.readme) return true;
       if (pkg.links.repository) {
         return got(`${pkg.links.repository}/blob/master/README.md`)
-          .then((response) => response.statusCode === 200)
-          .catch((err) => false);
+          .then((response: any) => response.statusCode === 200)
+          .catch((err: any) => false);
       }
       return false;
     };
