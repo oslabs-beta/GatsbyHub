@@ -2,6 +2,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
+import { NpmTreeItem } from '../utils/Interfaces';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -51,7 +52,7 @@ export default class GatsbyCli {
    * NOTE: new site will be created wherever the root directory is currently located
    * the user terminal should be at the directory user wishes to download the files.
    */
-  async createSite(starterObj?: any) {
+  async createSite(starterObj?: NpmTreeItem) {
     // get GatsbyHub terminal or create a new terminal if it doesn't exist
     const activeTerminal = Utilities.getActiveTerminal();
 
@@ -164,13 +165,14 @@ export default class GatsbyCli {
     }
 
     const activeTerminal = Utilities.getActiveServerTerminal();
+    const port = Utilities.getPortConfig();
 
-    activeTerminal.sendText('gatsby develop --open');
+    activeTerminal.sendText(`gatsby develop --port ${port}`);
     // change status bar to working message while server finishes developing
-    StatusBar.working('Starting server');
+    StatusBar.working('Blast Off...');
     // toggle statusBar after 3 seconds so it will dispose server if clicked again
-    setTimeout(this.toggleStatusBar, 4000);
-    window.showInformationMessage('Gatsby Server Running on port:8000');
+    setTimeout(this.toggleStatusBar, 6000);
+    window.showInformationMessage(`Starting up port:${port}`);
     activeTerminal.show(true);
     /** write options to set host, set port, to open site, and to use https
      * gatsby develop only works in the site directory
@@ -183,12 +185,13 @@ export default class GatsbyCli {
 
   public disposeServer(): void {
     const activeTerminal = Utilities.getActiveServerTerminal();
+    const port = Utilities.getPortConfig();
     activeTerminal.dispose();
     // change status bar to working message while server finishes disposing
-    StatusBar.working('Disposing server');
+    StatusBar.working('Shutting Down...');
     // toggle statusBar so it will developServer if clicked again
     setTimeout(this.toggleStatusBar, 3000);
-    window.showInformationMessage('Disposing Gatsby Server on port:8000');
+    window.showInformationMessage(`Shutting down port:${port}`);
     commands.executeCommand('setContext', 'serverIsRunning', false);
   }
 
@@ -226,8 +229,9 @@ export default class GatsbyCli {
   /* ---- toggles statusBar between developing server and disposing server ---- */
 
   private toggleStatusBar(): void {
+    const port = Utilities.getPortConfig();
     if (!this.serverStatus) {
-      StatusBar.offline(8000);
+      StatusBar.offline(port);
     } else {
       StatusBar.online();
     }
@@ -242,7 +246,7 @@ export default class GatsbyCli {
 
   /* ---------- Logic handling the installation of Plugins and Themes --------- */
 
-  async installPlugin(plugin?: any): Promise<void> {
+  async installPlugin(plugin?: NpmTreeItem): Promise<void> {
     const activeTerminal = Utilities.getActiveTerminal();
     const gatsbyIsInitiated:
       | boolean
@@ -260,8 +264,9 @@ export default class GatsbyCli {
       return;
     }
     // const rootPath = await Utilities.getRootPath();
-    const { name, links } = plugin.command.arguments[0];
+    // const { name, links } = plugin.command.arguments[0];
     if (plugin) {
+      const { name, links } = plugin.command.arguments[0];
       const installCmnd =
         (await PluginData.getNpmInstall(links.repository, links.homepage)) ||
         `npm install ${name}`;

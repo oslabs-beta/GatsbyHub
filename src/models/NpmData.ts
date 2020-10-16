@@ -2,21 +2,7 @@
 /* eslint-disable no-param-reassign */
 import got from 'got';
 import * as marked from 'marked';
-
-// defines object shape of each element in merged array
-interface NpmPkg {
-  package: { name: string };
-}
-
-// defines object shape of each plugin package in array
-interface PluginPkg {
-  name: string;
-  links: {
-    repository: string;
-    homepage: string;
-  };
-  readme: string;
-}
+import { PluginPkg, NpmPkg } from '../utils/Interfaces';
 
 export default class NpmData {
   pluginKeywords: string[];
