@@ -6,7 +6,7 @@ const path = require('path');
 
 // @type {import('webpack').Configuration}
 module.exports = {
-  // mode: process.env.NODE_ENV --mode is dictated in the scripts in the package.json
+  mode: process.env.NODE_ENV, // --mode is dictated in the scripts in the package.json
   target: 'node', // vscode extensions run in a Node.js-context
   entry: './src/extension.ts',
   output: {
@@ -22,7 +22,8 @@ module.exports = {
   },
   resolve: {
     // support reading TypeScript and JavaScript files
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    modules: ['node_modules']
   },
   module: {
     rules: [
