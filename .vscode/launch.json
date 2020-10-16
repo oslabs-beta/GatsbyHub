@@ -6,7 +6,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch GatsbyHub",
+			"name": "Running GatsbyHub",
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
@@ -27,6 +27,18 @@
 			],
 			"outFiles": [
 				"${workspaceFolder}/out/test/**/*.js"
+			],
+			"preLaunchTask": "${defaultBuildTask}"
+		},
+		{
+			"name": "Launch GatsbyHub",
+			"type": "extensionHost",
+			"request": "launch",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"outFiles": [
+				"${workspaceFolder}/dist/extension.js"
 			],
 			"preLaunchTask": "${defaultBuildTask}"
 		}

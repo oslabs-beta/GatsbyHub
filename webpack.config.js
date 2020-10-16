@@ -7,8 +7,8 @@ const path = require('path');
 // @type {import('webpack').Configuration}
 module.exports = {
   // mode: process.env.NODE_ENV --mode is dictated in the scripts in the package.json
-  target: 'node', // vscode extensions run in a Node.js-context 
-  entry: './src/extension.ts', 
+  target: 'node', // vscode extensions run in a Node.js-context
+  entry: './src/extension.ts',
   output: {
     // the bundle is stored in the 'dist' folder (check package.json)
     path: path.resolve(__dirname, 'dist'),
@@ -33,9 +33,9 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-                compilerOptions: {
-                    "module": "es6" // override `tsconfig.json` so that TypeScript emits native JavaScript modules.
-                }
+              compilerOptions: {
+                module: 'es6' // override `tsconfig.json` so that TypeScript emits native JavaScript modules.
+              }
             }
           }
         ]
