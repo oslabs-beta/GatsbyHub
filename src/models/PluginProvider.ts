@@ -1,6 +1,7 @@
 import { TreeDataProvider } from 'vscode';
 import Plugin from './Plugin';
 import NpmData from './NpmData';
+import { PluginPkg } from '../utils/Interfaces';
 
 export default class PluginProvider implements TreeDataProvider<Plugin> {
   data: any;
@@ -12,8 +13,8 @@ export default class PluginProvider implements TreeDataProvider<Plugin> {
 
   async createPlugins() {
     const npmData = new NpmData();
-    return (await npmData.getNpmPackages('plugin')).map(
-      (obj: any) =>
+    return (await Promise.all(await npmData.getNpmPackages('plugin'))).map(
+      (obj: PluginPkg) =>
         new Plugin(obj.name, {
           command: 'gatsbyhub.createWebView',
           title: 'Show Plugin WebView',
