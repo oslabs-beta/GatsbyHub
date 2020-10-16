@@ -133,8 +133,6 @@ export default class GatsbyCli {
   /* ------ Starts development server and opens project in a new browser ------ */
 
   public async developServer(): Promise<null> {
-    // finds path to file in text editor and drops the file name from the path
-    const rootPath = await Utilities.getRootPath();
     const gatsbyIsInitiated:
       | boolean
       | null = await Utilities.checkIfGatsbySiteInitiated();
@@ -167,10 +165,6 @@ export default class GatsbyCli {
 
     const activeTerminal = Utilities.getActiveServerTerminal();
 
-    // only cd into rootpath if it exists, otherwise just run command on current workspace
-    if (rootPath) {
-      activeTerminal.sendText(`cd && cd ${rootPath}`);
-    }
     activeTerminal.sendText('gatsby develop --open');
     // change status bar to working message while server finishes developing
     StatusBar.working('Starting server');
@@ -217,15 +211,15 @@ export default class GatsbyCli {
       return;
     }
     // finds path to file in text editor and drops the file name from the path
-    const rootPath = Utilities.getRootPath();
+    // const rootPath = Utilities.getRootPath();
 
     const activeTerminal = Utilities.getActiveTerminal();
     activeTerminal.show(true);
 
-    // only cd into rootpath if it exists, otherwise just run command on current workspace
-    if (rootPath) {
-      activeTerminal.sendText(`cd && cd ${rootPath}`);
-    }
+    // // only cd into rootpath if it exists, otherwise just run command on current workspace
+    // if (rootPath) {
+    //   activeTerminal.sendText(`cd && cd ${rootPath}`);
+    // }
     activeTerminal.sendText('gatsby build');
   }
 
@@ -265,21 +259,21 @@ export default class GatsbyCli {
       }
       return;
     }
-    const rootPath = await Utilities.getRootPath();
+    // const rootPath = await Utilities.getRootPath();
     const { name, links } = plugin.command.arguments[0];
     if (plugin) {
       const installCmnd =
         (await PluginData.getNpmInstall(links.repository, links.homepage)) ||
         `npm install ${name}`;
 
-      if (rootPath) {
-        activeTerminal.sendText(`cd && cd ${rootPath}`);
-        activeTerminal.sendText(installCmnd);
-        activeTerminal.show(true);
-      } else {
-        activeTerminal.sendText(installCmnd);
-        activeTerminal.show(true);
-      }
+      // if (rootPath) {
+      //   activeTerminal.sendText(`cd && cd ${rootPath}`);
+      //   activeTerminal.sendText(installCmnd);
+      //   activeTerminal.show(true);
+      // } else {
+      // }
+      activeTerminal.sendText(installCmnd);
+      activeTerminal.show(true);
       // check for if "plugin" is a theme or actual plugin
       if (name.startsWith('gatsby-theme')) {
         window.showInformationMessage(
