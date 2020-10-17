@@ -3,4 +3,4 @@ node_modules
 .vscode-test/
 *.vsix
 package-lock.json
-dist/*
+dist
