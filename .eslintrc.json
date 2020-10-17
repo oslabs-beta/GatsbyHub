@@ -1,28 +1,30 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": ["airbnb-base"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "@typescript-eslint/naming-convention": "warn",
-    "@typescript-eslint/semi": "warn",
-    "curly": "warn",
-    "eqeqeq": "warn",
-    "no-throw-literal": "warn",
-    "semi": "off",
-    "import/no-unresolved": "off",
-    "comma-dangle": "off",
-    "class-methods-use-this": "off",
-    "import/extensions": "off",
-    "object-curly-newline": "off",
-    "operator-linebreak": "off",
-    "implicit-arrow-linebreak": "off"
-  }
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"extends": [
+		"airbnb-base",
+		"prettier",
+		"prettier/@typescript-eslint",
+		"prettier/react"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": ["@typescript-eslint"],
+	"rules": {
+		"@typescript-eslint/naming-convention": "warn",
+		"@typescript-eslint/semi": "warn",
+		"curly": "error",
+		"eqeqeq": "warn",
+		"no-throw-literal": "warn",
+		"import/no-unresolved": "off",
+		"no-param-reassign": "off",
+		"class-methods-use-this": "off",
+		"import/extensions": "off"
+	}
 }

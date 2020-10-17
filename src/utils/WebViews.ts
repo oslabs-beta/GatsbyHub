@@ -3,25 +3,25 @@ import PluginData from '../models/NpmData';
 import { PluginPkg } from '../utils/Interfaces';
 
 export default class WebViews {
-  static async openWebView(npmPackage: PluginPkg) {
-    const { links, name, version, description } = npmPackage;
-    const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
+	static async openWebView(npmPackage: PluginPkg) {
+		const { links, name, version, description } = npmPackage;
+		const readMe = await PluginData.mdToHtml(links.repository, links.homepage);
 
-    // turn npm package name from snake-case to standard capitalized title
-    const title = name
-      .replace(/-/g, ' ')
-      .replace(/^\w?|\s\w?/g, (match: string) => match.toUpperCase());
+		// turn npm package name from snake-case to standard capitalized title
+		const title = name
+			.replace(/-/g, ' ')
+			.replace(/^\w?|\s\w?/g, (match: string) => match.toUpperCase());
 
-    // createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
-    const panel = window.createWebviewPanel(
-      'plugin',
-      `Gatsby Plugin: ${title}`,
-      ViewColumn.One
-    );
+		// createWebviewPanel takes in the type of the webview panel & Title of the panel & showOptions
+		const panel = window.createWebviewPanel(
+			'plugin',
+			`Gatsby Plugin: ${title}`,
+			ViewColumn.One
+		);
 
-    // create a header for each npm package and display README underneath header
-    // currently #install-btn does not work
-    panel.webview.html = `
+		// create a header for each npm package and display README underneath header
+		// currently #install-btn does not work
+		panel.webview.html = `
     <style>
       .plugin-header {
         position: fixed;
@@ -59,23 +59,23 @@ export default class WebViews {
     ${readMe}
     `;
 
-    // close the webview when not looking at it
-    panel.onDidChangeViewState((e) => {
-      if (!e.webviewPanel.active) {
-        panel.dispose();
-      }
-    });
-  }
-  // potentially add in install functionality in webview
-  // static installPlugin() {
-  //   document.getElementById('install-btn').innerHTML = 'Installing...';
-  //   setTimeout(() => {
-  //     document.getElementById('install-btn').innerHTML = 'Installed';
-  //   }, 3000);
-  //   // const cmdString = await PluginData.getNpmInstall(
-  //   //   links.repository,
-  //   //   links.homepage,
-  //   // );
-  //   // document.getElementById('install-btn').innerHTML = cmdString;
-  // }
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
+	// potentially add in install functionality in webview
+	// static installPlugin() {
+	//   document.getElementById('install-btn').innerHTML = 'Installing...';
+	//   setTimeout(() => {
+	//     document.getElementById('install-btn').innerHTML = 'Installed';
+	//   }, 3000);
+	//   // const cmdString = await PluginData.getNpmInstall(
+	//   //   links.repository,
+	//   //   links.homepage,
+	//   // );
+	//   // document.getElementById('install-btn').innerHTML = cmdString;
+	// }
 }
