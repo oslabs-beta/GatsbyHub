@@ -5,11 +5,25 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
-<!-- # GatsbyHub -->
+# About
 
-The one stop shop for everything Gatsby has to offer
+GatsbyHub is an [open-source](https://github.com/oslabs-beta/GatsbyHub) extension for [Visual Studio Code](https://code.visualstudio.com/) that offers an interactive GUI for [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli).
 
-## Gatsby CLI GUI
+GatsbyHub gives you the ability to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, and themes without ever having to leave VS Code. Create a blazing fast, modern app with a single click. Start a hot-reloading development environment by simply clicking status bar icon.
+
+<p align="center">
+  <br />
+  <a href="https://imgur.com/lUBhIOb"><img src="https://i.imgur.com/lUBhIOb.gif" title="source: imgur.com" width="900rem" /></a>
+  <br />
+</p>
+
+# Installation
+
+⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues)
+
+GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/gatsbyhub)
+
+# Gatsby CLI GUI
 
 Interact with Gatsby without ever having to use the command line interface. GatsbyHub provides buttons and options for all the most commonly used commands.
 
@@ -18,16 +32,10 @@ Interact with Gatsby without ever having to use the command line interface. Gats
 - Develop Server - Start and stop a development server by either clicking the button or clicking the status bar item
 - Build Site - Build and package your site so it's ready to deploy on Gatsby's cloud
 
-<p align="center">
-  <br />
-  <a href="https://imgur.com/lUBhIOb"><img src="https://i.imgur.com/lUBhIOb.gif" title="source: imgur.com" width="900rem" /></a>
-  <br />
-</p>
-
-## Gatsby Plugins
+# Gatsby Plugins
 
 Find and download Gatsby plugins without ever leaving VSCode. Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project.
 
-## Gatsby Starters
+# Gatsby Starters
 
 Use one of Gatsby's many Starter sites as a template for your site. Browse the starters and create a new Gatsby site with a single click.
