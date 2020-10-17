@@ -26,5 +26,16 @@
 		"no-param-reassign": "off",
 		"class-methods-use-this": "off",
 		"import/extensions": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": ["*.json"],
+			"rules": {
+				"semi": "off",
+				"no-unused-expressions": "off",
+				"@typescript-eslint/semi": "off",
+				"@typescript-eslint/naming-convention": "off"
+			}
+		}
+	]
 }
