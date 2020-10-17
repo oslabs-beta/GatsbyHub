@@ -1,9 +1,9 @@
 import { workspace } from 'vscode';
 
-export const getBuildPrefixConfig = (): number =>
+export const getBuildPrefixConfig = (): boolean =>
 	workspace.getConfiguration('gatsbyhub').commands.build.prefixPaths;
 
-const getBuildUglifyConfig = (): number | string =>
+const getBuildUglifyConfig = (): boolean =>
 	workspace.getConfiguration('gatsbyhub').commands.build.noUglify;
 
 const getBuildTracingConfig = (): boolean =>
