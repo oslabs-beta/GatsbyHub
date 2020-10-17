@@ -151,7 +151,7 @@
 					"default": false,
 					"description": "Enable to open the browser automatically with running server."
 				},
-				"gatsbyhub.commands.develop.useHTTPS": {
+				"gatsbyhub.commands.develop.useHttps": {
 					"type": "boolean",
 					"default": false,
 					"description": "Enable to run server on HTTPS."

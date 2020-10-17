@@ -9,14 +9,14 @@ const getDevelopHostConfig = (): number | string =>
 const getDevelopOpenConfig = (): boolean =>
 	workspace.getConfiguration('gatsbyhub').commands.develop.openBrowser;
 
-const getDevelopHTTPSConfig = (): boolean =>
-	workspace.getConfiguration('gatsbyhub').commands.develop.useHTTPS;
+const getDevelopHttpsConfig = (): boolean =>
+	workspace.getConfiguration('gatsbyhub').commands.develop.useHttps;
 
 export const getDevelopCmnd = () => {
 	const port = getDevelopPortConfig();
 	const host = getDevelopHostConfig();
 	const openEnabled = getDevelopOpenConfig();
-	const httpsEnabled = getDevelopHTTPSConfig();
+	const httpsEnabled = getDevelopHttpsConfig();
 	const open = '-o';
 	const https = '-S';
 	let command = 'gatsby develop';
