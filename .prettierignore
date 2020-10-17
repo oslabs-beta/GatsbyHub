@@ -4,3 +4,7 @@ node_modules
 *.vsix
 package-lock.json
 dist
+src/logo
+src/images
+.gitignore
+.vscodeignore
