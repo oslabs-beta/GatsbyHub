@@ -127,7 +127,6 @@ export default class NpmData {
     pluginHomepage: string
   ): Promise<string> {
     try {
-      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
       let goodUrl: string;
       if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
         const noTree = pluginHomepage.replace('/tree', '');
@@ -151,7 +150,6 @@ export default class NpmData {
     pluginHomepage: string
   ): Promise<string> {
     const readMe = await this.getReadMe(pluginRepo, pluginHomepage);
-    /*   console.log(marked(readMe)); */
     return marked(readMe);
   }
 
@@ -160,7 +158,6 @@ export default class NpmData {
     pluginHomepage: string
   ) {
     try {
-      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
       let goodUrl: string;
       if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
         const noTree = pluginHomepage.replace('/tree', '');
@@ -170,6 +167,7 @@ export default class NpmData {
         const raw = pluginRepo.replace('github', 'raw.githubusercontent');
         goodUrl = `${raw}/master/README.md`;
       }
+      // example readme:
       // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
 
       const response = await got(goodUrl);
