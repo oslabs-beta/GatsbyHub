@@ -1,6 +1,6 @@
 import { workspace } from 'vscode';
 
-export const getBuildPrefixConfig = (): boolean =>
+const getBuildPrefixConfig = (): boolean =>
 	workspace.getConfiguration('gatsbyhub').commands.build.prefixPaths;
 
 const getBuildUglifyConfig = (): boolean =>
@@ -9,13 +9,28 @@ const getBuildUglifyConfig = (): boolean =>
 const getBuildTracingConfig = (): boolean =>
 	workspace.getConfiguration('gatsbyhub').commands.build.enableTracing;
 
-export const getBuildCmnd = () => {
+const getBuildProfileConfig = (): boolean =>
+	workspace.getConfiguration('gatsbyhub').commands.build.profile;
+
+const getBuildGraphqlConfig = (): boolean =>
+	workspace.getConfiguration('gatsbyhub').commands.build.graphqlTracing;
+
+const getBuildColorsConfig = (): boolean =>
+	workspace.getConfiguration('gatsbyhub').commands.build.noColors;
+
+const getBuildCmnd = () => {
 	const pathPrefixEnabled = getBuildPrefixConfig();
 	const noUglifyEnabled = getBuildUglifyConfig();
 	const tracingEnabled = getBuildTracingConfig();
+	const profileEnabled = getBuildProfileConfig();
+	const graphqlEnabled = getBuildGraphqlConfig();
+	const noColorsEnabled = getBuildColorsConfig();
 	const pathPrefix = '--prefix-paths';
 	const noUglify = '--no-uglify';
 	const tracing = '--open-tracing-config-file';
+	const profile = '--profile';
+	const graphTracing = '--graphql-tracing';
+	const noColors = '--no-colors';
 	let command = 'gatsby build';
 
 	if (pathPrefixEnabled) {
@@ -30,5 +45,19 @@ export const getBuildCmnd = () => {
 		command += ` ${tracing}`;
 	}
 
+	if (profileEnabled) {
+		command += ` ${profile}`;
+	}
+
+	if (graphqlEnabled) {
+		command += ` ${graphTracing}`;
+	}
+
+	if (noColorsEnabled) {
+		command += ` ${noColors}`;
+	}
+
 	return command;
 };
+
+export default getBuildCmnd;
