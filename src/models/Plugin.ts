@@ -1,6 +1,4 @@
 import { TreeItem, Command, TreeItemCollapsibleState } from 'vscode';
-/* import * as fs from 'fs';
-import * as path from 'path'; */
 
 export default class Plugin extends TreeItem {
   constructor(
