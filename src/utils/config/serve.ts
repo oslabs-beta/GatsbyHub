@@ -21,7 +21,7 @@ export const getServeCmnd = () => {
 	const https = '-S';
 	let command = 'gatsby serve';
 
-	if (port !== 8000) {
+	if (port !== 9000) {
 		command += ` -p ${port}`;
 	}
 
