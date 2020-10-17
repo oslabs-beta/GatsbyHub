@@ -158,16 +158,14 @@
         },
         "gatsbyhub.commands.develop.changeHost": {
           "type": [
-            "string",
-            "integer"
+            "string"
           ],
           "default": "localhost",
           "description": "Change server host."
         },
         "gatsbyhub.commands.serve.changeHost": {
           "type": [
-            "string",
-            "integer"
+            "string"
           ],
           "default": "localhost",
           "description": "Change server host."
