@@ -8,6 +8,8 @@ import {
   Uri,
 } from 'vscode';
 
+import { getDevelopPortConfig } from './config/develop';
+
 export default class Utilities {
   static getActiveTerminal(): Terminal {
     const { terminals, createTerminal } = window;
@@ -111,7 +113,7 @@ export default class Utilities {
   }
 
   static openGraphiQL() {
-    const port = Utilities.getPortConfig();
+    const port = getDevelopPortConfig();
 
     commands.executeCommand(
       'vscode.open',
