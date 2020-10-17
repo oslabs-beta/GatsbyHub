@@ -1,5 +1,6 @@
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './models/GatsbyCli';
+import CLICommandProvider from './models/CLICommandProvider';
 import PluginProvider from './models/PluginProvider';
 import WebViews from './utils/WebViews';
 import StarterProvider from './models/StarterProvider';
@@ -36,7 +37,11 @@ export function activate(context: ExtensionContext) {
 	subscriptions.push(
 		registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
 	);
-
+	subscriptions.push(
+		createTreeView('commands', {
+			treeDataProvider: new CLICommandProvider(),
+		})
+	);
 	subscriptions.push(
 		createTreeView('plugins', {
 			treeDataProvider: new PluginProvider(),
