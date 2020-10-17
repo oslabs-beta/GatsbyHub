@@ -204,6 +204,21 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Enable if you want to your build to be traced."
+				},
+				"gatsbyhub.commands.build.profile": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to build your site with react profiling."
+				},
+				"gatsbyhub.commands.build.graphQLTracing": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to your build's graphQL to be traced."
+				},
+				"gatsbyhub.commands.build.noColors": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to disable colored terminal output."
 				}
 			}
 		}
