@@ -24,7 +24,7 @@
 			{
 				"command": "gatsbyhub.createSite",
 				"title": "Create New Site",
-				"icon": "$(play)"
+				"icon": "$(file-directory-create)"
 			},
 			{
 				"command": "gatsbyhub.developServer",
@@ -39,7 +39,7 @@
 			{
 				"command": "gatsbyhub.installPlugin",
 				"title": "Install Plugin",
-				"icon": "$(diff-added)"
+				"icon": "src/logo/download.svg"
 			},
 			{
 				"command": "gatsbyhub.build",
@@ -52,8 +52,13 @@
 			{
 				"command": "gatsbyhub.openGraphiQL",
 				"title": "Open GraphiQL",
+				"icon": "$(globe)"
+      },
+      {
+				"command": "gatsbyhub.openBrowser",
+				"title": "Open Browser",
 				"icon": "$(browser)"
-			}
+      }
 		],
 		"viewsContainers": {
 			"activitybar": [
@@ -116,6 +121,11 @@
 				},
 				{
 					"command": "gatsbyhub.openGraphiQL",
+					"group": "navigation",
+					"when": "view == commands && serverIsRunning == true"
+        },
+        {
+					"command": "gatsbyhub.openBrowser",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
 				}
@@ -244,7 +254,6 @@
 		"marked": "^1.2.0",
 		"mocha": "^8.1.3",
 		"npm-api": "^1.0.0",
-		"puppeteer": "^5.3.1",
 		"typescript": "^4.0.2",
 		"vscode-test": "^1.4.0"
 	},

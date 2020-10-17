@@ -36,7 +36,9 @@ export function activate(context: ExtensionContext) {
 	subscriptions.push(
 		registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
 	);
-
+	subscriptions.push(
+		registerCommand('gatsbyhub.openBrowser', Utilities.openBrowser)
+	);
 	subscriptions.push(
 		createTreeView('plugins', {
 			treeDataProvider: new PluginProvider(),
