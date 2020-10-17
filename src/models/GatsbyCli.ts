@@ -3,6 +3,7 @@ import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
 import { NpmTreeItem } from '../utils/Interfaces';
+import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -165,9 +166,10 @@ export default class GatsbyCli {
     }
 
     const activeTerminal = Utilities.getActiveServerTerminal();
-    const port = Utilities.getPortConfig();
+    const port = getDevelopPortConfig();
+    const develop = getDevelopCmnd();
 
-    activeTerminal.sendText(`gatsby develop --port ${port}`);
+    activeTerminal.sendText(`${develop}`);
     // change status bar to working message while server finishes developing
     StatusBar.working('Blast Off...');
     // toggle statusBar after 3 seconds so it will dispose server if clicked again
@@ -185,7 +187,7 @@ export default class GatsbyCli {
 
   public disposeServer(): void {
     const activeTerminal = Utilities.getActiveServerTerminal();
-    const port = Utilities.getPortConfig();
+    const port = getDevelopPortConfig();
     activeTerminal.dispose();
     // change status bar to working message while server finishes disposing
     StatusBar.working('Shutting Down...');
@@ -229,7 +231,7 @@ export default class GatsbyCli {
   /* ---- toggles statusBar between developing server and disposing server ---- */
 
   private toggleStatusBar(): void {
-    const port = Utilities.getPortConfig();
+    const port = getDevelopPortConfig();
     if (!this.serverStatus) {
       StatusBar.offline(port);
     } else {
@@ -271,12 +273,6 @@ export default class GatsbyCli {
         (await PluginData.getNpmInstall(links.repository, links.homepage)) ||
         `npm install ${name}`;
 
-      // if (rootPath) {
-      //   activeTerminal.sendText(`cd && cd ${rootPath}`);
-      //   activeTerminal.sendText(installCmnd);
-      //   activeTerminal.show(true);
-      // } else {
-      // }
       activeTerminal.sendText(installCmnd);
       activeTerminal.show(true);
       // check for if "plugin" is a theme or actual plugin
