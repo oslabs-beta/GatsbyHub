@@ -9,7 +9,7 @@
 
 GatsbyHub is an [open-source](https://github.com/oslabs-beta/GatsbyHub) extension for [Visual Studio Code](https://code.visualstudio.com/) that offers an interactive GUI for [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli).
 
-GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, and themes without ever having to leave VS Code. Create a blazing fast, modern app with a single click or check out the many [Gatsby starter templates](https://www.gatsbyjs.com/starters/?) available. Start a hot-reloading development environment by simply clicking the status bar icon and configure GraphQL queries using Gatsby's built-in instance of GraphiQL. For advanced customizations, please refer to the [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/) and edit your [user settings](https://code.visualstudio.com/docs/getstarted/settings).
+GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, and themes without ever having to leave VS Code. Create a blazing fast, modern app with a single click or check out the many [Gatsby starter templates](https://www.gatsbyjs.com/starters/?) available. Start a hot-reloading development environment by simply clicking the status bar icon. Configure GraphQL queries using Gatsby's built-in instance of GraphiQL. For advanced customizations, please refer to the [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/) and edit your [user settings](https://code.visualstudio.com/docs/getstarted/settings).
 
 <p align="center">
   <br />
@@ -21,7 +21,7 @@ GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins
 
 ⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues).
 
-GatsbyHub is available to install in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/gatsbyhub).
+GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/gatsbyhub).
 
 # Features
 
@@ -38,7 +38,9 @@ Advanced [Develop](https://www.gatsbyjs.com/docs/gatsby-cli/#develop) and [Build
 
 ## Gatsby Plugins and Themes
 
-Find and download [Gatsby plugins and themes](https://www.gatsbyjs.com/plugins/) without ever leaving VS Code. Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project. Selecting a plugin opens a webview within VS Code where you can read up on the plugin's README. Installing the plugin is as easy as clicking the download button in the sidebar.
+Find and download [Gatsby plugins and themes](https://www.gatsbyjs.com/plugins/) without ever leaving VS Code.
+
+Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project. Selecting a plugin opens a webview within VS Code where you can read up on the plugin's README. Installing the plugin is as easy as clicking the download button in the sidebar.
 
 ## Gatsby Starters
 
@@ -46,7 +48,7 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 ## Extension Settings
 
-[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/) has a lot of advanced options for generating a development server and packaging your project. GatsbyHub provides a way to toggle these options within the VS Code extension settings. That way the settings persist every time you want to develop a server or package your project. No more typing out the same commands or configuring a script for every new project.
+[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/) has a lot of advanced options for generating a development server and packaging your project. GatsbyHub provides a way to toggle these options within the VS Code extension settings. That way the settings persist every time you want to develop a server or package your app. No more typing out the same commands or configuring a script everytime you start a new project.
 
 # Release Notes
 
