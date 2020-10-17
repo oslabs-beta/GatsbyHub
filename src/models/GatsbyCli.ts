@@ -2,6 +2,7 @@ import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
+import getBuildCmnd from '../utils/config/build';
 import { NpmTreeItem } from '../utils/Interfaces';
 import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
 
@@ -215,17 +216,47 @@ export default class GatsbyCli {
 			}
 			return;
 		}
-		// finds path to file in text editor and drops the file name from the path
-		// const rootPath = Utilities.getRootPath();
 
 		const activeTerminal = Utilities.getActiveTerminal();
-		activeTerminal.show(true);
+		const build = getBuildCmnd();
 
-		// // only cd into rootpath if it exists, otherwise just run command on current workspace
-		// if (rootPath) {
-		//   activeTerminal.sendText(`cd && cd ${rootPath}`);
-		// }
-		activeTerminal.sendText('gatsby build');
+		activeTerminal.show(true);
+		activeTerminal.sendText(`${build}`);
+		commands.executeCommand('setContext', 'siteIsBuilt', true);
+	}
+
+	/* ------------------------ runs the 'serve' command ------------------------ */
+
+	async serve(): Promise<void> {
+		const gatsbyIsInitiated:
+			| boolean
+			| null = await Utilities.checkIfGatsbySiteInitiated();
+
+		if (!gatsbyIsInitiated) {
+			const input = await window.showErrorMessage(
+				'Open up a new workspace containing only the site you are working on.',
+				'Change Workspace',
+				'Cancel'
+			);
+			if (input && input === 'Change Workspace') {
+				commands.executeCommand('vscode.openFolder');
+			}
+			return;
+		}
+
+		const input = await window.showWarningMessage(
+			'This serves the production build for testing purposes. Ensure the build command was run successfully before running this command.',
+			'Continue',
+			'Cancel'
+		);
+
+		if (input !== 'Continue') return;
+
+		const activeTerminal = Utilities.getActiveTerminal();
+		const build = getBuildCmnd();
+
+		activeTerminal.show(true);
+		activeTerminal.sendText(`${build}`);
 	}
 
 	/* ---- toggles statusBar between developing server and disposing server ---- */
