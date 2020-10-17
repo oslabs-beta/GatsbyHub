@@ -9,7 +9,7 @@ export default class StatusBar {
     if (!StatusBar.statusBarItem) {
       StatusBar.statusBarItem = window.createStatusBarItem(
         StatusBarAlignment.Right,
-        100,
+        100
       );
     }
     // $(pulse) $(broadcast)$(cloud-upload)$(rss)$(radio-tower) $(circle-slash)
@@ -24,7 +24,7 @@ export default class StatusBar {
   }
 
   static working(msg: string = 'connecting...') {
-    StatusBar.item.text = `$(radio-tower) ${msg}`;
+    StatusBar.item.text = `$(loading~spin) ${msg}`;
     StatusBar.item.command = 'null';
   }
 

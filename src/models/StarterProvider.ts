@@ -1,6 +1,7 @@
 import { TreeDataProvider } from 'vscode';
 import Starter from './Starter';
 import NpmData from './NpmData';
+import { PluginPkg } from '../utils/Interfaces';
 
 export default class StarterProvider
 implements TreeDataProvider<Starter> {
@@ -13,8 +14,8 @@ implements TreeDataProvider<Starter> {
 
   async createPlugins() {
     const npmData = new NpmData();
-    return (await npmData.getNpmPackages('starter')).map(
-      (obj: any) =>
+    return (await Promise.all(await npmData.getNpmPackages('starter'))).map(
+      (obj: PluginPkg) =>
         new Starter(obj.name, {
           command: 'gatsbyhub.createWebView',
           title: 'Show Starter WebView',

@@ -14,7 +14,7 @@
     "onView:plugins",
     "onView:starters"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
@@ -137,15 +137,88 @@
           "when": "view == themes"
         }
       ]
+    },
+    "configuration": {
+      "title": "GatsbyHub",
+      "properties": {
+        "gatsbyhub.commands.develop.port": {
+          "type": "number",
+          "default": 8000,
+          "description": "Choose what port to expose with the server."
+        },
+        "gatsbyhub.commands.develop.openBrowser": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable to open the browser automatically with running server."
+        },
+        "gatsbyhub.commands.develop.useHTTPS": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable to run server on HTTPS."
+        },
+        "gatsbyhub.commands.develop.changeHost": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "default": "localhost",
+          "description": "Change server host."
+        },
+        "gatsbyhub.commands.serve.changeHost": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "default": "localhost",
+          "description": "Change server host."
+        },
+        "gatsbyhub.commands.serve.port": {
+          "type": "number",
+          "default": 8000,
+          "description": "Choose what port to expose with the server."
+        },
+        "gatsbyhub.commands.serve.openBrowser": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable to open the browser automatically with running server."
+        },
+        "gatsbyhub.commands.serve.prefixPaths": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable if your gatsby-config uses 'pathPrefix' config."
+        },
+        "gatsbyhub.commands.info.enableClipboard": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable to automatically copy environment info to clipboard."
+        },
+        "gatsbyhub.commands.build.prefixPaths": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable if your gatsby-config uses 'pathPrefix' config."
+        },
+        "gatsbyhub.commands.build.noUglify": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable if you don't want to uglify your JS bundle. (for debugging)"
+        },
+        "gatsbyhub.commands.build.enableTracing": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable if you want to your build to be traced."
+        }
+      }
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "test": "jest"
+    "test": "jest",
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -154,7 +227,10 @@
     "babel-jest": "^26.5.2",
     "jest": "^26.5.3",
     "jest-cli": "^26.5.3",
-    "ts-jest": "^26.4.1"
+    "ts-jest": "^26.4.1",
+    "ts-loader": "^8.0.5",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0"
   },
   "dependencies": {
     "got": "^11.7.0",

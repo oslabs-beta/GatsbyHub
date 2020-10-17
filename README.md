@@ -18,6 +18,12 @@ Interact with Gatsby without ever having to use the command line interface. Gats
 - Develop Server - Start and stop a development server by either clicking the button or clicking the status bar item
 - Build Site - Build and package your site so it's ready to deploy on Gatsby's cloud
 
+<p align="center">
+  <br />
+  <img src="src/images/gh-readme-demo.gif" alt="GatsbyHub Preview" width="900rem" />
+  <br />
+</p>
+
 ## Gatsby Plugins
 
 Find and download Gatsby plugins without ever leaving VSCode. Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project.

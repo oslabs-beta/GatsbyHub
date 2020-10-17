@@ -2,21 +2,7 @@
 /* eslint-disable no-param-reassign */
 import got from 'got';
 import * as marked from 'marked';
-
-// defines object shape of each element in merged array
-interface NpmPkg {
-  package: { name: string };
-}
-
-// defines object shape of each plugin package in array
-interface PluginPkg {
-  name: string;
-  links: {
-    repository: string;
-    homepage: string;
-  };
-  readme: string;
-}
+import { PluginPkg, NpmPkg } from '../utils/Interfaces';
 
 export default class NpmData {
   pluginKeywords: string[];
@@ -73,8 +59,8 @@ export default class NpmData {
       if (pkg.links.homepage || pkg.readme) return true;
       if (pkg.links.repository) {
         return got(`${pkg.links.repository}/blob/master/README.md`)
-          .then((response) => response.statusCode === 200)
-          .catch((err) => false);
+          .then((response: any) => response.statusCode === 200)
+          .catch((err: any) => false);
       }
       return false;
     };
@@ -141,7 +127,6 @@ export default class NpmData {
     pluginHomepage: string
   ): Promise<string> {
     try {
-      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
       let goodUrl: string;
       if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
         const noTree = pluginHomepage.replace('/tree', '');
@@ -165,7 +150,6 @@ export default class NpmData {
     pluginHomepage: string
   ): Promise<string> {
     const readMe = await this.getReadMe(pluginRepo, pluginHomepage);
-    /*   console.log(marked(readMe)); */
     return marked(readMe);
   }
 
@@ -174,7 +158,6 @@ export default class NpmData {
     pluginHomepage: string
   ) {
     try {
-      /* console.log('in getReadMe: ', pluginName, pluginReadMe); */
       let goodUrl: string;
       if (pluginRepo === 'https://github.com/gatsbyjs/gatsby') {
         const noTree = pluginHomepage.replace('/tree', '');
@@ -184,6 +167,7 @@ export default class NpmData {
         const raw = pluginRepo.replace('github', 'raw.githubusercontent');
         goodUrl = `${raw}/master/README.md`;
       }
+      // example readme:
       // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link#readme
 
       const response = await got(goodUrl);
