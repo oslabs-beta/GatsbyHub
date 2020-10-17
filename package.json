@@ -172,7 +172,7 @@
 				},
 				"gatsbyhub.commands.serve.port": {
 					"type": "number",
-					"default": 8000,
+					"default": 9000,
 					"description": "Choose what port to expose with the server."
 				},
 				"gatsbyhub.commands.serve.openBrowser": {
@@ -210,7 +210,7 @@
 					"default": false,
 					"description": "Enable if you want to build your site with react profiling."
 				},
-				"gatsbyhub.commands.build.graphQLTracing": {
+				"gatsbyhub.commands.build.graphqlTracing": {
 					"type": "boolean",
 					"default": false,
 					"description": "Enable if you want to your build's graphQL to be traced."
