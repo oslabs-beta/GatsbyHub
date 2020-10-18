@@ -3,6 +3,7 @@ import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
 import getBuildCmnd from '../utils/config/build';
+import { getServeCmnd } from '../utils/config/serve';
 import { NpmTreeItem } from '../utils/Interfaces';
 import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
 
@@ -251,10 +252,10 @@ export default class GatsbyCli {
 		if (input !== 'Continue') return;
 
 		const activeTerminal = Utilities.getActiveTerminal();
-		const build = getBuildCmnd();
+		const serve = getServeCmnd();
 
 		activeTerminal.show(true);
-		activeTerminal.sendText(`${build}`);
+		activeTerminal.sendText(`${serve}`);
 	}
 
 	/* ---- toggles statusBar between developing server and disposing server ---- */
@@ -277,7 +278,7 @@ export default class GatsbyCli {
 
 	/* ---------- Logic handling the installation of Plugins and Themes --------- */
 
-	async installPlugin(plugin?: NpmTreeItem): Promise<void> {
+	async install(plugin?: NpmTreeItem): Promise<void> {
 		const activeTerminal = Utilities.getActiveTerminal();
 		const gatsbyIsInitiated:
 			| boolean
