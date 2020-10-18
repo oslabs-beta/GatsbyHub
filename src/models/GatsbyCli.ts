@@ -3,9 +3,12 @@ import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
 import getBuildCmnd from '../utils/config/build';
+import getInfoCmnd from '../utils/config/info';
 import { getServeCmnd } from '../utils/config/serve';
-import { NpmTreeItem } from '../utils/Interfaces';
 import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
+import { NpmTreeItem } from '../utils/Interfaces';
+
+// TODO create markdown files for each view, add buttons that open webview with docs
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
@@ -23,7 +26,7 @@ export default class GatsbyCli {
 		this.disposeServer = this.disposeServer.bind(this);
 	}
 
-	/* - installs gatsby-cli for the user when install gatsby button is clicked - */
+	// ANCHOR:  installs gatsby-cli for the user when install gatsby button is clicked
 
 	async installGatsby() {
 		// if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
@@ -47,11 +50,11 @@ export default class GatsbyCli {
 		activeTerminal.show(true);
 	}
 
-	/* ------------------ Logic for creating a new Gatsby site ------------------ */
+	// ANCHOR: /* ------------------ Logic for creating a new Gatsby site ------------------ */
 
 	/**  creates a new site when 'Create New Site' button is clicked
 	 * currently uses default gatsby starter, but uses gatsby new url. see https://www.gatsbyjs.com/docs/gatsby-cli/
-	 * NOTE: new site will be created wherever the root directory is currently located
+	 * note: new site will be created wherever the root directory is currently located
 	 * the user terminal should be at the directory user wishes to download the files.
 	 */
 	async createSite(starterObj?: NpmTreeItem) {
@@ -133,7 +136,7 @@ export default class GatsbyCli {
 		}
 	}
 
-	/* ------ Starts development server and opens project in a new browser ------ */
+	// ANCHOR - /* ------ Starts development server and opens project in a new browser ------ */
 
 	public async developServer(): Promise<null> {
 		// IF server is already running, throw error and exit
@@ -164,7 +167,7 @@ export default class GatsbyCli {
 			return null;
 		}
 
-		const activeTerminal = Utilities.getActiveServerTerminal();
+		const activeTerminal = Utilities.getActiveDevServerTerminal();
 		const port = getDevelopPortConfig();
 		const develop = getDevelopCmnd();
 
@@ -182,10 +185,16 @@ export default class GatsbyCli {
 		return null;
 	}
 
-	/* ---------- Disposes development server by disposing the terminal --------- */
+	// ANCHOR: /* ---------- Disposes development server by disposing the terminal --------- */
 
+	/** TODO
+	 * figure out a way to dispose the right server
+	 * since there is now a possibility there will be two running
+	 * Might need to look into making it so that there can't be two servers at once
+	 *
+	 */
 	public disposeServer(): void {
-		const activeTerminal = Utilities.getActiveServerTerminal();
+		const activeTerminal = Utilities.getActiveDevServerTerminal();
 		const port = getDevelopPortConfig();
 		activeTerminal.dispose();
 
@@ -197,8 +206,17 @@ export default class GatsbyCli {
 		commands.executeCommand('setContext', 'serverIsRunning', false);
 	}
 
-	/* --------------------- builds and packages Gatsby site -------------------- */
+	// ANCHOR: /* --------------------- builds and packages Gatsby site -------------------- */
 
+	/** TODO
+	 * Figure out logic to put checkmark indicating the site has been built
+	 * Maybe scan the directory for a '.cache' or 'public'
+	 * 	good indication build has been ran
+	 *
+	 * create method in Utilities to scan directory: returns boolean
+	 * set a property in this class to the evaluated result of that method
+	 * set the context based on that result
+	 */
 	async build(): Promise<void> {
 		const gatsbyIsInitiated:
 			| boolean
@@ -217,15 +235,25 @@ export default class GatsbyCli {
 		}
 
 		const activeTerminal = Utilities.getActiveTerminal();
-		const build = getBuildCmnd();
+		const build: string = getBuildCmnd();
 
 		activeTerminal.show(true);
-		activeTerminal.sendText(`${build}`);
-		commands.executeCommand('setContext', 'siteIsBuilt', true);
+		activeTerminal.sendText(build);
+		commands.executeCommand('setContext', 'siteBuilt', true);
 	}
 
-	/* ------------------------ runs the 'serve' command ------------------------ */
+	// ANCHOR: /* ------------------------ Handles the 'serve' command ------------------------ */
 
+	/**	TODO
+	 * Change context when server starts
+	 * Don't want graphiql button appearing for this server
+	 * Make dispose btn appear
+	 * Give it it's own server terminal so dev server can also run
+	 * 	(idk why anyone would do that but whatever...)
+	 * Rename server terminals --> Gatsby Server (Dev) --- Gatsby Server (Production)
+	 * Probably don't need to do anything with the status bar
+	 *
+	 */
 	async serve(): Promise<void> {
 		const gatsbyIsInitiated:
 			| boolean
@@ -252,31 +280,34 @@ export default class GatsbyCli {
 		if (input !== 'Continue') return;
 
 		const activeTerminal = Utilities.getActiveTerminal();
-		const serve = getServeCmnd();
+		const serve: string = getServeCmnd();
 
 		activeTerminal.show(true);
-		activeTerminal.sendText(`${serve}`);
+		activeTerminal.sendText(serve);
 	}
 
-	/* ---- toggles statusBar between developing server and disposing server ---- */
+	// ANCHOR: /* -------------------------- Handles info command -------------------------- */
 
-	private toggleStatusBar(): void {
-		const port = getDevelopPortConfig();
-		if (!this.serverStatus) {
-			StatusBar.offline(port);
-		} else {
-			StatusBar.online();
-		}
-		this.serverStatus = !this.serverStatus;
+	info() {
+		const activeTerminal = Utilities.getActiveTerminal();
+		const info: string = getInfoCmnd();
+
+		activeTerminal.show(true);
+		activeTerminal.sendText(info);
 	}
 
-	/* ----------------------- Dispose the status bar item ---------------------- */
+	// ANCHOR: /* -------------------------- Handles clean command ------------------------- */
 
-	public dispose(): void {
-		StatusBar.dispose();
+	clean() {
+		const activeTerminal = Utilities.getActiveTerminal();
+		const clean = 'gatsby clean';
+
+		activeTerminal.show(true);
+		activeTerminal.sendText(clean);
+		commands.executeCommand('setContext', 'siteBuilt', false);
 	}
 
-	/* ---------- Logic handling the installation of Plugins and Themes --------- */
+	// ANCHOR: /* ---------- Logic handling the installation of Plugins and Themes -----x---- */
 
 	async install(plugin?: NpmTreeItem): Promise<void> {
 		const activeTerminal = Utilities.getActiveTerminal();
@@ -295,8 +326,7 @@ export default class GatsbyCli {
 			}
 			return;
 		}
-		// const rootPath = await Utilities.getRootPath();
-		// const { name, links } = plugin.command.arguments[0];
+
 		if (plugin) {
 			const { name, links } = plugin.command.arguments[0];
 			const installCmnd =
@@ -318,5 +348,27 @@ export default class GatsbyCli {
 				);
 			}
 		}
+	}
+
+	/* -------------------------------------------------------------------------- */
+	/*                                 Status Bar                                 */
+	/* -------------------------------------------------------------------------- */
+
+	// ANCHOR: /* ---- toggles statusBar between developing server and disposing server ---- */
+
+	private toggleStatusBar(): void {
+		const port = getDevelopPortConfig();
+		if (!this.serverStatus) {
+			StatusBar.offline(port);
+		} else {
+			StatusBar.online();
+		}
+		this.serverStatus = !this.serverStatus;
+	}
+
+	// ANCHOR: /* ----------------------- Dispose the status bar item ---------------------- */
+
+	public dispose(): void {
+		StatusBar.dispose();
 	}
 }
