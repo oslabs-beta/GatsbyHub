@@ -9,13 +9,13 @@ export default class CLICommandProvider
 
 	constructor() {
 		this.data = [
-			new CLICommand('New'),
-			new CLICommand('Develop'),
-			new CLICommand('Build'),
-			new CLICommand('Serve'),
-			new CLICommand('Info'),
-			new CLICommand('Clean'),
-			new CLICommand('Install'),
+			new CLICommand('New', 'new'),
+			new CLICommand('Develop', 'develop'),
+			new CLICommand('Build', 'build'),
+			new CLICommand('Serve', 'serve'),
+			new CLICommand('Info', 'info'),
+			new CLICommand('Clean', 'clean'),
+			new CLICommand('Install', 'install'),
 		];
 	}
 
