@@ -1,16 +1,16 @@
 import { workspace } from 'vscode';
 
 export const getServePortConfig = (): number =>
-	workspace.getConfiguration('gatsbyhub').commands.develop.port;
+	workspace.getConfiguration('gatsbyhub').commands.serve.port;
 
 const getServeHostConfig = (): number | string =>
-	workspace.getConfiguration('gatsbyhub').commands.develop.changeHost;
+	workspace.getConfiguration('gatsbyhub').commands.serve.changeHost;
 
 const getServeOpenConfig = (): boolean =>
-	workspace.getConfiguration('gatsbyhub').commands.develop.openBrowser;
+	workspace.getConfiguration('gatsbyhub').commands.serve.openBrowser;
 
 const getServeHttpsConfig = (): boolean =>
-	workspace.getConfiguration('gatsbyhub').commands.develop.useHTTPS;
+	workspace.getConfiguration('gatsbyhub').commands.serve.useHTTPS;
 
 export const getServeCmnd = () => {
 	const port = getServePortConfig();
