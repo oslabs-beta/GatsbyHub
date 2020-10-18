@@ -78,7 +78,7 @@ export default class WebViews {
 		const panel = window.createWebviewPanel(
 			'CLI Docs',
 			`CLI Docs`,
-			ViewColumn.Two
+			ViewColumn.One
 		);
 
 		panel.webview.html = `${readMe}`;
