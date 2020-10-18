@@ -19,7 +19,8 @@
 		"commands": [
 			{
 				"command": "gatsbyhub.installGatsby",
-				"title": "Install Gatsby"
+				"title": "Install Gatsby",
+				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gatsbyhub.createSite",
@@ -27,27 +28,48 @@
 				"icon": "$(play)"
 			},
 			{
-				"command": "gatsbyhub.developServer",
-				"title": "Develop Server",
+				"command": "gatsbyhub.develop",
+				"title": "Start Dev Server",
 				"icon": "$(rocket)"
 			},
 			{
+				"command": "gatsbyhub.build",
+				"title": "Build Site",
+				"icon": "$(package)"
+			},
+			{
+				"command": "gatsbyhub.serve",
+				"title": "Serve production build",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "gatsbyhub.info",
+				"title": "Get env info",
+				"icon": "$(info)"
+			},
+			{
+				"command": "gatsbyhub.clean",
+				"title": "Clear cache and public directories",
+				"icon": "$(trash)"
+			},
+			{
 				"command": "gatsbyhub.disposeServer",
-				"title": "Dispose Server",
+				"title": "Kill Server",
 				"icon": "$(circle-slash)"
 			},
 			{
-				"command": "gatsbyhub.installPlugin",
+				"command": "gatsbyhub.install",
 				"title": "Install Plugin",
 				"icon": "$(diff-added)"
 			},
 			{
-				"command": "gatsbyhub.build",
-				"title": "Build Site"
-			},
-			{
 				"command": "gatsbyhub.createWebView",
 				"title": "Show Plugin WebView"
+			},
+			{
+				"command": "gatsbyhub.openCommandDocs",
+				"title": "Open CLI Docs",
+				"icon": "$(question)"
 			},
 			{
 				"command": "gatsbyhub.openGraphiQL",
@@ -113,16 +135,51 @@
 					"command": "gatsbyhub.openGraphiQL",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openCommandDocs",
+					"group": "navigation",
+					"when": "view == commands"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "gatsbyhub.developServer",
+					"command": "gatsbyhub.createSite",
 					"group": "inline",
-					"when": "serverIsRunning == false && viewItem == develop"
+					"when": "viewItem == new"
 				},
 				{
-					"command": "gatsbyhub.installPlugin",
+					"command": "gatsbyhub.develop",
+					"group": "inline",
+					"when": "viewItem == develop"
+				},
+				{
+					"command": "gatsbyhub.build",
+					"group": "inline",
+					"when": "viewItem == build"
+				},
+				{
+					"command": "gatsbyhub.serve",
+					"group": "inline",
+					"when": "viewItem == serve"
+				},
+				{
+					"command": "gatsbyhub.info",
+					"group": "inline",
+					"when": "viewItem == info"
+				},
+				{
+					"command": "gatsbyhub.clean",
+					"group": "inline",
+					"when": "viewItem == clean"
+				},
+				{
+					"command": "gatsbyhub.installGatsby",
+					"group": "inline",
+					"when": "viewItem == install"
+				},
+				{
+					"command": "gatsbyhub.install",
 					"group": "inline",
 					"when": "view == plugins"
 				},
@@ -132,7 +189,7 @@
 					"when": "view == starters"
 				},
 				{
-					"command": "gatsbyhub.installPlugin",
+					"command": "gatsbyhub.install",
 					"group": "inline",
 					"when": "view == themes"
 				}
