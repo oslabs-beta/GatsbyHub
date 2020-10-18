@@ -24,7 +24,6 @@ export default class GatsbyCli {
 
 	/* - installs gatsby-cli for the user when install gatsby button is clicked - */
 
-	// static keyword: eliminates the need to instantiate to use this method in extenstion.ts
 	async installGatsby() {
 		// if a gatsby terminal isn't open, create a new terminal. Otherwise, use gatsbyhub terminal
 		const activeTerminal = Utilities.getActiveTerminal();
@@ -136,6 +135,11 @@ export default class GatsbyCli {
 	/* ------ Starts development server and opens project in a new browser ------ */
 
 	public async developServer(): Promise<null> {
+		// IF server is already running, throw error and exit
+		if (this.serverStatus) {
+			window.showErrorMessage('Server already took off.');
+			return null;
+		}
 		const gatsbyIsInitiated:
 			| boolean
 			| null = await Utilities.checkIfGatsbySiteInitiated();
@@ -143,13 +147,6 @@ export default class GatsbyCli {
 		if (!workspace.workspaceFolders) {
 			window.showInformationMessage(
 				'Open a folder or workspace... (File -> Open Folder)'
-			);
-			return null;
-		}
-
-		if (!workspace.workspaceFolders.length) {
-			window.showErrorMessage(
-				"You don't have any Gatsby folders in this workspace"
 			);
 			return null;
 		}
@@ -190,6 +187,7 @@ export default class GatsbyCli {
 		const activeTerminal = Utilities.getActiveServerTerminal();
 		const port = getDevelopPortConfig();
 		activeTerminal.dispose();
+
 		// change status bar to working message while server finishes disposing
 		StatusBar.working('Shutting Down...');
 		// toggle statusBar so it will developServer if clicked again
