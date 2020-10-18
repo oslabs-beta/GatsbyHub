@@ -105,11 +105,6 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "gatsbyhub.developServer",
-					"group": "navigation",
-					"when": "view == commands && serverIsRunning == false"
-				},
-				{
 					"command": "gatsbyhub.disposeServer",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
@@ -121,6 +116,11 @@
 				}
 			],
 			"view/item/context": [
+				{
+					"command": "gatsbyhub.developServer",
+					"group": "inline",
+					"when": "serverIsRunning == false && viewItem == develop"
+				},
 				{
 					"command": "gatsbyhub.installPlugin",
 					"group": "inline",
