@@ -1,10 +1,7 @@
 import { TreeDataProvider } from 'vscode';
-import CLICommand from './CLICommands';
-// import NpmData from './NpmData';
-// import { PluginPkg } from '../utils/Interfaces';
+import CLICommand from './Commands';
 
-export default class CLICommandProvider
-	implements TreeDataProvider<CLICommand> {
+export default class CommandProvider implements TreeDataProvider<CLICommand> {
 	data: CLICommand[];
 
 	constructor() {
