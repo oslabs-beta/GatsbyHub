@@ -30,16 +30,16 @@ export default class Utilities {
 		return terminal;
 	}
 
-	static getActiveServerTerminal(): Terminal {
+	static getActiveDevServerTerminal(): Terminal {
 		const { terminals, createTerminal } = window;
 		const filteredTerminals = terminals.filter(
-			(obj: Terminal) => obj.name === 'Gatsby Server'
+			(obj: Terminal) => obj.name === 'GatsbyServer (Dev)'
 		);
 
 		let terminal: Terminal;
 
 		if (filteredTerminals.length === 0) {
-			terminal = createTerminal('Gatsby Server');
+			terminal = createTerminal('GatsbyServer (Dev)');
 		} else {
 			[terminal] = filteredTerminals;
 		}
