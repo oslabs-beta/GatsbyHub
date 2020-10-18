@@ -32,13 +32,13 @@ export default class StatusBar {
 	public static online() {
 		StatusBar.item.text = '$(rocket) GatsbyHub';
 		StatusBar.item.tooltip = 'Click to develop Gatsby server';
-		StatusBar.item.command = 'gatsbyhub.developServer';
+		StatusBar.item.command = 'gatsbyhub.develop';
 	}
 
 	public static offline(port: Number = 8000) {
 		StatusBar.item.text = `$(circle-slash) Port: ${port}`;
 		StatusBar.item.tooltip = 'Click to close Gatsby server';
-		StatusBar.statusBarItem.command = 'gatsbyhub.disposeServer';
+		StatusBar.statusBarItem.command = 'gatsbyhub.dispose';
 	}
 
 	public static dispose() {
