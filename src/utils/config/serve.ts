@@ -1,22 +1,15 @@
 import { workspace } from 'vscode';
 
+// NOTE --> might need this later to make an open browser btn for 'serve'
 export const getServePortConfig = (): number =>
 	workspace.getConfiguration('gatsbyhub').commands.serve.port;
 
-const getServeHostConfig = (): number | string =>
-	workspace.getConfiguration('gatsbyhub').commands.serve.changeHost;
-
-const getServeOpenConfig = (): boolean =>
-	workspace.getConfiguration('gatsbyhub').commands.serve.openBrowser;
-
-const getServeHttpsConfig = (): boolean =>
-	workspace.getConfiguration('gatsbyhub').commands.serve.useHTTPS;
-
 export const getServeCmnd = () => {
-	const port = getServePortConfig();
-	const host = getServeHostConfig();
-	const openEnabled = getServeOpenConfig();
-	const httpsEnabled = getServeHttpsConfig();
+	const config = workspace.getConfiguration('gatsbyhub').commands.serve;
+	const { port } = config;
+	const host: number | string = config.changeHost;
+	const openEnabled = config.openBrowser;
+	const httpsEnabled = config.useHttps;
 	const open = '-o';
 	const https = '-S';
 	let command = 'gatsby serve';
