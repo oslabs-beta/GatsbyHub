@@ -3,7 +3,6 @@ import { TreeItem, Command, TreeItemCollapsibleState } from 'vscode';
 export default class CLICommand extends TreeItem {
 	constructor(
 		public label: string,
-		public contextValue?: string,
 		public command?: Command,
 		public children?: CLICommand[]
 	) {
@@ -14,7 +13,7 @@ export default class CLICommand extends TreeItem {
 				: TreeItemCollapsibleState.Collapsed
 		);
 		this.label = label;
-		this.contextValue = contextValue;
+		this.contextValue = label;
 		this.children = children;
 		this.command = command;
 	}
