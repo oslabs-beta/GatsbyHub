@@ -38,7 +38,7 @@ export default class StatusBar {
 	public static offline(port: Number = 8000) {
 		StatusBar.item.text = `$(circle-slash) Port: ${port}`;
 		StatusBar.item.tooltip = 'Click to close Gatsby server';
-		StatusBar.statusBarItem.command = 'gatsbyhub.dispose';
+		StatusBar.statusBarItem.command = 'gatsbyhub.disposeServer';
 	}
 
 	public static dispose() {
