@@ -1,6 +1,6 @@
 import { ExtensionContext, commands, window } from 'vscode';
 import GatsbyCli from './models/GatsbyCli';
-import CLICommandProvider from './models/CLICommandProvider';
+import CommandProvider from './models/CommandProvider';
 import PluginProvider from './models/PluginProvider';
 import WebViews from './utils/WebViews';
 import StarterProvider from './models/StarterProvider';
@@ -22,24 +22,26 @@ export function activate(context: ExtensionContext) {
 		registerCommand('gatsbyhub.createSite', gatsbyCli.createSite)
 	);
 	subscriptions.push(
-		registerCommand('gatsbyhub.developServer', gatsbyCli.developServer)
+		registerCommand('gatsbyhub.develop', gatsbyCli.developServer)
 	);
 	subscriptions.push(
 		registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
 	);
 	subscriptions.push(registerCommand('gatsbyhub.build', gatsbyCli.build));
-	subscriptions.push(
-		registerCommand('gatsbyhub.installPlugin', gatsbyCli.installPlugin)
-	);
+	subscriptions.push(registerCommand('gatsbyhub.serve', gatsbyCli.serve));
+	subscriptions.push(registerCommand('gatsbyhub.install', gatsbyCli.install));
 	subscriptions.push(
 		registerCommand('gatsbyhub.createWebView', WebViews.openWebView)
+	);
+	subscriptions.push(
+		registerCommand('gatsbyhub.openCommandDocs', WebViews.openCommandDocs)
 	);
 	subscriptions.push(
 		registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
 	);
 	subscriptions.push(
 		createTreeView('commands', {
-			treeDataProvider: new CLICommandProvider(),
+			treeDataProvider: new CommandProvider(),
 		})
 	);
 	subscriptions.push(
