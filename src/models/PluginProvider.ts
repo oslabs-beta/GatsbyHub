@@ -4,7 +4,7 @@ import NpmData from './NpmData';
 import { PluginPkg } from '../utils/Interfaces';
 
 export default class PluginProvider implements TreeDataProvider<Plugin> {
-	data: any;
+	data: Promise<Plugin[]>;
 
 	constructor() {
 		this.data = this.createPlugins();

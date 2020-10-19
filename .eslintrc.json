@@ -20,11 +20,23 @@
 		"@typescript-eslint/naming-convention": "warn",
 		"@typescript-eslint/semi": "warn",
 		"curly": "error",
-		"eqeqeq": "warn",
+		"eqeqeq": "error",
 		"no-throw-literal": "warn",
 		"import/no-unresolved": "off",
 		"no-param-reassign": "off",
 		"class-methods-use-this": "off",
-		"import/extensions": "off"
-	}
+		"import/extensions": "off",
+		"require-await": "warn"
+	},
+	"overrides": [
+		{
+			"files": ["*.json"],
+			"rules": {
+				"semi": "off",
+				"no-unused-expressions": "off",
+				"@typescript-eslint/semi": "off",
+				"@typescript-eslint/naming-convention": "off"
+			}
+		}
+	]
 }
