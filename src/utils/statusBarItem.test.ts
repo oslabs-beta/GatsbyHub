@@ -13,8 +13,8 @@ describe('status bar item', () => {
 		expect(statusBarItem).toEqual(
 			expect.objectContaining({
 				text: '$(rocket) GatsbyHub',
-				tooltip: 'Click to develop Gatsby server',
-				command: 'gatsbyhub.developServer',
+				tooltip: 'Launch dev server',
+				command: 'gatsbyhub.develop',
 			})
 		);
 	});

@@ -5,4 +5,12 @@ module.exports = {
 	semi: true,
 	singleQuote: true,
 	useTabs: true,
+	overrides: [
+		{
+			files: '*.json',
+			options: {
+				semi: false,
+			},
+		},
+	],
 };
