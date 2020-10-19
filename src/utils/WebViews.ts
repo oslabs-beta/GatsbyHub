@@ -69,6 +69,7 @@ export default class WebViews {
 		});
 	}
 
+	// open webview readme fo the Gatsby CLI commands
 	static async openCommandDocs() {
 		const url =
 			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-cli/README.md';
@@ -91,6 +92,7 @@ export default class WebViews {
 		});
 	}
 
+	// Open webview readme of Plugin docs -- has to be seperate function because the command has to be pushed to subscriptions in extension.ts file -- same for starters and themes
 	static async openPluginDocs() {
 		const url =
 			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/plugins.md';
@@ -113,6 +115,7 @@ export default class WebViews {
 		});
 	}
 
+	// opens webview for Starter readmen has to be seperate function to push to subscriptions
 	static async openStarterDocs() {
 		const url =
 			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/starters.md';
@@ -135,6 +138,7 @@ export default class WebViews {
 		});
 	}
 
+	// opens webview for Themes readme -- has to be seperate function in order to be pushed to subscriptions in extension.ts
 	static async openThemeDocs() {
 		const url =
 			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/themes.md';
