@@ -4,7 +4,7 @@ import Utilities from '../utils/Utilities';
 import PluginData from './NpmData';
 import getBuildCmnd from '../utils/config/build';
 import getInfoCmnd from '../utils/config/info';
-import { getServeCmnd } from '../utils/config/serve';
+import { getServeCmnd, getServePortConfig } from '../utils/config/serve';
 import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
 import { NpmTreeItem } from '../utils/Interfaces';
 
@@ -12,18 +12,22 @@ import { NpmTreeItem } from '../utils/Interfaces';
 
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
-	private serverStatus: boolean;
+	private devServerStatus: boolean;
+
+	private prodServerStatus: boolean;
 
 	initStatusBar: void;
 
 	constructor() {
 		// Defines the condition on which way to toggle statusBarItem
-		this.serverStatus = false;
+		this.devServerStatus = false;
+		this.prodServerStatus = false;
 		// Initializes the StatusBarItem
 		this.initStatusBar = StatusBar.init();
 		this.toggleStatusBar = this.toggleStatusBar.bind(this);
-		this.developServer = this.developServer.bind(this);
 		this.disposeServer = this.disposeServer.bind(this);
+		this.develop = this.develop.bind(this);
+		this.serve = this.serve.bind(this);
 	}
 
 	// ANCHOR:  installs gatsby-cli for the user when install gatsby button is clicked
@@ -136,76 +140,6 @@ export default class GatsbyCli {
 		}
 	}
 
-	// ANCHOR - /* ------ Starts development server and opens project in a new browser ------ */
-
-	public async developServer(): Promise<null> {
-		// IF server is already running, throw error and exit
-		if (this.serverStatus) {
-			window.showErrorMessage('Server already took off.');
-			return null;
-		}
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
-
-		if (!workspace.workspaceFolders) {
-			window.showInformationMessage(
-				'Open a folder or workspace... (File -> Open Folder)'
-			);
-			return null;
-		}
-
-		if (!gatsbyIsInitiated) {
-			const input = await window.showErrorMessage(
-				'Open up a new workspace containing only the site you are working on.',
-				'Change Workspace',
-				'Cancel'
-			);
-			if (input && input === 'Change Workspace') {
-				commands.executeCommand('vscode.openFolder');
-			}
-			return null;
-		}
-
-		const activeTerminal = Utilities.getActiveDevServerTerminal();
-		const port = getDevelopPortConfig();
-		const develop = getDevelopCmnd();
-
-		activeTerminal.sendText(`${develop}`);
-		// change status bar to working message while server finishes developing
-		StatusBar.working('Blast Off...');
-		// toggle statusBar after 3 seconds so it will dispose server if clicked again
-		setTimeout(this.toggleStatusBar, 6000);
-		window.showInformationMessage(`Starting up port:${port}`);
-		activeTerminal.show(true);
-		/** write options to set host, set port, to open site, and to use https
-		 * gatsby develop only works in the site directory
-		 * allow user to open folder for their site directory */
-		commands.executeCommand('setContext', 'serverIsRunning', true);
-		return null;
-	}
-
-	// ANCHOR: /* ---------- Disposes development server by disposing the terminal --------- */
-
-	/** TODO
-	 * figure out a way to dispose the right server
-	 * since there is now a possibility there will be two running
-	 * Might need to look into making it so that there can't be two servers at once
-	 *
-	 */
-	public disposeServer(): void {
-		const activeTerminal = Utilities.getActiveDevServerTerminal();
-		const port = getDevelopPortConfig();
-		activeTerminal.dispose();
-
-		// change status bar to working message while server finishes disposing
-		StatusBar.working('Shutting Down...');
-		// toggle statusBar so it will developServer if clicked again
-		setTimeout(this.toggleStatusBar, 3000);
-		window.showInformationMessage(`Shutting down port:${port}`);
-		commands.executeCommand('setContext', 'serverIsRunning', false);
-	}
-
 	// ANCHOR: /* --------------------- builds and packages Gatsby site -------------------- */
 
 	/** TODO
@@ -242,50 +176,6 @@ export default class GatsbyCli {
 		commands.executeCommand('setContext', 'siteBuilt', true);
 	}
 
-	// ANCHOR: /* ------------------------ Handles the 'serve' command ------------------------ */
-
-	/**	TODO
-	 * Change context when server starts
-	 * Don't want graphiql button appearing for this server
-	 * Make dispose btn appear
-	 * Give it it's own server terminal so dev server can also run
-	 * 	(idk why anyone would do that but whatever...)
-	 * Rename server terminals --> Gatsby Server (Dev) --- Gatsby Server (Production)
-	 * Probably don't need to do anything with the status bar
-	 *
-	 */
-	async serve(): Promise<void> {
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
-
-		if (!gatsbyIsInitiated) {
-			const input = await window.showErrorMessage(
-				'Open up a new workspace containing only the site you are working on.',
-				'Change Workspace',
-				'Cancel'
-			);
-			if (input && input === 'Change Workspace') {
-				commands.executeCommand('vscode.openFolder');
-			}
-			return;
-		}
-
-		const input = await window.showWarningMessage(
-			'This serves the production build for testing purposes. Ensure the build command was run successfully before running this command.',
-			'Continue',
-			'Cancel'
-		);
-
-		if (input !== 'Continue') return;
-
-		const activeTerminal = Utilities.getActiveTerminal();
-		const serve: string = getServeCmnd();
-
-		activeTerminal.show(true);
-		activeTerminal.sendText(serve);
-	}
-
 	// ANCHOR: /* -------------------------- Handles info command -------------------------- */
 
 	info() {
@@ -307,7 +197,7 @@ export default class GatsbyCli {
 		commands.executeCommand('setContext', 'siteBuilt', false);
 	}
 
-	// ANCHOR: /* ---------- Logic handling the installation of Plugins and Themes -----x---- */
+	// ANCHOR: /* ---------- Logic handling the installation of Plugins and Themes --------- */
 
 	async install(plugin?: NpmTreeItem): Promise<void> {
 		const activeTerminal = Utilities.getActiveTerminal();
@@ -351,6 +241,160 @@ export default class GatsbyCli {
 	}
 
 	/* -------------------------------------------------------------------------- */
+	/*                         Server Logic                             				  */
+	/* -------------------------------------------------------------------------- */
+
+	// ANCHOR - /* ------ Starts development server and opens project in a new browser ------ */
+
+	public async develop(): Promise<void> {
+		// IF server is already running, throw error and exit
+		if (this.devServerStatus) {
+			window.showErrorMessage('Dev server already took off.');
+			return;
+		}
+
+		if (this.prodServerStatus) {
+			const choice = await window.showErrorMessage(
+				'Production server is running. Do you want to shut it down?',
+				'Yes',
+				'No'
+			);
+			if (choice && choice === 'Yes') {
+				this.disposeServer();
+			}
+			return;
+		}
+
+		const gatsbyIsInitiated:
+			| boolean
+			| null = await Utilities.checkIfGatsbySiteInitiated();
+
+		if (!workspace.workspaceFolders) {
+			window.showInformationMessage(
+				'Open a folder or workspace... (File -> Open Folder)'
+			);
+			return;
+		}
+
+		if (!gatsbyIsInitiated) {
+			const input = await window.showErrorMessage(
+				'Open up a new workspace containing only the site you are working on.',
+				'Change Workspace',
+				'Cancel'
+			);
+			if (input && input === 'Change Workspace') {
+				commands.executeCommand('vscode.openFolder');
+			}
+			return;
+		}
+
+		const activeTerminal = Utilities.getActiveDevServerTerminal();
+		const port = getDevelopPortConfig();
+		const develop = getDevelopCmnd();
+
+		activeTerminal.sendText(`${develop}`);
+		// change status bar to working message while server finishes developing
+		StatusBar.working('Blast Off...');
+		// toggle statusBar after 3 seconds so it will dispose server if clicked again
+		setTimeout(this.toggleStatusBar, 6000);
+		window.showInformationMessage(`Starting up port:${port}`);
+		activeTerminal.show(true);
+		commands.executeCommand('setContext', 'serverIsRunning', true);
+	}
+
+	// ANCHOR: /* ------------------------ Handles the 'serve' command ------------------------ */
+
+	/**	TODO
+	 * Change context when server starts
+	 * Don't want graphiql button appearing for this server
+	 * Make dispose btn appear
+	 * Give it it's own server terminal so dev server can also run
+	 * Rename server terminals --> Gatsby Server (Dev) --- Gatsby Server (Production)
+	 * Probably don't need to do anything with the status bar
+	 *
+	 */
+	public async serve(): Promise<void> {
+		// IF server is already running, throw error and exit
+		if (this.prodServerStatus) {
+			window.showErrorMessage('Production server already took off.');
+			return;
+		}
+
+		if (this.devServerStatus) {
+			const choice = await window.showErrorMessage(
+				'Dev server is running. Do you want to shut it down?',
+				'Yes',
+				'No'
+			);
+			if (choice && choice === 'Yes') {
+				this.disposeServer();
+			}
+			return;
+		}
+
+		const gatsbyIsInitiated:
+			| boolean
+			| null = await Utilities.checkIfGatsbySiteInitiated();
+
+		if (!gatsbyIsInitiated) {
+			const input = await window.showErrorMessage(
+				'Open up a new workspace containing only the site you are working on.',
+				'Change Workspace',
+				'Cancel'
+			);
+			if (input && input === 'Change Workspace') {
+				commands.executeCommand('vscode.openFolder');
+			}
+			return;
+		}
+
+		const input = await window.showWarningMessage(
+			'This serves the production build for testing purposes. Ensure the build command was run successfully before running this command.',
+			'Continue',
+			'Cancel'
+		);
+
+		if (input !== 'Continue') return;
+
+		const activeTerminal = Utilities.getActiveProdServerTerminal();
+		const prodPort = getServePortConfig();
+		const serve: string = getServeCmnd();
+
+		activeTerminal.show(true);
+		activeTerminal.sendText(serve);
+		window.showInformationMessage(`Starting up port:${prodPort}`);
+		commands.executeCommand('setContext', 'serverIsRunning', true);
+		this.prodServerStatus = !this.prodServerStatus;
+	}
+
+	// ANCHOR: /* ---------- Disposes development server by disposing the terminal --------- */
+
+	/** TODO
+	 * figure out a way to dispose the right server
+	 * since there is now a possibility there will be two running
+	 * Might need to look into making it so that there can't be two servers at once
+	 *
+	 */
+	public disposeServer(): void {
+		const activeTerminal = Utilities.getActiveServer();
+		const devPort = getDevelopPortConfig();
+		const prodPort = getServePortConfig();
+		activeTerminal.dispose();
+
+		if (activeTerminal.name === 'GatsbyServer (Dev)') {
+			// change status bar to working message while server finishes disposing
+			StatusBar.working('Shutting Down...');
+			// toggle statusBar so it will develop if clicked again
+			setTimeout(this.toggleStatusBar, 3000);
+			window.showInformationMessage(`Shutting down port:${devPort}`);
+		} else {
+			window.showInformationMessage(`Shutting down port:${prodPort}`);
+			this.prodServerStatus = !this.prodServerStatus;
+		}
+		commands.executeCommand('setContext', 'serverIsRunning', false);
+	}
+
+	/* -------------------------------------------------------------------------- */
 	/*                                 Status Bar                                 */
 	/* -------------------------------------------------------------------------- */
 
@@ -358,12 +402,12 @@ export default class GatsbyCli {
 
 	private toggleStatusBar(): void {
 		const port = getDevelopPortConfig();
-		if (!this.serverStatus) {
+		if (!this.devServerStatus) {
 			StatusBar.offline(port);
 		} else {
 			StatusBar.online();
 		}
-		this.serverStatus = !this.serverStatus;
+		this.devServerStatus = !this.devServerStatus;
 	}
 
 	// ANCHOR: /* ----------------------- Dispose the status bar item ---------------------- */
