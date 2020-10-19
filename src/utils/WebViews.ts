@@ -172,19 +172,20 @@ export default class WebViews {
 	}
 
 	// opens webview for Themes readme -- has to be seperate function in order to be pushed to subscriptions in extension.ts
-	static async openThemeDocs() {
-		const url =
-			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/themes.md';
-		const response = await got(url);
-		const readMe = marked(response.body);
-
+	static openThemeDocs() {
 		const panel = window.createWebviewPanel(
 			'Theme Docs',
 			`Theme Docs`,
 			ViewColumn.One
 		);
 
-		panel.webview.html = `${readMe}`;
+		panel.webview.html = `
+		<h1>Themes</h1>
+		<h3>Using a Gatsby theme, all of your default configuration (shared functionality, data sourcing, design) is abstracted out of your site, and into an installable package.</h3>
+		<p>
+		This means that the configuration and functionality isn’t directly written into your project, but rather versioned, centrally managed, and installed as a dependency. You can seamlessly update a theme, compose themes together, and even swap out one compatible theme for another.
+		</p>
+		`;
 
 		// close the webview when not looking at it
 		panel.onDidChangeViewState((e) => {
