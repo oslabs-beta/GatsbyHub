@@ -307,9 +307,6 @@ export default class GatsbyCli {
 	/**	TODO
 	 * Change context when server starts
 	 * Don't want graphiql button appearing for this server
-	 * Make dispose btn appear
-	 * Give it it's own server terminal so dev server can also run
-	 * Rename server terminals --> Gatsby Server (Dev) --- Gatsby Server (Production)
 	 * Probably don't need to do anything with the status bar
 	 *
 	 */
