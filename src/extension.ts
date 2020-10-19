@@ -43,6 +43,15 @@ export function activate(context: ExtensionContext) {
 		registerCommand('gatsbyhub.openCommandDocs', WebViews.openCommandDocs)
 	);
 	subscriptions.push(
+		registerCommand('gatsbyhub.openPluginDocs', WebViews.openPluginDocs)
+	);
+	subscriptions.push(
+		registerCommand('gatsbyhub.openStarterDocs', WebViews.openStarterDocs)
+	);
+	subscriptions.push(
+		registerCommand('gatsbyhub.openThemeDocs', WebViews.openThemeDocs)
+	);
+	subscriptions.push(
 		registerCommand('gatsbyhub.openGraphiQL', Utilities.openGraphiQL)
 	);
 	subscriptions.push(
