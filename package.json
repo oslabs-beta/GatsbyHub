@@ -163,6 +163,21 @@
 					"when": "view == commands"
 				},
 				{
+					"command": "gatsbyhub.openPluginDocs",
+					"group": "navigation",
+					"when": "view == Plugins"
+				},
+				{
+					"command": "gatsbyhub.openStarterDocs",
+					"group": "navigation",
+					"when": "view == starters"
+				},
+				{
+					"command": "gatsbyhub.openThemeDocs",
+					"group": "navigation",
+					"when": "view == themes"
+				},
+				{
 					"command": "buildFinished",
 					"group": "navigation",
 					"when": "view == commands && siteBuilt"
