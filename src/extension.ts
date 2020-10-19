@@ -7,6 +7,7 @@ import StarterProvider from './models/StarterProvider';
 import ThemeProvider from './models/ThemeProvider';
 import Utilities from './utils/Utilities';
 
+// TODO create docs for each view, add buttons that open webview with docs
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext) {
@@ -14,6 +15,11 @@ export function activate(context: ExtensionContext) {
 	const { registerCommand } = commands;
 	const { subscriptions } = context;
 	const gatsbyCli = new GatsbyCli();
+	/**
+	 * Scan workspace on activation
+	 * for build folders
+	 */
+	Utilities.checkIfBuilt();
 
 	subscriptions.push(
 		registerCommand('gatsbyhub.installGatsby', gatsbyCli.installGatsby)

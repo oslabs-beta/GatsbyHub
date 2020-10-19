@@ -145,15 +145,15 @@ export default class GatsbyCli {
 
 	async build(): Promise<void> {
 		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
-		const siteIsBuilt: boolean = await Utilities.checkIfBuilt();
+		// const siteIsBuilt: boolean = await Utilities.checkIfBuilt();
 
 		// NOTE not sure what to do with this yet
-		if (siteIsBuilt) {
-			this.buildStatus = true;
-			console.log('already built');
+		// if (siteIsBuilt) {
+		// 	this.buildStatus = true;
+		// 	console.log('already built');
 
-			return;
-		}
+		// 	return;
+		// }
 
 		if (!gatsbyIsInitiated) {
 			const input = await window.showErrorMessage(
