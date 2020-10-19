@@ -90,4 +90,26 @@ export default class WebViews {
 			}
 		});
 	}
+
+	static async openPluginDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/plugins.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Plugin Docs',
+			`Plugin Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
 }
