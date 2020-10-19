@@ -4,7 +4,8 @@ export default class CLICommand extends TreeItem {
 	constructor(
 		public label: string,
 		public command?: Command,
-		public children?: CLICommand[]
+		public children?: CLICommand[],
+		public tooltip?: string
 	) {
 		super(
 			label,
@@ -16,5 +17,6 @@ export default class CLICommand extends TreeItem {
 		this.contextValue = label;
 		this.children = children;
 		this.command = command;
+		this.tooltip = tooltip;
 	}
 }
