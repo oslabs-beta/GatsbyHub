@@ -35,7 +35,7 @@
 			},
 			{
 				"command": "gatsbyhub.develop",
-				"title": "Start Development Server",
+				"title": "Launch Development Server",
 				"icon": "$(rocket)"
 			},
 			{

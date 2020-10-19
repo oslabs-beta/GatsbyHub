@@ -23,7 +23,7 @@ export default class CLICommandProvider
 				'Develop Server',
 				undefined,
 				undefined,
-				'Start Development Server'
+				'Launch Development Server'
 			),
 			new CLICommand(
 				'Build Site',

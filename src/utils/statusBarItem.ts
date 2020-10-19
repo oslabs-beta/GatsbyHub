@@ -31,13 +31,13 @@ export default class StatusBar {
 	// GatsbyCli toggles statusBar between online() and offline() methods
 	public static online() {
 		StatusBar.item.text = '$(rocket) GatsbyHub';
-		StatusBar.item.tooltip = 'Launch dev server';
+		StatusBar.item.tooltip = 'Launch Development Server';
 		StatusBar.item.command = 'gatsbyhub.develop';
 	}
 
 	public static offline(port: Number = 8000) {
 		StatusBar.item.text = `$(circle-slash) Port: ${port}`;
-		StatusBar.item.tooltip = 'Shut down server';
+		StatusBar.item.tooltip = 'Shutdown Server';
 		StatusBar.statusBarItem.command = 'gatsbyhub.disposeServer';
 	}
 
