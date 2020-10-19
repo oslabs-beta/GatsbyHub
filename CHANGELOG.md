@@ -1,8 +1,6 @@
 # Change Log
 
-All notable changes to the "gatsbyhub" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+All notable changes to the GatsbyHub extension will be documented in this file.
 
 ## [Initial Release]
 
