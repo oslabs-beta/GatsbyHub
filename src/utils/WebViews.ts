@@ -94,11 +94,6 @@ export default class WebViews {
 
 	// Open webview readme of Plugin docs -- has to be seperate function because the command has to be pushed to subscriptions in extension.ts file -- same for starters and themes
 	static openPluginDocs() {
-		// const url =
-		// 	'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/plugins.md';
-		// const response = await got(url);
-		// const readMe = marked(response.body);
-
 		const panel = window.createWebviewPanel(
 			'Plugin Docs',
 			`Plugin Docs`,
@@ -140,19 +135,33 @@ export default class WebViews {
 	}
 
 	// opens webview for Starter readmen has to be seperate function to push to subscriptions
-	static async openStarterDocs() {
-		const url =
-			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/starters.md';
-		const response = await got(url);
-		const readMe = marked(response.body);
-
+	static openStarterDocs() {
 		const panel = window.createWebviewPanel(
 			'Starter Docs',
 			`Starter Docs`,
 			ViewColumn.One
 		);
 
-		panel.webview.html = `${readMe}`;
+		panel.webview.html = `
+		<h1>Starters</h2> 
+		<h3>The Gatsby and GatsbyHub tool lets you install starters, which are boilerplate Gatsby sites maintained by the community and intended for jump-starting development quickly.</h3>
+		<p>
+		You can begin by using the Gatsby default starter simply by pressing on the "New" button in the Commands Menu, or you can install any of the starters in the Starters Menu by clicking the download button. 
+		<br><br>
+		<h3>Choosing a starter</h3>
+		<p>To choose a starter, first consider the functionality you need. Are you building an e-commerce site? A blog? Do you already know what data sources you’ll want to use? Find a starter that fulfills your requirements by searching through the Gatsby Starters Menu on the left.
+		<br>
+		If you’re not sure what to choose or want only the most essential functionality, try customizing either gatsby-starter-blog (if you’re primarily using this site as a blog) or gatsby-starter-default (which you can use by simply pressing the "New" button in the Commands Menu). These official starters are maintained by Gatsby and are great options, particularly for your first Gatsby site.
+		<br><br>
+		<h3>Modifying starters</h3>
+		<p>
+		Learn how to <a href="https://www.gatsbyjs.com/docs/modifying-a-starter/">modify a starter</a> in the Gatsby docs. 
+		<br>
+		You can use official and community starters out of the box but you may want to customize their style and functionality.
+		</p>
+		<br><br>
+		<p><a href="https://www.gatsbyjs.com/docs/starters/">Read more about Gatsby Starters</a></p>
+		`;
 
 		// close the webview when not looking at it
 		panel.onDidChangeViewState((e) => {
