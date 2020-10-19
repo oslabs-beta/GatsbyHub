@@ -188,6 +188,15 @@ export default class Utilities {
 		);
 	}
 
+	static openBrowser() {
+		const port = getDevelopPortConfig();
+
+		commands.executeCommand(
+			'vscode.open',
+			Uri.parse(`http://localhost:${port}`)
+		);
+	}
+
 	static getPortConfig(): number {
 		return workspace.getConfiguration('gatsbyhub').commands.develop.port;
 	}
