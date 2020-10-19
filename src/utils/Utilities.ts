@@ -47,6 +47,35 @@ export default class Utilities {
 		return terminal;
 	}
 
+	static getActiveProdServerTerminal(): Terminal {
+		const { terminals, createTerminal } = window;
+		const filteredTerminals = terminals.filter(
+			(obj: Terminal) => obj.name === 'GatsbyServer (Prod)'
+		);
+
+		let terminal: Terminal;
+
+		if (filteredTerminals.length === 0) {
+			terminal = createTerminal('GatsbyServer (Prod)');
+		} else {
+			[terminal] = filteredTerminals;
+		}
+
+		return terminal;
+	}
+
+	static getActiveServer(): Terminal {
+		const { terminals } = window;
+		const filteredTerminals = terminals.filter(
+			(obj: Terminal) =>
+				obj.name === 'GatsbyServer (Prod)' || obj.name === 'GatsbyServer (Dev)'
+		);
+
+		const [terminal] = filteredTerminals;
+
+		return terminal;
+	}
+
 	static async getWorkspaceUri(): Promise<Uri | undefined> {
 		const currWorkspace: readonly WorkspaceFolder[] | undefined =
 			workspace.workspaceFolders;
