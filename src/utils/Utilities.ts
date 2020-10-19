@@ -30,19 +30,48 @@ export default class Utilities {
 		return terminal;
 	}
 
-	static getActiveServerTerminal(): Terminal {
+	static getActiveDevServerTerminal(): Terminal {
 		const { terminals, createTerminal } = window;
 		const filteredTerminals = terminals.filter(
-			(obj: Terminal) => obj.name === 'Gatsby Server'
+			(obj: Terminal) => obj.name === 'GatsbyServer [Dev]'
 		);
 
 		let terminal: Terminal;
 
 		if (filteredTerminals.length === 0) {
-			terminal = createTerminal('Gatsby Server');
+			terminal = createTerminal('GatsbyServer [Dev]');
 		} else {
 			[terminal] = filteredTerminals;
 		}
+
+		return terminal;
+	}
+
+	static getActiveProdServerTerminal(): Terminal {
+		const { terminals, createTerminal } = window;
+		const filteredTerminals = terminals.filter(
+			(obj: Terminal) => obj.name === 'GatsbyServer [Prod]'
+		);
+
+		let terminal: Terminal;
+
+		if (filteredTerminals.length === 0) {
+			terminal = createTerminal('GatsbyServer [Prod]');
+		} else {
+			[terminal] = filteredTerminals;
+		}
+
+		return terminal;
+	}
+
+	static getActiveServer(): Terminal {
+		const { terminals } = window;
+		const filteredTerminals = terminals.filter(
+			(obj: Terminal) =>
+				obj.name === 'GatsbyServer [Prod]' || obj.name === 'GatsbyServer [Dev]'
+		);
+
+		const [terminal] = filteredTerminals;
 
 		return terminal;
 	}
@@ -80,16 +109,16 @@ export default class Utilities {
 		return true;
 	}
 
-	static async checkIfGatsbySiteInitiated(): Promise<boolean | null> {
+	static async checkIfGatsbySiteInitiated(): Promise<boolean> {
 		const uri = await this.getWorkspaceUri();
+		let initiated = false;
 
 		if (uri) {
 			const data = await workspace.fs.readDirectory(uri);
 
 			// if workspace is empty, that means a gatsby site has not been initiated
-			if (data.length < 1) return false;
+			if (data.length < 1) return initiated;
 
-			let initiated: boolean = false;
 			// if there are files/folders
 			data.forEach((file) => {
 				// if one of these files is gatsby-config set initiated to true
@@ -99,7 +128,45 @@ export default class Utilities {
 			return initiated;
 		}
 
-		return null;
+		return initiated;
+	}
+
+	static async checkIfBuilt(event?: string): Promise<boolean> {
+		const uri = await this.getWorkspaceUri();
+		let built = false;
+
+		if (event === 'cleaned') {
+			commands.executeCommand('setContext', 'siteBuilt', false);
+			return built;
+		}
+
+		if (uri) {
+			const data = await workspace.fs.readDirectory(uri);
+
+			// if workspace is empty, that means a gatsby site has not been initiated
+			if (data.length < 1) {
+				commands.executeCommand('setContext', 'siteIsBuilt', false);
+				return built;
+			}
+
+			// if there are files/folders
+			data.forEach((file) => {
+				// if one of these files is .cache or public set built to true
+				if (file[0] === '.cache' || file[0] === 'public') {
+					built = true;
+				}
+			});
+		}
+
+		if (built) {
+			setTimeout(() => {
+				commands.executeCommand('setContext', 'siteBuilt', true);
+			}, 6000);
+		} else {
+			commands.executeCommand('setContext', 'siteBuilt', false);
+		}
+
+		return built;
 	}
 
 	static async getRootPath(): Promise<string | undefined> {
