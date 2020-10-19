@@ -78,6 +78,21 @@
 				"icon": "$(question)"
 			},
 			{
+				"command": "gatsbyhub.openPluginDocs",
+				"title": "Open Plugin Docs",
+				"icon": "$(question)"
+			},
+			{
+				"command": "gatsbyhub.openStarterDocs",
+				"title": "Open Starter Docs",
+				"icon": "$(question)"
+			},
+			{
+				"command": "gatsbyhub.openThemeDocs",
+				"title": "Open Theme Docs",
+				"icon": "$(question)"
+			},
+			{
 				"command": "gatsbyhub.openGraphiQL",
 				"title": "Open GraphiQL",
 				"icon": "$(globe)"
@@ -161,6 +176,21 @@
 					"command": "gatsbyhub.openCommandDocs",
 					"group": "navigation",
 					"when": "view == commands"
+				},
+				{
+					"command": "gatsbyhub.openPluginDocs",
+					"group": "navigation",
+					"when": "view == plugins"
+				},
+				{
+					"command": "gatsbyhub.openStarterDocs",
+					"group": "navigation",
+					"when": "view == starters"
+				},
+				{
+					"command": "gatsbyhub.openThemeDocs",
+					"group": "navigation",
+					"when": "view == themes"
 				},
 				{
 					"command": "buildFinished",
