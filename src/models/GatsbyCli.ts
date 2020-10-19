@@ -8,13 +8,13 @@ import { getServeCmnd, getServePortConfig } from '../utils/config/serve';
 import { getDevelopPortConfig, getDevelopCmnd } from '../utils/config/develop';
 import { NpmTreeItem } from '../utils/Interfaces';
 
-// TODO create markdown files for each view, add buttons that open webview with docs
-
 // Defines the functionality of the Gatsby CLI Commands
 export default class GatsbyCli {
 	private devServerStatus: boolean;
 
 	private prodServerStatus: boolean;
+
+	private buildStatus: boolean;
 
 	initStatusBar: void;
 
@@ -22,12 +22,15 @@ export default class GatsbyCli {
 		// Defines the condition on which way to toggle statusBarItem
 		this.devServerStatus = false;
 		this.prodServerStatus = false;
+		this.buildStatus = false;
 		// Initializes the StatusBarItem
 		this.initStatusBar = StatusBar.init();
 		this.toggleStatusBar = this.toggleStatusBar.bind(this);
 		this.disposeServer = this.disposeServer.bind(this);
 		this.develop = this.develop.bind(this);
 		this.serve = this.serve.bind(this);
+		this.build = this.build.bind(this);
+		this.clean = this.clean.bind(this);
 	}
 
 	// ANCHOR:  installs gatsby-cli for the user when install gatsby button is clicked
@@ -70,14 +73,12 @@ export default class GatsbyCli {
 		const continueMsg = 'Continue';
 		const cancelMsg = 'Cancel';
 
-		/*
+		/**
 		 * Check if the current workspace is a Gatsby project
 		 * If it is, don't let the user create another site in here
 		 *
 		 */
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
+		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
 
 		if (gatsbyIsInitiated) {
 			const input = await window.showErrorMessage(
@@ -142,19 +143,17 @@ export default class GatsbyCli {
 
 	// ANCHOR: /* --------------------- builds and packages Gatsby site -------------------- */
 
-	/** TODO
-	 * Figure out logic to put checkmark indicating the site has been built
-	 * Maybe scan the directory for a '.cache' or 'public'
-	 * 	good indication build has been ran
-	 *
-	 * create method in Utilities to scan directory: returns boolean
-	 * set a property in this class to the evaluated result of that method
-	 * set the context based on that result
-	 */
 	async build(): Promise<void> {
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
+		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
+		const siteIsBuilt: boolean = await Utilities.checkIfBuilt();
+
+		// NOTE not sure what to do with this yet
+		if (siteIsBuilt) {
+			this.buildStatus = true;
+			console.log('already built');
+
+			return;
+		}
 
 		if (!gatsbyIsInitiated) {
 			const input = await window.showErrorMessage(
@@ -173,7 +172,10 @@ export default class GatsbyCli {
 
 		activeTerminal.show(true);
 		activeTerminal.sendText(build);
-		commands.executeCommand('setContext', 'siteBuilt', true);
+		this.buildStatus = true;
+		setTimeout(() => {
+			Utilities.checkIfBuilt();
+		}, 8000);
 	}
 
 	// ANCHOR: /* -------------------------- Handles info command -------------------------- */
@@ -194,16 +196,15 @@ export default class GatsbyCli {
 
 		activeTerminal.show(true);
 		activeTerminal.sendText(clean);
-		commands.executeCommand('setContext', 'siteBuilt', false);
+		this.buildStatus = false;
+		Utilities.checkIfBuilt('cleaned');
 	}
 
 	// ANCHOR: /* ---------- Logic handling the installation of Plugins and Themes --------- */
 
 	async install(plugin?: NpmTreeItem): Promise<void> {
 		const activeTerminal = Utilities.getActiveTerminal();
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
+		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
 
 		if (!gatsbyIsInitiated) {
 			const input = await window.showErrorMessage(
@@ -265,9 +266,7 @@ export default class GatsbyCli {
 			return;
 		}
 
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
+		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
 
 		if (!workspace.workspaceFolders) {
 			window.showInformationMessage(
@@ -305,7 +304,7 @@ export default class GatsbyCli {
 	// ANCHOR: /* ------------------------ Handles the 'serve' command ------------------------ */
 
 	/**	TODO
-	 * Change context when server starts
+	 *
 	 * Don't want graphiql button appearing for this server
 	 * Probably don't need to do anything with the status bar
 	 *
@@ -329,9 +328,7 @@ export default class GatsbyCli {
 			return;
 		}
 
-		const gatsbyIsInitiated:
-			| boolean
-			| null = await Utilities.checkIfGatsbySiteInitiated();
+		const gatsbyIsInitiated: boolean = await Utilities.checkIfGatsbySiteInitiated();
 
 		if (!gatsbyIsInitiated) {
 			const input = await window.showErrorMessage(
@@ -354,31 +351,25 @@ export default class GatsbyCli {
 		if (input !== 'Continue') return;
 
 		const activeTerminal = Utilities.getActiveProdServerTerminal();
-		const prodPort = getServePortConfig();
+		const prodPort: number = getServePortConfig();
 		const serve: string = getServeCmnd();
 
 		activeTerminal.show(true);
 		activeTerminal.sendText(serve);
 		window.showInformationMessage(`Starting up port:${prodPort}`);
 		commands.executeCommand('setContext', 'serverIsRunning', true);
-		this.prodServerStatus = !this.prodServerStatus;
+		this.prodServerStatus = true;
 	}
 
 	// ANCHOR: /* ---------- Disposes development server by disposing the terminal --------- */
 
-	/** TODO
-	 * figure out a way to dispose the right server
-	 * since there is now a possibility there will be two running
-	 * Might need to look into making it so that there can't be two servers at once
-	 *
-	 */
 	public disposeServer(): void {
 		const activeTerminal = Utilities.getActiveServer();
 		const devPort = getDevelopPortConfig();
 		const prodPort = getServePortConfig();
 		activeTerminal.dispose();
 
-		if (activeTerminal.name === 'GatsbyServer (Dev)') {
+		if (activeTerminal.name === 'GatsbyServer [Dev]') {
 			// change status bar to working message while server finishes disposing
 			StatusBar.working('Shutting Down...');
 			// toggle statusBar so it will develop if clicked again
@@ -386,7 +377,7 @@ export default class GatsbyCli {
 			window.showInformationMessage(`Shutting down port:${devPort}`);
 		} else {
 			window.showInformationMessage(`Shutting down port:${prodPort}`);
-			this.prodServerStatus = !this.prodServerStatus;
+			this.prodServerStatus = false;
 		}
 		commands.executeCommand('setContext', 'serverIsRunning', false);
 	}
