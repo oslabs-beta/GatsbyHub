@@ -1,260 +1,359 @@
 {
-  "name": "gatsbyhub",
-  "displayName": "GatsbyHub",
-  "description": "The one stop shop for everything Gatsby has to offer",
-  "version": "0.4.0",
-  "engines": {
-    "vscode": "^1.49.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onView:commands",
-    "onView:plugins",
-    "onView:starters"
-  ],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "gatsbyhub.installGatsby",
-        "title": "Install Gatsby"
-      },
-      {
-        "command": "gatsbyhub.createSite",
-        "title": "Create New Site",
-        "icon": "$(play)"
-      },
-      {
-        "command": "gatsbyhub.developServer",
-        "title": "Develop Server",
-        "icon": "$(rocket)"
-      },
-      {
-        "command": "gatsbyhub.disposeServer",
-        "title": "Dispose Server",
-        "icon": "$(circle-slash)"
-      },
-      {
-        "command": "gatsbyhub.installPlugin",
-        "title": "Install Plugin",
-        "icon": "$(diff-added)"
-      },
-      {
-        "command": "gatsbyhub.build",
-        "title": "Build Site"
-      },
-      {
-        "command": "gatsbyhub.createWebView",
-        "title": "Show Plugin WebView"
-      },
-      {
-        "command": "gatsbyhub.openGraphiQL",
-        "title": "Open GraphiQL",
-        "icon": "$(browser)"
-      }
-    ],
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "gatsbyHub",
-          "title": "GatsbyHub",
-          "icon": "src/logo/GatsbyHub-purple.svg"
-        }
-      ]
-    },
-    "views": {
-      "gatsbyHub": [
-        {
-          "id": "commands",
-          "name": "Commands"
-        },
-        {
-          "id": "plugins",
-          "name": "Plugins"
-        },
-        {
-          "id": "starters",
-          "name": "Starters"
-        },
-        {
-          "id": "themes",
-          "name": "Themes"
-        }
-      ]
-    },
-    "viewsWelcome": [
-      {
-        "view": "commands",
-        "contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n[Build Site](command:gatsbyhub.build)\n"
-      },
-      {
-        "view": "plugins",
-        "contents": "Loading Plugins..."
-      },
-      {
-        "view": "starters",
-        "contents": "Loading Starters..."
-      },
-      {
-        "view": "themes",
-        "contents": "Loading Themes..."
-      }
-    ],
-    "menus": {
-      "view/title": [
-        {
-          "command": "gatsbyhub.developServer",
-          "group": "navigation",
-          "when": "view == commands && serverIsRunning == false"
-        },
-        {
-          "command": "gatsbyhub.disposeServer",
-          "group": "navigation",
-          "when": "view == commands && serverIsRunning == true"
-        },
-        {
-          "command": "gatsbyhub.openGraphiQL",
-          "group": "navigation",
-          "when": "view == commands && serverIsRunning == true"
-        }
-      ],
-      "view/item/context": [
-        {
-          "command": "gatsbyhub.installPlugin",
-          "group": "inline",
-          "when": "view == plugins"
-        },
-        {
-          "command": "gatsbyhub.createSite",
-          "group": "inline",
-          "when": "view == starters"
-        },
-        {
-          "command": "gatsbyhub.installPlugin",
-          "group": "inline",
-          "when": "view == themes"
-        }
-      ]
-    },
-    "configuration": {
-      "title": "GatsbyHub",
-      "properties": {
-        "gatsbyhub.commands.develop.port": {
-          "type": "number",
-          "default": 8000,
-          "description": "Choose what port to expose with the server."
-        },
-        "gatsbyhub.commands.develop.openBrowser": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable to open the browser automatically with running server."
-        },
-        "gatsbyhub.commands.develop.useHTTPS": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable to run server on HTTPS."
-        },
-        "gatsbyhub.commands.develop.changeHost": {
-          "type": [
-            "string"
-          ],
-          "default": "localhost",
-          "description": "Change server host."
-        },
-        "gatsbyhub.commands.serve.changeHost": {
-          "type": [
-            "string"
-          ],
-          "default": "localhost",
-          "description": "Change server host."
-        },
-        "gatsbyhub.commands.serve.port": {
-          "type": "number",
-          "default": 8000,
-          "description": "Choose what port to expose with the server."
-        },
-        "gatsbyhub.commands.serve.openBrowser": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable to open the browser automatically with running server."
-        },
-        "gatsbyhub.commands.serve.prefixPaths": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable if your gatsby-config uses 'pathPrefix' config."
-        },
-        "gatsbyhub.commands.info.enableClipboard": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable to automatically copy environment info to clipboard."
-        },
-        "gatsbyhub.commands.build.prefixPaths": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable if your gatsby-config uses 'pathPrefix' config."
-        },
-        "gatsbyhub.commands.build.noUglify": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable if you don't want to uglify your JS bundle. (for debugging)"
-        },
-        "gatsbyhub.commands.build.enableTracing": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable if you want to your build to be traced."
-        }
-      }
-    }
-  },
-  "scripts": {
-    "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
-    "prettify": "prettier --write . && eslint src --fix --ext ts",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "test": "node ./out/test/runTest.js",
-    "vscode:prepublish": "webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch"
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^6.13.0",
-    "eslint-plugin-import": "^2.22.1",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.4.2",
-    "prettier": "2.1.2",
-    "ts-loader": "^8.0.5",
-    "webpack": "^5.1.3",
-    "webpack-cli": "^4.0.0"
-  },
-  "dependencies": {
-    "@types/glob": "^7.1.3",
-    "@types/marked": "^1.1.0",
-    "@types/mocha": "^8.0.0",
-    "@types/node": "^14.0.27",
-    "@types/vscode": "^1.49.0",
-    "@typescript-eslint/eslint-plugin": "^4.3.0",
-    "@typescript-eslint/parser": "^4.3.0",
-    "eslint": "^7.10.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "glob": "^7.1.6",
-    "got": "^11.7.0",
-    "marked": "^1.2.0",
-    "npm-api": "^1.0.0",
-    "typescript": "^4.0.2",
-    "vscode-test": "^1.4.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  }
+	"name": "gatsbyhub",
+	"displayName": "GatsbyHub",
+	"description": "The one stop shop for everything Gatsby has to offer",
+	"version": "0.8.0",
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"gatsby",
+		"gatsby-cli",
+		"react",
+		"framework"
+	],
+	"activationEvents": [
+		"onView:commands",
+		"onView:plugins",
+		"onView:starters"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "gatsbyhub.installGatsby",
+				"title": "Install Gatsby-CLI",
+				"icon": "$(arrow-down)"
+			},
+			{
+				"command": "gatsbyhub.createSite",
+				"title": "Create New Site",
+				"icon": "$(file-directory-create)"
+			},
+			{
+				"command": "gatsbyhub.develop",
+				"title": "Start Dev Server",
+				"icon": "$(rocket)"
+			},
+			{
+				"command": "gatsbyhub.build",
+				"title": "Prepare for Deployment",
+				"icon": "$(package)"
+			},
+			{
+				"command": "gatsbyhub.serve",
+				"title": "Start Production Server",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "gatsbyhub.info",
+				"title": "Get Env Info",
+				"icon": "$(info)"
+			},
+			{
+				"command": "gatsbyhub.clean",
+				"title": "Clear Cache and Public Directories",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "gatsbyhub.disposeServer",
+				"title": "Kill Server",
+				"icon": "$(circle-slash)"
+			},
+			{
+				"command": "gatsbyhub.install",
+				"title": "Install Plugin",
+				"icon": "src/logo/download.svg"
+			},
+			{
+				"command": "gatsbyhub.createWebView",
+				"title": "Show Plugin WebView"
+			},
+			{
+				"command": "gatsbyhub.openCommandDocs",
+				"title": "Open CLI Docs",
+				"icon": "$(question)"
+			},
+			{
+				"command": "gatsbyhub.openGraphiQL",
+				"title": "Open GraphiQL",
+				"icon": "$(globe)"
+			},
+			{
+				"command": "gatsbyhub.openBrowser",
+				"title": "Open Browser",
+				"icon": "$(browser)"
+			},
+			{
+				"command": "buildFinished",
+				"title": "Site Built",
+				"icon": "$(check)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "gatsbyHub",
+					"title": "GatsbyHub",
+					"icon": "src/logo/GatsbyHub-purple.svg"
+				}
+			]
+		},
+		"views": {
+			"gatsbyHub": [
+				{
+					"id": "commands",
+					"name": "Commands"
+				},
+				{
+					"id": "plugins",
+					"name": "Plugins"
+				},
+				{
+					"id": "starters",
+					"name": "Starters"
+				},
+				{
+					"id": "themes",
+					"name": "Themes"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "commands",
+				"contents": "Welcome Friend!"
+			},
+			{
+				"view": "plugins",
+				"contents": "Loading Plugins..."
+			},
+			{
+				"view": "starters",
+				"contents": "Loading Starters..."
+			},
+			{
+				"view": "themes",
+				"contents": "Loading Themes..."
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "gatsbyhub.disposeServer",
+					"group": "navigation",
+					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openGraphiQL",
+					"group": "navigation",
+					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openBrowser",
+					"group": "navigation",
+					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openCommandDocs",
+					"group": "navigation",
+					"when": "view == commands"
+				},
+				{
+					"command": "buildFinished",
+					"group": "navigation",
+					"when": "view == commands && siteBuilt"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "gatsbyhub.createSite",
+					"group": "inline",
+					"when": "viewItem == New"
+				},
+				{
+					"command": "gatsbyhub.develop",
+					"group": "inline",
+					"when": "viewItem == Develop"
+				},
+				{
+					"command": "gatsbyhub.build",
+					"group": "inline",
+					"when": "viewItem == Build"
+				},
+				{
+					"command": "gatsbyhub.serve",
+					"group": "inline",
+					"when": "viewItem == Serve"
+				},
+				{
+					"command": "gatsbyhub.info",
+					"group": "inline",
+					"when": "viewItem == Info"
+				},
+				{
+					"command": "gatsbyhub.clean",
+					"group": "inline",
+					"when": "viewItem == Clean"
+				},
+				{
+					"command": "gatsbyhub.installGatsby",
+					"group": "inline",
+					"when": "viewItem == Install"
+				},
+				{
+					"command": "gatsbyhub.install",
+					"group": "inline",
+					"when": "view == plugins"
+				},
+				{
+					"command": "gatsbyhub.createSite",
+					"group": "inline",
+					"when": "view == starters"
+				},
+				{
+					"command": "gatsbyhub.install",
+					"group": "inline",
+					"when": "view == themes"
+				}
+			]
+		},
+		"configuration": {
+			"title": "GatsbyHub",
+			"properties": {
+				"gatsbyhub.commands.develop.port": {
+					"type": "number",
+					"default": 8000,
+					"description": "Choose what port to expose with the server."
+				},
+				"gatsbyhub.commands.develop.openBrowser": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable to open the browser automatically with running server."
+				},
+				"gatsbyhub.commands.develop.useHttps": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable to run server on HTTPS."
+				},
+				"gatsbyhub.commands.develop.changeHost": {
+					"type": [
+						"string"
+					],
+					"default": "localhost",
+					"description": "Change server host."
+				},
+				"gatsbyhub.commands.serve.changeHost": {
+					"type": [
+						"string"
+					],
+					"default": "localhost",
+					"description": "Change server host."
+				},
+				"gatsbyhub.commands.serve.port": {
+					"type": "number",
+					"default": 9000,
+					"description": "Choose what port to expose with the server."
+				},
+				"gatsbyhub.commands.serve.openBrowser": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable to open the browser automatically with running server."
+				},
+				"gatsbyhub.commands.serve.prefixPaths": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if your gatsby-config uses 'pathPrefix' config."
+				},
+				"gatsbyhub.commands.info.enableClipboard": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable to automatically copy environment info to clipboard."
+				},
+				"gatsbyhub.commands.build.prefixPaths": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if your gatsby-config uses 'pathPrefix' config."
+				},
+				"gatsbyhub.commands.build.noUglify": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you don't want to uglify your JS bundle. (for debugging)"
+				},
+				"gatsbyhub.commands.build.enableTracing": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to your build to be traced."
+				},
+				"gatsbyhub.commands.build.profile": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to build your site with react profiling."
+				},
+				"gatsbyhub.commands.build.graphqlTracing": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to your build's graphQL to be traced."
+				},
+				"gatsbyhub.commands.build.noColors": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to disable colored terminal output."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"prettify": "prettier --write . && eslint src --fix --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js",
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch"
+	},
+	"devDependencies": {
+		"eslint-config-prettier": "^6.13.0",
+		"eslint-plugin-import": "^2.22.1",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.2",
+		"prettier": "2.1.2",
+		"ts-loader": "^8.0.5",
+		"webpack": "^5.1.3",
+		"webpack-cli": "^4.0.0"
+	},
+	"dependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/marked": "^1.1.0",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"@types/vscode": "^1.49.0",
+		"@typescript-eslint/eslint-plugin": "^4.3.0",
+		"@typescript-eslint/parser": "^4.3.0",
+		"eslint": "^7.10.0",
+		"eslint-config-airbnb-base": "^14.2.0",
+		"glob": "^7.1.6",
+		"got": "^11.7.0",
+		"marked": "^1.2.0",
+		"mocha": "^8.1.3",
+		"npm-api": "^1.0.0",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,ts,json}": [
+			"prettier --write",
+			"eslint --fix"
+		]
+	}
 }
