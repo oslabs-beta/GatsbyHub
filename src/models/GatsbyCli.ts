@@ -120,7 +120,7 @@ export default class GatsbyCli {
 			placeHolder: 'Enter Name of New Site',
 		});
 
-		// send command to the terminal
+		// send command to the terminal,
 		if (siteName) {
 			if (starterObj) {
 				const { repository } = starterObj.command.arguments[0].links;
