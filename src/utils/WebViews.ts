@@ -112,4 +112,48 @@ export default class WebViews {
 			}
 		});
 	}
+
+	static async openStarterDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/starters.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Starter Docs',
+			`Starter Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
+
+	static async openThemeDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/themes.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Theme Docs',
+			`Theme Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
 }
