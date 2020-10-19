@@ -68,6 +68,7 @@ export default class WebViews {
 		});
 	}
 
+	// open webview readme fo the Gatsby CLI commands
 	static async openCommandDocs() {
 		const url =
 			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-cli/README.md';
@@ -77,6 +78,75 @@ export default class WebViews {
 		const panel = window.createWebviewPanel(
 			'CLI Docs',
 			`CLI Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
+
+	// Open webview readme of Plugin docs -- has to be seperate function because the command has to be pushed to subscriptions in extension.ts file -- same for starters and themes
+	static async openPluginDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/plugins.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Plugin Docs',
+			`Plugin Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
+
+	// opens webview for Starter readmen has to be seperate function to push to subscriptions
+	static async openStarterDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/starters.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Starter Docs',
+			`Starter Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
+
+	// opens webview for Themes readme -- has to be seperate function in order to be pushed to subscriptions in extension.ts
+	static async openThemeDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/themes.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'Theme Docs',
+			`Theme Docs`,
 			ViewColumn.One
 		);
 
