@@ -52,7 +52,6 @@ export default class WebViews {
     <div class="plugin-header">
       <div id="title-btn">
         <h1 id="title">${title}</h1>
-        <a id="install-btn">Install</a>
       </div>
       <p>Version: ${version}</p>
       <p>${description}</p>
