@@ -4,14 +4,14 @@ import NpmData from './NpmData';
 import { PluginPkg } from '../utils/Interfaces';
 
 export default class ThemeProvider implements TreeDataProvider<Theme> {
-	data: any;
+	data: Promise<Theme[]>;
 
 	constructor() {
-		this.data = this.createPlugins();
-		this.createPlugins = this.createPlugins.bind(this);
+		this.data = this.createThemes();
+		this.createThemes = this.createThemes.bind(this);
 	}
 
-	async createPlugins() {
+	async createThemes() {
 		const npmData = new NpmData();
 		return (await Promise.all(await npmData.getNpmPackages('theme'))).map(
 			(obj: PluginPkg) =>

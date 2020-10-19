@@ -9,6 +9,12 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"gatsby",
+		"gatsby-cli",
+		"react",
+		"framework"
+	],
 	"activationEvents": [
 		"onView:commands",
 		"onView:plugins",
@@ -19,7 +25,8 @@
 		"commands": [
 			{
 				"command": "gatsbyhub.installGatsby",
-				"title": "Install Gatsby"
+				"title": "Install Gatsby-CLI",
+				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gatsbyhub.createSite",
@@ -27,32 +34,58 @@
 				"icon": "$(play)"
 			},
 			{
-				"command": "gatsbyhub.developServer",
-				"title": "Develop Server",
+				"command": "gatsbyhub.develop",
+				"title": "Start Dev Server",
 				"icon": "$(rocket)"
 			},
 			{
+				"command": "gatsbyhub.build",
+				"title": "Prepare for Deployment",
+				"icon": "$(package)"
+			},
+			{
+				"command": "gatsbyhub.serve",
+				"title": "Start Production Server",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "gatsbyhub.info",
+				"title": "Get Env Info",
+				"icon": "$(info)"
+			},
+			{
+				"command": "gatsbyhub.clean",
+				"title": "Clear Cache and Public Directories",
+				"icon": "$(trash)"
+			},
+			{
 				"command": "gatsbyhub.disposeServer",
-				"title": "Dispose Server",
+				"title": "Kill Server",
 				"icon": "$(circle-slash)"
 			},
 			{
-				"command": "gatsbyhub.installPlugin",
+				"command": "gatsbyhub.install",
 				"title": "Install Plugin",
 				"icon": "$(diff-added)"
-			},
-			{
-				"command": "gatsbyhub.build",
-				"title": "Build Site"
 			},
 			{
 				"command": "gatsbyhub.createWebView",
 				"title": "Show Plugin WebView"
 			},
 			{
+				"command": "gatsbyhub.openCommandDocs",
+				"title": "Open CLI Docs",
+				"icon": "$(question)"
+			},
+			{
 				"command": "gatsbyhub.openGraphiQL",
 				"title": "Open GraphiQL",
 				"icon": "$(browser)"
+			},
+			{
+				"command": "buildFinished",
+				"title": "Site Built",
+				"icon": "$(check)"
 			}
 		],
 		"viewsContainers": {
@@ -87,7 +120,7 @@
 		"viewsWelcome": [
 			{
 				"view": "commands",
-				"contents": "[Install Gatsby](command:gatsbyhub.installGatsby)\n[Create New Site](command:gatsbyhub.createSite)\n[Develop Server](command:gatsbyhub.developServer)\n[Build Site](command:gatsbyhub.build)\n"
+				"contents": "Welcome Friend!"
 			},
 			{
 				"view": "plugins",
@@ -105,11 +138,6 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "gatsbyhub.developServer",
-					"group": "navigation",
-					"when": "view == commands && serverIsRunning == false"
-				},
-				{
 					"command": "gatsbyhub.disposeServer",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
@@ -118,11 +146,56 @@
 					"command": "gatsbyhub.openGraphiQL",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openCommandDocs",
+					"group": "navigation",
+					"when": "view == commands"
+				},
+				{
+					"command": "buildFinished",
+					"group": "navigation",
+					"when": "view == commands && siteBuilt"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "gatsbyhub.installPlugin",
+					"command": "gatsbyhub.createSite",
+					"group": "inline",
+					"when": "viewItem == New"
+				},
+				{
+					"command": "gatsbyhub.develop",
+					"group": "inline",
+					"when": "viewItem == Develop"
+				},
+				{
+					"command": "gatsbyhub.build",
+					"group": "inline",
+					"when": "viewItem == Build"
+				},
+				{
+					"command": "gatsbyhub.serve",
+					"group": "inline",
+					"when": "viewItem == Serve"
+				},
+				{
+					"command": "gatsbyhub.info",
+					"group": "inline",
+					"when": "viewItem == Info"
+				},
+				{
+					"command": "gatsbyhub.clean",
+					"group": "inline",
+					"when": "viewItem == Clean"
+				},
+				{
+					"command": "gatsbyhub.installGatsby",
+					"group": "inline",
+					"when": "viewItem == Install"
+				},
+				{
+					"command": "gatsbyhub.install",
 					"group": "inline",
 					"when": "view == plugins"
 				},
@@ -132,7 +205,7 @@
 					"when": "view == starters"
 				},
 				{
-					"command": "gatsbyhub.installPlugin",
+					"command": "gatsbyhub.install",
 					"group": "inline",
 					"when": "view == themes"
 				}
@@ -151,7 +224,7 @@
 					"default": false,
 					"description": "Enable to open the browser automatically with running server."
 				},
-				"gatsbyhub.commands.develop.useHTTPS": {
+				"gatsbyhub.commands.develop.useHttps": {
 					"type": "boolean",
 					"default": false,
 					"description": "Enable to run server on HTTPS."
@@ -172,7 +245,7 @@
 				},
 				"gatsbyhub.commands.serve.port": {
 					"type": "number",
-					"default": 8000,
+					"default": 9000,
 					"description": "Choose what port to expose with the server."
 				},
 				"gatsbyhub.commands.serve.openBrowser": {
@@ -204,6 +277,21 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Enable if you want to your build to be traced."
+				},
+				"gatsbyhub.commands.build.profile": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to build your site with react profiling."
+				},
+				"gatsbyhub.commands.build.graphqlTracing": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to your build's graphQL to be traced."
+				},
+				"gatsbyhub.commands.build.noColors": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable if you want to disable colored terminal output."
 				}
 			}
 		}
@@ -254,7 +342,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{js,ts}": [
+		"*.{js,ts,json}": [
 			"prettier --write",
 			"eslint --fix"
 		]

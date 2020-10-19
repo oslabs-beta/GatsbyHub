@@ -4,14 +4,14 @@ import NpmData from './NpmData';
 import { PluginPkg } from '../utils/Interfaces';
 
 export default class StarterProvider implements TreeDataProvider<Starter> {
-	data: any;
+	data: Promise<Starter[]>;
 
 	constructor() {
-		this.data = this.createPlugins();
-		this.createPlugins = this.createPlugins.bind(this);
+		this.data = this.createStarters();
+		this.createStarters = this.createStarters.bind(this);
 	}
 
-	async createPlugins() {
+	async createStarters() {
 		const npmData = new NpmData();
 		return (await Promise.all(await npmData.getNpmPackages('starter'))).map(
 			(obj: PluginPkg) =>

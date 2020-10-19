@@ -1,4 +1,6 @@
 import { window, ViewColumn } from 'vscode';
+import got from 'got';
+import * as marked from 'marked';
 import PluginData from '../models/NpmData';
 import { PluginPkg } from '../utils/Interfaces';
 
@@ -66,16 +68,26 @@ export default class WebViews {
 			}
 		});
 	}
-	// potentially add in install functionality in webview
-	// static installPlugin() {
-	//   document.getElementById('install-btn').innerHTML = 'Installing...';
-	//   setTimeout(() => {
-	//     document.getElementById('install-btn').innerHTML = 'Installed';
-	//   }, 3000);
-	//   // const cmdString = await PluginData.getNpmInstall(
-	//   //   links.repository,
-	//   //   links.homepage,
-	//   // );
-	//   // document.getElementById('install-btn').innerHTML = cmdString;
-	// }
+
+	static async openCommandDocs() {
+		const url =
+			'https://raw.githubusercontent.com/gatsbyjs/gatsby/master/packages/gatsby-cli/README.md';
+		const response = await got(url);
+		const readMe = marked(response.body);
+
+		const panel = window.createWebviewPanel(
+			'CLI Docs',
+			`CLI Docs`,
+			ViewColumn.One
+		);
+
+		panel.webview.html = `${readMe}`;
+
+		// close the webview when not looking at it
+		panel.onDidChangeViewState((e) => {
+			if (!e.webviewPanel.active) {
+				panel.dispose();
+			}
+		});
+	}
 }
