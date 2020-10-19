@@ -9,6 +9,12 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"gatsby",
+		"gatsby-cli",
+		"react",
+		"framework"
+	],
 	"activationEvents": [
 		"onView:commands",
 		"onView:plugins",
