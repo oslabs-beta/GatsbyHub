@@ -25,22 +25,22 @@
 		"commands": [
 			{
 				"command": "gatsbyhub.installGatsby",
-				"title": "Install Gatsby-CLI",
+				"title": "Install/Update Gatsby-cli",
 				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gatsbyhub.createSite",
-				"title": "Create New Site",
+				"title": "Create New Gatsby Site",
 				"icon": "$(file-directory-create)"
 			},
 			{
 				"command": "gatsbyhub.develop",
-				"title": "Start Dev Server",
+				"title": "Launch Development Server",
 				"icon": "$(rocket)"
 			},
 			{
 				"command": "gatsbyhub.build",
-				"title": "Prepare for Deployment",
+				"title": "Package and Prepare Site for Deployment",
 				"icon": "$(package)"
 			},
 			{
@@ -50,7 +50,7 @@
 			},
 			{
 				"command": "gatsbyhub.info",
-				"title": "Get Env Info",
+				"title": "Get Environment Information",
 				"icon": "$(info)"
 			},
 			{
@@ -66,7 +66,7 @@
 			{
 				"command": "gatsbyhub.install",
 				"title": "Install Plugin",
-				"icon": "src/logo/download.svg"
+				"icon": "$(arrow-down)"
 			},
 			{
 				"command": "gatsbyhub.createWebView",
@@ -158,6 +158,11 @@
 		"menus": {
 			"view/title": [
 				{
+					"command": "gatsbyhub.openCommandDocs",
+					"group": "navigation",
+					"when": "view == commands"
+				},
+				{
 					"command": "gatsbyhub.disposeServer",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
@@ -171,11 +176,6 @@
 					"command": "gatsbyhub.openBrowser",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
-				},
-				{
-					"command": "gatsbyhub.openCommandDocs",
-					"group": "navigation",
-					"when": "view == commands"
 				},
 				{
 					"command": "gatsbyhub.openPluginDocs",
@@ -202,22 +202,22 @@
 				{
 					"command": "gatsbyhub.createSite",
 					"group": "inline",
-					"when": "viewItem == New"
+					"when": "viewItem == New Site"
 				},
 				{
 					"command": "gatsbyhub.develop",
 					"group": "inline",
-					"when": "viewItem == Develop"
+					"when": "viewItem == Develop Server"
 				},
 				{
 					"command": "gatsbyhub.build",
 					"group": "inline",
-					"when": "viewItem == Build"
+					"when": "viewItem == Build Site"
 				},
 				{
 					"command": "gatsbyhub.serve",
 					"group": "inline",
-					"when": "viewItem == Serve"
+					"when": "viewItem == Serve Site"
 				},
 				{
 					"command": "gatsbyhub.info",
@@ -227,12 +227,12 @@
 				{
 					"command": "gatsbyhub.clean",
 					"group": "inline",
-					"when": "viewItem == Clean"
+					"when": "viewItem == Clean Cache"
 				},
 				{
 					"command": "gatsbyhub.installGatsby",
 					"group": "inline",
-					"when": "viewItem == Install"
+					"when": "viewItem == Install Gatsby"
 				},
 				{
 					"command": "gatsbyhub.install",
