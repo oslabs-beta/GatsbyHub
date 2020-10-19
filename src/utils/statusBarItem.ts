@@ -33,6 +33,8 @@ export default class StatusBar {
 		StatusBar.item.text = '$(rocket) GatsbyHub';
 		StatusBar.item.tooltip = 'Launch dev server';
 		StatusBar.item.command = 'gatsbyhub.develop';
+		// return for testing purposes
+		return StatusBar.item;
 	}
 
 	public static offline(port: Number = 8000) {
