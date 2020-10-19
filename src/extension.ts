@@ -21,17 +21,15 @@ export function activate(context: ExtensionContext) {
 	subscriptions.push(
 		registerCommand('gatsbyhub.createSite', gatsbyCli.createSite)
 	);
-	subscriptions.push(
-		registerCommand('gatsbyhub.develop', gatsbyCli.developServer)
-	);
-	subscriptions.push(
-		registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
-	);
+	subscriptions.push(registerCommand('gatsbyhub.develop', gatsbyCli.develop));
 	subscriptions.push(registerCommand('gatsbyhub.build', gatsbyCli.build));
 	subscriptions.push(registerCommand('gatsbyhub.serve', gatsbyCli.serve));
 	subscriptions.push(registerCommand('gatsbyhub.info', gatsbyCli.info));
 	subscriptions.push(registerCommand('gatsbyhub.clean', gatsbyCli.clean));
 	subscriptions.push(registerCommand('gatsbyhub.install', gatsbyCli.install));
+	subscriptions.push(
+		registerCommand('gatsbyhub.disposeServer', gatsbyCli.disposeServer)
+	);
 	subscriptions.push(
 		registerCommand('gatsbyhub.createWebView', WebViews.openWebView)
 	);
