@@ -105,7 +105,7 @@ export default class WebViews {
 		<h3>Gatsby plugins are Node.js packages that implement Gatsby APIs. For larger, more complex sites, plugins let you modularize your site customizations into site-specific functionality.</h3>
 		<p>
 		One of the best ways to add functionality to Gatsby is through our plugin system. Gatsby is designed to be extensible, which means plugins are able to extend and modify just about everything Gatsby does.
-		<br>
+		<br><br>
 		Of the many possibilities, plugins can:
 		<br>
 		<ul>
@@ -118,11 +118,22 @@ export default class WebViews {
 		<h3>Using Gatsby Plugins through GatsbyHub in your new Gatsby site</h3>
 		<p>
 		Gatsby plugins are Node.js packages, so you can install them like other packages in node, and with GatsbyHub, you can now use the install button in the plugins menu sidebar.
-		<br>
+		<br><br>
 		Then update your gatsby-config.js file to include the new plugin in your plugins array. 
 		<br>
 		<br>
-		<a href="https://www.gatsbyjs.com/docs/using-a-plugin-in-your-site/">Read more about gatsby pluggins</a>
+		For example, gatsby-transformer-json is a package that adds support for JSON files to the Gatsby data layer.
+		<br><br>
+		In your site’s gatsby-config.js you add gatsby-transformer-json to the plugins array like:
+		<br>
+		<code>module.exports = {
+			plugins: ['gatsby-transformer-json'],
+		  }
+		</code>
+		<br><br>
+		Plugins can also take <a href="https://www.gatsbyjs.com/docs/using-a-plugin-in-your-site/">options</a>.
+		<br><br>
+		<a href="https://www.gatsbyjs.com/docs/what-is-a-plugin/">Read more about gatsby pluggins</a>
 		</p>
 		`;
 
@@ -150,14 +161,18 @@ export default class WebViews {
 		<br><br>
 		<h3>Choosing a starter</h3>
 		<p>To choose a starter, first consider the functionality you need. Are you building an e-commerce site? A blog? Do you already know what data sources you’ll want to use? Find a starter that fulfills your requirements by searching through the Gatsby Starters Menu on the left.
-		<br>
+		<br><br>
 		If you’re not sure what to choose or want only the most essential functionality, try customizing either gatsby-starter-blog (if you’re primarily using this site as a blog) or gatsby-starter-default (which you can use by simply pressing the "New" button in the Commands Menu). These official starters are maintained by Gatsby and are great options, particularly for your first Gatsby site.
 		<br><br>
 		<h3>Modifying starters</h3>
 		<p>
 		Learn how to <a href="https://www.gatsbyjs.com/docs/modifying-a-starter/">modify a starter</a> in the Gatsby docs. 
-		<br>
+		<br><br>
 		You can use official and community starters out of the box but you may want to customize their style and functionality.
+		<br><br>
+		What you need to know will depend on the starter you choose and the data or functionality you’d like to modify. Even if you choose not to modify the starter’s components, you may still want to update text, use data from an external source, and modify the style (CSS) of the site. To do this, you’ll write some <a href="https://www.gatsbyjs.com/docs/mdx/markdown-syntax/">Markdown</a> and <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-json">JSON</a>.
+		<br><br>
+		To modify the functionality of a starter, you’ll want a basic understanding of <a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a> syntax for updating components and making new ones. You’ll also want some knowledge of <a href="https://www.gatsbyjs.com/docs/graphql-concepts/">GraphQL</a> for querying your data. Start with these and add to your skills as you continue to add functionality to your starter.
 		</p>
 		<p><a href="https://www.gatsbyjs.com/docs/starters/">Read more about Gatsby Starters</a></p>
 		`;
