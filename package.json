@@ -1,19 +1,50 @@
 {
 	"name": "gatsbyhub",
 	"displayName": "GatsbyHub",
-	"description": "The one stop shop for everything Gatsby has to offer",
-	"version": "0.8.0",
+	"description": "Utilize your favorite Gatsby features without ever leaving Visual Studio Code.",
+	"version": "1.0.1",
+	"publisher": "GatsbyHub",
 	"engines": {
 		"vscode": "^1.49.0"
 	},
+	"license": "SEE LICENSE IN LICENSE",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/oslabs-beta/GatsbyHub"
+	},
+	"bugs": {
+		"url": "https://github.com/oslabs-beta/GatsbyHub/issues"
+	},
+	"homepage": "https://github.com/oslabs-beta/GatsbyHub/blob/main/README.md",
 	"categories": [
-		"Other"
+		"Other",
+		"Visualization",
+		"Extension Packs"
 	],
 	"keywords": [
 		"gatsby",
 		"gatsby-cli",
 		"react",
-		"framework"
+		"serverless",
+		"static"
+	],
+	"icon": "logo/GatsbyHub-purple-big.png",
+	"badges": [
+		{
+			"url": "https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet",
+			"href": "https://github.com/oslabs-beta/GatsbyHub",
+			"description": "Visit GatsbyHub's GitHub Repository"
+		},
+		{
+			"url": "https://img.shields.io/badge/PRs-welcome-brightgreen.svg",
+			"href": "https://github.com/oslabs-beta/GatsbyHub/pulls",
+			"description": "PRs Welcome"
+		},
+		{
+			"url": "https://img.shields.io/badge/license-MIT-blue",
+			"href": "https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE",
+			"description": "MIT License"
+		}
 	],
 	"activationEvents": [
 		"onView:commands",
@@ -113,7 +144,7 @@
 				{
 					"id": "gatsbyHub",
 					"title": "GatsbyHub",
-					"icon": "src/logo/GatsbyHub-purple.svg"
+					"icon": "logo/GatsbyHub-purple.svg"
 				}
 			]
 		},
