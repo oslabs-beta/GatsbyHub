@@ -2,6 +2,13 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.2] - 2020-10-20
+
+### Fix
+
+- Added menu button to tree view items that opens respective documentation
+- Fix bug when creating default gatsby starter
+
 ## [1.0.1] - 2020-10-20
 
 ### Fix

@@ -2,7 +2,7 @@
 	"name": "gatsbyhub",
 	"displayName": "GatsbyHub",
 	"description": "Utilize your favorite Gatsby features without ever leaving Visual Studio Code.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"publisher": "GatsbyHub",
 	"engines": {
 		"vscode": "^1.49.0"
@@ -101,7 +101,8 @@
 			},
 			{
 				"command": "gatsbyhub.createWebView",
-				"title": "Show Plugin WebView"
+				"title": "Show Docs",
+				"icon": "$(info)"
 			},
 			{
 				"command": "gatsbyhub.openCommandDocs",
@@ -271,12 +272,27 @@
 					"when": "view == plugins"
 				},
 				{
+					"command": "gatsbyhub.createWebView",
+					"group": "inline",
+					"when": "view == plugins"
+				},
+				{
 					"command": "gatsbyhub.createSite",
 					"group": "inline",
 					"when": "view == starters"
 				},
 				{
+					"command": "gatsbyhub.createWebView",
+					"group": "inline",
+					"when": "view == starters"
+				},
+				{
 					"command": "gatsbyhub.install",
+					"group": "inline",
+					"when": "view == themes"
+				},
+				{
+					"command": "gatsbyhub.createWebView",
 					"group": "inline",
 					"when": "view == themes"
 				}
