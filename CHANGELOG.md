@@ -2,7 +2,15 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.1] - 2020-10-20
+
+### Fix
+
+- Fixes error where GatsbyHub logo disappears from views container
+
 ## [Initial Release]
+
+## [1.0.0] - 2020-10-20
 
 ## [Unreleased]
 
