@@ -21,7 +21,7 @@ GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins
 
 ⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues).
 
-GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/gatsbyhub).
+GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub).
 
 # Features
 
