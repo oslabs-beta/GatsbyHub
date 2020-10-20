@@ -10,3 +10,7 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
+**/prettier.config.js
+**/jest.config.js
+**/.travis.yml
+**/.prettierignore

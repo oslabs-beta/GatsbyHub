@@ -28,7 +28,7 @@
 		"serverless",
 		"static"
 	],
-	"icon": "src/logo/GatsbyHub-purple-big.png",
+	"icon": "logo/GatsbyHub-purple-big.png",
 	"badges": [
 		{
 			"url": "https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet",
