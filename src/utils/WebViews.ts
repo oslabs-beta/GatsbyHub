@@ -102,7 +102,8 @@ export default class WebViews {
 
 		panel.webview.html = `
 		<h1>Plugins</h2> 
-		<h3>Gatsby plugins are Node.js packages that implement Gatsby APIs. For larger, more complex sites, plugins let you modularize your site customizations into site-specific functionality.</h3>
+		<h2>Gatsby plugins are Node.js packages that implement Gatsby APIs. For larger, more complex sites, plugins let you modularize your site customizations into site-specific functionality.</h2>
+		<h3>⬅️  Install plugins using the download button in the Plugins Menu next to your selected plugin's name</h3>
 		<p>
 		One of the best ways to add functionality to Gatsby is through our plugin system. Gatsby is designed to be extensible, which means plugins are able to extend and modify just about everything Gatsby does.
 		<br><br>
@@ -155,7 +156,8 @@ export default class WebViews {
 
 		panel.webview.html = `
 		<h1>Starters</h2> 
-		<h3>The Gatsby and GatsbyHub tool lets you install starters, which are boilerplate Gatsby sites maintained by the community and intended for jump-starting development quickly.</h3>
+		<h2>The Gatsby and GatsbyHub tool lets you install starters, which are boilerplate Gatsby sites maintained by the community and intended for jump-starting development quickly.</h2>
+		<h3>⬅️  Install starters using the download button in the Starters Menu next to your selected starter's name</h3>
 		<p>
 		You can begin by using the Gatsby default starter simply by pressing on the "New" button in the Commands Menu, or you can install any of the starters in the Starters Menu by clicking the download button. 
 		<br><br>
@@ -195,7 +197,8 @@ export default class WebViews {
 
 		panel.webview.html = `
 		<h1>Themes</h1>
-		<h3>Using a Gatsby theme, all of your default configuration (shared functionality, data sourcing, design) is abstracted out of your site, and into an installable package.</h3>
+		<h2>Using a Gatsby theme, all of your default configuration (shared functionality, data sourcing, design) is abstracted out of your site, and into an installable package.</h2>
+		<h3>⬅️  Install themes using the download button in the Themes Menu next to your selected theme's name</h3>
 		<p>
 		This means that the configuration and functionality isn’t directly written into your project, but rather versioned, centrally managed, and installed as a dependency. You can seamlessly update a theme, compose themes together, and even swap out one compatible theme for another.
 		<br><br>
