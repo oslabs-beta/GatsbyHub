@@ -159,7 +159,6 @@ export default class WebViews {
 		<br>
 		You can use official and community starters out of the box but you may want to customize their style and functionality.
 		</p>
-		<br><br>
 		<p><a href="https://www.gatsbyjs.com/docs/starters/">Read more about Gatsby Starters</a></p>
 		`;
 
@@ -184,7 +183,31 @@ export default class WebViews {
 		<h3>Using a Gatsby theme, all of your default configuration (shared functionality, data sourcing, design) is abstracted out of your site, and into an installable package.</h3>
 		<p>
 		This means that the configuration and functionality isn’t directly written into your project, but rather versioned, centrally managed, and installed as a dependency. You can seamlessly update a theme, compose themes together, and even swap out one compatible theme for another.
+		<br><br>
+		Gatsby themes are plugins that include a gatsby-config.js file and add pre-configured functionality, data sourcing, and/or UI code to Gatsby sites. You can think of Gatsby themes as separate Gatsby sites that can be put together and allow you to split up a larger Gatsby project!
 		</p>
+		<h3>Gatsby themes allow Gatsby site functionality to be packaged as a standalone product for others (and yourself!) to easily reuse. Using a traditional starter, all of your default configuration lives directly in your site. Using a theme, all of your default configuration lives in an npm package.</h3>
+		<p> 
+		Themes solve the problems that traditional starters experience:
+		<ul>
+		<li>Sites created using a Gatsby theme can adopt upstream changes to the theme — themes are versioned packages that can be updated like any other package.</li>
+		<li>You can create multiple sites that consume the same theme. To make updates across those sites, you can update the central theme and bump the version in the sites through package.json files (rather than spending the time to tediously update the functionality of each individual site).</li>
+		<li>Themes are composable. You could install a blog theme alongside a notes theme, alongside an e-commerce theme (and so forth)</li>
+		</ul>
+		</p>
+		<h2>When should I use or build a theme?</h2>
+		<h3>Consider using a theme if:</h3>
+		<ul>
+		<li>You already have an existing Gatsby site and can’t start from a starter</li>
+		<li>You want to be able to update to the latest version of a feature on your site</li>
+		<li>You want multiple features on your site, but there is no starter with all the features — you can use multiple themes, composed in one Gatsby site</li>
+		</ul>
+		<h3>Consider building a theme if:</h3>
+		<ul>
+		<li>You plan on re-using similar functionality across multiple Gatsby sites</li>
+		<li>You would like to share new Gatsby functionality to the community</li>
+		</ul>
+		<p><a href="https://www.gatsbyjs.com/docs/themes/">Read more about Gatsby themes</a></p>
 		`;
 
 		// close the webview when not looking at it
