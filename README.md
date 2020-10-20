@@ -13,7 +13,7 @@ GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins
 
 <p align="center">
   <br />
-  <a href="https://user-images.githubusercontent.com/62862233/96354267-974e7f00-1089-11eb-8f76-4a9be0f255a5.gif"><img src="https://user-images.githubusercontent.com/62862233/96354267-974e7f00-1089-11eb-8f76-4a9be0f255a5.gif" width="900rem" /></a>
+  <a href="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif"><img src="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif" width="900rem" /></a>
   <br />
 </p>
 

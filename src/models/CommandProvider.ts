@@ -7,13 +7,48 @@ export default class CLICommandProvider
 
 	constructor() {
 		this.data = [
-			new CLICommand('New'),
-			new CLICommand('Develop'),
-			new CLICommand('Build'),
-			new CLICommand('Serve'),
-			new CLICommand('Info'),
-			new CLICommand('Clean'),
-			new CLICommand('Install'),
+			new CLICommand(
+				'Install Gatsby',
+				undefined,
+				undefined,
+				'Install/Update Gatsby-cli'
+			),
+			new CLICommand(
+				'New Site',
+				undefined,
+				undefined,
+				'Create New Gatsby Site'
+			),
+			new CLICommand(
+				'Develop Server',
+				undefined,
+				undefined,
+				'Launch Development Server'
+			),
+			new CLICommand(
+				'Build Site',
+				undefined,
+				undefined,
+				'Package and Prepare Site for Deployment'
+			),
+			new CLICommand(
+				'Serve Site',
+				undefined,
+				undefined,
+				'Start Production Server'
+			),
+			new CLICommand(
+				'Info',
+				undefined,
+				undefined,
+				'Get Environment Information'
+			),
+			new CLICommand(
+				'Clean Cache',
+				undefined,
+				undefined,
+				'Clear Cache and Public Directories'
+			),
 		];
 	}
 
