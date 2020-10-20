@@ -16,7 +16,6 @@ export default class Utilities {
 		const filteredTerminals = terminals.filter(
 			(obj: Terminal) => obj.name === 'GatsbyHub'
 		);
-		console.log('filteredTerminal', filteredTerminals);
 
 		let terminal: Terminal;
 
