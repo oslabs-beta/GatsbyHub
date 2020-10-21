@@ -8,6 +8,7 @@ export interface PluginPkg {
 	readme: string;
 	version: string;
 	description: string;
+	score: number;
 }
 
 // defines object shape of each element in merged array when first fetching npmPackages in NpmData
@@ -19,6 +20,10 @@ export interface NpmPkg {
 			homepage: string;
 		};
 		readme: string;
+		score: number;
+	};
+	score: {
+		final: number;
 	};
 }
 
