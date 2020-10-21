@@ -58,6 +58,9 @@ export function activate(context: ExtensionContext) {
 		registerCommand('gatsbyhub.openBrowser', Utilities.openBrowser)
 	);
 	subscriptions.push(
+		registerCommand('gatsbyhub.openProdBrowser', Utilities.openProdBrowser)
+	);
+	subscriptions.push(
 		createTreeView('commands', {
 			treeDataProvider: new CommandProvider(),
 		})
