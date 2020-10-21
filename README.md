@@ -3,9 +3,13 @@
   <p align="center" style="font-family:futura">GatsbyHub</p>
 </h1>
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
+[![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
-[Korean README 한국어](READMEKO.md)
+[Korean README 한국어](READMEKO.md) | [Japanese README 日本語](READMEJP.md)
+
+<p align="center">
+<a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
+</p>
 
 # About
 
@@ -13,17 +17,22 @@ GatsbyHub is an [open-source](https://github.com/oslabs-beta/GatsbyHub) extensio
 
 GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, and themes without ever having to leave VS Code. Create a blazing fast, modern app with a single click or check out the many [Gatsby starter templates](https://www.gatsbyjs.com/starters/?) available. Start a hot-reloading development environment by simply clicking the status bar icon. Configure GraphQL queries using Gatsby's built-in instance of GraphiQL. For advanced customizations, please refer to the [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/) and edit your [user settings](https://code.visualstudio.com/docs/getstarted/settings).
 
-<p align="center">
+<!-- <p align="center">
   <br />
   <a href="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif"><img src="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif" width="900rem" /></a>
   <br />
-</p>
+</p> -->
 
 # Installation
 
 ⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues).
 
 GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub).
+
+<br/>
+<p align="center">
+<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
+</p>
 
 # Features
 
@@ -38,11 +47,11 @@ Interact with [Gatsby](https://www.gatsbyjs.com/) without ever having to use the
 
 Advanced [Develop](https://www.gatsbyjs.com/docs/gatsby-cli/#develop) and [Build](https://www.gatsbyjs.com/docs/gatsby-cli/#build) options are available in the [extension settings](https://code.visualstudio.com/docs/getstarted/settings) for things like setting up the host, port, toggling no-uglify, etc.
 
-<p align="center">
+<!-- <p align="center">
   <br />
   <a href="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif"><img src="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif" width="900rem" /></a>
   <br />
-</p>
+</p> -->
 
 ## Gatsby Plugins and Themes
 
@@ -53,6 +62,16 @@ Gatsby is known for it's active community and many plugins. You can find Gatsby'
 ## Gatsby Starters
 
 Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as a template for your site. Browse the starters and check out their READMEs. Creating a new Gatsby site is as easy as clicking a button in the sidebar and typing in a name for your site.
+
+<p align="center">
+  <br />
+  <a href="https://imgur.com/dlip1Mz"><img src="https://i.imgur.com/dlip1Mz.jpg" title="source: imgur.com" width="750"/></a>
+  <br />
+</p>
+
+## GraphiQL
+
+Access Gatsby's built-in instance of GraphiQL with a single click when running a development server. Writing GraphQL queries has never been this easy.
 
 ## Extension Settings
 
@@ -66,6 +85,20 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 # Release Notes
 
-### 1.0.0
+### GatsbyHub 1.0.3 - October 21,2020
 
-Initial release of GatsbyHub
+See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
+
+# Contributors
+
+Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
+
+Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
+
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+
+Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
+
+Miguel Michel [@github](https://github.com/mig824)
+
+Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
