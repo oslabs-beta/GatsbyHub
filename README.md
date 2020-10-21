@@ -5,7 +5,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
-[Korean README 한국어](READMEKO.md)
+[Korean README 한국어](READMEKO.md) | [Japanese README 日本語](READMEJP.md)
 
 # About
 
@@ -66,6 +66,20 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 # Release Notes
 
-### 1.0.0
+### GatsbyHub 1.0.2 - October 20,2020
 
-Initial release of GatsbyHub
+See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
+
+# Contributors
+
+### Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
+
+### Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
+
+### Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+
+### Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
+
+### Miguel Michel [@github](https://github.com/mig824)
+
+### Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
