@@ -3,9 +3,15 @@
   <p align="center" style="font-family:futura">GatsbyHub</p>
 </h1>
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
+[![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
 [English README 英語](README.md) | [Korean README 한국어](READMEKO.md)
+
+<br/>
+<p align="center">
+<a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
+</p>
+<br/>
 
 # 概要
 
@@ -15,17 +21,23 @@ GatsbyHub を使用すると、VS Code を離れることなく、[Gatsby プラ
 Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL クエリを構成します。
 高度なカスタマイズについては、[Gatsby のドキュメント](https://www.gatsbyjs.com/docs/gatsby-cli/)を参照し、[ユーザー設定](https://code.visualstudio.com/docs/getstarted/settings)を編集してください。
 
-<p align="center">
+<!-- <p align="center">
   <br />
   <a href="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif"><img src="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif" width="900rem" /></a>
   <br />
-</p>
+</p> -->
 
 # インストール
 
 ⚠️ 警告：これはベータ版ソフトウェアです。つまり、まだバグがある可能性があります。[バグを見つけた場合は、フィードバックを共有してください](https://github.com/oslabs-beta/GatsbyHub/issues)。
 
 GatsbyHub は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)にインストールできます。
+
+<br/>
+<p align="center">
+<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
+</p>
+<br/>
 
 # 特徴
 
@@ -42,11 +54,11 @@ GatsbyHub は、[コマンドラインインターフェイス](https://www.gats
 
 高度な[開発](https://www.gatsbyjs.com/docs/gatsby-cli/#develop)および[ビルド](https://www.gatsbyjs.com/docs/gatsby-cli/#build)オプションは、ホスト、ポートの設定、no-uglify の切り替えなどの[拡張設定](https://code.visualstudio.com/docs/getstarted/settings)で使用できます。
 
-<p align="center">
+<!-- <p align="center">
   <br />
   <a href="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif"><img src="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif" width="900rem" /></a>
   <br />
-</p>
+</p> -->
 
 ## Gatsby プラグインとテーマ
 
@@ -66,6 +78,19 @@ Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/
 新しいギャツビーサイトの作成は、サイドバーのボタンをクリックしてサイトの名前を入力するのと同じくらい簡単です。
 
 Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as a template for your site. Browse the starters and check out their READMEs. Creating a new Gatsby site is as easy as clicking a button in the sidebar and typing in a name for your site.
+
+<p align="center">
+  <br />
+  <a href="https://imgur.com/dlip1Mz"><img src="https://i.imgur.com/dlip1Mz.jpg" title="source: imgur.com" width="750"/></a>
+  <br />
+</p>
+
+## GraphiQL
+
+開発サーバーの実行時に、Gatsby の組み込みの GraphiQL インスタンスにシングルクリックでアクセスします。
+GraphQL クエリの作成はこれほど簡単ではありませんでした
+
+Access Gatsby's built-in instance of GraphiQL with a single click when running a development server. Writing GraphQL queries has never been this easy.
 
 ## 拡張機能の設定 (Extension Settings)
 
