@@ -22,12 +22,12 @@
 		"@typescript-eslint/semi": "warn",
 		"curly": "error",
 		"eqeqeq": "error",
+		"require-await": "error",
 		"no-throw-literal": "warn",
 		"import/no-unresolved": "off",
 		"no-param-reassign": "off",
 		"class-methods-use-this": "off",
-		"import/extensions": "off",
-		"require-await": "warn"
+		"import/extensions": "off"
 	},
 	"overrides": [
 		{

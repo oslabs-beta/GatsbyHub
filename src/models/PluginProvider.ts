@@ -11,82 +11,17 @@ export default class PluginProvider implements TreeDataProvider<Plugin> {
 		this.createPlugins = this.createPlugins.bind(this);
 	}
 
-	async createPlugins() {
+	async createPlugins(): Promise<Plugin[]> {
 		const npmData = new NpmData();
-		// let thisPromise = new Promise(function() : Promise<Plugin> {
-		//  const firstPlugins = async () => {
-		//         return (await Promise.all((await npmData.getNpmPackages('plugin')).slice(0, 1))).map(
-		//           (obj: PluginPkg) =>
-		//             new Plugin(obj.name, {
-		//               command: 'gatsbyhub.createWebView',
-		//               title: 'Show Plugin WebView',
-		//               arguments: [obj],
-		//             })
-		//         );
-		//       };
-		//       .then(const secondPlugins = async () => {
-		//           return (await Promise.all((await npmData.getNpmPackages('plugin')).slice(1))).map(
-		//             (obj: PluginPkg) =>
-		//               new Plugin(obj.name, {
-		//                 command: 'gatsbyhub.createWebView',
-		//                 title: 'Show Plugin WebView',
-		//                 arguments: [obj],
-		//               })
-		//           );
-		//         })
-		//   }
-		// })
-		// const pluginPromise = new Promise(((await Promise.all(npmData.getNpmPackages('plugin')).slice(0, 1))).map(
-		//   (obj: PluginPkg) =>
-		//     new Plugin(obj.name, {
-		//       command: 'gatsbyhub.createWebView',
-		//       title: 'Show Plugin WebView',
-		//       arguments: [obj],
-		//     })))
-		//     .then((await Promise.all((await npmData.getNpmPackages('plugin')).slice(0, 1))).map(
-		//       (obj: PluginPkg) =>
-		//         new Plugin(obj.name, {
-		//           command: 'gatsbyhub.createWebView',
-		//           title: 'Show Plugin WebView',
-		//           arguments: [obj],
-		//         })
-		//     ));
-		//     return Promise.resolve(pluginPromise);
-		// return (await Promise.all((await npmData.getNpmPackages('plugin')).slice(0, 1))).map(
-		//   (obj: PluginPkg) =>
-		//     new Plugin(obj.name, {
-		//       command: 'gatsbyhub.createWebView',
-		//       title: 'Show Plugin WebView',
-		//       arguments: [obj],
-		//     })
-		// );
 
-		// THIS Way works but is not lazy loading
-		const firstPlugins = async () => {
-			return (
-				await Promise.all((await npmData.getNpmPackages('plugin')).slice(0, 1))
-			).map(
-				(obj: PluginPkg) =>
-					new Plugin(obj.name, {
-						command: 'null',
-						title: `${obj.name}`,
-						arguments: [obj],
-					})
-			);
-		};
-		const secondPlugins = async () => {
-			return (
-				await Promise.all((await npmData.getNpmPackages('plugin')).slice(1))
-			).map(
-				(obj: PluginPkg) =>
-					new Plugin(obj.name, {
-						command: 'gatsbyhub.createWebView',
-						title: 'Show Plugin WebView',
-						arguments: [obj],
-					})
-			);
-		};
-		return (await firstPlugins()).concat(await secondPlugins());
+		return (await Promise.all(await npmData.getNpmPackages('plugin'))).map(
+			(obj: PluginPkg) =>
+				new Plugin(obj.name, {
+					command: 'null',
+					title: `${obj.name}`,
+					arguments: [obj],
+				})
+		);
 	}
 
 	getTreeItem(element: Plugin): Plugin | Promise<Plugin> {

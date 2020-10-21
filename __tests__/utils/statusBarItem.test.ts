@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/naming-convention */
-import StatusBar from './statusBarItem';
+import StatusBar from '../../src/utils/statusBarItem';
 
 // eslint-disable-next-line no-undef
 describe('status bar item', () => {
