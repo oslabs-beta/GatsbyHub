@@ -19,15 +19,15 @@ GatsbyHub를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/
 
 # 설치 방법
 
-⚠️ 주의: 현재 GatsbyHub는 베타버젼입니다. 버그를 발견하신다면 [여기로 알려주십시오](https://github.com/oslabs-beta/GatsbyHub/issues).
+⚠️ 주의: 현재 GatsbyHub는 베타버젼입니다. 버그를 발견하신다면 [여기로 알려주세요](https://github.com/oslabs-beta/GatsbyHub/issues).
 
-Gatsby은 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)에서 설치하시면 됩니다.
+Gatsby는 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)에서 설치하시면 됩니다.
 
 # 주요 기능
 
 ## Gatsby 그래픽 사용자 인터페이스
 
-[명령어 인터페이스](https://www.gatsbyjs.com/docs/gatsby-cli/)를 사용하지 않고 그래픽 사용자 인터페이스를 통해 [Gatsby](https://www.gatsbyjs.com/)와 상호작용하실 수 있습니다. GatsbyHub 는 자주 사용하는 Gatsby 명령어들을 버튼과 옵션을 통해 손 쉽게 제공합니다.
+[명령어 인터페이스](https://www.gatsbyjs.com/docs/gatsby-cli/)를 사용하지 않고 오직 그래픽 사용자 인터페이스를 통해 [Gatsby](https://www.gatsbyjs.com/)와 상호작용하실 수 있습니다. GatsbyHub는 자주 사용하는 Gatsby 명령어들을 버튼과 옵션을 통해 손쉽게 제공합니다.
 
 - Install Gatsby - gatsby-cli npm package를 설치
 - Create New Site - 한 번의 클릭으로 새로운 Gatsby 사이트를 만듦
@@ -44,17 +44,17 @@ Gatsby은 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items
 
 ## Gatsby Plugin and Themes
 
-VS Code를 떠나지 않고 Gatsby 수 많은 [플러그인과 테마](https://www.gatsbyjs.com/plugins/)를 찾아서 다운로드 하실 수 있습니다.
+VS Code를 떠나지 않고 Gatsby 수 많은 [플러그인과 테마](https://www.gatsbyjs.com/plugins/)를 찾아서 읽고 다운로드 하실 수 있습니다.
 
-Gatsby.js 는 활동적인 온라인 커뮤니티와 그에 따른 수 많은 플러그인들로 알려져있습니다. Gatsby의 공식적인 플러그인들과 다큐멘테이션을 찾아보시고 프로젝트에 사용하실 수 잇습니다. 확장에서 플러그인 메뉴를 클릭하시면 VS Code 웹뷰에서 플러그인의 README 정보를 제공합니다. Gatsby.js 사이트를 가셔서 플러그인 설치 CLI 명령어를 직접 찾아보고 입력하실 필요 없이, 플러그인 다운로드 버튼 한 번이면 자동 다운로드 됩니다.
+Gatsby.js는 활발한 온라인 커뮤니티와 그에 따른 수 많은 플러그인들로 알려져있습니다. Gatsby의 공식적인 플러그인들과 다큐멘테이션을 GatsbyHub에서 직접  찾아보시고 프로젝트에 사용하실 수 잇습니다. 확장에서 플러그인 메뉴를 클릭하시면 VS Code 웹뷰에서 플러그인의 README 정보를 제공합니다. Gatsby.js 사이트를 가셔서 플러그인 설치 CLI 명령어를 직접 찾아보고 입력하실 필요 없이, 플러그인 다운로드 버튼 한 번이면 자동 다운로드 됩니다.
 
 ## Gatsby Starter
 
-Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/starters/?)들을 다운로드 받아 웹사이트 템플릿으로 바로 사용하시면 됩니다. 확장의 starters 메뉴를 통해 README 정보를 읽어보실 수 있습니다. 마음에 드시는 스타터가 있다면, 다운로드 버튼 클릭과 원하시는 사이트 이름만 입력하시면 사이트가 만들어집니다.
+Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/starters/?)들을 다운로드 받아 웹사이트 템플릿으로 바로 사용하시면 됩니다. 플러그인과 마찬가지로 확장의 starters 메뉴를 통해 README 정보를 읽어보실 수 있습니다. 마음에 드시는 스타터가 있다면, 다운로드 버튼 클릭과 원하시는 사이트 이름만 입력하시면 바로 사이트가 만들어집니다.
 
 ## 확장 설정
 
-[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)는 개발 서버 생성과 프로젝트 패키지화를 위한 여러가지 고급 옵션들을 확장 설정에서 토글 형식으로 제공합니다. 덕분에 매번 애플리케이션을 패키지화하거나 서버를 개발 할 때 이 설정들은 유지됩니다. 그러므로 새로운 프로젝트를 시작하실 때 마다 매번 명령어나 설정을 하실 필요가 없습니다.
+[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)가 제공하는 개발 서버 생성과 프로젝트 패키지화를 위한 여러가지 고급 옵션들을 GatsbyHub 확장 설정에서 토글 형식으로 제공합니다. 덕분에 매번 애플리케이션을 패키지화하거나 서버를 개발 할 때 이 설정들은 유지됩니다. 그러므로 새로운 프로젝트를 시작하실 때 마다 매번 명령어나 설정을 하실 필요가 없습니다.
 
 <p align="center">
   <br />
