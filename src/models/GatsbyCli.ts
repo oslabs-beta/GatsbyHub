@@ -359,7 +359,7 @@ export default class GatsbyCli {
 		activeTerminal.show(true);
 		activeTerminal.sendText(serve);
 		window.showInformationMessage(`Starting up port:${prodPort}`);
-		commands.executeCommand('setContext', 'serverIsRunning', true);
+		commands.executeCommand('setContext', 'prodServerIsRunning', true);
 		this.prodServerStatus = true;
 	}
 
@@ -382,6 +382,7 @@ export default class GatsbyCli {
 			this.prodServerStatus = false;
 		}
 		commands.executeCommand('setContext', 'serverIsRunning', false);
+		commands.executeCommand('setContext', 'prodServerIsRunning', false);
 	}
 
 	/* -------------------------------------------------------------------------- */
