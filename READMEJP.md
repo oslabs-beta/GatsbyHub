@@ -69,7 +69,9 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 ## 拡張機能の設定 (Extension Settings)
 
-[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。
+[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。GatsbyHub は、VSCode 拡張設定内でこれらのオプションを切り替える方法を提供します。
+そうすれば、サーバーを開発したりアプリをパッケージ化したりするたびに、設定が保持されます。
+新しいプロジェクトを開始するたびに同じコマンドを入力したり、スクリプトを構成したりする必要はもうありません。
 
 [Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/) has a lot of advanced options for generating a development server and packaging your project. GatsbyHub provides a way to toggle these options within the VS Code extension settings. That way the settings persist every time you want to develop a server or package your app. No more typing out the same commands or configuring a script everytime you start a new project.
 
@@ -79,13 +81,15 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
   <br />
 </p>
 
-# Release Notes
+# リリースノート
 
-### GatsbyHub 1.0.2 - October 20,2020
+### GatsbyHub 1.0.2 - 2020 年 10 月 20 日
+
+変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 
 See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
 
-# Contributors
+# 寄稿者 (Contributors)
 
 ### Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
 
