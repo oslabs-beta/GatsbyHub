@@ -121,6 +121,17 @@ export default class NpmData {
 				return check;
 			}
 		);
+
+		/**
+		 * Sorts the plugins by npm 'final' score
+		 * highest score to lowest
+		 *
+		 * This score is calculated by the package's average:
+		 * Popularity score
+		 * Quality score
+		 * Maintenance score
+		 *
+		 */
 		npmPackages = (await Promise.all(npmPackages)).sort(
 			(a: PluginPkg, b: PluginPkg) => {
 				return a.score < b.score ? 1 : -1;
