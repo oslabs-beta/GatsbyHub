@@ -79,6 +79,7 @@ export default class NpmData {
 		// keys === plugin names, values === plugin packages
 		const uniquePackagesObj = (await Promise.all(npmPackages)).reduce(
 			(obj: any, elem: NpmPkg) => {
+				elem.package.score = elem.score.final;
 				obj[elem.package.name] = obj[elem.package.name] || elem.package;
 				return obj;
 			},
@@ -118,6 +119,11 @@ export default class NpmData {
 			async (pkg: PluginPkg) => {
 				const check = await hasReadMe(pkg);
 				return check;
+			}
+		);
+		npmPackages = (await Promise.all(npmPackages)).sort(
+			(a: PluginPkg, b: PluginPkg) => {
+				return a.score < b.score ? 1 : -1;
 			}
 		);
 
