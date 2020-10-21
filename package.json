@@ -135,6 +135,11 @@
 				"icon": "$(browser)"
 			},
 			{
+				"command": "gatsbyhub.openProdBrowser",
+				"title": "Open Browser",
+				"icon": "$(browser)"
+			},
+			{
 				"command": "buildFinished",
 				"title": "Site Built",
 				"icon": "$(check)"
@@ -200,6 +205,11 @@
 					"when": "view == commands && serverIsRunning == true"
 				},
 				{
+					"command": "gatsbyhub.disposeServer",
+					"group": "navigation",
+					"when": "view == commands && prodServerIsRunning == true"
+				},
+				{
 					"command": "gatsbyhub.openGraphiQL",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
@@ -208,6 +218,11 @@
 					"command": "gatsbyhub.openBrowser",
 					"group": "navigation",
 					"when": "view == commands && serverIsRunning == true"
+				},
+				{
+					"command": "gatsbyhub.openProdBrowser",
+					"group": "navigation",
+					"when": "view == commands && prodServerIsRunning == true"
 				},
 				{
 					"command": "gatsbyhub.openPluginDocs",
