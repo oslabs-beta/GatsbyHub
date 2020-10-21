@@ -5,7 +5,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
-[English README 영어](README.md)
+[English README 영어](README.md) | [Japanese README 日本語](READMEJP.md)
 
 # 개요
 
@@ -48,7 +48,7 @@ Gatsby는 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items
 
 VS Code를 떠나지 않고 Gatsby 수 많은 [플러그인과 테마](https://www.gatsbyjs.com/plugins/)를 찾아서 읽고 다운로드 하실 수 있습니다.
 
-Gatsby.js는 활발한 온라인 커뮤니티와 그에 따른 수 많은 플러그인들로 알려져있습니다. Gatsby의 공식적인 플러그인들과 다큐멘테이션을 GatsbyHub에서 직접  찾아보시고 프로젝트에 사용하실 수 잇습니다. 확장에서 플러그인 메뉴를 클릭하시면 VS Code 웹뷰에서 플러그인의 README 정보를 제공합니다. Gatsby.js 사이트를 가셔서 플러그인 설치 CLI 명령어를 직접 찾아보고 입력하실 필요 없이, 플러그인 다운로드 버튼 한 번이면 자동 다운로드 됩니다.
+Gatsby.js는 활발한 온라인 커뮤니티와 그에 따른 수 많은 플러그인들로 알려져있습니다. Gatsby의 공식적인 플러그인들과 다큐멘테이션을 GatsbyHub에서 직접 찾아보시고 프로젝트에 사용하실 수 잇습니다. 확장에서 플러그인 메뉴를 클릭하시면 VS Code 웹뷰에서 플러그인의 README 정보를 제공합니다. Gatsby.js 사이트를 가셔서 플러그인 설치 CLI 명령어를 직접 찾아보고 입력하실 필요 없이, 플러그인 다운로드 버튼 한 번이면 자동 다운로드 됩니다.
 
 ## Gatsby Starter
 
