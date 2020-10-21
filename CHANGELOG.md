@@ -2,6 +2,12 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.4] - 2020-10-21
+
+### Update
+
+- Updated READMEs with warning that GatsbyHub is only compatible with npm
+
 ## [1.0.3] - 2020-10-21
 
 ### Fix

@@ -1,11 +1,6 @@
-<h1 align="center">
-  <a href="https://imgur.com/FBLZ4Ma"><img align="center" src="https://i.imgur.com/FBLZ4Ma.png" alt="GatsbyHub purple logo" width="200rem"></a>
-  <p align="center" style="font-family:futura">GatsbyHub</p>
-</h1>
+[English README 英語](README.md) | [Korean README 한국어](READMEKO.md)
 
 [![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
-
-[English README 英語](README.md) | [Korean README 한국어](READMEKO.md)
 
 <p align="center">
 <a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
@@ -28,6 +23,7 @@ Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL ク
 # インストール
 
 ⚠️ 警告：これはベータ版ソフトウェアです。つまり、まだバグがある可能性があります。[バグを見つけた場合は、フィードバックを共有してください](https://github.com/oslabs-beta/GatsbyHub/issues)。
+現在、GatsbyHub は、プラグイン、テーマ、および gatsby-cli のインストール方法に影響を与える npm とのみ互換性があります。
 
 GatsbyHub は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)にインストールできます。
 
@@ -104,7 +100,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 # リリースノート
 
-### GatsbyHub 1.0.3 - 2020 年 10 月 21 日
+### GatsbyHub 1.0.4 - 2020 年 10 月 21 日
 
 変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 
@@ -120,6 +116,6 @@ Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
