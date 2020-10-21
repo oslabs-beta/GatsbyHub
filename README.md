@@ -5,6 +5,8 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
+[Korean README 한국어](READMEKO.md)
+
 # About
 
 GatsbyHub is an [open-source](https://github.com/oslabs-beta/GatsbyHub) extension for [Visual Studio Code](https://code.visualstudio.com/) that offers an interactive GUI for [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli).

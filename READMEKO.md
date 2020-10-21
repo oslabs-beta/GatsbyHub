@@ -5,6 +5,8 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
+[English README 영어](README.md)
+
 # 개요
 
 GatsbyHub는 [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli)를 위한 상호적인 GUI를 제공하는 [Visual Studio Code](https://code.visualstudio.com/) 전용 [open-source](https://github.com/oslabs-beta/GatsbyHub) 확장입니다.
