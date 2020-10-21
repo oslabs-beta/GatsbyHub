@@ -7,11 +7,9 @@
 
 [English README 영어](README.md) | [Japanese README 日本語](READMEJP.md)
 
-<br/>
 <p align="center">
 <a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
 </p>
-<br/>
 
 # 개요
 
@@ -31,11 +29,9 @@ GatsbyHub를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/
 
 Gatsby는 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)에서 설치하시면 됩니다.
 
-<br/>
 <p align="center">
 <a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
 </p>
-<br/>
 
 # 주요 기능
 
@@ -91,3 +87,17 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 ### 1.0.0
 
 GatsbyHub 최초 출시
+
+# Contributors
+
+Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
+
+Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
+
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+
+Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
+
+Miguel Michel [@github](https://github.com/mig824)
+
+Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)

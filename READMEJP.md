@@ -7,11 +7,9 @@
 
 [English README 英語](README.md) | [Korean README 한국어](READMEKO.md)
 
-<br/>
 <p align="center">
 <a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
 </p>
-<br/>
 
 # 概要
 
@@ -33,11 +31,9 @@ Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL ク
 
 GatsbyHub は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)にインストールできます。
 
-<br/>
 <p align="center">
 <a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
 </p>
-<br/>
 
 # 特徴
 
@@ -116,14 +112,14 @@ See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELO
 
 # 寄稿者 (Contributors)
 
-### Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
+Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
 
-### Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
+Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
 
-### Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
 
-### Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
+Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-### Miguel Michel [@github](https://github.com/mig824)
+Miguel Michel [@github](https://github.com/mig824)
 
-### Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
+Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
