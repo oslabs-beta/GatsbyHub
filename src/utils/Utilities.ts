@@ -8,7 +8,8 @@ import {
 	Uri,
 } from 'vscode';
 
-import { getDevelopPortConfig } from './config/develop';
+import { getDevelopPortConfig, getDevelopHostConfig } from './config/develop';
+import { getServePortConfig, getServeHostConfig } from './config/serve';
 
 export default class Utilities {
 	static getActiveTerminal(): Terminal {
@@ -190,11 +191,16 @@ export default class Utilities {
 
 	static openBrowser() {
 		const port = getDevelopPortConfig();
+		const host = getDevelopHostConfig();
 
-		commands.executeCommand(
-			'vscode.open',
-			Uri.parse(`http://localhost:${port}`)
-		);
+		commands.executeCommand('vscode.open', Uri.parse(`http://${host}:${port}`));
+	}
+
+	static openProdBrowser() {
+		const port = getServePortConfig();
+		const host = getServeHostConfig();
+
+		commands.executeCommand('vscode.open', Uri.parse(`http://${host}:${port}`));
 	}
 
 	static getPortConfig(): number {

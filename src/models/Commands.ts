@@ -3,9 +3,9 @@ import { TreeItem, Command, TreeItemCollapsibleState } from 'vscode';
 export default class CLICommand extends TreeItem {
 	constructor(
 		public label: string,
+		public tooltip?: string,
 		public command?: Command,
-		public children?: CLICommand[],
-		public tooltip?: string
+		public children?: CLICommand[]
 	) {
 		super(
 			label,

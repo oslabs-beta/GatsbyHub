@@ -38,7 +38,7 @@ export default class NpmData {
 			keywords.some((keyword) => name.startsWith(keyword));
 
 		// checks package names with weird prefixes
-		const hasGoodName = (pkg: PluginPkg) => {
+		const hasGoodName = (pkg: PluginPkg): boolean => {
 			const { name } = pkg;
 			const isScopedPackage = name.startsWith('@');
 			if (!isScopedPackage) {
@@ -49,12 +49,17 @@ export default class NpmData {
 		};
 
 		// checks that package has a readme
-		const hasReadMe = (pkg: PluginPkg) => {
+		const hasReadMe = async (pkg: PluginPkg): Promise<boolean> => {
 			if (pkg.links.homepage || pkg.readme) return true;
 			if (pkg.links.repository) {
-				return got(`${pkg.links.repository}/blob/master/README.md`)
-					.then((response: any) => response.statusCode === 200)
-					.catch(() => false);
+				try {
+					const response: any = await got(
+						`${pkg.links.repository}/blob/master/README.md`
+					);
+					return response.statusCode === 200;
+				} catch (error) {
+					throw new Error(error);
+				}
 			}
 			return false;
 		};
@@ -62,10 +67,14 @@ export default class NpmData {
 		// creates an array of npm objects based on keywords array
 		// npm objects contains number of packages and array of package objects
 		let npmPackages = keywords.map(async (keyword) => {
-			const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
-			// +keywords:-gatsby-plugin+not:deprecated
-			const response = await got(url);
-			return JSON.parse(response.body);
+			try {
+				const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
+				// +keywords:-gatsby-plugin+not:deprecated
+				const response = await got(url);
+				return JSON.parse(response.body);
+			} catch (error) {
+				throw new Error(error);
+			}
 		});
 
 		// merges the array of npm package objects together to a single array
@@ -74,11 +83,14 @@ export default class NpmData {
 			[]
 		);
 
-		// creates an object with unique package names and packages
-		// eliminates duplicate packages
-		// keys === plugin names, values === plugin packages
+		/**
+		 * creates an object with unique package names and packages
+		 * eliminates duplicate packages
+		 * keys === plugin names, values === plugin packages
+		 */
 		const uniquePackagesObj = (await Promise.all(npmPackages)).reduce(
 			(obj: any, elem: NpmPkg) => {
+				elem.package.score = elem.score.final;
 				obj[elem.package.name] = obj[elem.package.name] || elem.package;
 				return obj;
 			},
@@ -101,8 +113,6 @@ export default class NpmData {
 		// check package is not a starter or theme
 		if (npmType === 'plugin') {
 			npmPackages = (await Promise.all(npmPackages)).filter(
-				// let theme: string = 'gatsby-theme';
-				// let starter: string = 'gatsby-starter';
 				(pkgs: PluginPkg) =>
 					!pkgs.name.startsWith('gatsby-theme' || 'gatsby-starter')
 			);
@@ -116,8 +126,28 @@ export default class NpmData {
 		// filters out packages without readme's
 		npmPackages = (await Promise.all(npmPackages)).filter(
 			async (pkg: PluginPkg) => {
-				const check = await hasReadMe(pkg);
-				return check;
+				try {
+					const check = await hasReadMe(pkg);
+					return check;
+				} catch (error) {
+					throw new Error(error);
+				}
+			}
+		);
+
+		/**
+		 * Sorts the plugins by npm 'final' score.
+		 * Highest score to lowest.
+		 *
+		 * This score is calculated by the package's average:
+		 * Popularity score
+		 * Quality score &
+		 * Maintenance score.
+		 *
+		 */
+		npmPackages = (await Promise.all(npmPackages)).sort(
+			(a: PluginPkg, b: PluginPkg) => {
+				return a.score < b.score ? 1 : -1;
 			}
 		);
 
@@ -140,10 +170,9 @@ export default class NpmData {
 			}
 
 			const response = await got(goodUrl);
-
 			return response.body;
 		} catch (error) {
-			throw new Error(`Error in getReadMe: ${error}`);
+			throw new Error(error);
 		}
 	}
 
@@ -177,7 +206,7 @@ export default class NpmData {
 			const install = findNpm.slice(0, findNpm.indexOf('`'));
 			return install;
 		} catch (error) {
-			throw new Error(`Error in getNpmInstall: ${error}`);
+			throw new Error(error);
 		}
 	}
 }
