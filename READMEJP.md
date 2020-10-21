@@ -23,35 +23,24 @@ Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL ク
 
 # インストール
 
-⚠️ 警告：これはベータ版ソフトウェアです。つまり、まだバグがある可能性があります。[バグを報告し、フィードバックを共有してください](https://github.com/oslabs-beta/GatsbyHub/issues)。
+⚠️ 警告：これはベータ版ソフトウェアです。つまり、まだバグがある可能性があります。[バグを見つけた場合は、フィードバックを共有してください](https://github.com/oslabs-beta/GatsbyHub/issues)。
 
 GatsbyHub は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)にインストールできます。
-
-⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues).
-
-GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub).
 
 # 特徴
 
 ## Gatsby CLI GUI
 
-[コマンドラインインターフェイス](https://www.gatsbyjs.com/docs/gatsby-cli/)を使用せずに[Gatsby](https://www.gatsbyjs.com/)と対話します。GatsbyHub は、最も一般的に使用されるすべてのコマンドのボタンとオプションを提供します。
+GatsbyHub は、[コマンドラインインターフェイス](https://www.gatsbyjs.com/docs/gatsby-cli/)を使用せずに[Gatsby](https://www.gatsbyjs.com/)を使えます。コマンドを打たなくても、画面上のボタンをタップすることで基本的な操作ができます。
 
-- Gatsby のインストール - gatsby-cli npm パッケージをインストールします
-- 新しいサイトの作成 - ボタンをクリックするだけで新しいギャツビーサイトを作成します
-- サーバーの開発 - ボタンをクリックするか、ステータスバーの項目をクリックして、ホットリロード開発環境を開始および停止します
-- サイトの構築 - Gatsby のクラウドにデプロイできるように、サイトを構築してパッケージ化します
+基本的な操作：
+
+- Install Gatsby - gatsby-cli npm パッケージをインストールします
+- Create New Site - ボタンをクリックするだけで新しいギャツビーサイトを作成します
+- Develop Server - ボタンをクリックするか、ステータスバーの項目をクリックして、ホットリロード開発環境を開始および停止します
+- Build Site - Gatsby のクラウドにデプロイできるように、サイトを構築してパッケージ化します
 
 高度な[開発](https://www.gatsbyjs.com/docs/gatsby-cli/#develop)および[ビルド](https://www.gatsbyjs.com/docs/gatsby-cli/#build)オプションは、ホスト、ポートの設定、no-uglify の切り替えなどの[拡張設定](https://code.visualstudio.com/docs/getstarted/settings)で使用できます。
-
-Interact with [Gatsby](https://www.gatsbyjs.com/) without ever having to use the [command line interface](https://www.gatsbyjs.com/docs/gatsby-cli/). GatsbyHub provides buttons and options for all the most commonly used commands.
-
-- Install Gatsby - Installs the gatsby-cli npm package
-- Create New Site - Creates a new Gatsby site with the click of a button
-- Develop Server - Starts and stops a hot-reloading development environment by either clicking the button or clicking the status bar item
-- Build Site - Build and package your site so it's ready to deploy on Gatsby's cloud
-
-Advanced [Develop](https://www.gatsbyjs.com/docs/gatsby-cli/#develop) and [Build](https://www.gatsbyjs.com/docs/gatsby-cli/#build) options are available in the [extension settings](https://code.visualstudio.com/docs/getstarted/settings) for things like setting up the host, port, toggling no-uglify, etc.
 
 <p align="center">
   <br />
@@ -59,17 +48,28 @@ Advanced [Develop](https://www.gatsbyjs.com/docs/gatsby-cli/#develop) and [Build
   <br />
 </p>
 
-## Gatsby Plugins and Themes
+## Gatsby プラグインとテーマ
+
+VS Code を離れることなく、[Gatsby プラグインとテーマ](https://www.gatsbyjs.com/plugins/)を見つけてダウンロードします。
 
 Find and download [Gatsby plugins and themes](https://www.gatsbyjs.com/plugins/) without ever leaving VS Code.
 
+Gatsby は、活発なコミュニティと多くのプラグインで知られています。Gatsby の公式プラグインと、それらをプロジェクトに実装するために必要なすべてのドキュメントを見つけることができます。プラグインを選択すると、VS Code 内で Web ビューが開き、プラグインの README で確認できます。
+プラグインのインストールは、サイドバーのダウンロードボタンをクリックするのと同じくらい簡単です。
+
 Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project. Selecting a plugin opens a webview within VS Code where you can read up on the plugin's README. Installing the plugin is as easy as clicking the download button in the sidebar.
 
-## Gatsby Starters
+## Gatsby スターター
+
+Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/?)の 1 つを、サイトのテンプレートとして使用します。
+スターターを閲覧し、README を確認してください。
+新しいギャツビーサイトの作成は、サイドバーのボタンをクリックしてサイトの名前を入力するのと同じくらい簡単です。
 
 Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as a template for your site. Browse the starters and check out their READMEs. Creating a new Gatsby site is as easy as clicking a button in the sidebar and typing in a name for your site.
 
-## Extension Settings
+## 拡張機能の設定 (Extension Settings)
+
+[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。
 
 [Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/) has a lot of advanced options for generating a development server and packaging your project. GatsbyHub provides a way to toggle these options within the VS Code extension settings. That way the settings persist every time you want to develop a server or package your app. No more typing out the same commands or configuring a script everytime you start a new project.
 
