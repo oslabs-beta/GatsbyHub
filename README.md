@@ -13,11 +13,16 @@ GatsbyHub is an [open-source](https://github.com/oslabs-beta/GatsbyHub) extensio
 
 GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, and themes without ever having to leave VS Code. Create a blazing fast, modern app with a single click or check out the many [Gatsby starter templates](https://www.gatsbyjs.com/starters/?) available. Start a hot-reloading development environment by simply clicking the status bar icon. Configure GraphQL queries using Gatsby's built-in instance of GraphiQL. For advanced customizations, please refer to the [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/) and edit your [user settings](https://code.visualstudio.com/docs/getstarted/settings).
 
-<p align="center">
+<br/>
+<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" /></a>
+<br/>
+<br/>
+
+<!-- <p align="center">
   <br />
   <a href="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif"><img src="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif" width="900rem" /></a>
   <br />
-</p>
+</p> -->
 
 # Installation
 
