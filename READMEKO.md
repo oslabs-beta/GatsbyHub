@@ -79,7 +79,7 @@ Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/start
 
 # Release Notes
 
-### GatsbyHub 1.0.3 - 2020/10/21
+### GatsbyHub 1.0.4 - 2020/10/21
 
 전체 변경 사항은 [변경 로그를](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) 참조하십시오.
 

@@ -100,7 +100,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 # リリースノート
 
-### GatsbyHub 1.0.3 - 2020 年 10 月 21 日
+### GatsbyHub 1.0.4 - 2020 年 10 月 21 日
 
 変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 
