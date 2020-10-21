@@ -7,9 +7,9 @@
 
 # 개요
 
-GatsbyHub 는 [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli)를 위한 상호적인 GUI를 제공하는 [Visual Studio Code](https://code.visualstudio.com/)를 위한 [open-source](https://github.com/oslabs-beta/GatsbyHub) 확장입니다.
+GatsbyHub는 [Gatsby-cli](https://www.gatsbyjs.com/tutorial/part-zero/#using-the-gatsby-cli)를 위한 상호적인 GUI를 제공하는 [Visual Studio Code](https://code.visualstudio.com/) 전용 [open-source](https://github.com/oslabs-beta/GatsbyHub) 확장입니다.
 
-GatsbyHub 를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, 그리고 themes를 설치하고 사용할 수 있습니다. [Gatsby starter templates](https://www.gatsbyjs.com/starters/?) 를 사용하여 단 한 번의 클릭으로 빠르고 모던한 앱을 만들 수 있습니다. Status bar icon 클릭을 통해 hot-reloading development environment를 시작할 수 있습니다. 또한, Gatsby에 내재된 GraphiQL 인스턴스를 통해 GraphQL 쿼리를 설정하실 수 있습니다. [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/)와 [user settings](https://code.visualstudio.com/docs/getstarted/settings)를 사용해 고급 사용자 정의를 설정하십시오.
+GatsbyHub를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/plugins/), starters, 그리고 themes를 설치하고 사용할 수 있습니다. [Gatsby starter templates](https://www.gatsbyjs.com/starters/?)를 사용하여 단 한 번의 클릭으로 빠르고 모던한 앱을 만들 수 있습니다. Status bar icon 클릭을 통해 hot-reloading 개발 환경을 시작할 수 있습니다. 또한, Gatsby에 내재된 GraphiQL 인스턴스를 통해 GraphQL 쿼리를 설정하실 수 있습니다. [Gatsby docs](https://www.gatsbyjs.com/docs/gatsby-cli/)와 [user settings](https://code.visualstudio.com/docs/getstarted/settings)를 사용해 고급 사용자 설정도 가능합니다.
 
 <p align="center">
   <br />
