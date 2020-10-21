@@ -1,11 +1,11 @@
-<h1 align="center">
+<!-- <h1 align="center">
   <a href="https://imgur.com/FBLZ4Ma"><img align="center" src="https://i.imgur.com/FBLZ4Ma.png" alt="GatsbyHub purple logo" width="200rem"></a>
   <p align="center" style="font-family:futura">GatsbyHub</p>
-</h1>
-
-[![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
+</h1> -->
 
 [Korean README 한국어](READMEKO.md) | [Japanese README 日本語](READMEJP.md)
+
+[![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
 <p align="center">
 <a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
@@ -25,7 +25,7 @@ GatsbyHub allows you to browse [Gatsby plugins](https://www.gatsbyjs.com/plugins
 
 # Installation
 
-⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues).
+⚠️ Warning: This is beta software, which means there may still be bugs. Please [report bugs and share your feedback](https://github.com/oslabs-beta/GatsbyHub/issues). Currently GatsbyHub is only compatible with npm which affects how plugins, themes, and gatsby-cli are installed.
 
 GatsbyHub is available to install in [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub).
 
@@ -99,6 +99,6 @@ Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)

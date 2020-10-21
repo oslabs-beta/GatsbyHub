@@ -1,11 +1,6 @@
-<h1 align="center">
-  <a href="https://imgur.com/FBLZ4Ma"><img align="center" src="https://i.imgur.com/FBLZ4Ma.png" alt="GatsbyHub purple logo" width="200rem"></a>
-  <p align="center" style="font-family:futura">GatsbyHub</p>
-</h1>
+[English README 영어](README.md) | [Japanese README 日本語](READMEJP.md)
 
 [![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
-
-[English README 영어](README.md) | [Japanese README 日本語](READMEJP.md)
 
 <p align="center">
 <a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
@@ -25,7 +20,7 @@ GatsbyHub를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/
 
 # 설치 방법
 
-⚠️ 주의: 현재 GatsbyHub는 베타버젼입니다. 버그를 발견하신다면 [여기로 알려주세요](https://github.com/oslabs-beta/GatsbyHub/issues).
+⚠️ 주의: 현재 GatsbyHub는 베타버젼입니다. 버그를 발견하신다면 [여기로 알려주세요](https://github.com/oslabs-beta/GatsbyHub/issues). 현재 GatsbyHub는 플러그인, 테마 및 gatsby-cli가 설치되는 방식에 영향을 미치는 npm 과만 호환됩니다.
 
 Gatsby는 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)에서 설치하시면 됩니다.
 
@@ -70,7 +65,7 @@ Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/start
 
 ## GraphiQL
 
-Access Gatsby's built-in instance of GraphiQL with a single click when running a development server. Writing GraphQL queries has never been this easy.
+개발 서버를 실행할 때 한 번의 클릭으로 Gatsby의 내장 GraphiQL 인스턴스에 액세스 할 수 있습니다. GraphQL 쿼리를 작성하는 것은 결코 쉬운 일이 아닙니다.
 
 ## 확장 설정
 
@@ -86,7 +81,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 ### GatsbyHub 1.0.3 - 2020/10/21
 
-See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
+전체 변경 사항은 [변경 로그를](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) 참조하십시오.
 
 GatsbyHub 최초 출시
 
@@ -100,6 +95,6 @@ Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
