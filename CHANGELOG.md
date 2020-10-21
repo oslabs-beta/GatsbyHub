@@ -2,6 +2,17 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.3] - 2020-10-21
+
+### Fix
+
+- Fixed bug where GraphiQL button would show up when starting production server
+
+### Add
+
+- Sorts plugins, starters, and themes by popularity
+- Adds trycatch blocks where get requests are made
+
 ## [1.0.2] - 2020-10-20
 
 ### Fix
