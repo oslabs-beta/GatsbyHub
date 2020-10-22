@@ -1,7 +1,7 @@
 import { window, commands, workspace } from 'vscode';
 import StatusBar from '../utils/statusBarItem';
 import Utilities from '../utils/Utilities';
-import PluginData from './NpmData';
+import NpmData from './NpmData';
 import getBuildCmnd from '../utils/config/build';
 import getInfoCmnd from '../utils/config/info';
 import { getServeCmnd, getServePortConfig } from '../utils/config/serve';
@@ -223,7 +223,7 @@ export default class GatsbyCli {
 		if (plugin) {
 			const { name, links } = plugin.command.arguments[0];
 			const installCmnd =
-				(await PluginData.getNpmInstall(links.repository, links.homepage)) ||
+				(await NpmData.getNpmInstall(links.repository, links.homepage)) ||
 				`npm install ${name}`;
 
 			activeTerminal.sendText(installCmnd);
@@ -231,12 +231,12 @@ export default class GatsbyCli {
 			// check for if "plugin" is a theme or actual plugin
 			if (name.startsWith('gatsby-theme')) {
 				window.showInformationMessage(
-					'Refer to this theme\'s documentation regarding implementation. Simply click on the theme in the "Themes" section.',
+					'Refer to this theme\'s documentation regarding implementation. Simply click on the theme\'s info icon in the "Themes" section.',
 					'OK'
 				);
 			} else {
 				window.showInformationMessage(
-					'Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin in the "Plugins" section.',
+					'Refer to this plugin\'s documentation regarding further configuration. Simply click on the plugin\'s info icon in the "Plugins" section.',
 					'OK'
 				);
 			}

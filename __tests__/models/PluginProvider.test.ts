@@ -1,10 +1,7 @@
 import PluginProvider from '../../src/models/PluginProvider';
-import Plugin from './Plugin';
-
-// jest.mock('../../src/models/PluginProvider');
+import Plugin from '../../src/models/Plugin';
 
 describe('Plugin View', () => {
-	// NOTE change this type once test starts to work
 	let provider: any;
 	let plugins: Plugin[];
 
@@ -20,7 +17,7 @@ describe('Plugin View', () => {
 		expect(Array.isArray(plugins)).toEqual(true);
 	});
 
-	it('should store fetched plugins in data property', () => {
+	it('should store fetched plugins in data property as an array', () => {
 		expect(provider.data).not.toHaveLength(0);
 		expect(Array.isArray(provider.data)).toEqual(true);
 	});

@@ -403,7 +403,6 @@
 		"lint": "eslint src --ext ts",
 		"prettify": "prettier --write . && eslint src --fix --ext ts",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run lint",
 		"test": "jest",
 		"vscode:prepublish": "webpack --mode production",
 		"webpack": "webpack --mode development",
