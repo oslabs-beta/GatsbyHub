@@ -112,10 +112,10 @@ Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https:
 
 Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
 
-Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joonyoungkim025)
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)
