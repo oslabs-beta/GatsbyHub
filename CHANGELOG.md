@@ -2,6 +2,12 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.5] - 2020-10-21
+
+### Update
+
+- Pop up message content when downloading plugins or starters
+
 ## [1.0.4] - 2020-10-21
 
 ### Update
