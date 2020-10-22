@@ -79,7 +79,7 @@ Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/start
 
 # Release Notes
 
-### GatsbyHub 1.0.4 - 2020/10/21
+### GatsbyHub 1.0.6 - 2020/10/21
 
 전체 변경 사항은 [변경 로그를](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) 참조하십시오.
 
@@ -91,10 +91,10 @@ Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https:
 
 Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
 
-Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joonyoungkim025)
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)

@@ -2,6 +2,12 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.6] - 2020-10-21
+
+## Update
+
+- Updates to README
+
 ## [1.0.5] - 2020-10-21
 
 ### Update
