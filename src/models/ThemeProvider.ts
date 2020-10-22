@@ -16,8 +16,8 @@ export default class ThemeProvider implements TreeDataProvider<Theme> {
 		return (await Promise.all(await npmData.getNpmPackages('theme'))).map(
 			(obj: PluginPkg) =>
 				new Theme(obj.name, {
-					command: 'gatsbyhub.createWebView',
-					title: 'Show Theme WebView',
+					command: 'null',
+					title: 'null',
 					arguments: [obj],
 				})
 		);

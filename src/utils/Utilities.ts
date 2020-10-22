@@ -171,10 +171,6 @@ export default class Utilities {
 	}
 
 	static async getRootPath(): Promise<string | undefined> {
-		// replaces spaces with backslash
-		// .replace(/\s/g, '\\ ')
-		// drops fileName and common folders that aren't part of the root path
-		// .replace(/\/(src\/)?(pages\/)?(components\/)?[a-zA-Z\-\d]+\.(ts)?(js)?x?/, '')
 		const uri = await this.getWorkspaceUri();
 
 		return uri?.path;
@@ -182,10 +178,11 @@ export default class Utilities {
 
 	static openGraphiQL() {
 		const port = getDevelopPortConfig();
+		const host = getDevelopHostConfig();
 
 		commands.executeCommand(
 			'vscode.open',
-			Uri.parse(`http://localhost:${port}/___graphql`)
+			Uri.parse(`http://${host}:${port}/___graphql`)
 		);
 	}
 
@@ -201,9 +198,5 @@ export default class Utilities {
 		const host = getServeHostConfig();
 
 		commands.executeCommand('vscode.open', Uri.parse(`http://${host}:${port}`));
-	}
-
-	static getPortConfig(): number {
-		return workspace.getConfiguration('gatsbyhub').commands.develop.port;
 	}
 }

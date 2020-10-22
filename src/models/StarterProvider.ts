@@ -11,13 +11,13 @@ export default class StarterProvider implements TreeDataProvider<Starter> {
 		this.createStarters = this.createStarters.bind(this);
 	}
 
-	async createStarters() {
+	async createStarters(): Promise<Starter[]> {
 		const npmData = new NpmData();
 		return (await Promise.all(await npmData.getNpmPackages('starter'))).map(
 			(obj: PluginPkg) =>
 				new Starter(obj.name, {
-					command: 'gatsbyhub.createWebView',
-					title: 'Show Starter WebView',
+					command: 'null',
+					title: 'null',
 					arguments: [obj],
 				})
 		);
