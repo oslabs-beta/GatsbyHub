@@ -3,7 +3,7 @@
 [![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
 <p align="center">
-<a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/pL6Oove"><img src="https://i.imgur.com/pL6Oove.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # 概要
@@ -14,12 +14,6 @@ GatsbyHub を使用すると、VS Code を離れることなく、[Gatsby プラ
 Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL クエリを構成します。
 高度なカスタマイズについては、[Gatsby のドキュメント](https://www.gatsbyjs.com/docs/gatsby-cli/)を参照し、[ユーザー設定](https://code.visualstudio.com/docs/getstarted/settings)を編集してください。
 
-<!-- <p align="center">
-  <br />
-  <a href="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif"><img src="https://user-images.githubusercontent.com/62862233/96508356-52eceb80-120f-11eb-9ad2-8939e18b691b.gif" width="900rem" /></a>
-  <br />
-</p> -->
-
 # インストール
 
 ⚠️ 警告：これはベータ版ソフトウェアです。つまり、まだバグがある可能性があります。[バグを見つけた場合は、フィードバックを共有してください](https://github.com/oslabs-beta/GatsbyHub/issues)。
@@ -28,7 +22,7 @@ Gatsby の組み込みの GraphiQL インスタンスを使用して GraphQL ク
 GatsbyHub は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)にインストールできます。
 
 <p align="center">
-<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/iNMPGwO"><img src="https://i.imgur.com/iNMPGwO.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # 特徴
@@ -73,7 +67,7 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 <p align="center">
   <br />
-  <a href="https://imgur.com/dlip1Mz"><img src="https://i.imgur.com/dlip1Mz.jpg" title="source: imgur.com" width="750"/></a>
+  <a href="https://i.imgur.com/saUF9kz"><img src="https://i.imgur.com/saUF9kz.jpg" title="source: imgur.com" width="750"/></a>
   <br />
 </p>
 
@@ -100,7 +94,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 # リリースノート
 
-### GatsbyHub 1.0.6 - 2020 年 10 月 21 日
+### GatsbyHub 1.0.7 - 2020 年 10 月 22 日
 
 変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 
