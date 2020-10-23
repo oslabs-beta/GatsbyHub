@@ -1,14 +1,9 @@
-<!-- <h1 align="center">
-  <a href="https://imgur.com/FBLZ4Ma"><img align="center" src="https://i.imgur.com/FBLZ4Ma.png" alt="GatsbyHub purple logo" width="200rem"></a>
-  <p align="center" style="font-family:futura">GatsbyHub</p>
-</h1> -->
-
 [Korean README 한국어](READMEKO.md) | [Japanese README 日本語](READMEJP.md)
 
 [![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
 <p align="center">
-<a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/pL6Oove"><img src="https://i.imgur.com/pL6Oove.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # About
@@ -31,7 +26,7 @@ GatsbyHub is available to install in [Visual Studio Marketplace](https://marketp
 
 <br/>
 <p align="center">
-<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/iNMPGwO"><img src="https://i.imgur.com/iNMPGwO.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # Features
@@ -65,7 +60,7 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 
 <p align="center">
   <br />
-  <a href="https://imgur.com/dlip1Mz"><img src="https://i.imgur.com/dlip1Mz.jpg" title="source: imgur.com" width="750"/></a>
+  <a href="https://i.imgur.com/saUF9kz"><img src="https://i.imgur.com/saUF9kz.jpg" title="source: imgur.com" width="750"/></a>
   <br />
 </p>
 
@@ -85,7 +80,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 # Release Notes
 
-### GatsbyHub 1.0.6 - October 21,2020
+### GatsbyHub 1.0.7 - October 22,2020
 
 See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
 
