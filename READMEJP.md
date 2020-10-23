@@ -40,24 +40,15 @@ GatsbyHub は、[コマンドラインインターフェイス](https://www.gats
 
 高度な[開発](https://www.gatsbyjs.com/docs/gatsby-cli/#develop)および[ビルド](https://www.gatsbyjs.com/docs/gatsby-cli/#build)オプションは、ホスト、ポートの設定、no-uglify の切り替えなどの[拡張設定](https://code.visualstudio.com/docs/getstarted/settings)で使用できます。
 
-<!-- <p align="center">
-  <br />
-  <a href="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif"><img src="https://user-images.githubusercontent.com/62862233/96605519-28507080-12ab-11eb-8075-65350a841d45.gif" width="900rem" /></a>
-  <br />
-</p> -->
-
 ## Gatsby プラグインとテーマ
 
-VS Code を離れることなく、[Gatsby プラグインとテーマ](https://www.gatsbyjs.com/plugins/)を見つけてダウンロードします。
+VS Code を離れることなく[Gatsby プラグインとテーマ](https://www.gatsbyjs.com/plugins/)を検索したり、ダウンロードすることができます。
 
-Gatsby は、活発なコミュニティと多くのプラグインで知られています。Gatsby の公式プラグインと、それらをプロジェクトに実装するために必要なすべてのドキュメントを見つけることができます。プラグインを選択すると、VS Code 内で Web ビューが開き、プラグインの README で確認できます。
-プラグインのインストールは、サイドバーのダウンロードボタンをクリックするのと同じくらい簡単です。
+Gatsby は活発なコミュニティと多くのプラグインで知られています。Gatsby の公式プラグインとそれらをプロジェクトに実装するために必要なすべてのドキュメントを見つけることができます。プラグインを選択すると、VS Code 内で Web ビューが開き、プラグインの README を確認できます。 プラグインのインストールは、サイドバーのダウンロードボタンをクリックするのと同じくらい簡単です。
 
 ## Gatsby スターター
 
-Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/?)の 1 つを、サイトのテンプレートとして使用します。
-スターターを閲覧し、README を確認してください。
-新しいギャツビーサイトの作成は、サイドバーのボタンをクリックしてサイトの名前を入力するのと同じくらい簡単です。
+Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/?)のからテンプレートとしてあなたのサイトに使ってください。 スターターを閲覧し README を確認してください。 新しいギャツビーサイトの作成は、サイドバーのボタンをクリックしてサイトの名前を入力するのと同じくらい簡単です。
 
 <p align="center">
   <br />
@@ -67,14 +58,11 @@ Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/
 
 ## GraphiQL
 
-開発サーバーの実行時に、Gatsby の組み込みの GraphiQL インスタンスにシングルクリックでアクセスします。
-GraphQL クエリの作成はこれほど簡単ではありませんでした
+開発サーバーの実行時に、Gatsby の組み込みの GraphiQL インスタンスにワンクリックでアクセス。 GraphQL クエリの作成がとても簡単になりました。
 
-## 拡張機能の設定 (Extension Settings)
+## 拡張機能の設定
 
-[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。GatsbyHub は、VSCode 拡張設定内でこれらのオプションを切り替える方法を提供します。
-そうすれば、サーバーを開発したりアプリをパッケージ化したりするたびに、設定が保持されます。
-新しいプロジェクトを開始するたびに同じコマンドを入力したり、スクリプトを構成したりする必要はもうありません。
+[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。GatsbyHub は、VSCode 拡張設定内でこれらのオプションを切り替える方法を提供します。 そうすることでサーバーを開発したりアプリをパッケージ化したりした時も設定が保持されます。 新しいプロジェクトを開始するたびに同じコマンドを入力したり、スクリプトを構成したりする必要はもうありません。
 
 <p align="center">
   <br />
@@ -86,9 +74,9 @@ GraphQL クエリの作成はこれほど簡単ではありませんでした
 
 ### GatsbyHub 1.0.7 - 2020 年 10 月 22 日
 
-変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
+詳しい変更については、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 
-# 寄稿者 (Contributors)
+# 貢献者
 
 Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https://www.linkedin.com/in/brianmakiohayashi/)
 
