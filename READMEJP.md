@@ -50,20 +50,14 @@ GatsbyHub は、[コマンドラインインターフェイス](https://www.gats
 
 VS Code を離れることなく、[Gatsby プラグインとテーマ](https://www.gatsbyjs.com/plugins/)を見つけてダウンロードします。
 
-Find and download [Gatsby plugins and themes](https://www.gatsbyjs.com/plugins/) without ever leaving VS Code.
-
 Gatsby は、活発なコミュニティと多くのプラグインで知られています。Gatsby の公式プラグインと、それらをプロジェクトに実装するために必要なすべてのドキュメントを見つけることができます。プラグインを選択すると、VS Code 内で Web ビューが開き、プラグインの README で確認できます。
 プラグインのインストールは、サイドバーのダウンロードボタンをクリックするのと同じくらい簡単です。
-
-Gatsby is known for it's active community and many plugins. You can find Gatsby's official plugins and all the documentation needed to implement them into your project. Selecting a plugin opens a webview within VS Code where you can read up on the plugin's README. Installing the plugin is as easy as clicking the download button in the sidebar.
 
 ## Gatsby スターター
 
 Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/?)の 1 つを、サイトのテンプレートとして使用します。
 スターターを閲覧し、README を確認してください。
 新しいギャツビーサイトの作成は、サイドバーのボタンをクリックしてサイトの名前を入力するのと同じくらい簡単です。
-
-Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as a template for your site. Browse the starters and check out their READMEs. Creating a new Gatsby site is as easy as clicking a button in the sidebar and typing in a name for your site.
 
 <p align="center">
   <br />
@@ -76,15 +70,11 @@ Use one of Gatsby's many [Starter sites](https://www.gatsbyjs.com/starters/?) as
 開発サーバーの実行時に、Gatsby の組み込みの GraphiQL インスタンスにシングルクリックでアクセスします。
 GraphQL クエリの作成はこれほど簡単ではありませんでした
 
-Access Gatsby's built-in instance of GraphiQL with a single click when running a development server. Writing GraphQL queries has never been this easy.
-
 ## 拡張機能の設定 (Extension Settings)
 
 [Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/)には、開発サーバーを生成してプロジェクトをパッケージ化するための高度なオプションが多数あります。GatsbyHub は、VSCode 拡張設定内でこれらのオプションを切り替える方法を提供します。
 そうすれば、サーバーを開発したりアプリをパッケージ化したりするたびに、設定が保持されます。
 新しいプロジェクトを開始するたびに同じコマンドを入力したり、スクリプトを構成したりする必要はもうありません。
-
-[Gatsby-Cli](https://www.gatsbyjs.com/docs/gatsby-cli/) has a lot of advanced options for generating a development server and packaging your project. GatsbyHub provides a way to toggle these options within the VS Code extension settings. That way the settings persist every time you want to develop a server or package your app. No more typing out the same commands or configuring a script everytime you start a new project.
 
 <p align="center">
   <br />
@@ -97,8 +87,6 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 ### GatsbyHub 1.0.7 - 2020 年 10 月 22 日
 
 変更の完全なセットについては、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
-
-See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
 
 # 寄稿者 (Contributors)
 
