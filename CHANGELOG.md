@@ -2,6 +2,29 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.7] - 2020-10-22
+
+### Update
+
+- Updates ViewsContainer with new Blob logo w/o 'G'
+- Updates Readmes with new images using Blob logo w/o 'G'
+
+### Delete
+
+- Deletes extraneous files with old unused logo
+
+## [1.0.6] - 2020-10-21
+
+### Update
+
+- Updates to README
+
+## [1.0.5] - 2020-10-21
+
+### Update
+
+- Pop up message content when downloading plugins or starters
+
 ## [1.0.4] - 2020-10-21
 
 ### Update

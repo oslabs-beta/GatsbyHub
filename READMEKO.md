@@ -3,7 +3,7 @@
 [![GitHub link](https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet)](https://github.com/oslabs-beta/GatsbyHub) [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/oslabs-beta/GatsbyHub/blob/main/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/GatsbyHub/pulls) [![VSCode Dev Slack](https://img.shields.io/badge/vscode--dev--community-gatsbyhub-blueviolet.svg?logo=slack&labelColor=555555)](https://vscode-slack.amod.io)
 
 <p align="center">
-<a href="https://imgur.com/ITkYDBK"><img src="https://imgur.com/ITkYDBK.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/pL6Oove"><img src="https://i.imgur.com/pL6Oove.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # 개요
@@ -25,7 +25,7 @@ GatsbyHub를 통해 VS Code 상에서 [Gatsby plugins](https://www.gatsbyjs.com/
 Gatsby는 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GatsbyHub.gatsbyhub)에서 설치하시면 됩니다.
 
 <p align="center">
-<a href="https://imgur.com/VkYFaz9"><img src="https://i.imgur.com/VkYFaz9.jpg" title="source: imgur.com" width="750"/></a>
+<a href="https://i.imgur.com/iNMPGwO"><img src="https://i.imgur.com/iNMPGwO.jpg" title="source: imgur.com" width="750"/></a>
 </p>
 
 # 주요 기능
@@ -59,7 +59,7 @@ Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/start
 
 <p align="center">
   <br />
-  <a href="https://imgur.com/dlip1Mz"><img src="https://i.imgur.com/dlip1Mz.jpg" title="source: imgur.com" width="750"/></a>
+  <a href="https://i.imgur.com/saUF9kz"><img src="https://i.imgur.com/saUF9kz.jpg" title="source: imgur.com" width="750"/></a>
   <br />
 </p>
 
@@ -79,7 +79,7 @@ Gatsby가 제공하는 수 많은 [Starter sites](https://www.gatsbyjs.com/start
 
 # Release Notes
 
-### GatsbyHub 1.0.4 - 2020/10/21
+### GatsbyHub 1.0.7 - 2020/10/22
 
 전체 변경 사항은 [변경 로그를](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) 참조하십시오.
 
@@ -91,10 +91,10 @@ Brian 'B-Hash' Hayashi [@github](https://github.com/bhayashi) [@linkedin](https:
 
 Dylan Hensel [@github](https://github.com/dylanrh) [@linkedin](https://www.linkedin.com/in/dylanhensel/)
 
-Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joon-k-00a92819a/)
+Joonyoung Kim [@github](https://github.com/JoonyoungKim025) [@linkedin](https://www.linkedin.com/in/joonyoungkim025)
 
 Lucy Chi [@github](https://github.com/lucycchi) [@linkedin](https://www.linkedin.com/in/chilucy/)
 
-Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel-718b211b9/)
+Miguel Michel [@github](https://github.com/mig824) [@linkedin](https://www.linkedin.com/in/miguel-michel/)
 
 Risa Hiyama [@linkedin](https://www.linkedin.com/in/risa-hiyama-93898968/)

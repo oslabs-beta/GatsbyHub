@@ -2,7 +2,7 @@
 	"name": "gatsbyhub",
 	"displayName": "GatsbyHub",
 	"description": "Utilize your favorite Gatsby features without ever leaving Visual Studio Code.",
-	"version": "1.0.4",
+	"version": "1.0.7",
 	"publisher": "GatsbyHub",
 	"engines": {
 		"vscode": "^1.49.0"
@@ -28,7 +28,7 @@
 		"serverless",
 		"static"
 	],
-	"icon": "logo/GatsbyHub-purple-big.png",
+	"icon": "logo/GatsbyHub-purple-blob.png",
 	"badges": [
 		{
 			"url": "https://img.shields.io/badge/GitHub-GatsbyHub-blueviolet",
@@ -150,7 +150,7 @@
 				{
 					"id": "gatsbyHub",
 					"title": "GatsbyHub",
-					"icon": "logo/GatsbyHub-purple.svg"
+					"icon": "logo/GatsbyHub-purple-blob.svg"
 				}
 			]
 		},
