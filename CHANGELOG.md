@@ -2,6 +2,12 @@
 
 All notable changes to the GatsbyHub extension will be documented in this file.
 
+## [1.0.8] - 2020-11-13
+
+### Fix
+
+- Fixes server issue with fetching plugin packages
+
 ## [1.0.7] - 2020-10-22
 
 ### Update
