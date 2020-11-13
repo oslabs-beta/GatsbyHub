@@ -68,7 +68,7 @@ export default class NpmData {
 		// npm objects contains number of packages and array of package objects
 		let npmPackages = keywords.map(async (keyword) => {
 			try {
-				const url = `https://api.npms.io/v2/search?q=${keyword}&size=250`;
+				const url = `http://registry.npmjs.org/-/v1/search?text=${keyword}&size=250`;
 				// +keywords:-gatsby-plugin+not:deprecated
 				const response = await got(url);
 				return JSON.parse(response.body);
@@ -79,7 +79,7 @@ export default class NpmData {
 
 		// merges the array of npm package objects together to a single array
 		npmPackages = (await Promise.all(npmPackages)).reduce(
-			(arr, obj) => arr.concat(obj.results),
+			(arr, obj) => arr.concat(obj.objects),
 			[]
 		);
 
