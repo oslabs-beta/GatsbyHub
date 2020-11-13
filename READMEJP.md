@@ -72,7 +72,7 @@ Gatsby の多くの[スターターサイト](https://www.gatsbyjs.com/starters/
 
 # リリースノート
 
-### GatsbyHub 1.0.7 - 2020 年 10 月 22 日
+### GatsbyHub 1.0.8 - 2020 年 11 月 13 日
 
 詳しい変更については、[変更ログ](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md)を参照してください
 

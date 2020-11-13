@@ -80,7 +80,7 @@ Access Gatsby's built-in instance of GraphiQL with a single click when running a
 
 # Release Notes
 
-### GatsbyHub 1.0.7 - October 22,2020
+### GatsbyHub 1.0.8 - November 13,2020
 
 See the [change log](https://github.com/oslabs-beta/GatsbyHub/blob/main/CHANGELOG.md) for the full set of changes
 
