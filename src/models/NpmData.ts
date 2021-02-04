@@ -21,6 +21,7 @@ export default class NpmData {
 		this.getNpmPackages = this.getNpmPackages.bind(this);
 	}
 
+	// this retrieval, filter, and transformation process is accessed by different modules for different packages, each package has an npmType to call a different filter
 	// returns an object with plugin packages
 	// retrieves plugin packages from npm api
 	public async getNpmPackages(npmType: string = 'plugin') {
